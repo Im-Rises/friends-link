@@ -1,0 +1,10 @@
+td {
+    border: solid black 1px;
+}
+th {
+    border: solid rgb(179, 89, 104) 2px;
+}
+tr:hover {
+    background-color: red;
+    color: black;
+}
