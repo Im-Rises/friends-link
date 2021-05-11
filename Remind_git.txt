@@ -1,0 +1,8 @@
+git pull : mettre à jour le dossier
+git push: apporter ses maj au repository commun 
+
+git add . : ajouter toutes les modifs à l'arbre au prochain commit 
+git commit -m "commentaire qui décrit les modifs": ajouter à l'arbre local tous ce qui a été ajouté avec " git add ."
+
+/!\ avant de faire un git add toujours faire un git pull 
+
