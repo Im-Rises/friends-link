@@ -59,3 +59,24 @@ function selectFromAuteurWhereNom($auteur)
     $req = "SELECT * FROM auteur WHERE nom='$auteur'";
     return mysqli_query($connexion, $req);
 }
+
+function selectLivresFromAuteur($idAuteur)
+{
+    global $connexion;
+    $req = "SELECT * FROM livre WHERE idAuteur=$idAuteur";
+    return mysqli_query($connexion, $req);
+}
+
+function selectAllLivres()
+{
+    global $connexion;
+    $req = "SELECT * FROM livre";
+    return mysqli_query($connexion,$req);
+}
+
+function deleteLivre($idLivre)
+{
+    global $connexion;
+    $req = "DELETE FROM livre WHERE idLivre=$idLivre";
+    return mysqli_query($connexion,$req);
+}

@@ -16,6 +16,7 @@
             <input type="text" placeholder="auteur" name="auteur"> <br>
             <input type="submit" value="Ajouter"> <br>
         </form>
+        <a href="index.php">Retour</a>
     </fieldset>
 
     <?php

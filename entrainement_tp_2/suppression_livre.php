@@ -12,11 +12,11 @@
 
     <?php
 
-    $req = "SELECT * FROM livre";
     if ($connexion) {
-        $res = mysqli_query($connexion, $req);
+        
+        $res = selectAllLivres(); 
 
-        if ($req) {
+        if ($res) {
             echo "<h1>Suppression d'un livre</h1>";
 
             echo
@@ -26,7 +26,7 @@
                     <select name='select_id'>";
 
             foreach ($res as $ligne) {
-                echo "<option value=$ligne[id]>$ligne[id]</option>";
+                echo "<option value=$ligne[idLivre]>$ligne[idLivre]</option>";
             }
 
             echo
@@ -43,9 +43,8 @@
 
         if (isset($_POST['select_id'])) {
 
-            $req = "DELETE FROM livre WHERE id=$_POST[select_id]";
-            //echo $req;
-            $res = mysqli_query($connexion, $req);
+            echo $_POST['select_id'];
+            $res = deleteLivre($_POST['select_id']);
 
             if ($res) {
                 echo "<p>Suppression réussie</p>";

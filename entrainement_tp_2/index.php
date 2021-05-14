@@ -10,7 +10,7 @@
 <body>
     <a href="ajouter.php">Ajouter un livre</a><br />
     <a href="suppression_livre.php">Supprimer un livre</a><br />
-    <a href="afficher_livre.php">Afficher un livre</a><br />
+    <a href="afficher_livre.php">Afficher les livres</a><br />
 
     <form method='POST' action=''>
         <fieldset>
@@ -22,8 +22,6 @@
     </form>
 
     <?php
-
-    echo $_POST['nom'];
 
     if (isset($_POST['nom'])) {
 
