@@ -29,7 +29,6 @@ function insertIntoLivre($titre, $auteur)
 }
 
 function insertIntoAuteur($auteur)
-
 {
     global $connexion;
     $isAuthorExist = false;
@@ -47,11 +46,16 @@ function insertIntoAuteur($auteur)
         $res = mysqli_query($connexion, $req);
         if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
 
-        $req = "SELECT * FROM auteur WHERE nom='$auteur'";
-        $res = mysqli_query($connexion, $req);
+        $res = selectFromAuteurWhereNom($auteur);
         if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
         foreach ($res as $value)
             $idAuteur = $value['idAuteur'];
     }
     return $idAuteur;
+}
+function selectFromAuteurWhereNom($auteur)
+{
+    global $connexion;
+    $req = "SELECT * FROM auteur WHERE nom='$auteur'";
+    return mysqli_query($connexion, $req);
 }
