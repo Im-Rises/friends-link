@@ -27,19 +27,19 @@ $db          = "gestion_livre";
 
             echo
             "<form action='' method='POST'>
-            <fieldset>
-            <label for='livre'>Identifiant du livre</label>
-            <select id=livre_suppression>";
+                <fieldset>
+                    <label for='livre'>Identifiant du livre</label>
+                    <select id=livre_suppression>";
 
             foreach ($res as $ligne) {
                 echo "<option value=''>Text</option>";
             }
 
             echo
-            "</select>
-            <input type='submit'><br/>
-            <a href='index.php'>Retour<a>
-            </fieldset>
+                    "</select>
+                    <input type='submit'><br/>
+                    <a href='index.php'>Retour<a>
+                </fieldset>
             </form>";
         } else {
             echo "<p>Reqête non valable base de données";
