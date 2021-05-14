@@ -26,28 +26,47 @@
 
         $titre = htmlspecialchars($_POST["titre"]);
         $auteur = htmlspecialchars($_POST["auteur"]);
-        $req= "SELECT * FROM auteur; ";
-        $array=mysqli_connect($connexion, $req);
-        
-        $isAuthorExist= false; 
-        foreach ($array as $value){
-            if ($value ["nom"]== $auteur) {
-                $isAuthorExist= true;
-                break ; 
+        $req = "SELECT * FROM auteur;";
+        $array = mysqli_query($connexion, $req);
+
+        $isAuthorExist = false;
+        $idAuteur = 0;
+
+        foreach ($array as $value) {
+            if ($value["nom"] == $auteur) {
+                $isAuthorExist = true;
+                $idAuteur = $value["idAuteur"];
+                break;
             }
         }
+        if (!$isAuthorExist) {
+            $req = "INSERT INTO auteur(nom) VALUES ('$auteur');";
+            $res = mysqli_query($connexion, $req);
+            if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
 
-        $req = "INSERT INTO livre(titre, auteur) VALUES ('$titre', '$auteur');";
+            $req = "SELECT * FROM auteur WHERE nom='$auteur'";
+            $res = mysqli_query($connexion, $req);
+            if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+            foreach ($res as $value)
+                $idAuteur = $value['idAuteur'];
+        }
 
-        return mysqli_query($connexion, $req);
+        $req = "INSERT INTO livre(titre, idAuteur) VALUES ('$titre', '$idAuteur');";
+
+        $res = mysqli_query($connexion, $req);
+        if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+        return $res;
     }
 
-    if (isset($_POST["titre"], $_POST["auteur"]) &&  $_POST["titre"] != NULL and $_POST["auteur"] != NULL ) {
+    if (isset($_POST["titre"], $_POST["auteur"]) &&  $_POST["titre"] != NULL and $_POST["auteur"] != NULL) {
 
-        if (insertIntoLivre($_POST["titre"], $_POST["auteur"])) echo "titre, auteur rempli correctement";
+        if (insertIntoLivre($_POST["titre"], $_POST["auteur"])) {
+            echo "titre, auteur rempli correctement";
+        } else {
+            echo "probleme";
+        }
     } else {
         echo "titre et auteur non remplis correctement";
     }
     ?>
 </body>
-

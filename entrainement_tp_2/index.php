@@ -7,7 +7,7 @@
 </head>
 
 <body>
-
+<?php require "dao.php";?>
 
 </body>
 
