@@ -29,7 +29,6 @@ function insertIntoLivre($titre, $auteur)
 }
 
 function insertIntoAuteur($auteur)
-
 {
     global $connexion;
     $isAuthorExist = false;

@@ -1,9 +1,4 @@
-<?php
-$serveur     = "localhost";
-$utilisateur = "root";
-$mdp         = "";
-$db          = "gestion_livre";
-?>
+<?php require "dao.php"; ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,7 +13,6 @@ $db          = "gestion_livre";
     <?php
 
     $req = "SELECT * FROM livre";
-    $connexion = mysqli_connect($serveur, $utilisateur, $mdp, $db);
     if ($connexion) {
         $res = mysqli_query($connexion, $req);
 
@@ -31,17 +25,16 @@ $db          = "gestion_livre";
                     <label>Identifiant du livre</label>
                     <select name='select_id'>";
 
-                    foreach ($res as $ligne) {
-                    echo "<option value=$ligne[id]>$ligne[id]</option>";
-                    }
+            foreach ($res as $ligne) {
+                echo "<option value=$ligne[id]>$ligne[id]</option>";
+            }
 
             echo
-                    "</select>
+            "</select>
                     <input type='submit' value='Supprimer'><br/>
                     <a href='index.php'>Retour</a>
                 </fieldset>
             </form>";
-
         } else {
             echo "<p>Base de données non accessible";
         }
@@ -65,7 +58,6 @@ $db          = "gestion_livre";
         echo "<p>Non connecté à la base de données";
     }
     ?>
-
 
 </body>
 
