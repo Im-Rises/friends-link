@@ -1,0 +1,28 @@
+.newMsg {
+    display: inline flex;
+    background-color: grey;
+    width: 100%;
+    height: 90%;
+    position: relative;
+
+}
+.newMsg form {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+/*
+.newMsg .writeBox {
+    min-width: 90%;
+    position: absolute;
+}
+.newMsg .submit {
+    min-width: 10%;
+    margin-left: 90%;
+    position: absolute;
+}
+*/
+body {
+    margin: 0;
+}
