@@ -49,6 +49,77 @@ function insertIntoMessageDiscussion ($sender, $receiver, $msg) {
     return $res;
 }
 
+function insertIntoAmi($email, $email_ami, $amitie_validee)
+{
+    global $connexion;
+
+    $email = htmlspecialchars($email); // protege des injections de code html ou js
+    $email = htmlentities($email); // protege des injections sql
+    
+    $email_ami = htmlspecialchars($email_ami); // protege des injections de code html ou js
+    $email_ami = htmlentities($email_ami); // protege des injections sql
+    
+    //$sender = htmlspecialchars($amitie_validee); // protege des injections de code html ou js
+    //$sender = htmlentities($amitie_validee); // protege des injections sql
+
+    $req='INSERT INTO Ami VALUES ($email, $email_ami, $amitie_validee)';
+
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
+}
+
+function insertIntoGroupe($nom)
+{
+    global $connexion;
+
+    $nom = htmlspecialchars($nom); // protege des injections de code html ou js
+    $nom = htmlentities($nom); // protege des injections sql
+
+    $req='INSERT INTO Groupe VALUES (NULL, $nom)';
+
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
+}
+
+function insertIntoGroupeMembre($id_groupe, $email_membre)
+{
+    global $connexion;
+
+    $id_groupe = htmlspecialchars($id_groupe); // protege des injections de code html ou js
+    $id_groupe = htmlentities($id_groupe); // protege des injections sql
+
+    $email_membre = htmlspecialchars($email_membre); // protege des injections de code html ou js
+    $email_membre = htmlentities($email_membre); // protege des injections sql
+
+    $req='INSERT INTO groupe_membre VALUES($id_groupe, $email_membre,NOW())';
+
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
+}
+
+function insertIntoMessageGroupe($email_envoyeur, $id_groupe, $message)
+{
+    global $connexion;
+
+    $email_envoyeur = htmlspecialchars($email_envoyeur); // protege des injections de code html ou js
+    $email_envoyeur = htmlentities($email_envoyeur); // protege des injections sql
+
+    $id_groupe = htmlspecialchars($id_groupe); // protege des injections de code html ou js
+    $id_groupe = htmlentities($id_groupe); // protege des injections sql
+
+    $message = htmlspecialchars($message); // protege des injections de code html ou js
+    $message = htmlentities($message); // protege des injections sql
+
+    $req='INSERT INTO message_groupe VALUES($email_membre,$id_groupe,$message, NOW())';
+
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
+}
+
 // SELECT
 
 // recuperer donnees membres depuis email
@@ -67,7 +138,7 @@ function selectDataMembersWhereEmail($email)
 }
 
 // selectionner une discussion entre 2 emails
-function selectDiscussionsWithTwoEmail($email1, $email2)
+function selectMessagesWithTwoEmail($email1, $email2)
 {
     global $connexion;
 
@@ -80,7 +151,8 @@ function selectDiscussionsWithTwoEmail($email1, $email2)
     $req = "SELECT  *
             FROM message_discussion
             WHERE email_envoyeur='$email1' 
-            AND email_receveur='$email2' UNION 
+            AND email_receveur='$email2' 
+            UNION 
             SELECT  *
             FROM message_discussion
             WHERE email_envoyeur='$email2' 
