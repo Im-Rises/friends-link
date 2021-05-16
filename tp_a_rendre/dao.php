@@ -17,12 +17,15 @@ clement :
 function selectDataMembersWhereEmail($email)
 {
     global $connexion;
+
     $email = htmlspecialchars($email); // protege des injections de code html ou js
     $email = htmlentities($email); // protege des injections sql
+
     $req = "SELECT * FROM membre WHERE adresse_mail = '$email';";
     return mysqli_query($connexion, $req);
 }
 
+// selectionner une discussion entre 2 emails
 function selectDiscussionsWithTwoEmail($email1, $email2)
 {
     global $connexion;
@@ -41,12 +44,22 @@ function selectDiscussionsWithTwoEmail($email1, $email2)
             FROM message_discussion
             WHERE email_envoyeur='$email2' 
             AND email_receveur='$email1';";
-    
-    return mysqli_query($connexion, $req);
 
-    
+    return mysqli_query($connexion, $req);
 }
 
+// selectionner tous les amis d'un email
+function selectAllFriendsWhereEmail($email)
+{
+    global $connexion;
+
+    $email = htmlspecialchars($email); // protege des injections de code html ou js
+    $email = htmlentities($email); // protege des injections sql
+
+    $req = "SELECT * FROM ami WHERE amitiee=true AND email='$email';";
+
+    return mysqli_query($connexion, $req);
+}
 
 
 /*
