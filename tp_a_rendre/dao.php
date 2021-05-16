@@ -28,6 +28,26 @@ function insertIntoMembre($email, $nom, $prenom, $bday)
     return mysqli_query($connexion, $req);
 }
 
+function insertIntoMessageDiscussion ($sender, $receiver, $msg) {
+    global $connexion;
+
+    $sender = htmlspecialchars($sender); // protege des injections de code html ou js
+    $sender = htmlentities($sender); // protege des injections sql
+
+    $receiver = htmlspecialchars($receiver); // protege des injections de code html ou js
+    $receiver = htmlentities($receiver); // protege des injections sql
+
+    $msg = htmlspecialchars($msg); // protege des injections de code html ou js
+    $msg = htmlentities($msg); // protege des injections sql
+
+    $req = "SELECT CAST(NOW() AS DATE)";
+    $date = mysqli_query($connexion, $req);
+
+    $req = "INSERT INTO message_discussion(email_envoyeur, email_receveur, message_text, date_envoie) VALUES ('$sender', '$receiver', '$msg', '$date');";
+
+    return mysqli_query($connexion, $req);
+}
+
 // SELECT
 
 // recuperer donnees membres depuis email
