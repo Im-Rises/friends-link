@@ -20,4 +20,17 @@ quentin :
 -   insertion des donnees
 -   recuperer les messages appartenant a un groupe
 */
+
+function selectGroupeMembre($id_groupe)
+{
+    $req="SELECT mail_membre FROM groupeMembre WHERE id_groupe=$id_groupe";
+
+}
+
+function selectMessageDiscussion($email1, $email2)
+{
+    $req="SELECT * FROM message_discussion WHERE email_envoyeur=$email1 AND email_receveur=$email2 UNION SELECT * FROM message_discussion WHERE email_envoyeur=$email2 AND email_receveur=$email1"; 
+    
+}
+
 ?>
