@@ -1,4 +1,4 @@
-<?php 
+<?php
 $serveur     = "localhost";
 $utilisateur = "root";
 $mdp         = "";
@@ -8,13 +8,8 @@ $connexion = mysqli_connect($serveur, $utilisateur, $mdp, $db);
 
 // INSERT
 
-<<<<<<< HEAD
-clement :
--   recuperer donnes membres en fonction email
--   recuperer tous les messages en fonction des deux emails
--   recuprer liste amis 
-=======
-function insertIntoMembre($email, $nom, $prenom, $bday) {
+function insertIntoMembre($email, $nom, $prenom, $bday)
+{
     global $connexion;
 
     $email = htmlspecialchars($email); // protege des injections de code html ou js
@@ -34,7 +29,6 @@ function insertIntoMembre($email, $nom, $prenom, $bday) {
 }
 
 // SELECT
->>>>>>> 897f1e14691ddb46eeca1361165a6cd073dccef9
 
 // recuperer donnees membres depuis email
 function selectDataMembersWhereEmail($email)
@@ -84,55 +78,75 @@ function selectAllFriendsWhereEmail($email)
     return mysqli_query($connexion, $req);
 }
 
-
-/*
-
-quentin :
-*/
-
 // Selection des discussion
-
 function selectEmailsDiscussion($email)
 {
-    $req='SELECT email_receveur FROM message_discussion WHERE email_envouyeur=$email UNION SELECT email_envoyeur FROM message_discussion WHERE email_receveur=$email';
+    global $connexion;
+
+    $email = htmlspecialchars($email);
+    $email = htmlentities($email);
+
+    $req = "SELECT email_receveur FROM message_discussion WHERE email_envouyeur='$email' UNION SELECT email_envoyeur FROM message_discussion WHERE email_receveur='$email';";
+
+    return mysqli_query($connexion, $req);
 }
 
 function selectMessagesDiscussion($email1, $email2)
 {
-    $req='SELECT * FROM message_discussion WHERE email_envoyeur=$email1 AND email_receveur=$email2 UNION SELECT * FROM message_discussion WHERE email_envoyeur=$email2 AND email_receveur=$email1'; 
-    
+    global $connexion;
+
+    $email1 = htmlspecialchars($email1);
+    $email1 = htmlentities($email1);
+
+    $email2 = htmlspecialchars($email2);
+    $email2 = htmlentities($email2);
+
+    $req = "SELECT * FROM message_discussion WHERE email_envoyeur='$email1' AND email_receveur='$email2' UNION SELECT * FROM message_discussion WHERE email_envoyeur='$email2' AND email_receveur='$email1';";
+
+    return mysqli_query($connexion, $req);
 }
 
 
 // Selection des groupes
-
 function selectAllGroupes($email)
 {
-    $req='SELECT DISTINCT id_groupe  FROM message_groupe WHERE mail_membre=$email';
+    global $connexion;
+
+    $email = htmlspecialchars($email);
+    $email = htmlentities($email);
+
+    $req = "SELECT DISTINCT id_groupe  FROM message_groupe WHERE mail_membre='$email';";
+
+    return mysqli_query($connexion, $req);
 }
 
 function selectMembresGroupe($id_groupe)
 {
-    $req='SELECT mail_membre FROM groupeMembre WHERE id_groupe=$id_groupe';
+    global $connexion;
+
+    $req = "SELECT mail_membre FROM groupeMembre WHERE id_groupe='$id_groupe';";
+
+    return mysqli_query($connexion, $req);
 }
 
 function selectMessagesGroupe($idGroup)
 {
-    $req='SELECT * FROM message_groupe WHERE id_groupe=$idGroup;';
+    global $connexion;
+
+    $req = "SELECT * FROM message_groupe WHERE id_groupe='$idGroup';";
+
+    return mysqli_query($connexion, $req);
 }
-
-
 
 // Recuperer les demandes d'ami reçues
-
 function selectDemandesAmi($email)
 {
-    $req='SELECT email_ami FROM ami WHERE email=$email AND amitie_validee=false';
+    global $connexion;
+
+    $email = htmlspecialchars($email);
+    $email = htmlentities($email);
+
+    $req = "SELECT email_ami FROM ami WHERE email='$email' AND amitie_validee=false";
+
+    return mysqli_query($connexion, $req);
 }
-
-
-
-
-
-
-?>
