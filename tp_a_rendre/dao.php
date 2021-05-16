@@ -6,15 +6,36 @@ $db          = "gestion_livre";
 $connexion = mysqli_connect($serveur, $utilisateur, $mdp, $db);
 
 
-/*
-fonctions necessaires en php :
+// INSERT
 
+<<<<<<< HEAD
 clement :
 -   recuperer donnes membres en fonction email
 -   recuperer tous les messages en fonction des deux emails
 -   recuprer liste amis 
+=======
+function insertIntoMembre($email, $nom, $prenom, $bday) {
+    global $connexion;
 
-*/
+    $email = htmlspecialchars($email); // protege des injections de code html ou js
+    $email = htmlentities($email); // protege des injections sql
+
+    $nom = htmlspecialchars($nom); // protege des injections de code html ou js
+    $nom = htmlentities($nom); // protege des injections sql
+
+    $prenom = htmlspecialchars($prenom); // protege des injections de code html ou js
+    $prenom = htmlentities($prenom); // protege des injections sql
+
+    $bday = htmlspecialchars($bday); // protege des injections de code html ou js
+    $bday = htmlentities($bday); // protege des injections sql
+
+    $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance) VALUES ('$email', '$nom', '$prenom', '$bday');";
+    return mysqli_query($connexion, $req);
+}
+
+// SELECT
+>>>>>>> 897f1e14691ddb46eeca1361165a6cd073dccef9
+
 // recuperer donnees membres depuis email
 function selectDataMembersWhereEmail($email)
 {
