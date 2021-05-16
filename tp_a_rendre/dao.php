@@ -25,7 +25,9 @@ function insertIntoMembre($email, $nom, $prenom, $bday)
     $bday = htmlentities($bday); // protege des injections sql
 
     $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance) VALUES ('$email', '$nom', '$prenom', '$bday');";
-    return mysqli_query($connexion, $req);
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
 }
 
 function insertIntoMessageDiscussion ($sender, $receiver, $msg) {
@@ -42,7 +44,9 @@ function insertIntoMessageDiscussion ($sender, $receiver, $msg) {
 
     $req = "INSERT INTO message_discussion(email_envoyeur, email_receveur, message_text, date_envoie) VALUES ('$sender', '$receiver', '$msg', CURRENT_DATE());";
 
-    return mysqli_query($connexion, $req);
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
 }
 
 // SELECT
@@ -56,7 +60,10 @@ function selectDataMembersWhereEmail($email)
     $email = htmlentities($email); // protege des injections sql
 
     $req = "SELECT * FROM membre WHERE adresse_mail = '$email';";
-    return mysqli_query($connexion, $req);
+
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
 }
 
 // selectionner une discussion entre 2 emails
@@ -79,7 +86,9 @@ function selectDiscussionsWithTwoEmail($email1, $email2)
             WHERE email_envoyeur='$email2' 
             AND email_receveur='$email1';";
 
-    return mysqli_query($connexion, $req);
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
 }
 
 // selectionner tous les amis d'un email
@@ -92,7 +101,9 @@ function selectAllFriendsWhereEmail($email)
 
     $req = "SELECT * FROM ami WHERE email='$email' AND amitiee=true;";
 
-    return mysqli_query($connexion, $req);
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
 }
 
 // Selection des discussion
@@ -105,7 +116,9 @@ function selectEmailsDiscussion($email)
 
     $req = "SELECT email_receveur FROM message_discussion WHERE email_envouyeur='$email' UNION SELECT email_envoyeur FROM message_discussion WHERE email_receveur='$email';";
 
-    return mysqli_query($connexion, $req);
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
 }
 
 function selectMessagesDiscussion($email1, $email2)
@@ -119,8 +132,10 @@ function selectMessagesDiscussion($email1, $email2)
     $email2 = htmlentities($email2);
 
     $req = "SELECT * FROM message_discussion WHERE email_envoyeur='$email1' AND email_receveur='$email2' UNION SELECT * FROM message_discussion WHERE email_envoyeur='$email2' AND email_receveur='$email1';";
-
-    return mysqli_query($connexion, $req);
+    
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
 }
 
 
@@ -134,7 +149,9 @@ function selectAllGroupes($email)
 
     $req = "SELECT DISTINCT id_groupe  FROM message_groupe WHERE mail_membre='$email';";
 
-    return mysqli_query($connexion, $req);
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
 }
 
 function selectMembresGroupe($id_groupe)
@@ -143,7 +160,9 @@ function selectMembresGroupe($id_groupe)
 
     $req = "SELECT mail_membre FROM groupeMembre WHERE id_groupe='$id_groupe';";
 
-    return mysqli_query($connexion, $req);
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
 }
 
 function selectMessagesGroupe($idGroup)
@@ -152,7 +171,9 @@ function selectMessagesGroupe($idGroup)
 
     $req = "SELECT * FROM message_groupe WHERE id_groupe='$idGroup';";
 
-    return mysqli_query($connexion, $req);
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
 }
 
 // Recuperer les demandes d'ami reçues
@@ -164,6 +185,8 @@ function selectDemandesAmi($email)
     $email = htmlentities($email);
 
     $req = "SELECT email_ami FROM ami WHERE email='$email' AND amitie_validee=false";
-
-    return mysqli_query($connexion, $req);
+    
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
 }
