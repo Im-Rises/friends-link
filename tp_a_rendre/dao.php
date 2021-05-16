@@ -1,4 +1,4 @@
-<?php 
+<?php
 $serveur     = "localhost";
 $utilisateur = "root";
 $mdp         = "";
@@ -10,19 +10,43 @@ $connexion = mysqli_connect($serveur, $utilisateur, $mdp, $db);
 fonctions necessaires en php :
 
 clement :
--   recuperer donnes membres en fonction email
--   recuperer tous les messages en fonction des deux emails
 -   recuprer liste amis 
 
 */
-
-function selectDataMembersWhereEmail($email) {
+// recuperer donnees membres depuis email
+function selectDataMembersWhereEmail($email)
+{
     global $connexion;
     $email = htmlspecialchars($email); // protege des injections de code html ou js
     $email = htmlentities($email); // protege des injections sql
     $req = "SELECT * FROM membre WHERE adresse_mail = '$email';";
-    return mysqli_query($req, $connexion);
+    return mysqli_query($connexion, $req);
 }
+
+function selectDiscussionsWithTwoEmail($email1, $email2)
+{
+    global $connexion;
+
+    $email1 = htmlspecialchars($email1); // protege des injections de code html ou js
+    $email1 = htmlentities($email1); // protege des injections sql
+
+    $email2 = htmlspecialchars($email2); // protege des injections de code html ou js
+    $email2 = htmlentities($email2); // protege des injections sql
+
+    $req = "SELECT  *
+            FROM message_discussion
+            WHERE email_envoyeur='$email1' 
+            AND email_receveur='$email2' UNION 
+            SELECT  *
+            FROM message_discussion
+            WHERE email_envoyeur='$email2' 
+            AND email_receveur='$email1';";
+    
+    return mysqli_query($connexion, $req);
+
+    
+}
+
 
 
 /*
@@ -33,4 +57,3 @@ quentin :
 -   insertion des donnees
 -   recuperer les messages appartenant a un groupe
 */
-?>
