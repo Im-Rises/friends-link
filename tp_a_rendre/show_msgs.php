@@ -11,9 +11,15 @@
 <body>
 
     <?php 
-        $discussions = selectEmailsDiscussion("email1");
+        $discussions = selectMessagesDiscussion("email1", "email2");
         foreach($discussions as $value) {
-            echo $value[''];
+            $emailSender = $value["email_envoyeur"];
+            $emailReceiver = $value["email_receveur"];
+            $msg = $value["message_text"];
+            $date = $value["date_envoie"];
+
+            echo "$emailSender to $emailReceiver, $date : $msg <br>";
+
         }
     ?>
 

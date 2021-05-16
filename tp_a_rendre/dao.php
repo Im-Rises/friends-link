@@ -182,7 +182,7 @@ function selectEmailsDiscussion($email)
     $email = htmlspecialchars($email);
     $email = htmlentities($email);
 
-    $req = "SELECT email_receveur FROM message_discussion WHERE email_envouyeur='$email' UNION SELECT email_envoyeur FROM message_discussion WHERE email_receveur='$email';";
+    $req = "SELECT email_receveur FROM message_discussion WHERE email_envoyeur='$email' UNION SELECT email_envoyeur FROM message_discussion WHERE email_receveur='$email';";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
