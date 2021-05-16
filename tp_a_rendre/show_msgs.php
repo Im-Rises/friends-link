@@ -1,3 +1,5 @@
+
+<?php require "dao.php"; ?>
 <!DOCTYPE html>
 <html>
 
@@ -7,6 +9,14 @@
 </head>
 
 <body>
+
+    <?php 
+        $discussions = selectEmailsDiscussion("email1");
+        foreach($discussions as $value) {
+            echo $value[''];
+        }
+    ?>
+
 </body>
 
 </html>
