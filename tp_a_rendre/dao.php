@@ -1,4 +1,4 @@
-<?php
+<?php 
 $serveur     = "localhost";
 $utilisateur = "root";
 $mdp         = "";
@@ -10,6 +10,8 @@ $connexion = mysqli_connect($serveur, $utilisateur, $mdp, $db);
 fonctions necessaires en php :
 
 clement :
+-   recuperer donnes membres en fonction email
+-   recuperer tous les messages en fonction des deux emails
 -   recuprer liste amis 
 
 */
@@ -56,7 +58,7 @@ function selectAllFriendsWhereEmail($email)
     $email = htmlspecialchars($email); // protege des injections de code html ou js
     $email = htmlentities($email); // protege des injections sql
 
-    $req = "SELECT * FROM ami WHERE amitiee=true AND email='$email';";
+    $req = "SELECT * FROM ami WHERE email='$email' AND amitiee=true;";
 
     return mysqli_query($connexion, $req);
 }
@@ -65,25 +67,51 @@ function selectAllFriendsWhereEmail($email)
 /*
 
 quentin :
--   recuperer toutes les discussions par email 
--   recuperer tous les groupes par email 
--   insertion des donnees
--   recuperer les messages appartenant a un groupe
 */
-<<<<<<< HEAD
 
-function selectGroupeMembre($id_groupe)
+// Selection des discussion
+
+function selectEmailsDiscussion($email)
 {
-    $req="SELECT mail_membre FROM groupeMembre WHERE id_groupe=$id_groupe";
-
+    $req='SELECT email_receveur FROM message_discussion WHERE email_envouyeur=$email UNION SELECT email_envoyeur FROM message_discussion WHERE email_receveur=$email';
 }
 
-function selectMessageDiscussion($email1, $email2)
+function selectMessagesDiscussion($email1, $email2)
 {
-    $req="SELECT * FROM message_discussion WHERE email_envoyeur=$email1 AND email_receveur=$email2 UNION SELECT * FROM message_discussion WHERE email_envoyeur=$email2 AND email_receveur=$email1"; 
+    $req='SELECT * FROM message_discussion WHERE email_envoyeur=$email1 AND email_receveur=$email2 UNION SELECT * FROM message_discussion WHERE email_envoyeur=$email2 AND email_receveur=$email1'; 
     
 }
 
+
+// Selection des groupes
+
+function selectAllGroupes($email)
+{
+    $req='SELECT DISTINCT id_groupe  FROM message_groupe WHERE mail_membre=$email';
+}
+
+function selectMembresGroupe($id_groupe)
+{
+    $req='SELECT mail_membre FROM groupeMembre WHERE id_groupe=$id_groupe';
+}
+
+function selectMessagesGroupe($idGroup)
+{
+    $req='SELECT * FROM message_groupe WHERE id_groupe=$idGroup;';
+}
+
+
+
+// Recuperer les demandes d'ami reçues
+
+function selectDemandesAmi($email)
+{
+    $req='SELECT email_ami FROM ami WHERE email=$email AND amitie_validee=false';
+}
+
+
+
+
+
+
 ?>
-=======
->>>>>>> 019111c6047de06a16b51e4d7931048e72f9e4bb
