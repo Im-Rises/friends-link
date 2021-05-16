@@ -62,7 +62,7 @@ function insertIntoAmi($email, $email_ami, $amitie_validee)
     //$sender = htmlspecialchars($amitie_validee); // protege des injections de code html ou js
     //$sender = htmlentities($amitie_validee); // protege des injections sql
 
-    $req='INSERT INTO Ami VALUES ($email, $email_ami, $amitie_validee)';
+    $req="INSERT INTO Ami VALUES ($email, $email_ami, $amitie_validee)";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
@@ -76,7 +76,7 @@ function insertIntoGroupe($nom)
     $nom = htmlspecialchars($nom); // protege des injections de code html ou js
     $nom = htmlentities($nom); // protege des injections sql
 
-    $req='INSERT INTO Groupe VALUES (NULL, $nom)';
+    $req="INSERT INTO Groupe VALUES (NULL, $nom)";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
@@ -93,7 +93,7 @@ function insertIntoGroupeMembre($id_groupe, $email_membre)
     $email_membre = htmlspecialchars($email_membre); // protege des injections de code html ou js
     $email_membre = htmlentities($email_membre); // protege des injections sql
 
-    $req='INSERT INTO groupe_membre VALUES($id_groupe, $email_membre,NOW())';
+    $req="INSERT INTO groupe_membre VALUES($id_groupe, $email_membre,NOW())";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
@@ -113,7 +113,7 @@ function insertIntoMessageGroupe($email_envoyeur, $id_groupe, $message)
     $message = htmlspecialchars($message); // protege des injections de code html ou js
     $message = htmlentities($message); // protege des injections sql
 
-    $req='INSERT INTO message_groupe VALUES($email_membre,$id_groupe,$message, NOW())';
+    $req="INSERT INTO message_groupe VALUES($email_envoyeur,$id_groupe,$message, NOW())";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
