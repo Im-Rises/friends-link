@@ -14,6 +14,19 @@ clement :
 -   recuperer tous les messages en fonction des deux emails
 -   recuprer liste amis 
 
+*/
+
+function selectDataMembersWhereEmail($email) {
+    global $connexion;
+    $email = htmlspecialchars($email); // protege des injections de code html ou js
+    $email = htmlentities($email); // protege des injections sql
+    $req = "SELECT * FROM membre WHERE adresse_mail = '$email';";
+    return mysqli_query($req, $connexion);
+}
+
+
+/*
+
 quentin :
 -   recuperer toutes les discussions par email 
 -   recuperer tous les groupes par email 
