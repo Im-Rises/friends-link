@@ -40,10 +40,7 @@ function insertIntoMessageDiscussion ($sender, $receiver, $msg) {
     $msg = htmlspecialchars($msg); // protege des injections de code html ou js
     $msg = htmlentities($msg); // protege des injections sql
 
-    $req = "SELECT CAST(NOW() AS DATE)";
-    $date = mysqli_query($connexion, $req);
-
-    $req = "INSERT INTO message_discussion(email_envoyeur, email_receveur, message_text, date_envoie) VALUES ('$sender', '$receiver', '$msg', '$date');";
+    $req = "INSERT INTO message_discussion(email_envoyeur, email_receveur, message_text, date_envoie) VALUES ('$sender', '$receiver', '$msg', CURRENT_DATE());";
 
     return mysqli_query($connexion, $req);
 }
