@@ -1,3 +1,12 @@
+<?php
+session_start();
+$_SESSION["email"] = "email1";
+
+// $receiver = $_GET["receiver"];
+
+require "dao.php";
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -9,9 +18,18 @@
 
 <body>
     <div id="show_msg">
-        <?php require "show_msgs.php" ?>
-    </div>
+        <?php 
+        $discussions = selectMessagesDiscussion("email1", "email2");
+        while ($value = mysqli_fetch_array($discussions)) {
+            $emailSender = $value["email_envoyeur"];
+            $emailReceiver = $value["email_receveur"];
+            $msg = $value["message_text"];
+            $date = $value["date_envoie"];
 
+            echo "$emailSender to $emailReceiver, [$date] : $msg <br>";
+        } 
+        ?>
+    </div>
     <div class="newMsg">
         <form action="" method="POST">
             <input type="text" class="writeBox" name="msg">
@@ -27,9 +45,9 @@
 if (isset($_POST["msg"]) and $_POST["msg"] != NULL) {
     $msg = $_POST["msg"];
 
-    insertIntoMessageDiscussion("email1", "email2", $msg);
+    insertIntoMessageDiscussion($_SESSION["email"], "email2", $msg);
 
-    header("Refresh:0;");
+    header("Refresh:0");
 }
 
 ?>

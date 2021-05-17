@@ -1,4 +1,4 @@
-/*.newMsg {
+/* .newMsg {
     display: inline flex;
     background-color: grey;
     width: 100%;
@@ -8,11 +8,11 @@
 }
 .newMsg form {
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
 }
 
-/*
+
 .newMsg .writeBox {
     min-width: 90%;
     position: absolute;
@@ -25,4 +25,4 @@
 
 body {
     margin: 0;
-}*/
+} */

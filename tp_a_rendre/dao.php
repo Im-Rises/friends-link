@@ -8,7 +8,7 @@ $connexion = mysqli_connect($serveur, $utilisateur, $mdp, $db);
 
 // INSERT
 
-function insertIntoMembre($email, $nom, $prenom, $bday) // works
+function insertIntoMembre($email, $nom, $prenom, $bday, $mdp) // works
 {
     global $connexion;
 
@@ -24,8 +24,13 @@ function insertIntoMembre($email, $nom, $prenom, $bday) // works
     $bday = htmlspecialchars($bday); // protege des injections de code html ou js
     $bday = htmlentities($bday); // protege des injections sql
 
-    $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance) VALUES ('$email', '$nom', '$prenom', '$bday');";
-    return mysqli_query($connexion, $req);
+    $mdp = htmlspecialchars($mdp); // protege des injections de code html ou js
+    $mdp = htmlentities($mdp); // protege des injections sql
+
+    $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance, mdp) VALUES ('$email', '$nom', '$prenom', '$bday', '$mdp');";
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+
 }
 
 function insertIntoMessageDiscussion($sender, $receiver, $msg) // works
@@ -182,7 +187,9 @@ function selectEmailsDiscussion($email)
     $email = htmlspecialchars($email);
     $email = htmlentities($email);
 
-    $req = "SELECT email_receveur FROM message_discussion WHERE email_envoyeur='$email' UNION SELECT email_envoyeur FROM message_discussion WHERE email_receveur='$email';";
+    $req = "SELECT  *
+            FROM membre
+            WHERE adresse_mail = ( SELECT email_receveur FROM message_discussion WHERE email_envoyeur='$email' UNION SELECT email_envoyeur FROM message_discussion WHERE email_receveur='$email'); ";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
