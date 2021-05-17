@@ -285,21 +285,6 @@ function selectDemandesAmi($email)
     return $res;
 }
 
-// Recuperer les demandes d'ami reçues
-function selectDemandesAmi($email)
-{
-    global $connexion;
-
-    $email = htmlspecialchars($email);
-    $email = htmlentities($email);
-
-    $req = "SELECT email_ami FROM ami WHERE email='$email' AND amitie_validee=false";
-
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
-}
-
 
 
 
