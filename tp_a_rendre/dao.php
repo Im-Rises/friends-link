@@ -284,3 +284,121 @@ function selectDemandesAmi($email)
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
     return $res;
 }
+
+// Recuperer les demandes d'ami reçues
+function selectDemandesAmi($email)
+{
+    global $connexion;
+
+    $email = htmlspecialchars($email);
+    $email = htmlentities($email);
+
+    $req = "SELECT email_ami FROM ami WHERE email='$email' AND amitie_validee=false";
+
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
+}
+
+
+
+
+/*---------------------------------Créer demande d'ami---------------------------*/
+
+//Créer une demande d'ami
+function insertIntoAmiDemandeAmi($emailDemandeur, $emailReceveur)
+{
+    global $connexion;
+
+    $emailDemandeur = htmlspecialchars($emailDemandeur);
+    $emailDemandeur = htmlentities($emailDemandeur);
+    
+    $emailReceveur = htmlspecialchars($emailReceveur);
+    $emailReceveur = htmlentities($emailReceveur);
+
+    $req = "INSERT INTO ami VALUES ($emailDemandeur, $emailReceveur, FALSE)";
+
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
+}
+
+//Voir si un profil consulté est demandé en ami (pour voir si une personne a demandé l'utilisatuer en ami inverser les variables)
+function selectProfilDemandeEnAmi($emailDemandeur, $emailProfilRegarde)
+{
+    global $connexion;
+
+    $emailDemandeur = htmlspecialchars($emailDemandeur);
+    $emailDemandeur = htmlentities($emailDemandeur);
+
+    $req = "SELECT amitie_validee FROM ami WHERE email=$emailDemandeur AND email_ami=$emailProfilRegarde";
+
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
+}
+
+
+//Voir les profils demandés en ami
+function selectProfilsDemandesEnAmi($emailDemandeur)
+{
+    global $connexion;
+
+    $emailDemandeur = htmlspecialchars($emailDemandeur);
+    $emailDemandeur = htmlentities($emailDemandeur);
+
+    $req = "SELECT * FROM membre WHERE adresse_mail IN (SELECT email_ami FROM ami WHERE email=$emailDemandeur AND amitie_validee=FALSE";
+
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
+}
+
+//Voir les amitiés reçues
+function selectProfilsReceptionDemandeAmi($email)
+{
+    global $connexion;
+
+    $email = htmlspecialchars($email);
+    $email = htmlentities($email);
+
+    $req = "SELECT * FROM membre WHERE adresse_mail IN (SELECT email FROM ami WHERE email_ami=$email AND amitie_validee=FALSE";
+
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
+}
+
+
+//Crer l'amitié
+function creerAmitie($emailDemandeur,$emailAccepteur)
+{
+    global $connexion;
+
+    $emailDemandeur = htmlspecialchars($emailDemandeur);
+    $emailDemandeur = htmlentities($emailDemandeur);
+
+    $emailAccepteur = htmlspecialchars($emailAccepteur);
+    $emailAccepteur = htmlentities($emailAccepteur);
+
+    $req = "UPDATE TABLE ami SET amitie_validee=TRUE WHERE email=$emailDemandeur AND email_ami=$emailAccepteur";
+
+    $res = mysqli_query($connexion, $req);
+    if (!$res) 
+    {
+        echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+        exit(10);
+    }
+
+    $req = "INSERT INTO ami VALUES ($emailAccepteur, $emailDemandeur, TRUE)";
+    if (!$res) 
+    {
+
+        echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+        exit(10);
+    }
+
+    //IL FAUT VOIR COMMENT GERER S'IL Y A N BUG, COMMENT GERER LES DEUX TABLES AMI DES DEUX PERSONNES
+
+    return $res;
+}
