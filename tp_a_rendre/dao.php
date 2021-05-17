@@ -30,7 +30,6 @@ function insertIntoMembre($email, $nom, $prenom, $bday, $mdp) // works
     $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance, mdp) VALUES ('$email', '$nom', '$prenom', '$bday', '$mdp');";
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-
 }
 
 function insertIntoMessageDiscussion($sender, $receiver, $msg) // works
@@ -174,6 +173,26 @@ function selectAllFriendsWhereEmail($email)
 
     $req = "SELECT * FROM ami WHERE email='$email' AND amitiee=true;";
 
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
+}
+
+function selectAllMembersWhereNomPrenomEmailWhereSearch($search, $email)
+{
+    global $connexion;
+
+    $search = htmlspecialchars($search); // protege des injections de code html ou js
+    $search = htmlentities($search); // protege des injections sql
+
+    $req = "SELECT  *
+            FROM membre m
+            JOIN ami a
+            ON m.adresse_mail = a.email_ami
+            WHERE a.amitie_validee=1 
+            AND a.email='$email' 
+            AND (LOCATE(a.email_ami, '$search') OR LOCATE(m.nom, '$search') OR LOCATE(m.prenom, '$search') OR LOCATE(CONCAT(m.prenom, ' ', m.nom), '$search') OR LOCATE(CONCAT(m.nom, ' ', m.prenom), '$search'))";
+            
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
     return $res;
