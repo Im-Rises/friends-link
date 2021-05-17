@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS reseau_social;
 CREATE DATABASE IF NOT EXISTS reseau_social; USE reseau_social;
 
-CREATE TABLE membre (adresse_mail VARCHAR(320) PRIMARY KEY, nom VARCHAR(50) NOT NULL , prenom VARCHAR(50) NOT NULL, date_naissance DATE NOT NULL);
+CREATE TABLE membre (adresse_mail VARCHAR(320) PRIMARY KEY, nom VARCHAR(50) NOT NULL , prenom VARCHAR(50) NOT NULL, date_naissance DATE NOT NULL, mdp TEXT NOT NULL);
 
 CREATE TABLE message_discussion (id_message BIGINT PRIMARY KEY AUTO_INCREMENT, email_envoyeur VARCHAR(320) NOT NULL, email_receveur VARCHAR(320) NOT NULL, message_text VARCHAR(1000) NOT NULL, date_envoie DATE NOT NULL, FOREIGN KEY (email_envoyeur) REFERENCES membre(adresse_mail), FOREIGN KEY (email_receveur) REFERENCES membre(adresse_mail));
 
