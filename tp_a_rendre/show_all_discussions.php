@@ -15,7 +15,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
         <h1>tous les amis :</h1>
         <?php
-        $array = selectEmailsDiscussion($_SESSION["email"]);
+        $array = selectAllFriendsWhereEmail($_SESSION["email"]);
         foreach ($array as $value) {
             $nom = $value["nom"];
             $prenom = $value["prenom"];

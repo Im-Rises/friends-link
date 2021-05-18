@@ -1,48 +1,106 @@
-.newMsg {
+@font-face {
+    font-family: "Aladin";
+    src        : url("Aladin-Regular.ttf");
+}
+
+.formSearch {
+    text-align  : center;
+    display     : inline-flex;
+    width       : 80%;
+    margin-left : 10%;
+    margin-right: 10%;
+    margin-top  : 5px;
+}
+
+
+.searchBar {
+    width                    : 90%;
+    font-size                : 200%;
+    border-top-left-radius   : 5px;
+    border-bottom-left-radius: 5px;
+    border                   : none;
+    text-align               : center;
+}
+
+.searchBtn {
+    text-align                : center;
+    background-color          : tomato;
+    width                     : 10%;
+    border-top-right-radius   : 5px;
+    border-bottom-right-radius: 5px;
+    font-size                 : 200%;
+    border                    : none;
+}
+
+/* .newMsg {
     display         : inline flex;
     background-color: grey;
     width           : 100%;
     height          : 90%;
     position        : relative;
 
-}
+} */
 
-.newMsg form {
+/* .newMsg form {
     width   : 100%;
     position: fixed;
     bottom  : 0;
-}
+} */
 
 
-.newMsg .writeBox {
+/* .newMsg .writeBox {
     min-width: 90%;
-    position : absolute;
-}
+} */
 
-.newMsg .submit {
+/* .newMsg .submit {
     min-width  : 10%;
     margin-left: 90%;
-    position   : absolute;
-}
+} */
 
 body {
     margin: 0;
 }
 
 .show_research {
-    width           : 100%;
-    background-color: grey;
+    margin-left     : 10%;
+    margin-right    : 10%;
+    width           : 80%;
+    background-color: red;
+    color           : white;
+    font-size       : 150%;
 }
 
 .show_research .divHead {
-    width           : 100%;
-    background-color: grey;
+    width: 100%;
 }
 
-.show_research .divBody {
+.youSend {
+    margin-top      : 10px;
+    margin-right    : 10%;
+    padding         : 10px;
+    background-color: white;
+    color           : black;
+}
+
+.iSend {
+    margin-top      : 10px;
+    margin-left     : 10%;
+    padding         : 10px;
+    background-color: tomato;
+    color           : black;
+}
+
+.divBody {
     float: left;
     width: 100%;
+}
 
+.divBody:hover {
+    background-color: tomato;
+}
+
+.divBody {
+    background-color: darkgrey;
 }
 
 .headElement {
@@ -52,22 +110,30 @@ body {
     font-style: italic;
 }
 
-.bodyElement0,
-.bodyElement1 {
+.bodyElement {
     width     : 33%;
     text-align: center;
     float     : left;
 }
 
-.bodyElement0 {
-    background-color: gainsboro;
-}
 
-.bodyElement1 {
-    background-color: azure;
-}
 
 .search_freinds {
     margin-top: 20%;
-    position  : relative;
+}
+
+.login {
+    background-color: tomato;
+    padding         : 1%;
+    margin-left     : 10%;
+    margin-right    : 10%;
+    margin-top      : 2%;
+    text-align      : center;
+}
+
+h1 {
+    font-family   : "Aladin";
+    color         : white;
+    text-align    : center;
+    letter-spacing: 5px;
 }

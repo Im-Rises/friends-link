@@ -1,13 +1,26 @@
 <?php
 require "dao.php";
 
-$discussions = selectMessagesDiscussion("email1", "email2");
+session_start();
+
+$discussions = selectMessagesDiscussion($_SESSION["email"], $_SESSION["receiver"]);
 while ($value = mysqli_fetch_array($discussions)) {
     $emailSender = $value["email_envoyeur"];
     $emailReceiver = $value["email_receveur"];
     $msg = $value["message_text"];
     $date = $value["date_envoie"];
 
-    echo "$emailSender to $emailReceiver, [$date] : $msg <br>";
+    if ($emailSender == $_SESSION["email"]) {
+        echo "
+        <div class='iSend'>
+            $emailSender to $emailReceiver, [$date] : <br> $msg 
+        </div>";
+    } else {
+        echo "
+        <div class='youSend'>
+            $emailSender to $emailReceiver, [$date] : <br> $msg 
+        </div>";
+    }
 }
+
 ?>

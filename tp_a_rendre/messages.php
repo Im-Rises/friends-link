@@ -1,20 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
 <?php
-session_start();
+include "ban.php";
 if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL and  $_GET["receiver"] != NULL) {
     $sender = $_SESSION["email"];
     $receiver = $_GET["receiver"];
-
-    require "dao.php";
+    $_SESSION["receiver"] = $_GET["receiver"];
 ?>
-
-    <!DOCTYPE html>
-    <html>
-
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
-        <script type="text/javascript" src="script.js"></script>
-    </head>
 
     <body>
         <div id="show_msg">
@@ -26,27 +25,36 @@ if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL 
                 $msg = $value["message_text"];
                 $date = $value["date_envoie"];
 
-                echo "$emailSender to $emailReceiver, [$date] : $msg <br>";
+                if ($emailSender == $_SESSION["email"]) {
+                    echo "
+                    <div class='iSend'>
+                        $emailSender to $emailReceiver, [$date] : <br> $msg 
+                    </div>";
+                } else {
+                    echo "
+                    <div class='youSend'>
+                        $emailSender to $emailReceiver, [$date] : <br> $msg 
+                    </div>";
+                }
             }
             ?>
         </div>
-        <div class="newMsg">
+        <div>
             <form action="" method="POST">
-                <input type="text" class="writeBox" name="msg">
-                <input type="submit" class="submit">
+                <input type="text" name="msg">
+                <input type="submit">
             </form>
         </div>
     </body>
 
-    </html>
+</html>
 
 <?php
 
     if (isset($_POST["msg"]) and $_POST["msg"] != NULL) {
         $msg = $_POST["msg"];
 
-        insertIntoMessageDiscussion($_SESSION["email"], "email2", $msg);
-
+        insertIntoMessageDiscussion($sender, $receiver, $msg);
         header("Refresh:0");
     }
 } else {

@@ -53,6 +53,20 @@ function insertIntoMessageDiscussion($sender, $receiver, $msg) // works
     return $res;
 }
 
+function selectMembreWhereEmail($email)
+{
+    global $connexion;
+
+    $email = htmlspecialchars($email); // protege des injections de code html ou js
+    $email = htmlentities($email); // protege des injections sql
+
+    $req = "SELECT * FROM membre WHERE adresse_mail = '$email';";
+
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    return $res;
+}
+
 function insertIntoAmi($email, $email_ami, $amitie_validee) // works
 {
     global $connexion;
@@ -172,7 +186,7 @@ function selectAllFriendsWhereEmail($email)
     $email = htmlspecialchars($email); // protege des injections de code html ou js
     $email = htmlentities($email); // protege des injections sql
 
-    $req = "SELECT * FROM ami WHERE email='$email' AND amitiee=true;";
+    $req = "SELECT * FROM membre m JOIN ami a ON a.email = m.adresse_mail WHERE m.adresse_mail='$email' AND a.amitie_validee=1;";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
@@ -193,7 +207,7 @@ function selectAllMembersWhereNomPrenomEmailWhereSearch($search, $email)
             WHERE a.amitie_validee=1 
             AND a.email='$email' 
             AND (LOCATE(a.email_ami, '$search') OR LOCATE(m.nom, '$search') OR LOCATE(m.prenom, '$search') OR LOCATE(CONCAT(m.prenom, ' ', m.nom), '$search') OR LOCATE(CONCAT(m.nom, ' ', m.prenom), '$search'))";
-            
+
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
     return $res;
@@ -211,6 +225,9 @@ function selectEmailsDiscussion($email)
             FROM membre
             WHERE adresse_mail = ( SELECT email_receveur FROM message_discussion WHERE email_envoyeur='$email' UNION SELECT email_envoyeur FROM message_discussion WHERE email_receveur='$email'); ";
 
+    $req = "SELECT * FROM membre m JOIN message_discussion md ON md.email_receveur = m.adresse_mail WHERE md.email_receveur = '$email';";
+
+    echo $req;
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
     return $res;
@@ -226,7 +243,7 @@ function selectMessagesDiscussion($email1, $email2)
     $email2 = htmlspecialchars($email2);
     $email2 = htmlentities($email2);
 
-    $req = "SELECT * FROM message_discussion WHERE email_envoyeur='$email1' AND email_receveur='$email2' UNION SELECT * FROM message_discussion WHERE email_envoyeur='$email2' AND email_receveur='$email1';";
+    $req = "SELECT * FROM message_discussion WHERE email_envoyeur='$email1' AND email_receveur='$email2' UNION SELECT * FROM message_discussion WHERE email_envoyeur='$email2' AND email_receveur='$email1' ORDER BY id_message;";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
@@ -248,6 +265,7 @@ function selectAllGroupes($email)
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
     return $res;
 }
+
 
 function selectMembresGroupe($id_groupe)
 {
@@ -298,7 +316,7 @@ function insertIntoAmiDemandeAmi($emailDemandeur, $emailReceveur)
 
     $emailDemandeur = htmlspecialchars($emailDemandeur);
     $emailDemandeur = htmlentities($emailDemandeur);
-    
+
     $emailReceveur = htmlspecialchars($emailReceveur);
     $emailReceveur = htmlentities($emailReceveur);
 
@@ -357,7 +375,7 @@ function selectProfilsReceptionDemandeAmi($email)
 
 
 //Crer l'amitié
-function creerAmitie($emailDemandeur,$emailAccepteur)
+function creerAmitie($emailDemandeur, $emailAccepteur)
 {
     global $connexion;
 
@@ -370,15 +388,13 @@ function creerAmitie($emailDemandeur,$emailAccepteur)
     $req = "UPDATE TABLE ami SET amitie_validee=TRUE WHERE email=$emailDemandeur AND email_ami=$emailAccepteur";
 
     $res = mysqli_query($connexion, $req);
-    if (!$res) 
-    {
+    if (!$res) {
         echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
         exit(10);
     }
 
     $req = "INSERT INTO ami VALUES ($emailAccepteur, $emailDemandeur, TRUE)";
-    if (!$res) 
-    {
+    if (!$res) {
 
         echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
         exit(10);
