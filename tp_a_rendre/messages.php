@@ -1,11 +1,11 @@
 <?php
 session_start();
-if(isset($_SESSION["email"]) and $_SESSION["email"]!= NULL){
+if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL and  $_GET["receiver"] != NULL) {
     $sender = $_SESSION["email"];
     $receiver = $_GET["receiver"];
 
     require "dao.php";
-    ?>
+?>
 
     <!DOCTYPE html>
     <html>
@@ -18,7 +18,7 @@ if(isset($_SESSION["email"]) and $_SESSION["email"]!= NULL){
 
     <body>
         <div id="show_msg">
-            <?php 
+            <?php
             $discussions = selectMessagesDiscussion($sender, $receiver);
             while ($value = mysqli_fetch_array($discussions)) {
                 $emailSender = $value["email_envoyeur"];
@@ -27,7 +27,7 @@ if(isset($_SESSION["email"]) and $_SESSION["email"]!= NULL){
                 $date = $value["date_envoie"];
 
                 echo "$emailSender to $emailReceiver, [$date] : $msg <br>";
-            } 
+            }
             ?>
         </div>
         <div class="newMsg">
@@ -40,7 +40,7 @@ if(isset($_SESSION["email"]) and $_SESSION["email"]!= NULL){
 
     </html>
 
-    <?php
+<?php
 
     if (isset($_POST["msg"]) and $_POST["msg"] != NULL) {
         $msg = $_POST["msg"];
@@ -49,8 +49,7 @@ if(isset($_SESSION["email"]) and $_SESSION["email"]!= NULL){
 
         header("Refresh:0");
     }
-}
-else {
+} else {
     header("Location: login.php");
 }
-    ?>
+?>

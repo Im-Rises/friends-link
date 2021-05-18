@@ -1,28 +1,73 @@
-/* .newMsg {
-    display: inline flex;
+.newMsg {
+    display         : inline flex;
     background-color: grey;
-    width: 100%;
-    height: 90%;
-    position: relative;
+    width           : 100%;
+    height          : 90%;
+    position        : relative;
 
 }
+
 .newMsg form {
-    width: 100%;
+    width   : 100%;
     position: fixed;
-    bottom: 0;
+    bottom  : 0;
 }
 
 
 .newMsg .writeBox {
     min-width: 90%;
-    position: absolute;
+    position : absolute;
 }
+
 .newMsg .submit {
-    min-width: 10%;
+    min-width  : 10%;
     margin-left: 90%;
-    position: absolute;
+    position   : absolute;
 }
 
 body {
     margin: 0;
-} */
+}
+
+.show_research {
+    width           : 100%;
+    background-color: grey;
+}
+
+.show_research .divHead {
+    width           : 100%;
+    background-color: grey;
+}
+
+.show_research .divBody {
+    float: left;
+    width: 100%;
+
+}
+
+.headElement {
+    float     : left;
+    width     : 33%;
+    text-align: center;
+    font-style: italic;
+}
+
+.bodyElement0,
+.bodyElement1 {
+    width     : 33%;
+    text-align: center;
+    float     : left;
+}
+
+.bodyElement0 {
+    background-color: gainsboro;
+}
+
+.bodyElement1 {
+    background-color: azure;
+}
+
+.search_freinds {
+    margin-top: 20%;
+    position  : relative;
+}

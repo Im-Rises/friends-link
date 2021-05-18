@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
-<body>
+<?php include "ban.php"; ?>
 
+<body>
     <main>
         <article style="margin:10px 50px 0px;">
             <div style="padding: 20px 20px 30px; margin: 20px 0px 30px; width: 25rem;  background: #e7e7e7;">

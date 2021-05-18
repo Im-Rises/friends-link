@@ -1,6 +1,7 @@
 <?php
 session_start();
-//require "dao.php";
+require "dao.php";
+
 ?>
 
 <!DOCTYPE html>
