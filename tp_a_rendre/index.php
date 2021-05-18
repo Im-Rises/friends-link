@@ -2,6 +2,9 @@
 
 require "dao.php";
 
+include "ban.php";
+
+
 // a executer si bdd supprimee et que flemme de refaire les etapes du site pour creer un compte
 /*
 insertIntoMembre("email1", "reiffers", "clement", "2000-11-15", "mdp");

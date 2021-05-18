@@ -18,8 +18,8 @@
                     <input type="mail" name="mail" placeholder="Email">
                     <input type="password" name="password" placeholder="Mot de passe">
                     <input type="submit" value="Envoyer" style="margin: 30px 5px 0px;">
+                    <a href="register.php">Inscription</a>
                 </form>
-
             </div>
         </article>
     </main>
