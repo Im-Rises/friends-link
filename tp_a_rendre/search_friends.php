@@ -9,14 +9,13 @@
 session_start();
 
 if(isset($_GET["search"]) and $_GET["search"] != NULL) {
-    require "dao.php";
-    $array = selectAllMembersWhereNomPrenomEmailWhereSearch($_GET["search"], "reiffersclement@gmail.com");
+    $array = selectAllMembersWhereNomPrenomEmailWhereSearch($_GET["search"], $_SESSION["email"]);
 
     foreach($array as $value) {
         $nom = $value['nom'];
         $prenom = $value['prenom'];
         $email = $value['adresse_mail'];
-        echo "$nom $prenom $email";
+        echo "<a href='messages.php?receiver=$email'>$nom $prenom $email</a>";
     }
 }
 

@@ -21,13 +21,9 @@ session_start();
                 <a href="index.php">
                     <li>Home</li>
                 </a>
-                <?php if (!isset($_SESSION)) {
-                ?>
-                    <a href="show_all_messages.php">
-                        <li>Messagerie</li>
-                    </a>
-                <?php }
-                ?>
+                <a href="show_all_discussions.php">
+                    <li>Messagerie</li>
+                </a>
                 <a href="login.php">
                     <li>Login</li>
                 </a>

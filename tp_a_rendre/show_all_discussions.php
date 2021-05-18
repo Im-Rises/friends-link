@@ -1,8 +1,6 @@
 <?php
-session_start();
-$_SESSION["email"] = "email1";
-
 require "dao.php";
+include "search_friends.php";
 ?>
 <!DOCTYPE html>
 <html>

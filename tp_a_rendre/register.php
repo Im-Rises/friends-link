@@ -42,9 +42,7 @@ if (isset($_POST["nom"], $_POST["prenom"], $_POST["bday"], $_POST["email"], $_PO
 
     require "dao.php";
 
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-
-    insertIntoMembre($_POST["email"], $_POST["nom"], $_POST["prenom"], $_POST["bday"], $password);
+    insertIntoMembre($_POST["email"], $_POST["nom"], $_POST["prenom"], $_POST["bday"], $_POST["password"]);
 
     header('Location: ./login.php');
 }

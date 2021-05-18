@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(empty($_SESSION["email"]) and $_SESSION["email"]!= NULL){
+if(isset($_SESSION["email"]) and $_SESSION["email"]!= NULL){
     $sender = $_SESSION["email"];
     $receiver = $_GET["receiver"];
 
@@ -47,7 +47,7 @@ if(empty($_SESSION["email"]) and $_SESSION["email"]!= NULL){
 
         insertIntoMessageDiscussion($_SESSION["email"], "email2", $msg);
 
-        // header("Refresh:0");
+        header("Refresh:0");
     }
 }
 else {

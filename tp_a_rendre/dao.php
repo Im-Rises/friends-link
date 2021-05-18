@@ -26,6 +26,7 @@ function insertIntoMembre($email, $nom, $prenom, $bday, $mdp) // works
 
     $mdp = htmlspecialchars($mdp); // protege des injections de code html ou js
     $mdp = htmlentities($mdp); // protege des injections sql
+    $mdp = password_hash($mdp, PASSWORD_DEFAULT);
 
     $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance, mdp) VALUES ('$email', '$nom', '$prenom', '$bday', '$mdp');";
     $res = mysqli_query($connexion, $req);

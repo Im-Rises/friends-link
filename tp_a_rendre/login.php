@@ -38,10 +38,11 @@ if (isset($_POST["mail"], $_POST["password"]) and $_POST["password"] != NULL and
     $membre = selectDataMembersWhereEmail($mail);
 
     $membre = mysqli_fetch_array($membre);
+    echo $membre["adresse_mail"];
 
     if (password_verify($_POST['password'], $membre["mdp"])) {
         $_SESSION["email"] = $membre["adresse_mail"];
-        echo "c'est bon !";
+        header("Location: index.php");
     } else {
         echo 'Le mot de passe est invalide! Veuillez réesayer';
     }
