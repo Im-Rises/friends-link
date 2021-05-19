@@ -39,7 +39,7 @@ require "dao.php";
                         <a href='show_all_discussions.php'>
                             <li>Messagerie</li>
                         </a>
-                        <a href='#'>
+                        <a href='friendsRequest.php'>
                             <li>Friends Request</li>
                         </a>
                         <a href='destroy_session.php'>

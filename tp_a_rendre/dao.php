@@ -351,7 +351,7 @@ function selectProfilsDemandesEnAmi($emailDemandeur)
     $emailDemandeur = htmlspecialchars($emailDemandeur);
     $emailDemandeur = htmlentities($emailDemandeur);
 
-    $req = "SELECT * FROM membre WHERE adresse_mail IN (SELECT email_ami FROM ami WHERE email=$emailDemandeur AND amitie_validee=FALSE";
+    $req = "SELECT * FROM membre WHERE adresse_mail IN (SELECT email_ami FROM ami WHERE email='$emailDemandeur' AND amitie_validee=0);";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
@@ -366,7 +366,7 @@ function selectProfilsReceptionDemandeAmi($email)
     $email = htmlspecialchars($email);
     $email = htmlentities($email);
 
-    $req = "SELECT * FROM membre WHERE adresse_mail IN (SELECT email FROM ami WHERE email_ami=$email AND amitie_validee=FALSE";
+    $req = "SELECT * FROM membre WHERE adresse_mail IN (SELECT email FROM ami WHERE email_ami='$email' AND amitie_validee=0);";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";

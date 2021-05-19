@@ -36,7 +36,9 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
             }
 
             ?>
+        </div>
     </body>
+
 
     </html>
 <?php
