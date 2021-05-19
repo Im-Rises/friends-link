@@ -22,7 +22,8 @@
     text-align               : center;
 }
 
-.searchBtn {
+.searchBtn,
+.sub {
     text-align                : center;
     background-color          : tomato;
     width                     : 10%;
@@ -31,10 +32,11 @@
     font-size                 : 200%;
     border                    : none;
 }
+
 .searchBtn:hover {
-    cursor: pointer;
+    cursor          : pointer;
     background-color: black;
-    color: tomato;
+    color           : tomato;
 }
 
 /* .newMsg {
@@ -81,18 +83,26 @@ body {
 
 .youSend {
     margin-top      : 10px;
-    margin-right    : 10%;
-    padding         : 10px;
+    margin-right    : 40%;
+    margin-left     : 10%;
+    font-size       : 120%;
+    font-family     : "Arial";
+    padding         : 20px;
     background-color: white;
     color           : black;
+    border-radius   : 10px;
 }
 
 .iSend {
     margin-top      : 10px;
-    margin-left     : 10%;
-    padding         : 10px;
+    margin-left     : 40%;
+    margin-right    : 10%;
+    font-size       : 120%;
+    font-family     : "Arial";
+    padding         : 20px;
     background-color: tomato;
-    color           : black;
+    color           : white;
+    border-radius   : 10px;
 }
 
 .divBody {
@@ -121,6 +131,33 @@ body {
     float     : left;
 }
 
+.writeMsg {
+    position  : fixed;
+    bottom    : 5px;
+    width     : 100%;
+    text-align: center;
+}
+
+.show_msg {
+    margin-bottom: 5%;
+}
+
+.writeMsg form {
+    box-shadow: 1px 1px 12px #555;
+    display   : -webkit-inline-flex;
+    width     : 90%;
+    bottom    : 0;
+}
+
+.writeMsg .write {
+    width: 90%;
+    float: left;
+}
+
+.writeMsg .sub {
+    width: 10%;
+    float: left;
+}
 
 .login {
     background-color: tomato;

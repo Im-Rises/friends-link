@@ -37,7 +37,7 @@ require "dao.php";
                             <li>$nom $prenom</li>
                         </a>
                         <a href='show_all_discussions.php'>
-                            <li>Messagerie</li>
+                            <li>Messaging</li>
                         </a>
                         <a href='friendsRequest.php'>
                             <li>Friends Request</li>

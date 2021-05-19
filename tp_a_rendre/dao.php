@@ -77,7 +77,7 @@ function insertIntoAmi($email, $email_ami, $amitie_validee) // works
     $email_ami = htmlspecialchars($email_ami); // protege des injections de code html ou js
     $email_ami = htmlentities($email_ami); // protege des injections sql
 
-    $req = "INSERT INTO Ami VALUES ('$email', '$email_ami', '$amitie_validee')";
+    $req = "INSERT INTO Ami VALUES ('$email', '$email_ami', '$amitie_validee', NOW())";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
@@ -221,13 +221,8 @@ function selectEmailsDiscussion($email)
     $email = htmlspecialchars($email);
     $email = htmlentities($email);
 
-    $req = "SELECT  *
-            FROM membre
-            WHERE adresse_mail = ( SELECT email_receveur FROM message_discussion WHERE email_envoyeur='$email' UNION SELECT email_envoyeur FROM message_discussion WHERE email_receveur='$email'); ";
-
     $req = "SELECT * FROM membre m JOIN message_discussion md ON md.email_receveur = m.adresse_mail WHERE md.email_receveur = '$email';";
 
-    echo $req;
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
     return $res;
@@ -320,8 +315,7 @@ function insertIntoAmiDemandeAmi($emailDemandeur, $emailReceveur)
     $emailReceveur = htmlspecialchars($emailReceveur);
     $emailReceveur = htmlentities($emailReceveur);
 
-    $req = "INSERT INTO ami VALUES ('$emailDemandeur', '$emailReceveur', FALSE)";
-
+    $req = "INSERT INTO ami VALUES ('$emailDemandeur', '$emailReceveur', 0, NOW())";
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
     return $res;
