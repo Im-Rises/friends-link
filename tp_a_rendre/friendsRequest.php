@@ -7,7 +7,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
     <head>
         <title>FriendsLink</title>
-        <meta charset="utf-8" />
         <link rel="stylesheet" href="style.css">
     </head>
 
