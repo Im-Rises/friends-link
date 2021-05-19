@@ -14,6 +14,6 @@ include "ban.php";
 // insertIntoAmi("email2", "email1", 1);
 
 
-insertIntoAmiDemandeAmi("email1", "email2");
-creerAmitie("email1", "email2", 1);
+// insertIntoAmiDemandeAmi("email1", "email2");
+// creerAmitie("email1", "email2", 1);
 ?>
