@@ -12,4 +12,8 @@ include "ban.php";
 
 // insertIntoAmiDemandeAmi("clement.reiffers@esme.fr", "quentin.morel@esme.fr");
 // creerAmitie("clement.reiffers@esme.fr", "quentin.morel@esme.fr", 1);
+
+insertIntoGroupe("groupe1");
+insertIntoGroupeMembre(1, "clement.reiffers@esme.fr");
+
 ?>

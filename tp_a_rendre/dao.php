@@ -254,7 +254,7 @@ function selectAllGroupes($email)
     $email = htmlspecialchars($email);
     $email = htmlentities($email);
 
-    $req = "SELECT DISTINCT id_groupe  FROM message_groupe WHERE mail_membre='$email';";
+    $req = "SELECT nom FROM groupe g JOIN groupe_membre gm ON gm.id_groupe = g.id WHERE mail_membre = '$email';";   
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";

@@ -32,13 +32,30 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     <div class='divBody'>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$nom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$prenom</div></a>
-                        <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$receiver</div></a>";
+                        <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$receiver</div></a>
+                    </div>";
             }
 
             ?>
         </div>
+        <br>
+        <h1>tous les groupes :</h1>
+        <div class='showTab'>
+            <div class='divHead'>
+                <div class='headElement'>Nom</div>
+            </div>
+            <?php
+            $array = selectAllGroupes($_SESSION["email"]);
+            foreach ($array as $value) {
+                $nom = $value["nom"];
+                echo "
+                    <br>
+                    <div class='divBody'>
+                        <a href='#'><div class='bodyElement'>$nom</div></a>";
+            }
+            ?>
+        </div>
     </body>
-
 
     </html>
 <?php
