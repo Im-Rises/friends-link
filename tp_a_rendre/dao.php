@@ -202,11 +202,11 @@ function selectAllMembersWhereNomPrenomEmailWhereSearch($search, $email)
 
     $req = "SELECT DISTINCT *
             FROM membre m
-            WHERE LOCATE(adresse_mail, '$search') 
-                OR LOCATE(nom, '$search') 
-                OR LOCATE(prenom, '$search') 
-                OR LOCATE(CONCAT(prenom, ' ', nom), '$search') 
-                OR LOCATE(CONCAT(nom, ' ', prenom), '$search');";
+            WHERE LOCATE('$search', adresse_mail) 
+                OR LOCATE('$search', nom) 
+                OR LOCATE('$search', prenom) 
+                OR LOCATE('$search', CONCAT(prenom, ' ', nom)) 
+                OR LOCATE('$search', CONCAT(nom, ' ', prenom));";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
@@ -406,4 +406,3 @@ function creerAmitie($emailDemandeur, $emailAccepteur)
 
     return $res;
 }
-?>
