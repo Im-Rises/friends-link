@@ -200,13 +200,13 @@ function selectAllMembersWhereNomPrenomEmailWhereSearch($search, $email)
     $search = htmlspecialchars($search); // protege des injections de code html ou js
     $search = htmlentities($search); // protege des injections sql
 
-    $req = "SELECT  *
+    $req = "SELECT DISTINCT *
             FROM membre m
-            JOIN ami a
-            ON m.adresse_mail = a.email_ami
-            WHERE a.amitie_validee=1 
-            AND a.email='$email' 
-            AND (LOCATE(a.email_ami, '$search') OR LOCATE(m.nom, '$search') OR LOCATE(m.prenom, '$search') OR LOCATE(CONCAT(m.prenom, ' ', m.nom), '$search') OR LOCATE(CONCAT(m.nom, ' ', m.prenom), '$search'))";
+            WHERE LOCATE('$search', adresse_mail) 
+                OR LOCATE('$search', nom) 
+                OR LOCATE('$search', prenom) 
+                OR LOCATE('$search', CONCAT(prenom, ' ', nom)) 
+                OR LOCATE('$search', CONCAT(nom, ' ', prenom));";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
@@ -406,4 +406,3 @@ function creerAmitie($emailDemandeur, $emailAccepteur)
 
     return $res;
 }
-?>

@@ -10,6 +10,6 @@ insertIntoMembre("email2", "morel", "quentin", "1998-02-02", "mdp");
 insertIntoMembre("email3", "brun", "dorine", "2000-05-05", "mdp");
 
 
-insertIntoAmiDemandeAmi("email1", "email2");
-creerAmitie("email1", "email2", 1);
+// insertIntoAmiDemandeAmi("email1", "email2");
+// creerAmitie("email1", "email2", 1);
 ?>

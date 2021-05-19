@@ -12,14 +12,19 @@
         foreach ($array as $value) {
             $row = 0;
             $rowTemp = $row % 2;
+            if (!$row) {
     ?>
-            <h1>résultat de la recherche </h1>
-            <div class='showTab'>
-                <div class='divHead'>
-                    <div class='headElement'>Nom</div>
-                    <div class='headElement'>Prenom</div>
-                    <div class='headElement'>Email</div>
-                </div>
+                <h1>résultat de la recherche </h1>
+                <div class='showTab'>
+                    <div class='divHead'>
+                        <div class='headElement'>Nom</div>
+                        <div class='headElement'>Prenom</div>
+                        <div class='headElement'>Email</div>
+                    </div>
+                <?php
+            }
+                ?>
+
         <?php
             $nom = $value['nom'];
             $prenom = $value['prenom'];
@@ -37,5 +42,5 @@
     }
 
         ?>
-            </div>
+                </div>
 </div>
