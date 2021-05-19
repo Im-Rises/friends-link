@@ -61,7 +61,7 @@ body {
     margin: 0;
 }
 
-.show_research {
+.showTab {
     margin-left     : 10%;
     margin-right    : 10%;
     width           : 80%;
@@ -70,7 +70,7 @@ body {
     font-size       : 150%;
 }
 
-.show_research .divHead {
+.divHead {
     width: 100%;
 }
 
@@ -116,11 +116,6 @@ body {
     float     : left;
 }
 
-
-
-.search_freinds {
-    margin-top: 20%;
-}
 
 .login {
     background-color: tomato;

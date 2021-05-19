@@ -14,7 +14,7 @@
             $rowTemp = $row % 2;
     ?>
             <h1>résultat de la recherche </h1>
-            <div class='show_research'>
+            <div class='showTab'>
                 <div class='divHead'>
                     <div class='headElement'>Nom</div>
                     <div class='headElement'>Prenom</div>
@@ -26,12 +26,12 @@
             $email = $value['adresse_mail'];
 
             echo "
-                    <br><div class='divBody'>
-                        <a href='messages.php?receiver=$email'><div class='bodyElement'>$nom</div></a>
-                        <a href='messages.php?receiver=$email'><div class='bodyElement'>$prenom</div></a>
-                        <a href='messages.php?receiver=$email'><div class='bodyElement'>$email</div></a>
-            </div>
-                ";
+                <br>
+                <div class='divBody'>
+                    <a href='messages.php?receiver=$email'><div class='bodyElement'>$nom</div></a>
+                    <a href='messages.php?receiver=$email'><div class='bodyElement'>$prenom</div></a>
+                    <a href='messages.php?receiver=$email'><div class='bodyElement'>$email</div></a>
+                </div>";
             $row++;
         }
     }

@@ -186,7 +186,7 @@ function selectAllFriendsWhereEmail($email)
     $email = htmlspecialchars($email); // protege des injections de code html ou js
     $email = htmlentities($email); // protege des injections sql
 
-    $req = "SELECT * FROM membre m JOIN ami a ON a.email = m.adresse_mail WHERE m.adresse_mail='$email' AND a.amitie_validee=1;";
+    $req = "SELECT * FROM membre m JOIN ami a ON a.email_ami = m.adresse_mail WHERE a.email='$email' AND a.amitie_validee=1;";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
@@ -320,7 +320,7 @@ function insertIntoAmiDemandeAmi($emailDemandeur, $emailReceveur)
     $emailReceveur = htmlspecialchars($emailReceveur);
     $emailReceveur = htmlentities($emailReceveur);
 
-    $req = "INSERT INTO ami VALUES ($emailDemandeur, $emailReceveur, FALSE)";
+    $req = "INSERT INTO ami VALUES ('$emailDemandeur', '$emailReceveur', FALSE)";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
@@ -385,22 +385,25 @@ function creerAmitie($emailDemandeur, $emailAccepteur)
     $emailAccepteur = htmlspecialchars($emailAccepteur);
     $emailAccepteur = htmlentities($emailAccepteur);
 
-    $req = "UPDATE TABLE ami SET amitie_validee=TRUE WHERE email=$emailDemandeur AND email_ami=$emailAccepteur";
+    $req = "UPDATE ami SET amitie_validee=1 WHERE email='$emailDemandeur' AND email_ami='$emailAccepteur';";
 
     $res = mysqli_query($connexion, $req);
     if (!$res) {
         echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-        exit(10);
+    }
+    else {
+        insertIntoAmi($emailAccepteur, $emailDemandeur, 1);
     }
 
-    $req = "INSERT INTO ami VALUES ($emailAccepteur, $emailDemandeur, TRUE)";
-    if (!$res) {
+    // $req = "INSERT INTO ami VALUES ('$emailAccepteur', '$emailDemandeur', 1);";
+    // if (!$res) {
 
-        echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-        exit(10);
-    }
+    //     echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+    //     exit(10);
+    // }
 
-    //IL FAUT VOIR COMMENT GERER S'IL Y A N BUG, COMMENT GERER LES DEUX TABLES AMI DES DEUX PERSONNES
+    // IL FAUT VOIR COMMENT GERER S'IL Y A N BUG, COMMENT GERER LES DEUX TABLES AMI DES DEUX PERSONNES
 
     return $res;
 }
+?>
