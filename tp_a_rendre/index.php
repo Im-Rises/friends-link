@@ -16,4 +16,5 @@ include "ban.php";
 insertIntoGroupe("groupe1");
 insertIntoGroupeMembre(1, "clement.reiffers@esme.fr");
 
+
 ?>

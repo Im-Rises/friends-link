@@ -13,12 +13,19 @@ function protection($val)
     return $val;
 }
 
+function exeReq($req)
+{
+    global $connexion;
+
+    $res = mysqli_query($connexion, $req);
+    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+
+    return $res;
+}
 // INSERT
 
 function insertIntoMembre($email, $nom, $prenom, $bday, $mdp) // works
 {
-    global $connexion;
-
     $email = protection($email);
 
     $nom = protection($nom);
@@ -31,14 +38,12 @@ function insertIntoMembre($email, $nom, $prenom, $bday, $mdp) // works
     $mdp = password_hash($mdp, PASSWORD_DEFAULT);
 
     $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance, mdp) VALUES ('$email', '$nom', '$prenom', '$bday', '$mdp');";
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
+
+    exeReq($req);
 }
 
 function insertIntoMessageDiscussion($sender, $receiver, $msg) // works
 {
-    global $connexion;
-
     $sender = protection($sender); // protege des injections sql
 
     $receiver = protection($receiver); // protege des injections sql
@@ -47,71 +52,51 @@ function insertIntoMessageDiscussion($sender, $receiver, $msg) // works
 
     $req = "INSERT INTO message_discussion(email_envoyeur, email_receveur, message_text, date_envoie) VALUES ('$sender', '$receiver', '$msg', CURRENT_DATE());";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 function selectMembreWhereEmail($email)
 {
-    global $connexion;
-
     $email = protection($email); // protege des injections sql
 
     $req = "SELECT * FROM membre WHERE adresse_mail = '$email';";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 function insertIntoAmi($email, $email_ami, $amitie_validee) // works
 {
-    global $connexion;
-
     $email = protection($email); // protege des injections sql
 
     $email_ami = protection($email_ami); // protege des injections sql
 
     $req = "INSERT INTO Ami VALUES ('$email', '$email_ami', '$amitie_validee', NOW())";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 function insertIntoGroupe($nom) // works
 {
-    global $connexion;
-
     $nom = protection($nom); // protege des injections sql
 
     $req = "INSERT INTO Groupe VALUES (NULL, '$nom')";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 function insertIntoGroupeMembre($id_groupe, $email_membre)
 {
-    global $connexion;
-
     $id_groupe = protection($id_groupe); // protege des injections sql
 
     $email_membre = protection($email_membre); // protege des injections sql
 
     $req = "INSERT INTO groupe_membre VALUES('$id_groupe', '$email_membre',NOW())";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 function insertIntoMessageGroupe($email_envoyeur, $id_groupe, $message)
 {
-    global $connexion;
-
     $email_envoyeur = protection($email_envoyeur); // protege des injections sql
 
     $id_groupe = protection($id_groupe); // protege des injections sql
@@ -120,9 +105,7 @@ function insertIntoMessageGroupe($email_envoyeur, $id_groupe, $message)
 
     $req = "INSERT INTO message_groupe VALUES('$email_envoyeur','$id_groupe','$message', NOW());";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 // SELECT
@@ -130,22 +113,16 @@ function insertIntoMessageGroupe($email_envoyeur, $id_groupe, $message)
 // recuperer donnees membres depuis email
 function selectDataMembersWhereEmail($email)
 {
-    global $connexion;
-
     $email = protection($email); // protege des injections sql
 
     $req = "SELECT * FROM membre WHERE adresse_mail = '$email';";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 // selectionner une discussion entre 2 emails
 function selectMessagesWithTwoEmail($email1, $email2)
 {
-    global $connexion;
-
     $email1 = protection($email1); // protege des injections sql
 
     $email2 = protection($email2); // protege des injections sql
@@ -160,29 +137,22 @@ function selectMessagesWithTwoEmail($email1, $email2)
             WHERE email_envoyeur='$email2' 
             AND email_receveur='$email1';";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+
+    return exeReq($req);
 }
 
 // selectionner tous les amis d'un email
 function selectAllFriendsWhereEmail($email)
 {
-    global $connexion;
-
     $email = protection($email); // protege des injections sql
 
     $req = "SELECT * FROM membre m JOIN ami a ON a.email_ami = m.adresse_mail WHERE a.email='$email' AND a.amitie_validee=1;";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 function selectAllMembersWhereNomPrenomEmailWhereSearch($search, $email)
 {
-    global $connexion;
-
     $search = protection($search); // protege des injections sql
 
     $req = "SELECT DISTINCT *
@@ -193,97 +163,73 @@ function selectAllMembersWhereNomPrenomEmailWhereSearch($search, $email)
                 OR LOCATE('$search', CONCAT(prenom, ' ', nom)) 
                 OR LOCATE('$search', CONCAT(nom, ' ', prenom));";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 // Selection des discussions
 function selectEmailsDiscussion($email)
 {
-    global $connexion;
-
     $email = protection($email);
 
     $req = "SELECT * FROM membre m JOIN message_discussion md ON md.email_receveur = m.adresse_mail WHERE md.email_receveur = '$email';";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 function selectMessagesDiscussion($email1, $email2)
 {
-    global $connexion;
-
     $email1 = protection($email1);
 
     $email2 = protection($email2);
 
     $req = "SELECT * FROM message_discussion WHERE email_envoyeur='$email1' AND email_receveur='$email2' UNION SELECT * FROM message_discussion WHERE email_envoyeur='$email2' AND email_receveur='$email1' ORDER BY id_message;";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 
 // Selection des groupes
 function selectAllGroupes($email)
 {
-    global $connexion;
-
     $email = protection($email);
 
     $req = "SELECT nom FROM groupe g JOIN groupe_membre gm ON gm.id_groupe = g.id WHERE mail_membre = '$email';";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 function selectAllMessagesFromGroupeWhereId($id)
 {
-    global $connexion;
-
     $id = protection($id);
+
+    $req = "SELECT * FROM message_groupe mg JOIN groupe g ON g.id = mg.id_groupe WHERE mg.id_groupe = '$id';";
+
+    return exeReq($req);
 }
 
 
 function selectMembresGroupe($id_groupe)
 {
-    global $connexion;
-
     $req = "SELECT mail_membre FROM groupeMembre WHERE id_groupe='$id_groupe';";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 function selectMessagesGroupe($idGroup)
 {
-    global $connexion;
-
     $req = "SELECT * FROM message_groupe WHERE id_groupe='$idGroup';";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 // Recuperer les demandes d'ami reçues
 function selectDemandesAmi($email)
 {
-    global $connexion;
-
     $email = protection($email);
 
     $req = "SELECT email_ami FROM ami WHERE email='$email' AND amitie_validee=false";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 
@@ -294,63 +240,44 @@ function selectDemandesAmi($email)
 //Créer une demande d'ami
 function insertIntoAmiDemandeAmi($emailDemandeur, $emailReceveur)
 {
-    global $connexion;
+    $emailDemandeur = protection($emailDemandeur);
 
-    $emailDemandeur = htmlspecialchars($emailDemandeur);
-    $emailDemandeur = htmlentities($emailDemandeur);
-
-    $emailReceveur = htmlspecialchars($emailReceveur);
-    $emailReceveur = htmlentities($emailReceveur);
+    $emailReceveur = protection($emailReceveur);
 
     $req = "INSERT INTO ami VALUES ('$emailDemandeur', '$emailReceveur', 0, NOW())";
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+
+    return exeReq($req);
 }
 
 //Voir si un profil consulté est demandé en ami (pour voir si une personne a demandé l'utilisatuer en ami inverser les variables)
 function selectProfilDemandeEnAmi($emailDemandeur, $emailProfilRegarde)
 {
-    global $connexion;
-
-    $emailDemandeur = htmlspecialchars($emailDemandeur);
-    $emailDemandeur = htmlentities($emailDemandeur);
+    $emailDemandeur = protection($emailDemandeur);
 
     $req = "SELECT amitie_validee FROM ami WHERE email=$emailDemandeur AND email_ami=$emailProfilRegarde";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 
 //Voir les profils demandés en ami
 function selectProfilsDemandesEnAmi($emailDemandeur)
 {
-    global $connexion;
-
-    $emailDemandeur = htmlspecialchars($emailDemandeur);
-    $emailDemandeur = htmlentities($emailDemandeur);
+    $emailDemandeur = protection($emailDemandeur);
 
     $req = "SELECT * FROM membre WHERE adresse_mail IN (SELECT email_ami FROM ami WHERE email='$emailDemandeur' AND amitie_validee=0);";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 //Voir les amitiés reçues
 function selectProfilsReceptionDemandeAmi($email)
 {
-    global $connexion;
-
     $email = protection($email);
 
     $req = "SELECT * FROM membre WHERE adresse_mail IN (SELECT email FROM ami WHERE email_ami='$email' AND amitie_validee=0);";
 
-    $res = mysqli_query($connexion, $req);
-    if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    return $res;
+    return exeReq($req);
 }
 
 
