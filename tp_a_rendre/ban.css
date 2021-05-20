@@ -11,7 +11,7 @@
 header {
     width           : 98%;
     text-align      : center;
-    padding         : 1%;
+    padding         : 10px;
     font-size       : 300%;
     color           : white;
     background-color: red;
