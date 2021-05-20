@@ -41,7 +41,6 @@ if (
     and $_POST["nom"] != NULL and $_POST["prenom"] != NULL and $_POST["email"] != NULL
     and $_POST["password"] != NULL and $_POST["bday"] != NULL
 ) {
-    require "dao.php";
 
     $res = insertIntoMembre($_POST["email"], $_POST["nom"], $_POST["prenom"], $_POST["bday"], $_POST["password"]);
     if($res) header('Location: ./login.php');

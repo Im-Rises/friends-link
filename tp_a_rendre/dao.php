@@ -27,7 +27,6 @@ function exeReq($req)
 function insertIntoMembre($email, $nom, $prenom, $bday, $mdp) // works
 {
     $email = protection($email);
-    if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $email)) {
 
         $nom = protection($nom);
 
@@ -41,10 +40,6 @@ function insertIntoMembre($email, $nom, $prenom, $bday, $mdp) // works
         $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance, mdp) VALUES ('$email', '$nom', '$prenom', '$bday', '$mdp');";
 
         exeReq($req);
-    }
-    else {
-        return false;
-    }
 }
 
 function insertIntoMessageDiscussion($sender, $receiver, $msg) // works
