@@ -27,19 +27,24 @@ function exeReq($req)
 function insertIntoMembre($email, $nom, $prenom, $bday, $mdp) // works
 {
     $email = protection($email);
+    if(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $email)) {
 
-    $nom = protection($nom);
+        $nom = protection($nom);
 
-    $prenom = protection($prenom); // protege des injections sql
+        $prenom = protection($prenom); // protege des injections sql
 
-    $bday = protection($bday); // protege des injections sql
+        $bday = protection($bday); // protege des injections sql
 
-    $mdp = protection($mdp); // protege des injections sql
-    $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+        $mdp = protection($mdp); // protege des injections sql
+        $mdp = password_hash($mdp, PASSWORD_DEFAULT);
 
-    $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance, mdp) VALUES ('$email', '$nom', '$prenom', '$bday', '$mdp');";
+        $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance, mdp) VALUES ('$email', '$nom', '$prenom', '$bday', '$mdp');";
 
-    exeReq($req);
+        exeReq($req);
+    }
+    else {
+        return false;
+    }
 }
 
 function insertIntoMessageDiscussion($sender, $receiver, $msg) // works
@@ -103,7 +108,7 @@ function insertIntoMessageGroupe($email_envoyeur, $id_groupe, $message)
 
     $message = protection($message); // protege des injections sql
 
-    $req = "INSERT INTO message_groupe VALUES('$email_envoyeur','$id_groupe','$message', NOW());";
+    $req = "INSERT INTO message_groupe(email_envoyeur, id_groupe, text_message, date_envoie) VALUES('$email_envoyeur','$id_groupe','$message', NOW());";
 
     return exeReq($req);
 }
@@ -193,7 +198,7 @@ function selectAllGroupes($email)
 {
     $email = protection($email);
 
-    $req = "SELECT nom FROM groupe g JOIN groupe_membre gm ON gm.id_groupe = g.id WHERE mail_membre = '$email';";
+    $req = "SELECT * FROM groupe g JOIN groupe_membre gm ON gm.id_groupe = g.id WHERE mail_membre = '$email';";
 
     return exeReq($req);
 }

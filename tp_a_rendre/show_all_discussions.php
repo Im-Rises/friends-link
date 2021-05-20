@@ -48,10 +48,11 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
             $array = selectAllGroupes($_SESSION["email"]);
             foreach ($array as $value) {
                 $nom = $value["nom"];
+                $id = $value["id"];
                 echo "
                     <br>
                     <div class='divBody'>
-                        <a href='#'><div class='bodyElement'>$nom</div></a>";
+                        <a href='message_groupe.php?id=$id'><div class='bodyElement'>$nom</div></a>";
             }
             ?>
         </div>

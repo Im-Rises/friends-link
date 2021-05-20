@@ -13,8 +13,8 @@
         <div class="login">
             <h1>LOGIN</h1>
             <form method="post">
-                <input type="mail" name="mail" placeholder="Email">
-                <input type="password" name="password" placeholder="Mot de passe">
+                <input type="email" name="mail" placeholder="Email" required autofocus>
+                <input type="password" name="password" placeholder="Mot de passe" required autofocus>
                 <input type="submit" value="Envoyer" style="margin: 30px 5px 0px;">
                 <a href="register.php">Inscription</a>
             </form>
