@@ -378,3 +378,13 @@ function annulerDemandeAmi($emailDemandeur, $emailReceveur)
 
     return exeReq($req);
 }
+
+
+function deleteFromGroupeMembreWhereEmail($email, $idGroupe)
+{
+    $email = protection($email);
+
+    $req = "DELETE FROM groupe_membre WHERE id_groupe = '$idGroupe' AND mail_membre = '$email';";
+
+    return exeReq($req);
+}
