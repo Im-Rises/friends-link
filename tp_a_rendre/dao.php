@@ -258,14 +258,15 @@ function selectMembresGroupe($id_groupe)
 function selectMembresNotInGroupeWhereIdGroupe($search, $idGroupe)
 {
     $req = "SELECT DISTINCT *
-            FROM membre m
+            FROM membre
             WHERE 
             adresse_mail NOT IN (SELECT mail_membre FROM groupe_membre WHERE id_groupe='$idGroupe')
-            AND (LOCATE('$search', adresse_mail) 
-                OR LOCATE('$search', nom) 
-                OR LOCATE('$search', prenom) 
-                OR LOCATE('$search', CONCAT(prenom, ' ', nom))
-                OR LOCATE('$search', CONCAT(nom, ' ', prenom)));";
+            AND 
+            (LOCATE('$search', adresse_mail) 
+            OR LOCATE('$search', nom) 
+            OR LOCATE('$search', prenom) 
+            OR LOCATE('$search', CONCAT(prenom, ' ', nom))
+            OR LOCATE('$search', CONCAT(nom, ' ', prenom)));";
 
     return exeReq($req);
 }

@@ -27,6 +27,7 @@ if (!isAdmin($admins, $email)) {
         <?php
         include "search_members_add_to_current_group.php";
         ?>
+        <h1>Current Members of the group :</h1>
         <ul>
             <?php
             $membres = selectMembresGroupe($idGroupe);
