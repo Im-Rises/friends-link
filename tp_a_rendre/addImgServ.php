@@ -14,16 +14,19 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         </form>
 
         <?php
+
+
+        $imageName = $_SESSION['email'];
         //var_dump($_FILES);
 
-        //echo $_SESSION['email'];
-        $imageName=$_SESSION['email'];
-        //$imageName = "testToutout";
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/$imageName");
-        }
 
+            if ($_FILES['fileToUpload']['size'] < 500000) {
+                move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/profiles/$imageName");
+            } else {
+                echo "<p>Fichier trop lourd, veuillez sélectionner une image de moins de 500ko</p>";
+            }
+        }
         ?>
 
         <a href="mon_profil.php">Retour sur mon profil</a>

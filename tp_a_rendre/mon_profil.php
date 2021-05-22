@@ -27,7 +27,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
             }
             else
             {
-                echo "<a href='addImgServ.php'><img src='images/profiles/Homer_Simpson.jpg' width='200' height='200'></a>";
+                echo "<a href='addImgServ.php'><img src='images/profiles/unknown.png' width='200' height='200'></a>";
             }
             
         ?>
