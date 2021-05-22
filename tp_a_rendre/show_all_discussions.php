@@ -16,6 +16,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
             <h1>tous les amis :</h1>
             <div class='showTab'>
                 <div class='divHead'>
+                    <div class='headElement'>Image</div>
                     <div class='headElement'>Nom</div>
                     <div class='headElement'>Prenom</div>
                     <div class='headElement'>Email</div>
@@ -30,6 +31,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     echo "
                     <br>
                     <div class='divBody'>
+                        <div class='bodyElement'><img src='images/profiles/$receiver' width='50' height='50'></div>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$nom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$prenom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$receiver</div></a>
@@ -41,6 +43,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
             <h1>tous les groupes :</h1>
             <div class='showTab'>
                 <div class='divHead'>
+                    <div class='headElement'>Image</div>
                     <div class='headElement'>Nom</div>
                 </div>
                 <?php
@@ -51,6 +54,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     echo "
                     <br>
                     <div class='divBody'>
+                        <div class='bodyElement'><img src='images/groupes/$id' width='50' height='50'></div>
                         <a href='message_groupe.php?id=$id'><div class='bodyElement'>$nom</div></a>
                     </div>";
                 }

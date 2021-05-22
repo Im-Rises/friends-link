@@ -17,6 +17,7 @@
                 <h1>résultat de la recherche </h1>
                 <div class='showTab'>
                     <div class='divHead'>
+                        <div class='headElement'>Image</div>
                         <div class='headElement'>Nom</div>
                         <div class='headElement'>Prenom</div>
                         <div class='headElement'>Email</div>
@@ -33,6 +34,7 @@
             echo "
                 <br>
                 <div class='divBody'>
+                    <a href='?recherchePersonne=$email'><div class='bodyElement'><img src='images/profiles/$email' width='50' height='50'></div></a>
                     <a href='?recherchePersonne=$email'><div class='bodyElement'>$nom</div></a>
                     <a href='?recherchePersonne=$email'><div class='bodyElement'>$prenom</div></a>
                     <a href='?recherchePersonne=$email'><div class='bodyElement'>$email</div></a>
@@ -46,12 +48,12 @@
 </div>
 
 <?php
-    if (isset($_GET['recherchePersonne'], ) && $_GET['recherchePersonne'] != NULL) {
+if (isset($_GET['recherchePersonne'],) && $_GET['recherchePersonne'] != NULL) {
 
-        $recherchePersonne = $_GET['recherchePersonne'];
-        $utilisateur= $_SESSION["email"];
+    $recherchePersonne = $_GET['recherchePersonne'];
+    $utilisateur = $_SESSION["email"];
 
-        insertIntoAmiDemandeAmi($utilisateur, $recherchePersonne);
-        header("Location: friendsRequest.php");
-    }
-    ?>
+    insertIntoAmiDemandeAmi($utilisateur, $recherchePersonne);
+    header("Location: friendsRequest.php");
+}
+?>
