@@ -22,8 +22,6 @@
 <?php
 
 if (isset($_POST["GroupeName"]) and $_POST["GroupeName"]) {
-    require "dao.php";
-
     insertIntoGroupe($_POST["GroupeName"], $_SESSION["email"]);
 
     $idGroupe = selectIdFromGroupeWhereCreatorAndNameOfGroup($_SESSION["email"], $_POST["GroupeName"]);
@@ -31,6 +29,8 @@ if (isset($_POST["GroupeName"]) and $_POST["GroupeName"]) {
     $idGroupe = $idGroupe["id"];
 
     insertIntoGroupeMembre($idGroupe, $_SESSION["email"]);
+
+    insertIntoAdmin($idGroupe, $_SESSION["email"]);
 
     header("Location: show_all_discussions.php");
 }

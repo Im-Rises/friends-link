@@ -5,7 +5,7 @@ $mdp         = "";
 $db          = "reseau_social";
 $connexion = mysqli_connect($serveur, $utilisateur, $mdp, $db);
 
-
+// OTHERS
 function protection($val)
 {
     $val = htmlspecialchars($val);
@@ -22,6 +22,14 @@ function exeReq($req)
 
     return $res;
 }
+
+function isAdmin($admins, $email)
+{
+    while ($membre = mysqli_fetch_array($admins)) 
+        if($membre["email"] == $email) return true;
+    return false;
+}
+
 // INSERT
 
 function insertIntoMembre($email, $nom, $prenom, $bday, $mdp) // works
@@ -39,7 +47,7 @@ function insertIntoMembre($email, $nom, $prenom, $bday, $mdp) // works
 
     $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance, mdp) VALUES ('$email', '$nom', '$prenom', '$bday', '$mdp');";
 
-    exeReq($req);
+    return exeReq($req);
 }
 
 function insertIntoMessageDiscussion($sender, $receiver, $msg) // works
@@ -67,22 +75,11 @@ function insertIntoAmi($email, $email_ami, $amitie_validee) // works
     return exeReq($req);
 }
 
-function selectIdFromGroupeWhereCreatorAndNameOfGroup($email, $name)
-{
-    $email = protection($email);
-
-    $name = protection($name);
-
-    $req = "SELECT id FROM groupe WHERE email_createur = '$email' AND nom = '$name';";
-
-    return exeReq($req);
-}
-
 function insertIntoGroupe($nom, $email_createur) // works
 {
-    $nom = protection($nom); 
+    $nom = protection($nom);
 
-    $email_createur = protection($email_createur); 
+    $email_createur = protection($email_createur);
 
     $req = "INSERT INTO Groupe(nom, email_createur) VALUES ('$nom', '$email_createur')";
 
@@ -113,7 +110,29 @@ function insertIntoMessageGroupe($email_envoyeur, $id_groupe, $message)
     return exeReq($req);
 }
 
+function insertIntoAdmin($idGroupe, $email)
+{
+    $idGroupe = protection($idGroupe);
+
+    $email = protection($email);
+
+    $req = "INSERT INTO admin_groupe(email, id_groupe) VALUES ('$email', '$idGroupe');";
+
+    return exeReq($req);
+}
+
 // SELECT
+function selectIdFromGroupeWhereCreatorAndNameOfGroup($email, $name)
+{
+    $email = protection($email);
+
+    $name = protection($name);
+
+    $req = "SELECT id FROM groupe WHERE email_createur = '$email' AND nom = '$name';";
+
+    return exeReq($req);
+}
+
 function selectMembreWhereEmail($email)
 {
     $email = protection($email); // protege des injections sql
@@ -200,6 +219,14 @@ function selectMessagesDiscussion($email1, $email2)
     return exeReq($req);
 }
 
+function selectGroupeWhereId($id)
+{
+    $id = protection($id);
+
+    $req = "SELECT * FROM groupe WHERE id='$id';";
+
+    return exeReq($req);
+}
 
 // Selection des groupes
 function selectAllGroupes($email)
@@ -241,6 +268,15 @@ function selectDemandesAmi($email)
     $email = protection($email);
 
     $req = "SELECT email_ami FROM ami WHERE email='$email' AND amitie_validee=false";
+
+    return exeReq($req);
+}
+
+function selectAdminEmailFromAdminGroupeWhereIdGroupe($idGroupe)
+{
+    $idGroupe = protection($idGroupe);
+
+    $req = "SELECT email FROM admin_groupe WHERE id_groupe='$idGroupe'";
 
     return exeReq($req);
 }

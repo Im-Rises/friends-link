@@ -43,8 +43,14 @@ if (
 ) {
 
     $res = insertIntoMembre($_POST["email"], $_POST["nom"], $_POST["prenom"], $_POST["bday"], $_POST["password"]);
-    if($res) header('Location: ./login.php');
-    else echo "veuillez mettre une adresse mail valide";
+    if($res) {
+        session_start();
+
+        $_SESSION["email"] = $_POST["email"];
+
+        header('Location: ./index.php');
+    }
+    else echo "remplissez les champs convenablement";
 }
 
 ?>

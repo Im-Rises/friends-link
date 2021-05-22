@@ -8,15 +8,28 @@
 
 <script src="script.js"></script>
 
-<?php require "ban.php"; ?>
+<?php
+require "ban.php";
+
+?>
 
 <body>
     <?php
 
     $sender = $_SESSION["email"];
+    $idGroupe = $_GET["id"];
+
+    $groupe = selectGroupeWhereId($idGroupe);
+    $groupe = mysqli_fetch_array($groupe);
+
+    $admins = selectAdminEmailFromAdminGroupeWhereIdGroupe($idGroupe);
+
+    if(isAdmin($admins, $sender)) {
+        echo "<a href='group_settings.php?idGroupe=$idGroupe'>Group Settings</a>";
+    }
 
     $dateTemp = "";
-    $messages = selectAllMessagesFromGroupeWhereId($_GET["id"]);
+    $messages = selectAllMessagesFromGroupeWhereId($idGroupe);
     while ($value = mysqli_fetch_array($messages)) {
         $emailSender = $value["email_envoyeur"];
 
@@ -44,7 +57,6 @@
         }
     }
     ?>
-    </div>
     <div class="writeMsg">
         <form action="" method="POST">
             <input type="text" name="msg" class="write" placeholder="write your message here">
@@ -60,7 +72,7 @@
 if (isset($_POST["msg"]) and $_POST["msg"] != NULL) {
     $msg = $_POST["msg"];
 
-    insertIntoMessageGroupe($sender, $_GET["id"], $msg);
+    insertIntoMessageGroupe($sender, $idGroupe, $msg);
     header("Refresh:0");
 }
 ?>

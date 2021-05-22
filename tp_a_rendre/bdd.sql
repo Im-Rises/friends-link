@@ -12,3 +12,5 @@ CREATE TABLE groupe (id BIGINT AUTO_INCREMENT, email_createur VARCHAR(320) NOT N
 CREATE TABLE groupe_membre (id_groupe BIGINT, mail_membre VARCHAR(320), date_ajout DATE NOT NULL, PRIMARY KEY(id_groupe, mail_membre), FOREIGN KEY (id_groupe) REFERENCES groupe(id), FOREIGN KEY (mail_membre) REFERENCES membre(adresse_mail));
 
 CREATE TABLE message_groupe (id_message BIGINT PRIMARY KEY AUTO_INCREMENT, email_envoyeur VARCHAR(320) NOT NULL, id_groupe BIGINT NOT NULL, text_message VARCHAR(1000) NOT NULL, date_envoie DATE NOT NULL, FOREIGN KEY (email_envoyeur) REFERENCES membre(adresse_mail), FOREIGN KEY (id_groupe) REFERENCES groupe(id)); 
+
+CREATE TABLE admin_groupe (id_groupe BIGINT NOT NULL, email VARCHAR(320), PRIMARY KEY(id_groupe, email), FOREIGN KEY (id_groupe) REFERENCES groupe(id), FOREIGN KEY(email) REFERENCES membre(adresse_mail));
