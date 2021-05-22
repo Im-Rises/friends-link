@@ -19,26 +19,63 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     <body>
 
         <?php
-            echo "<h1>$profil[prenom] $profil[nom]</h1>";      
-            
-            if (file_exists("images/profiles/$profil[adresse_mail]"))
-            {
-                echo "<a href='addImgServ.php'><img src='images/profiles/$profil[adresse_mail]' width='200' height='200'></a>";
-            }
-            else
-            {
-                echo "<a href='addImgServ.php'><img src='images/profiles/unknown.png' width='200' height='200'></a>";
-            }
-            
+        echo "<h1>$profil[prenom] $profil[nom]</h1>";
+        echo "<a href=addImgServ.php>".recupImageEmail($profil['adresse_mail'])."</a>";
         ?>
 
         <p>Adresse mail : <?php echo $profil['adresse_mail'] ?></p>
 
         <h2>Liste des amis de la personne sur clic</h2>
 
-        <h2>Liste des posts de la personne sur clic</h2>
+        <?php if (isset($_GET) and $_GET != NULL && $_GET['voirPlusAmis'] == 'Voir') { ?>
 
-        <!-- Ici faire l'affichage de tous les posts de la personne -->
+            <div class="allTab">
+                <h1>tous les amis :</h1>
+                <div class='showTab'>
+                    <div class='divHead'>
+                        <div class='headElement'>Image</div>
+                        <div class='headElement'>Nom</div>
+                        <div class='headElement'>Prenom</div>
+                        <div class='headElement'>Email</div>
+                    </div>
+
+
+                    <?php
+                    $listeAmi = selectAllFriendsWhereEmail($profil['adresse_mail']);
+                    $array = selectAllFriendsWhereEmail($_SESSION["email"]);
+
+                    foreach ($array as $value) {
+                        $nom = $value["nom"];
+                        $prenom = $value["prenom"];
+                        $receiver = $value["adresse_mail"];
+
+                        echo "
+                    <br>
+                    <div class='divBody'>
+                        <a href=''><div class='bodyElement'>" . recupImageEmail($receiver) . "</div></a>
+                        <a href=''><div class='bodyElement'>$nom</div></a>
+                        <a href=''><div class='bodyElement'>$prenom</div></a>
+                        <a href=''><div class='bodyElement'>$receiver</div></a>
+                    </div>";
+                    }
+
+                    ?>
+                </div>
+
+                <a href='?voirPlusAmis=VoirMoins'>Voir moins</a>
+
+
+            <?php } else {
+
+            echo "<a href='?voirPlusAmis=Voir'>Voir liste</a>";
+        } ?>
+
+
+
+
+            <h2>Liste des posts de la personne sur clic</h2>
+
+            <!-- Ici faire l'affichage de tous les posts de la personne -->
 
     </body>
 

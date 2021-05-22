@@ -17,6 +17,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <h1>Liste des demandes d'amis reçues :</h1>
         <table style="width:100%">
             <tr>
+                <th>Image</th>
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Email</th>
@@ -30,6 +31,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                 echo "
                     <br>
                     <tr>
+                        <td>" . recupImageEmail($emails['adresse_mail']) . "</div>
                         <td>$emails[prenom]</td>
                         <td>$emails[nom]</td>
                         <td>$emails[adresse_mail]</td>
@@ -48,6 +50,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <h1>Liste des demandes d'amis envoyées :</h1>
         <table style="width:100%">
             <tr>
+                <th>Image</th>
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Email</th>
@@ -60,6 +63,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                 echo "
                     <br>
                     <tr>
+                        <td>".recupImageEmail($emails['adresse_mail'])."</div>
                         <td>$emails[prenom]</td>
                         <td>$emails[nom]</td>
                         <td>$emails[adresse_mail]</td>

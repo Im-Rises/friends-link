@@ -26,8 +26,8 @@ if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL 
     $nomReceiver = $membreReceiver["nom"];
     $prenomReceiver = $membreReceiver["prenom"];
 
-    echo "<h1>MESSAGE TO $nomReceiver $prenomReceiver</h1></br>";
-    echo "<img src='images/profiles/$membreReceiver[adresse_mail]' width='50' height='50'>";
+    echo "<h1>".recupImageEmail($membreReceiver['adresse_mail'])."MESSAGE TO $nomReceiver $prenomReceiver</h1></br>";
+    
 ?>
 
     <body>

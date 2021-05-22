@@ -31,7 +31,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     echo "
                     <br>
                     <div class='divBody'>
-                        <div class='bodyElement'><img src='images/profiles/$receiver' width='50' height='50'></div>
+                        <a href='messages.php?receiver=$receiver'><div class='bodyElement'>".recupImageEmail($receiver)."</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$nom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$prenom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$receiver</div></a>
@@ -54,7 +54,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     echo "
                     <br>
                     <div class='divBody'>
-                        <div class='bodyElement'><img src='images/groupes/$id' width='50' height='50'></div>
+                        <a href='message_groupe.php?id=$id'><div class='bodyElement'>".recupImageGroupe($id)."</div></a>
                         <a href='message_groupe.php?id=$id'><div class='bodyElement'>$nom</div></a>
                     </div>";
                 }

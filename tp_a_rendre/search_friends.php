@@ -17,6 +17,7 @@
                 <h1>résultat de la recherche </h1>
                 <div class='showTab'>
                     <div class='divHead'>
+                        <div class='headElement'>Image</div>
                         <div class='headElement'>Nom</div>
                         <div class='headElement'>Prenom</div>
                         <div class='headElement'>Email</div>
@@ -32,6 +33,7 @@
 
             echo "
                 <div class='divBody'>
+                    <a href='messages.php?receiver=$email'><div class='bodyElement'>".recupImageEmail($email)."</div></a>
                     <a href='messages.php?receiver=$email'><div class='bodyElement'>$nom</div></a>
                     <a href='messages.php?receiver=$email'><div class='bodyElement'>$prenom</div></a>
                     <a href='messages.php?receiver=$email'><div class='bodyElement'>$email</div></a>

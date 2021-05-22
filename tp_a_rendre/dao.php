@@ -412,3 +412,31 @@ function deleteFromGroupeMembreWhereEmail($email, $idGroupe)
 
     return exeReq($req);
 }
+
+//Fonction de récuépration de l'image de l'adresse email envoyé en paramètre
+function recupImageEmail($email)
+{
+    $balise="";
+
+    if (file_exists("images/profiles/$email")) {
+        $balise="<img src='images/profiles/$email' width='100'>";
+    } else {
+        $balise="<img src='images/profiles/unknown.png' width='50' height='50'>";
+    }
+
+    return $balise;
+}
+
+
+function recupImageGroupe($idGroupe)
+{
+    $balise="";
+
+    if (file_exists("images/groupes/$idGroupe")) {
+        $balise="<img src='images/groupes/$idGroupe' width='100'>";
+    } else {
+        $balise="<img src='images/profiles/unknown.png' width='50' height='50'>";
+    }
+
+    return $balise;
+}

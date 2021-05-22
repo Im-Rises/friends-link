@@ -22,12 +22,13 @@ require "ban.php";
 
     $groupe = selectGroupeWhereId($idGroupe);
     $groupe = mysqli_fetch_array($groupe);
-
+    
     $admins = selectAdminEmailFromAdminGroupeWhereIdGroupe($idGroupe);
 
     if(isAdmin($admins, $sender)) {
         echo "<a href='group_settings.php'>Group Settings</a>";
     }
+    echo "<br/>".recupImageGroupe($idGroupe);
 
     $dateTemp = "";
     $messages = selectAllMessagesFromGroupeWhereId($idGroupe);
@@ -48,11 +49,13 @@ require "ban.php";
         if ($emailSender == $_SESSION["email"]) {
             echo "
             <div class='iSend'>
+                ".recupImageEmail($_SESSION['email'])."
                 $prenomSender $nomSender : $msg 
             </div>";
         } else {
             echo "
             <div class='youSend'>
+            ".recupImageEmail($membreSender['adresse_mail'])."
             $prenomSender $nomSender : $msg 
             </div>";
         }
