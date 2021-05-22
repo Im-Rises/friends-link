@@ -33,7 +33,7 @@ require "dao.php";
                         $prenom = $membre["prenom"];
 
                         echo "
-                        <a href=''>
+                        <a href='mon_profil.php'>
                             <li>$nom $prenom</li>
                         </a>
                         <a href='show_all_discussions.php'>
