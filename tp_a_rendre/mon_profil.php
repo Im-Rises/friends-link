@@ -21,13 +21,13 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <?php
             echo "<h1>$profil[prenom] $profil[nom]</h1>";      
             
-            if (file_exists("images/$profil[adresse_mail]"))
+            if (file_exists("images/profiles/$profil[adresse_mail]"))
             {
-                echo "<a href='addImgServ.php'><img src='images/$profil[adresse_mail]' width='200' height='200'></a>";
+                echo "<a href='addImgServ.php'><img src='images/profiles/$profil[adresse_mail]' width='200' height='200'></a>";
             }
             else
             {
-                echo "<a href='addImgServ.php'><img src='images/Homer_Simpson.jpg' width='200' height='200'></a>";
+                echo "<a href='addImgServ.php'><img src='images/profiles/Homer_Simpson.jpg' width='200' height='200'></a>";
             }
             
         ?>

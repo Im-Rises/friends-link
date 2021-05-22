@@ -16,7 +16,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <?php
         //var_dump($_FILES);
 
-        echo $_SESSION['email'];
+        //echo $_SESSION['email'];
         $imageName=$_SESSION['email'];
         //$imageName = "testToutout";
 
