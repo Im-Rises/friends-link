@@ -13,10 +13,10 @@ insertIntoMembre("dorine.brun@esme.fr", "brun", "dorine", "2000-05-05", "mdp");
 // insertIntoAmiDemandeAmi("clement.reiffers@esme.fr", "quentin.morel@esme.fr");
 // creerAmitie("clement.reiffers@esme.fr", "quentin.morel@esme.fr", 1);
 
-insertIntoGroupe("groupe1");
-insertIntoGroupeMembre(1, "clement.reiffers@esme.fr");
-insertIntoGroupeMembre(1, "quentin.morel@esme.fr");
-insertIntoGroupeMembre(1, "dorine.brun@esme.fr");
+// insertIntoGroupe("groupe1");
+// insertIntoGroupeMembre(1, "clement.reiffers@esme.fr");
+// insertIntoGroupeMembre(1, "quentin.morel@esme.fr");
+// insertIntoGroupeMembre(1, "dorine.brun@esme.fr");
 
 insertIntoAmiDemandeAmi("quentin.morel@esme.fr","clement.reiffers@esme.fr");
 insertIntoAmiDemandeAmi("dorine.brun@esme.fr","quentin.morel@esme.fr")

@@ -55,14 +55,6 @@ function insertIntoMessageDiscussion($sender, $receiver, $msg) // works
     return exeReq($req);
 }
 
-function selectMembreWhereEmail($email)
-{
-    $email = protection($email); // protege des injections sql
-
-    $req = "SELECT * FROM membre WHERE adresse_mail = '$email';";
-
-    return exeReq($req);
-}
 
 function insertIntoAmi($email, $email_ami, $amitie_validee) // works
 {
@@ -75,11 +67,24 @@ function insertIntoAmi($email, $email_ami, $amitie_validee) // works
     return exeReq($req);
 }
 
-function insertIntoGroupe($nom) // works
+function selectIdFromGroupeWhereCreatorAndNameOfGroup($email, $name)
 {
-    $nom = protection($nom); // protege des injections sql
+    $email = protection($email);
 
-    $req = "INSERT INTO Groupe VALUES (NULL, '$nom')";
+    $name = protection($name);
+
+    $req = "SELECT id FROM groupe WHERE email_createur = '$email' AND nom = '$name';";
+
+    return exeReq($req);
+}
+
+function insertIntoGroupe($nom, $email_createur) // works
+{
+    $nom = protection($nom); 
+
+    $email_createur = protection($email_createur); 
+
+    $req = "INSERT INTO Groupe(nom, email_createur) VALUES ('$nom', '$email_createur')";
 
     return exeReq($req);
 }
@@ -109,6 +114,14 @@ function insertIntoMessageGroupe($email_envoyeur, $id_groupe, $message)
 }
 
 // SELECT
+function selectMembreWhereEmail($email)
+{
+    $email = protection($email); // protege des injections sql
+
+    $req = "SELECT * FROM membre WHERE adresse_mail = '$email';";
+
+    return exeReq($req);
+}
 
 // recuperer donnees membres depuis email
 function selectDataMembersWhereEmail($email)
