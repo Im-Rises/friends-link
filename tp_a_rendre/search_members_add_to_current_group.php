@@ -4,16 +4,19 @@
         <input type="submit" value="Search" class="searchBtn">
     </form>
 
+
     <?php
 
     if (isset($_GET["search"]) and $_GET["search"] != NULL) {
-        $array = selectMembresNotInGroupeWhereIdGroupe($_GET["search"], $_SESSION["email"]);
+        $array = selectMembresNotInGroupeWhereIdGroupe($_GET["search"], $_SESSION["idGroupe"]);
+    ?>
 
+        <?php
+        $row = 0;
         foreach ($array as $value) {
-            $row = 0;
             $rowTemp = $row % 2;
             if (!$row) {
-    ?>
+        ?>
                 <h1>résultat de la recherche </h1>
                 <div class='showTab'>
                     <div class='divHead'>
@@ -21,6 +24,7 @@
                         <div class='headElement'>Prenom</div>
                         <div class='headElement'>Email</div>
                     </div>
+
                 <?php
             }
                 ?>
@@ -40,6 +44,8 @@
             $row++;
         }
     }
+    echo "</div>";
+
 
         ?>
                 </div>
