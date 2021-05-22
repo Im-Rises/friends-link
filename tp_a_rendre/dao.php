@@ -255,6 +255,30 @@ function selectMembresGroupe($id_groupe)
     return exeReq($req);
 }
 
+function selectAllAdmin($idGroupe)
+{
+    $req = "SELECT DISTINCT *
+        FROM membre
+        WHERE adresse_mail IN (SELECT email FROM admin_groupe WHERE id_groupe='$idGroupe');";
+
+    return exeReq($req);
+}
+
+function selectMembresNotInAdminWhereIdGroupe($search, $idGroupe)
+{
+    $req = "SELECT DISTINCT *
+            FROM membre
+            WHERE adresse_mail IN (SELECT mail_membre FROM groupe_membre WHERE id_groupe = '$idGroupe')
+            AND adresse_mail NOT IN (SELECT email FROM admin_groupe WHERE id_groupe='$idGroupe')
+            AND LOCATE('$search', adresse_mail) 
+            OR LOCATE('$search', nom) 
+            OR LOCATE('$search', prenom) 
+            OR LOCATE('$search', CONCAT(prenom, ' ', nom))
+            OR LOCATE('$search', CONCAT(nom, ' ', prenom));";
+
+    return exeReq($req);
+}
+
 function selectMembresNotInGroupeWhereIdGroupe($search, $idGroupe)
 {
     $req = "SELECT DISTINCT *
