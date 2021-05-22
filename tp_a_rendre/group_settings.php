@@ -1,7 +1,7 @@
 <?php
 include "ban.php";
 
-$idGroupe = $_GET["idGroupe"];
+$idGroupe = $_SESSION["idGroupe"];
 
 $email = $_SESSION["email"];
 

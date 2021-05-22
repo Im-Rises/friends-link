@@ -18,6 +18,7 @@ require "ban.php";
 
     $sender = $_SESSION["email"];
     $idGroupe = $_GET["id"];
+    $_SESSION["idGroupe"] = $_GET["id"];
 
     $groupe = selectGroupeWhereId($idGroupe);
     $groupe = mysqli_fetch_array($groupe);
@@ -25,7 +26,7 @@ require "ban.php";
     $admins = selectAdminEmailFromAdminGroupeWhereIdGroupe($idGroupe);
 
     if(isAdmin($admins, $sender)) {
-        echo "<a href='group_settings.php?idGroupe=$idGroupe'>Group Settings</a>";
+        echo "<a href='group_settings.php'>Group Settings</a>";
     }
 
     $dateTemp = "";

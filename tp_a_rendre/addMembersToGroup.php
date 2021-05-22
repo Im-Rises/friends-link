@@ -1,12 +1,11 @@
 <?php
 include "ban.php";
 
-$idGroupe = $_GET["idGroupe"];
+$idGroupe = $_SESSION["idGroupe"];
 
 $email = $_SESSION["email"];
 
 $admins = selectAdminEmailFromAdminGroupeWhereIdGroupe($idGroupe);
-$admins = mysqli_fetch_array($admins);
 
 if (!isAdmin($admins, $email)) {
     header("Location: index.php");
@@ -21,13 +20,27 @@ if (!isAdmin($admins, $email)) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Group Settings</title>
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
+        <?php
+        include "search_members_add_to_current_group.php";
+        ?>
+        <ul>
+            <?php
+            $membres = selectMembresGroupe($idGroupe);
+            foreach ($membres as $m) {
+                $nom = $m["nom"];
+                $email = $m["adresse_mail"];
+                $prenom = $m["prenom"];
 
-        <form action="" method="POST">
-            <!-- <input type="text"> -->
-        </form>
+                echo "<li> $nom $prenom, $email";
+            }
+
+            ?>
+        </ul>
+
     </body>
 
     </html>

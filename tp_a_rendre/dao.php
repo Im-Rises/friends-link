@@ -25,8 +25,8 @@ function exeReq($req)
 
 function isAdmin($admins, $email)
 {
-    while ($membre = mysqli_fetch_array($admins)) 
-        if($membre["email"] == $email) return true;
+    while ($membre = mysqli_fetch_array($admins))
+        if ($membre["email"] == $email) return true;
     return false;
 }
 
@@ -250,7 +250,22 @@ function selectAllMessagesFromGroupeWhereId($id)
 
 function selectMembresGroupe($id_groupe)
 {
-    $req = "SELECT mail_membre FROM groupeMembre WHERE id_groupe='$id_groupe';";
+    $req = "SELECT * FROM membre m JOIN groupe_membre gm ON gm.mail_membre = m.adresse_mail WHERE gm.id_groupe = '$id_groupe';";
+
+    return exeReq($req);
+}
+
+function selectMembresNotInGroupeWhereIdGroupe($search, $idGroupe)
+{
+    $req = "SELECT DISTINCT *
+            FROM membre m
+            WHERE 
+            adresse_mail NOT IN (SELECT mail_membre FROM groupe_membre WHERE id_groupe='$idGroupe')
+            AND (LOCATE('$search', adresse_mail) 
+                OR LOCATE('$search', nom) 
+                OR LOCATE('$search', prenom) 
+                OR LOCATE('$search', CONCAT(prenom, ' ', nom))
+                OR LOCATE('$search', CONCAT(nom, ' ', prenom)));";
 
     return exeReq($req);
 }

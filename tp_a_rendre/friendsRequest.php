@@ -34,8 +34,8 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                         <td>$emails[nom]</td>
                         <td>$emails[adresse_mail]</td>
                         <td>
-                         <a href='?methode=Accepter&idUtilisateurAutre=$emails[adresse_mail]' >Accepter</a>
-                         <a href='?methode=Supprimer&idUtilisateurAutre=$emails[adresse_mail]' >Refuser</a>
+                            <a href='?methode=Accepter&idUtilisateurAutre=$emails[adresse_mail]' >Accepter</a>
+                            <a href='?methode=Supprimer&idUtilisateurAutre=$emails[adresse_mail]' >Refuser</a>
                         </td>
                     </tr>
             ";
