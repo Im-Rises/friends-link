@@ -33,6 +33,9 @@ if (!isAdmin($admins, $email)) {
             <li>
                 <a href="addAdministratorsToGroup.php">ajouter des administrateurs au groupe</a>
             </li>
+            <li>
+                <a href="remove_members_from_group.php">supprimer des membres du groupe</a>
+            </li>
         </ul>
     </body>
 
