@@ -28,18 +28,18 @@ function insertIntoMembre($email, $nom, $prenom, $bday, $mdp) // works
 {
     $email = protection($email);
 
-        $nom = protection($nom);
+    $nom = protection($nom);
 
-        $prenom = protection($prenom); // protege des injections sql
+    $prenom = protection($prenom); // protege des injections sql
 
-        $bday = protection($bday); // protege des injections sql
+    $bday = protection($bday); // protege des injections sql
 
-        $mdp = protection($mdp); // protege des injections sql
-        $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+    $mdp = protection($mdp); // protege des injections sql
+    $mdp = password_hash($mdp, PASSWORD_DEFAULT);
 
-        $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance, mdp) VALUES ('$email', '$nom', '$prenom', '$bday', '$mdp');";
+    $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance, mdp) VALUES ('$email', '$nom', '$prenom', '$bday', '$mdp');";
 
-        exeReq($req);
+    exeReq($req);
 }
 
 function insertIntoMessageDiscussion($sender, $receiver, $msg) // works
@@ -261,7 +261,7 @@ function selectProfilDemandeEnAmi($emailDemandeur, $emailProfilRegarde)
 
 
 //Voir les profils demandés en ami
-function selectProfilsDemandesEnAmi($emailDemandeur)
+function selectProfilsEnvoieDemandesEnAmi($emailDemandeur)
 {
     $emailDemandeur = protection($emailDemandeur);
 
@@ -299,14 +299,17 @@ function creerAmitie($emailDemandeur, $emailAccepteur)
         insertIntoAmi($emailAccepteur, $emailDemandeur, 1);
     }
 
-    // $req = "INSERT INTO ami VALUES ('$emailAccepteur', '$emailDemandeur', 1);";
-    // if (!$res) {
-
-    //     echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    //     exit(10);
-    // }
-
-    // IL FAUT VOIR COMMENT GERER S'IL Y A N BUG, COMMENT GERER LES DEUX TABLES AMI DES DEUX PERSONNES
-
     return $res;
+}
+
+//Refuser une demande d'ami
+function annulerDemandeAmi($emailDemandeur, $emailReceveur)
+{
+    $emailDemandeur = protection($emailDemandeur);
+
+    $emailReceveur = protection($emailReceveur);
+
+    $req = "DELETE FROM ami WHERE email='$emailDemandeur' AND email_ami='$emailReceveur';";
+
+    return exeReq($req);
 }

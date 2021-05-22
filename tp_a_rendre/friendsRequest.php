@@ -12,60 +12,99 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     </head>
 
     <body>
+        <?php include "search_peoples.php"; ?>
 
         <h1>Liste des demandes d'amis reçues :</h1>
-        <div class='showTab'>
-            <div class='divHead'>
-                <div class='headElement'>Nom</div>
-                <div class='headElement'>Prenom</div>
-                <div class='headElement'>Email</div>
-            </div>
+        <table style="width:100%">
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
 
             <?php
             $res = selectProfilsReceptionDemandeAmi($_SESSION["email"]);
+
             foreach ($res as $emails) {
                 echo "
                     <br>
-                    <div class='divBody'>
-                        <div class='bodyElement'>$emails[prenom]</div>
-                        <div class='bodyElement'>$emails[nom]</div>
-                        <div class='bodyElement'>$emails[adresse_mail]</div>
-                    </div>
+                    <tr>
+                        <td>$emails[prenom]</td>
+                        <td>$emails[nom]</td>
+                        <td>$emails[adresse_mail]</td>
+                        <td>
+                         <a href='?methode=Accepter&idUtilisateurAutre=$emails[adresse_mail]' >Accepter</a>
+                         <a href='?methode=Supprimer&idUtilisateurAutre=$emails[adresse_mail]' >Refuser</a>
+                        </td>
+                    </tr>
             ";
             }
             ?>
+        </table>
 
 
 
-        </br>
+        <h1>Liste des demandes d'amis envoyées :</h1>
+        <table style="width:100%">
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
 
-
-        <!-- <h1>Liste des demandes d'amis envoyées :</h1>
-        <div class='showTab'>
-            <div class='divHead'>
-                <div class='headElement'>Nom</div>
-                <div class='headElement'>Prenom</div>
-                <div class='headElement'>Email</div>
-            </div>
             <?php
-            // $res = selectProfilsDemandesEnAmi($_SESSION["email"]);
-            // foreach ($res as $emails) {
-            //     echo "
-            // <br>
-            // <div class='divBody'>
-            //     <div class='bodyElement'>$emails[prenom]</div>
-            //     <div class='bodyElement'>$emails[nom]</div>
-            //     <div class='bodyElement'>$emails[adresse_mail]</div>
-            // </div>";
-            // }
+            $res = selectProfilsEnvoieDemandesEnAmi($_SESSION["email"]);
+            foreach ($res as $emails) {
+                echo "
+                    <br>
+                    <tr>
+                        <td>$emails[prenom]</td>
+                        <td>$emails[nom]</td>
+                        <td>$emails[adresse_mail]</td>
+                        <td>
+                            <a href='?methode=Annuler&idUtilisateurAutre=$emails[adresse_mail]' >Annuler</a>
+                        </td>
+                    </tr>
+            ";
+            }
             ?>
-        </div> -->
-
+        </table>
     </body>
 
     </html>
 
-<?php } else {
+
+
+
+    <?php
+    if (isset($_GET['methode'], $_GET['idUtilisateurAutre']) && $_GET['methode'] != NULL && $_GET['idUtilisateurAutre'] != NULL) {
+
+        $methode = $_GET['methode'];
+        $idUtilisateur = $_SESSION["email"];
+        $idUtilisateurAutre = $_GET['idUtilisateurAutre'];
+
+        switch ($_GET['methode']) {
+            case 'Accepter': {
+                    creerAmitie($idUtilisateurAutre, $idUtilisateur);
+                }
+                break;
+            case 'Supprimer': {
+                    annulerDemandeAmi($idUtilisateurAutre, $idUtilisateur);
+                }
+                break;
+            case 'Annuler': {
+                    annulerDemandeAmi($idUtilisateur, $idUtilisateurAutre);
+                }
+                break;
+        }
+        header("Location: friendsRequest.php");
+    }
+    ?>
+
+<?php
+} else {
     header("Location: login.php");
 }
 ?>
