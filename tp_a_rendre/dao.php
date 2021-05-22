@@ -310,7 +310,7 @@ function selectProfilDemandeEnAmi($emailDemandeur, $emailProfilRegarde)
 
 
 //Voir les profils demandés en ami
-function selectProfilsDemandesEnAmi($emailDemandeur)
+function selectProfilsEnvoieDemandesEnAmi($emailDemandeur)
 {
     $emailDemandeur = protection($emailDemandeur);
 
@@ -348,14 +348,17 @@ function creerAmitie($emailDemandeur, $emailAccepteur)
         insertIntoAmi($emailAccepteur, $emailDemandeur, 1);
     }
 
-    // $req = "INSERT INTO ami VALUES ('$emailAccepteur', '$emailDemandeur', 1);";
-    // if (!$res) {
-
-    //     echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    //     exit(10);
-    // }
-
-    // IL FAUT VOIR COMMENT GERER S'IL Y A N BUG, COMMENT GERER LES DEUX TABLES AMI DES DEUX PERSONNES
-
     return $res;
+}
+
+//Refuser une demande d'ami
+function annulerDemandeAmi($emailDemandeur, $emailReceveur)
+{
+    $emailDemandeur = protection($emailDemandeur);
+
+    $emailReceveur = protection($emailReceveur);
+
+    $req = "DELETE FROM ami WHERE email='$emailDemandeur' AND email_ami='$emailReceveur';";
+
+    return exeReq($req);
 }
