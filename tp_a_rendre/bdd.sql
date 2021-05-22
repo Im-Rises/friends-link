@@ -7,7 +7,7 @@ CREATE TABLE message_discussion (id_message BIGINT PRIMARY KEY AUTO_INCREMENT, e
 
 CREATE TABLE ami(email VARCHAR(320), email_ami VARCHAR(320), amitie_validee BOOLEAN NOT NULL, date_ajout DATE NOT NULL ,PRIMARY KEY (email, email_ami), FOREIGN KEY (email) REFERENCES membre(adresse_mail), FOREIGN KEY (email_ami) REFERENCES membre(adresse_mail));
 
-CREATE TABLE groupe (id BIGINT PRIMARY KEY AUTO_INCREMENT, nom VARCHAR(25) NOT NULL);
+CREATE TABLE groupe (id BIGINT AUTO_INCREMENT, email_createur VARCHAR(320) NOT NULL, nom VARCHAR(25) NOT NULL, PRIMARY KEY(id, email_createur), FOREIGN KEY(email_createur) REFERENCES membre(adresse_mail));
 
 CREATE TABLE groupe_membre (id_groupe BIGINT, mail_membre VARCHAR(320), date_ajout DATE NOT NULL, PRIMARY KEY(id_groupe, mail_membre), FOREIGN KEY (id_groupe) REFERENCES groupe(id), FOREIGN KEY (mail_membre) REFERENCES membre(adresse_mail));
 

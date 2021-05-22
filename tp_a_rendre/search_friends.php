@@ -31,7 +31,6 @@
             $email = $value['adresse_mail'];
 
             echo "
-                <br>
                 <div class='divBody'>
                     <a href='messages.php?receiver=$email'><div class='bodyElement'>$nom</div></a>
                     <a href='messages.php?receiver=$email'><div class='bodyElement'>$prenom</div></a>
@@ -42,5 +41,5 @@
     }
 
         ?>
-                </div>
+    </div>
 </div>

@@ -75,6 +75,8 @@ body {
     background-color: red;
     color           : white;
     font-size       : 150%;
+    display         : block;
+    float           : left;
 }
 
 .divHead {
@@ -91,6 +93,10 @@ body {
     background-color: white;
     color           : black;
     border-radius   : 10px;
+}
+
+.allTabs {
+    display: block;
 }
 
 .iSend {

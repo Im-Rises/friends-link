@@ -12,50 +12,52 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
     <body>
         <?php include "search_friends.php"; ?>
-        <br>
-        <h1>tous les amis :</h1>
-        <div class='showTab'>
-            <div class='divHead'>
-                <div class='headElement'>Nom</div>
-                <div class='headElement'>Prenom</div>
-                <div class='headElement'>Email</div>
-            </div>
-            <?php
-            $array = selectAllFriendsWhereEmail($_SESSION["email"]);
-            foreach ($array as $value) {
-                $nom = $value["nom"];
-                $prenom = $value["prenom"];
-                $receiver = $value["adresse_mail"];
+        <div class="allTab">
+            <h1>tous les amis :</h1>
+            <div class='showTab'>
+                <div class='divHead'>
+                    <div class='headElement'>Nom</div>
+                    <div class='headElement'>Prenom</div>
+                    <div class='headElement'>Email</div>
+                </div>
+                <?php
+                $array = selectAllFriendsWhereEmail($_SESSION["email"]);
+                foreach ($array as $value) {
+                    $nom = $value["nom"];
+                    $prenom = $value["prenom"];
+                    $receiver = $value["adresse_mail"];
 
-                echo "
+                    echo "
                     <br>
                     <div class='divBody'>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$nom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$prenom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$receiver</div></a>
                     </div>";
-            }
+                }
 
-            ?>
-        </div>
-        <br>
-        <h1>tous les groupes :</h1>
-        <div class='showTab'>
-            <div class='divHead'>
-                <div class='headElement'>Nom</div>
+                ?>
             </div>
-            <?php
-            $array = selectAllGroupes($_SESSION["email"]);
-            foreach ($array as $value) {
-                $nom = $value["nom"];
-                $id = $value["id"];
-                echo "
+            <h1>tous les groupes :</h1>
+            <div class='showTab'>
+                <div class='divHead'>
+                    <div class='headElement'>Nom</div>
+                </div>
+                <?php
+                $array = selectAllGroupes($_SESSION["email"]);
+                foreach ($array as $value) {
+                    $nom = $value["nom"];
+                    $id = $value["id"];
+                    echo "
                     <br>
                     <div class='divBody'>
-                        <a href='message_groupe.php?id=$id'><div class='bodyElement'>$nom</div></a>";
-            }
-            ?>
+                        <a href='message_groupe.php?id=$id'><div class='bodyElement'>$nom</div></a>
+                    </div>";
+                }
+                ?>
+            </div>
         </div>
+        <a href="new_group.php">New Group</a>
     </body>
 
     </html>
