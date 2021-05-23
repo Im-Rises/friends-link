@@ -56,14 +56,16 @@ if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL 
                 }
                 if ($emailSender == $_SESSION["email"]) {
                     echo "
-        <div class='iSend'>
-            $msg 
-        </div>";
+                        <div class='iSend'>
+                        ".recupImageEmail($_SESSION['email'])."
+                        $msg 
+                        </div>";
                 } else {
                     echo "
-        <div class='youSend'>
-        $msg 
-        </div>";
+                        <div class='youSend'>
+                        ".recupImageEmail($emailSender)."
+                        $msg 
+                        </div>";
                 }
             }
             ?>
