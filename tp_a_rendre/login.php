@@ -4,22 +4,21 @@
 <head>
     <title>FriendsLink</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
 </head>
-<?php include "ban.php"; ?>
+<?php include "ban.php";?>
 
 <body>
-    <main>
+    <form method="post" method="" class="formLogin">
         <div class="login">
-            <h1>LOGIN</h1>
-            <form method="post">
+            <h1>Se Connecter</h1>
+            <center>
                 <input type="email" name="mail" placeholder="Email" required autofocus>
                 <input type="password" name="password" placeholder="Mot de passe" required autofocus>
-                <input type="submit" value="Envoyer" style="margin: 30px 5px 0px;">
-                <a href="register.php">Inscription</a>
-            </form>
+            </center>
         </div>
-    </main>
+        <input type="submit" value="Se Connecter" class="seConnecter">
+    </form>
 </body>
 
 </html>
@@ -43,3 +42,4 @@ if (isset($_POST["mail"], $_POST["password"]) and $_POST["password"] != NULL and
     }
 }
 ?>
+    

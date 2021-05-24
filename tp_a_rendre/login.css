@@ -1,0 +1,67 @@
+@font-face {
+    font-family: "Aladin";
+    src        : url("Aladin-Regular.ttf");
+}
+
+h1 {
+    font-family   : "Aladin";
+    color         : white;
+    text-align    : center;
+    letter-spacing: 5px;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-repeat    : no-repeat;
+    background-attachment: fixed;
+    height               : 100%;
+    background           : radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
+}
+
+.formLogin {
+    width          : 40%;
+    margin         : 0 auto;
+    text-align     : center;
+    justify-content: center;
+    margin-top     : 40vh;
+    /* poussé de la moitié de hauteur de viewport */
+    transform      : translateY(-40%);
+    /* tiré de la moitié de sa propre hauteur */
+}
+
+.login input {
+    display         : list-item;
+    width           : 90%;
+    margin-top      : 20px;
+    padding         : 15px;
+    border          : none;
+    color           : #F4DBD8;
+    background-color: #592955;
+    opacity         : 0.8;
+    font-size       : 250%;
+    text-align      : center;
+}
+
+.seConnecter {
+    width           : 100%;
+    font-size       : 150%;
+    background-color: #D26B60;
+    color           : #F4DBD8;
+    border          : none;
+    padding         : 10px;
+    margin-top      : 5%;
+}
+
+.login {
+    background-color   : #33032F;
+    padding            : 1%;
+    border-radius      : 10px;
+    margin-top         : 2%;
+    /* width           : 50%; */
+    box-shadow         : 8px 8px 12px #33032F;
+    text-align         : center;
+    justify-content    : center;
+}

@@ -3,6 +3,15 @@
     src        : url("Aladin-Regular.ttf");
 }
 
+html {
+    /* background      : rgb(51, 3, 47);
+    background-image: linear-gradient(160deg, rgba(51, 3, 47, 1) 0%, rgba(51, 3, 47, 1) 32%, rgba(210, 107, 96, 1) 100%);
+    background-repeat: none; */
+    height: 100%;
+}
+
+
+
 .formSearch {
     text-align  : center;
     display     : inline-flex;
@@ -39,33 +48,12 @@
     color           : tomato;
 }
 
-/* .newMsg {
-    display         : inline flex;
-    background-color: grey;
-    width           : 100%;
-    height          : 90%;
-    position        : relative;
-
-} */
-
-/* .newMsg form {
-    width   : 100%;
-    position: fixed;
-    bottom  : 0;
-} */
-
-
-/* .newMsg .writeBox {
-    min-width: 90%;
-} */
-
-/* .newMsg .submit {
-    min-width  : 10%;
-    margin-left: 90%;
-} */
-
 body {
     margin: 0;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: linear-gradient(140deg, rgba(51,3,47,1) 0%, rgba(84,18,84,1) 70%, rgba(210,107,96,1) 100%);
 }
 
 .showTab {
@@ -202,7 +190,6 @@ body {
 .writeMsg form {
     box-shadow: 1px 1px 12px #555;
     display   : -webkit-inline-flex;
-    width     : 90%;
     bottom    : 0;
 }
 
@@ -217,11 +204,47 @@ body {
 }
 
 .login {
-    background-color: tomato;
+    background-color: #33032F;
     padding         : 1%;
-    margin-left     : 10%;
-    margin-right    : 10%;
+    border-radius   : 10px;
     margin-top      : 2%;
+    width           : 35%;
+    height          : 200px;
+    box-shadow      : 8px 8px 12px #aaa;
+    text-align      : center;
+    justify-content : center;
+}
+
+.seConnecter {
+    width           : 37%;
+    font-size       : 150%;
+    background-color: #D26B60;
+    color           : #F4DBD8;
+    border          : none;
+    padding         : 10px;
+    margin-top      : 2%;
+}
+
+
+.formLogin {
+    width          : 100%;
+    display        : block;
+    float          : left;
+    margin         : 0 auto;
+    text-align     : center;
+    justify-content: center;
+}
+
+.login input {
+    display         : list-item;
+    margin-top      : 20px;
+    width           : 90%;
+    padding         : 10px;
+    border          : none;
+    color           : #F4DBD8;
+    background-color: #592955;
+    opacity         : 0.8;
+    font-size       : 150%;
     text-align      : center;
 }
 
