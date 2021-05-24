@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="refresh_discussions.js"></script>
 </head>
 
 <?php
@@ -26,8 +26,12 @@ if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL 
     $nomReceiver = $membreReceiver["nom"];
     $prenomReceiver = $membreReceiver["prenom"];
 
-    echo "<h1>".recupImageEmail($membreReceiver['adresse_mail'])."MESSAGE TO $nomReceiver $prenomReceiver</h1></br>";
-    
+    echo "
+        <div class='messageTo'>" 
+            .recupImageEmail($membreReceiver['adresse_mail']). 
+            "<h1>MESSAGE TO $nomReceiver $prenomReceiver</h1>
+        </div>";
+
 ?>
 
     <body>
@@ -56,16 +60,24 @@ if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL 
                 }
                 if ($emailSender == $_SESSION["email"]) {
                     echo "
-                        <div class='iSend'>
-                        ".recupImageEmail($_SESSION['email'])."
-                        $msg 
-                        </div>";
+                    <div class='iSend'>
+                        <div class='containMsg'>
+                            $msg 
+                        </div>
+                        <div class='containImg'>
+                            " . recupImageEmail($_SESSION['email']) . "
+                        </div>
+                    </div>";
                 } else {
                     echo "
-                        <div class='youSend'>
-                        ".recupImageEmail($emailSender)."
+                    <div class='youSend'>
+                    <div class='containImg'>
+                        " . recupImageEmail($membreSender['adresse_mail']) . "
+                    </div>
+                    <div class='containMsg'>
                         $msg 
-                        </div>";
+                    </div> 
+                    </div>";
                 }
             }
             ?>

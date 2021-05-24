@@ -84,31 +84,82 @@ body {
 }
 
 .youSend {
-    margin-top      : 10px;
-    margin-right    : 40%;
-    margin-left     : 10%;
-    font-size       : 120%;
-    font-family     : "Arial";
-    padding         : 20px;
-    background-color: white;
-    color           : black;
-    border-radius   : 10px;
+    margin-right: 40%;
+    margin-left : 10%;
+    color       : black;
+}
+
+.iSend {
+    margin-left : 40%;
+    margin-right: 10%;
+    color       : white;
 }
 
 .allTabs {
     display: block;
 }
 
-.iSend {
-    margin-top      : 10px;
-    margin-left     : 40%;
-    margin-right    : 10%;
-    font-size       : 120%;
-    font-family     : "Arial";
-    padding         : 20px;
+.iSend,
+.youSend {
+    font-size  : 120%;
+    margin-top : 10px;
+    font-family: "Arial";
+    display    : flex;
+    align-items: center;
+}
+
+.messageTo {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    padding        : 20px;
+}
+
+.show_name_img_grp {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+.messageTo img {
+    border-radius: 50%;
+}
+
+.messageTo h1 {
+    margin-left: 2%;
+}
+
+.containMsg {
+    padding      : 20px;
+    border-radius: 10px;
+    width        : 90%;
+}
+
+.iSend .containMsg {
+    margin-right: 5%;
+}
+
+.youSend .containMsg {
+    margin-left: 5%;
+}
+
+.youSend .containMsg {
+    background-color: white;
+}
+
+.iSend .containMsg {
     background-color: tomato;
-    color           : white;
-    border-radius   : 10px;
+
+}
+
+.containImg {
+    width: auto;
+}
+
+.iSend img,
+.youSend img {
+    width        : 50px;
+    border-radius: 40px;
 }
 
 .divBody {

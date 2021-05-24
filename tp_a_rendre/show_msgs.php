@@ -29,16 +29,22 @@ while ($value = mysqli_fetch_array($discussions)) {
     if ($emailSender == $_SESSION["email"]) {
         echo "
         <div class='iSend'>
-            ".recupImageEmail($_SESSION['email'])."
-            $msg 
+            <div class='containMsg'>
+                $msg 
+            </div>
+            <div class='containImg'>
+                ".recupImageEmail($_SESSION['email'])."
+            </div>
         </div>";
     } else {
         echo "
         <div class='youSend'>
-        ".recupImageEmail($membreSender['adresse_mail'])."
-        $msg 
+            <div class='containImg'>
+                ".recupImageEmail($membreSender['adresse_mail'])."
+            </div>
+            <div class='containMsg'>
+                $msg 
+            </div> 
         </div>";
     }
 }
-
-?>
