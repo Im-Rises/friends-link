@@ -26,9 +26,9 @@ body {
     margin         : 0 auto;
     text-align     : center;
     justify-content: center;
-    margin-top     : 40vh;
+    margin-top     : 25vh;
     /* poussé de la moitié de hauteur de viewport */
-    transform      : translateY(-40%);
+    transform      : translateY(-25%);
     /* tiré de la moitié de sa propre hauteur */
 }
 
@@ -36,6 +36,7 @@ body {
     display         : list-item;
     width           : 90%;
     margin-top      : 20px;
+    margin-bottom: 20px;
     padding         : 15px;
     border          : none;
     color           : #F4DBD8;

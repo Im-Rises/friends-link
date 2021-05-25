@@ -12,9 +12,9 @@ include "ban.php";
 
 // a executer si bdd supprimee et que flemme de refaire les etapes du site pour creer un compte
 
-insertIntoMembre("clement.reiffers@esme.fr", "reiffers", "clement", "2000-11-15", "mdp");
-insertIntoMembre("quentin.morel@esme.fr", "morel", "quentin", "1998-02-02", "mdp");
-insertIntoMembre("dorine.brun@esme.fr", "brun", "dorine", "2000-05-05", "mdp");
+// insertIntoMembre("clement.reiffers@esme.fr", "reiffers", "clement", "2000-11-15", "mdp");
+// insertIntoMembre("quentin.morel@esme.fr", "morel", "quentin", "1998-02-02", "mdp");
+// insertIntoMembre("dorine.brun@esme.fr", "brun", "dorine", "2000-05-05", "mdp");
 
 
 // insertIntoAmiDemandeAmi("clement.reiffers@esme.fr", "quentin.morel@esme.fr");
@@ -25,8 +25,8 @@ insertIntoMembre("dorine.brun@esme.fr", "brun", "dorine", "2000-05-05", "mdp");
 // insertIntoGroupeMembre(1, "quentin.morel@esme.fr");
 // insertIntoGroupeMembre(1, "dorine.brun@esme.fr");
 
-insertIntoAmiDemandeAmi("quentin.morel@esme.fr", "clement.reiffers@esme.fr");
-insertIntoAmiDemandeAmi("dorine.brun@esme.fr", "quentin.morel@esme.fr");
+// insertIntoAmiDemandeAmi("quentin.morel@esme.fr", "clement.reiffers@esme.fr");
+// insertIntoAmiDemandeAmi("dorine.brun@esme.fr", "quentin.morel@esme.fr");
 
 
 

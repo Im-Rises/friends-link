@@ -419,9 +419,9 @@ function recupImageEmail($email)
     $balise="";
 
     if (file_exists("images/profiles/$email")) {
-        $balise="<img src='images/profiles/$email' width='100'>";
+        $balise="<img src='images/profiles/$email' width='100' class='pdp'>";
     } else {
-        $balise="<img src='images/profiles/unknown.png' width='50' height='50'>";
+        $balise="<img src='images/profiles/unknown.png' width='50' height='50' class='pdp'>";
     }
 
     return $balise;

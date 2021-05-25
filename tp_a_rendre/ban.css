@@ -9,14 +9,50 @@
 }
 
 header {
-    width           : 98%;
-    text-align      : center;
-    padding         : 1%;
-    font-size       : 300%;
-    color           : white;
-    background-color: transparent;
-    text-shadow     : 1px 1px 12px rgb(201, 181, 181);
-    font-family     : "Aladin";
+    width      : 98%;
+    padding    : 1%;
+    display    : inline-flex;
+    align-items: top;
+
+    /* color           : white; */
+    /* background-color: transparent; */
+    /* text-shadow     : 1px 1px 12px rgb(201, 181, 181); */
+    /* font-family     : "Aladin"; */
+}
+
+header img {
+    width        : 150px;
+    border-radius: 15px;
+}
+
+.monProfil {
+    display    : inline-flex;
+    align-items: center;
+}
+
+.pdp {
+    width        : 40px;
+    border-radius: 40px;
+    margin-right : 10px;
+}
+
+.menuInLine {
+    position       : absolute;
+    width          : 90%;
+    display        : inline-flex;
+    align-items    : center;
+    justify-content: center;
+}
+
+.menuInLine a {
+    font-size      : 150%;
+    color          : #D26B60;
+    text-decoration: none;
+    font-family    : Arial, Helvetica, sans-serif;
+}
+
+.menuInLine a+a {
+    margin-left: 5%;
 }
 
 body {
@@ -26,7 +62,7 @@ body {
 
 
 #menuToggle {
-    display    : block;
+    display    : none;
     position   : absolute;
     margin-top : -2%;
     margin-left: 90%;
@@ -39,8 +75,7 @@ body {
 #menuToggle a {
     text-decoration: none;
     color          : #232323;
-
-    transition: color 0.3s ease;
+    transition     : color 0.3s ease;
 }
 
 #menuToggle a:hover {
