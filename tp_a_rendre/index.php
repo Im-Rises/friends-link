@@ -4,7 +4,7 @@
 <head>
     <title>Friends Link</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <?php
 
@@ -37,13 +37,22 @@ if (!isset($_SESSION["email"])) {
 ?>
 
     <body>
-        <h1>Bienvenue à vous sur Friends Link (Sudrihack)</h1>
+        <div class="noLog">
+            <img src="friends_link.svg" class="logo">
 
-        <p>Vous êtes dans l'obligation de vous inscrire si vous n'avez pas fait de compte au préalable</p>
+            <div class="logOrRegister">
+                <h1>bienvenu sur Friends Link</h1>
+                <h2>le site qui vous rapproche de vos amis</h2>
+                <div class="div2Log">
+                    <a href='login.php'><div class='divLog'>Connexion</div></a>
+                    <a href='register.php'><div class='divLog'>Inscription</div></a>
+                </div>
 
-        <a href='login.php'>Connexion</a>
+            </div>
 
-        <a href='register.php'>Inscirption</a>
+        </div>
+
+
 
     </body>
 
@@ -52,11 +61,11 @@ if (!isset($_SESSION["email"])) {
 ?>
 
     <body>
-        <h1>Afficher l'actualité de la personne connectée</h1>
+        <!-- <h1>Afficher l'actualité de la personne connectée</h1>
 
         <p>Afficher ici ?</p>
 
-        <img src='images/poubelle/mauvaise_blague.jpg' width='800' height='600'>
+        <img src='images/poubelle/mauvaise_blague.jpg' width='800' height='600'> -->
 
     </body>
 

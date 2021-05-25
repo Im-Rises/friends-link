@@ -3,12 +3,21 @@ session_start();
 require "dao.php";
 
 ?>
+<?php
 
+
+// Ajouter l'emplacement de la ressource demandée à l'URL
+$_SERVER['REQUEST_URI'];
+
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <link rel="stylesheet" href="ban.css">
+    <?php
+    $css = $_SERVER['REQUEST_URI'] == "/tp_php/tp_a_rendre/index.php" ? "indexBan.css" : "ban.css";
+    echo "<link rel='stylesheet' href='$css'>";
+    ?>
 </head>
 <header>
     <a href="index.php" class="titleBan"><img src="friends_link.svg"></a>
@@ -26,7 +35,7 @@ require "dao.php";
 
                 echo "
                         <a href='mon_profil.php' class='monProfil'>"
-                            .recupImageEmail($_SESSION["email"]). "$nom $prenom
+                    . recupImageEmail($_SESSION["email"]) . "$nom $prenom
                         </a>
                         <a href='show_all_discussions.php'>
                             Messaging
