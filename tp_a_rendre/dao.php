@@ -416,12 +416,12 @@ function deleteFromGroupeMembreWhereEmail($email, $idGroupe)
 //Fonction de récuépration de l'image de l'adresse email envoyé en paramètre
 function recupImageEmail($email)
 {
-    $balise="";
+    $balise = "";
 
     if (file_exists("images/profiles/$email")) {
-        $balise="<img src='images/profiles/$email' width='100' class='pdp'>";
+        $balise = "<img src='images/profiles/$email' width='100' class='pdp'>";
     } else {
-        $balise="<img src='images/profiles/unknown.png' width='50' height='50' class='pdp'>";
+        $balise = "<img src='images/profiles/unknown.png' width='50' height='50' class='pdp'>";
     }
 
     return $balise;
@@ -430,13 +430,26 @@ function recupImageEmail($email)
 
 function recupImageGroupe($idGroupe)
 {
-    $balise="";
+    $balise = "";
 
     if (file_exists("images/groupes/$idGroupe")) {
-        $balise="<img src='images/groupes/$idGroupe' width='100'>";
+        $balise = "<img src='images/groupes/$idGroupe' width='100'>";
     } else {
-        $balise="<img src='images/profiles/unknown.png' width='50' height='50'>";
+        $balise = "<img src='images/profiles/unknown.png' width='50' height='50'>";
     }
 
     return $balise;
+}
+
+// UPDATE 
+
+function updateNomGroupe($nomGroupe, $idGroupe)
+{
+    $nomGroupe = protection($nomGroupe);
+
+    $idGroupe = protection($idGroupe);
+
+    $req = "UPDATE groupe SET nom='$nomGroupe' WHERE id='$idGroupe';";
+
+    return exeReq($req);
 }
