@@ -20,8 +20,8 @@ header {
     /* font-family     : "Aladin"; */
 }
 
-header img {
-    display : none;
+header .logo {
+    display: none;
 }
 
 .monProfil {

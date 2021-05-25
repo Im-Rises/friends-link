@@ -20,7 +20,7 @@ $_SERVER['REQUEST_URI'];
     ?>
 </head>
 <header>
-    <a href="index.php" class="titleBan"><img src="friends_link.svg"></a>
+    <a href="index.php" class="titleBan"><img src="friends_link.svg" class="logo"></a>
     <nav role="navigation">
 
         <div class="menuInLine">
