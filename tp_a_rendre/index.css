@@ -35,6 +35,7 @@ body {
 }
 
 .logOrRegister {
+    font-family: Arial;
     display    : list-item;
     list-style-type: none;
     margin-left: 20%;
