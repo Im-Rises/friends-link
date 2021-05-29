@@ -455,6 +455,10 @@ function updateNomGroupe($nomGroupe, $idGroupe)
 }
 
 
+
+
+//Posts
+
 function selectAllPostsFromMembreOrder($email)
 {
     $email=protection($email);
@@ -473,4 +477,32 @@ function selectAllMessagesFromPostOrder($idPost)
     return exeReq($req);
 }
 
+function insertIntoPost($email_auteur, $titre, $message, $imagePoste)
+{
+    $email_auteur=protection($email_auteur);
+    $titre=protection($titre);
+    $message=protection($message);
+    $imagePoste=protection($imagePoste);
 
+    $req = "INSERT INTO post VALUES (NULL, '$email_auteur','$titre', NOW(), '$message', $imagePoste);";
+
+    return exeReq($req);
+}
+
+function selectIdPostFromAmi($emailUtilisateur)
+{
+    $emailUtilisateur=protection($emailUtilisateur);
+
+    $req="SELECT id_post FROM post WHERE email_posteur IN (SELECT email_ami FROM ami WHERE amitie_validee=1 AND email='$emailUtilisateur') ORDER BY datePost DESC;";
+
+    return exeReq($req);
+}
+
+function selectPostsFromId($id_post)
+{
+    $id_post=protection($id_post);
+
+    $req="SELECT * FROM post WHERE id_post='$id_post;";
+
+    return exeReq($req);
+}
