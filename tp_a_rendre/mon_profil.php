@@ -82,21 +82,18 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
             <?php
             if (isset($_GET['voirPlusPosts']) and $_GET['voirPlusPosts'] != NULL && $_GET['voirPlusPosts'] == 'Voir') {
+                
                 $listePosts = selectAllPostsFromMembreOrder($profil['adresse_mail']);
 
                 foreach ($listePosts as $post) {
-                    if ($post['image_post']==0)
-                    {
+                    if ($post['image_post'] == 0) {
                         
-
-                    }
-                    else
-                    {
+                    } else {
 
                     }
                 }
             ?>
-                <a href='?voirPlusPosts=VoirMoins'>Voir moins</a>
+                    <a href='?voirPlusPosts=VoirMoins'>Voir moins</a>
             <?php
             } else {
                 echo "<a href='?voirPlusPosts=Voir'>Voir posts</a>";

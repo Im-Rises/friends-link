@@ -15,7 +15,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
     <body>
 
-        <form method="post" action="">
+        <form action="" method="post" enctype="multipart/form-data">
             <label for="titre">Indiquez le titre de votre post :</label></br>
             <input type="text" name="titre"></br>
             <label for="message">Décrivez votre post :</label></br>
@@ -26,40 +26,26 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         </form>
 
 
-
         <?php
 
         if (isset($_POST["titre"], $_POST["message"]) and $_POST["titre"] != NULL and $_POST["message"] != NULL) {
-            if (isset($_POST['fileToUpload']) and $_POST['fileToUpload'] != NULL) {
+            if (isset($_FILES['fileToUpload']) and $_FILES['fileToUpload'] != NULL) {
 
-                $imageName;
                 //var_dump($_FILES);
 
-                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-                    if ($_POST['fileToUpload'] != NULL) {
-                        echo $imageName;
-                        if ($_FILES['fileToUpload']['size'] < 500000) {
-                            move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/posts/$imageName");
-                            insertIntoPost($_SESSION['email'],$_POST['titre'],$_POST['message'],1);
-                        } else {
-                            echo "<p>Fichier trop lourd, veuillez sélectionner une image de moins de 500ko</p>";
-                        }
-                    }
+                if ($_FILES['fileToUpload']['size'] < 5000000) {
+                    insertIntoPost($_SESSION['email'], $_POST['titre'], $_POST['message'], 1);
+                    $imageName = mysqli_fetch_array(selectLastPostIdMembre($_SESSION['email']));
+                    move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/posts/$imageName[id_post]");
+                } else {
+                    echo "<p>Fichier trop lourd, veuillez sélectionner une image de moins de 500ko</p>";
                 }
+            } else {
+                insertIntoPost($_SESSION['email'], $_POST['titre'], $_POST['message'], 0);
+                echo "Passe pas où je veux";
             }
-            else{
-                insertIntoPost($_SESSION['email'],$_POST['titre'],$_POST['message'],0);
-            }
-
-            //insertion du post
         }
-
-
-
-
         ?>
-
 
     </body>
 

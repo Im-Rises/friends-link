@@ -66,8 +66,8 @@ if (!isset($_SESSION["email"])) {
 
         <?php
         $utilisateur = mysqli_fetch_array(selectMembreWhereEmail($_SESSION["email"]));
-        
-        echo "<p>Bien le bonjour ".$utilisateur['prenom']." ".$utilisateur['nom']." </p>";
+
+        echo "<p>Bien le bonjour " . $utilisateur['prenom'] . " " . $utilisateur['nom'] . " </p>";
         ?>
 
         <p>Quoi de neuf aujourd'hui ?</p>
@@ -76,18 +76,20 @@ if (!isset($_SESSION["email"])) {
 
         require "postCreation.php";
 
+        $listePosts=selectPostsFromAmis($_SESSION['email']);
+
+        foreach($listePosts as $posts)
+        {
+            // Afficher la liste des posts des amis ici
+        }
+
+
         ?>
-        <!-- <h1>Afficher l'actualité de la personne connectée</h1>
-
-        <p>Afficher ici ?</p>
-
-        <img src='images/poubelle/mauvaise_blague.jpg' width='800' height='600'> -->
 
     </body>
 
+</html>
 
 <?php
 }
 ?>
-
-</html>
