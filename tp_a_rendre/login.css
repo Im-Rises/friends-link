@@ -1,10 +1,7 @@
-@font-face {
-    font-family: "Aladin";
-    src        : url("Aladin-Regular.ttf");
-}
+
 
 h1 {
-    font-family   : "Aladin";
+    font-family   : "Poppins";
     color         : white;
     text-align    : center;
     letter-spacing: 5px;
