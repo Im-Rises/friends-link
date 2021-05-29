@@ -41,8 +41,8 @@ if (!isset($_SESSION["email"])) {
             <img src="friends_link.svg" class="logo">
 
             <div class="logOrRegister">
-                <h1>bienvenu sur Friends Link</h1>
-                <h2>le site qui vous rapproche de vos amis</h2>
+                <h1>Bienvenue sur Friends Link! </h1>
+                <h2>Le site qui vous rapproche de vos amis</h2>
                 <div class="div2Log">
                     <a href='login.php'><div class='divLog'>Connexion</div></a>
                     <a href='register.php'><div class='divLog'>Inscription</div></a>

@@ -15,7 +15,7 @@ $_SERVER['REQUEST_URI'];
 
 <head>
     <?php
-    $css = $_SERVER['REQUEST_URI'] == "/tp_php/tp_a_rendre/index.php" ? "indexBan.css" : "ban.css";
+    $css = $_SERVER['REQUEST_URI'] == "/clement_quentin/tp_php/tp_a_rendre/index.php" ? "indexBan.css" : "ban.css";
     echo "<link rel='stylesheet' href='$css'>";
     ?>
 </head>
@@ -57,7 +57,7 @@ $_SERVER['REQUEST_URI'];
             }
             ?>
 
-            <a href="#">A propos</a>
+            <a href="a_propos.php">A propos</a>
         </div>
 
         <div id="menuToggle">

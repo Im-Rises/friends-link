@@ -17,7 +17,7 @@
                 <input type="password" name="password" placeholder="Mot de passe" required autofocus>
             </center>
         </div>
-        <input type="submit" value="Se Connecter" class="seConnecter">
+        <input type="submit" value="Se connecter" class="seConnecter">
     </form>
 </body>
 

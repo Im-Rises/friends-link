@@ -5,25 +5,31 @@
     <title>FriendsLink</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="register.css">
 </head>
 
 <?php include "ban.php"; ?>
 
 <body>
     <main>
-        <article style="margin:10px 50px 0px;">
-            <div style="padding: 20px 20px 30px; margin: 20px 0px 30px; width: 25rem;  background: #e7e7e7;">
-                <h3>Créer un compte:</h3>
-                <form method="post">
-                    <input type="text" name="nom" placeholder="Nom" require autofocus>
-                    <input type="text" name="prenom" placeholder="Prenom" require autofocus>
-                    <input type="email" name="email" placeholder="Email" require autofocus>
-                    <input type="password" name="password" placeholder="Mot de passe" require autofocus>
-                    <input type="date" name="bday" require autofocus>
-                    <input type="submit" value="Envoyer" style="margin: 30px 5px 0px;">
-                </form>
-
-            </div>
+        <article>
+            <form method="post" class="formRegister">
+                <div class="compte">
+                    <h3>Créer un compte:</h3>
+                    <center>
+                        <div class="row">
+                            <input type="text" name="nom" placeholder="Nom" require autofocus>
+                            <input type="text" name="prenom" placeholder="Prenom" require autofocus>
+                        </div>
+                        <div class="row">
+                            <input type="email" name="email" placeholder="Email" require autofocus>
+                            <input type="password" name="password" placeholder="Mot de passe" require autofocus>
+                        </div>
+                        <input type="date" name="bday" require autofocus>
+                    </center>
+                </div>
+                <input type="submit" value="Envoyer" class="inscrire">
+            </form>
         </article>
     </main>
 </body>
@@ -43,14 +49,13 @@ if (
 ) {
 
     $res = insertIntoMembre($_POST["email"], $_POST["nom"], $_POST["prenom"], $_POST["bday"], $_POST["password"]);
-    if($res) {
+    if ($res) {
         session_start();
 
         $_SESSION["email"] = $_POST["email"];
 
         header('Location: ./index.php');
-    }
-    else echo "remplissez les champs convenablement";
+    } else echo "remplissez les champs convenablement";
 }
 
 ?>

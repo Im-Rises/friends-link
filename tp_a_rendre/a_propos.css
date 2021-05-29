@@ -1,0 +1,63 @@
+h1 {
+    font-family   : "Noto sans";
+    color         : #F4DBD8;
+    text-align    : center;
+    letter-spacing: 5px;
+}
+html {
+    height: 100%;
+}
+
+body {
+    background-repeat    : no-repeat;
+    background-attachment: fixed;
+    height               : 100%;
+    background           : radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
+}
+
+
+.propos {
+    background-color   : #33032F;
+    padding            : 1%;
+    border-radius      : 10px;
+    margin-top         : 2%;
+    /* width           : 50%; */
+    box-shadow         : 8px 8px 12px #33032F;
+    text-align         : center;
+    justify-content    : center;
+}
+
+p, ul {
+    color: #F4DBD8;
+}
+
+.container {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+aside {
+display: flex ;
+justify-content: center;
+flex-direction: column;
+}
+
+table {
+margin: auto;
+border:medium solid #F4DBD8;
+border-collapse: collapse;
+width: 50%;
+box-shadow: 8px 8px 12px #33032F;
+
+}
+
+th, td {
+border: medium solid #F4DBD8;
+width: 50%;
+padding: 5px;
+background-color: #33032F;
+text-align: center;
+color: #F4DBD8;
+}
+
+
