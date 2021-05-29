@@ -13,16 +13,21 @@ html {
 
 
 .formSearch {
-    text-align  : center;
-    display     : inline-flex;
-    width       : 80%;
-    margin-left : 10%;
-    margin-right: 10%;
-    margin-top  : 5px;
+    text-align      : center;
+    display         : inline-flex;
+    width           : 78%;
+    position        : absolute;
+    margin-left     : 10%;
+    padding         : 10px;
+    position        : relative;
+    background-color: #33032F;
+    margin-right    : 10%;
+    margin-top      : 5px;
 }
 
 
 .searchBar {
+    background-color         : transparent;
     width                    : 90%;
     font-size                : 200%;
     border-top-left-radius   : 5px;
@@ -33,13 +38,12 @@ html {
 
 .searchBtn,
 .sub {
-    text-align                : center;
-    background-color          : tomato;
-    width                     : 10%;
-    border-top-right-radius   : 5px;
-    border-bottom-right-radius: 5px;
-    font-size                 : 200%;
-    border                    : none;
+    text-align      : center;
+    background-color: #D26B60;
+    width           : 10%;
+    border-radius   : 10px;
+    font-size       : 200%;
+    border          : none;
 }
 
 .searchBtn:hover {
@@ -49,11 +53,11 @@ html {
 }
 
 body {
-    margin: 0;
-    height: 100%;
-    background-repeat: no-repeat;
+    margin               : 0;
+    height               : 100%;
+    background-repeat    : no-repeat;
     background-attachment: fixed;
-    background: linear-gradient(140deg, rgba(51,3,47,1) 0%, rgba(84,18,84,1) 70%, rgba(210,107,96,1) 100%);
+    background           : linear-gradient(140deg, rgba(51, 3, 47, 1) 0%, rgba(84, 18, 84, 1) 70%, rgba(210, 107, 96, 1) 100%);
 }
 
 .showTab {
@@ -84,7 +88,8 @@ body {
 }
 
 .allTabs {
-    display: block;
+    display         : block;
+    background-color: #33032F;
 }
 
 .iSend,
@@ -254,4 +259,3 @@ h1 {
     text-align    : center;
     letter-spacing: 5px;
 }
-
