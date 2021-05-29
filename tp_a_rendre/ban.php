@@ -15,7 +15,7 @@ $_SERVER['REQUEST_URI'];
 
 <head>
     <?php
-    $css = $_SERVER['REQUEST_URI'] == "/clement_quentin/tp_php/tp_a_rendre/index.php" ? "indexBan.css" : "ban.css";
+    $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME)== "index.php" ? "indexBan.css" : "ban.css";
     echo "<link rel='stylesheet' href='$css'>";
     ?>
 </head>
