@@ -453,3 +453,24 @@ function updateNomGroupe($nomGroupe, $idGroupe)
 
     return exeReq($req);
 }
+
+
+function selectAllPostsFromMembreOrder($email)
+{
+    $email=protection($email);
+
+    $req = "SELECT * FROM post WHERE email_posteur=$email ORDER BY datePost;";
+
+    return exeReq($req);
+}
+
+function selectAllMessagesFromPostOrder($idPost)
+{
+    $idPost=protection($idPost);
+
+    $req = "SELECT * FROM post_message WHERE id_post=$idPost ORDER BY datePost;";
+
+    return exeReq($req);
+}
+
+

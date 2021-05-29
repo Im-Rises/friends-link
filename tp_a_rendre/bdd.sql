@@ -14,3 +14,11 @@ CREATE TABLE groupe_membre (id_groupe BIGINT, mail_membre VARCHAR(320), date_ajo
 CREATE TABLE message_groupe (id_message BIGINT PRIMARY KEY AUTO_INCREMENT, email_envoyeur VARCHAR(320) NOT NULL, id_groupe BIGINT NOT NULL, text_message VARCHAR(1000) NOT NULL, date_envoie DATE NOT NULL, FOREIGN KEY (email_envoyeur) REFERENCES membre(adresse_mail), FOREIGN KEY (id_groupe) REFERENCES groupe(id)); 
 
 CREATE TABLE admin_groupe (id_groupe BIGINT NOT NULL, email VARCHAR(320), PRIMARY KEY(id_groupe, email), FOREIGN KEY (id_groupe) REFERENCES groupe(id), FOREIGN KEY(email) REFERENCES membre(adresse_mail));
+
+
+CREATE TABLE post (id_post BIGINT PRIMARY KEY AUTO_INCREMENT, email_posteur VARCHAR(230) NOT NULL, titre VARCHAR(30) NOT NULL, datePost DATE NOT NULL, post_text VARCHAR(1000) NOT NULL, image_post BOOLEAN NOT NULL, FOREIGN KEY (email_posteur) REFERENCES membre(adresse_mail));
+
+CREATE TABLE post_message (id_message BIGINT PRIMARY KEY AUTO_INCREMENT, id_post BIGINT NOT NULL, email_posteur VARCHAR(230) NOT NULL, datePost DATE NOT NULL, message_post_text VARCHAR(1000) NOT NULL, FOREIGN KEY (id_post) REFERENCES post(id_post), FOREIGN KEY (email_posteur) REFERENCES membre(adresse_mail));
+
+CREATE TABLE post_like (id_post BIGINT NOT NULL, adresse_mail VARCHAR(320) NOT NULL, PRIMARY KEY (id_post, adresse_mail), FOREIGN KEY (id_post) REFERENCES post(id_post), FOREIGN KEY (adresse_mail) REFERENCES membre(adresse_mail));
+

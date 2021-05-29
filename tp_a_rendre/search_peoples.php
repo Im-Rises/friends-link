@@ -53,7 +53,10 @@ if (isset($_GET['recherchePersonne'],) && $_GET['recherchePersonne'] != NULL) {
     $recherchePersonne = $_GET['recherchePersonne'];
     $utilisateur = $_SESSION["email"];
 
-    insertIntoAmiDemandeAmi($utilisateur, $recherchePersonne);
+    if ($utilisateur != $recherchePersonne)
+    {
+        insertIntoAmiDemandeAmi($utilisateur, $recherchePersonne);
+    }
     header("Location: friendsRequest.php");
 }
 ?>

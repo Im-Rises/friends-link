@@ -44,15 +44,17 @@ if (!isset($_SESSION["email"])) {
                 <h1>Bienvenue sur Friends Link! </h1>
                 <h2>Le site qui vous rapproche de vos amis</h2>
                 <div class="div2Log">
-                    <a href='login.php'><div class='divLog'>Connexion</div></a>
-                    <a href='register.php'><div class='divLog'>Inscription</div></a>
+                    <a href='login.php'>
+                        <div class='divLog'>Connexion</div>
+                    </a>
+                    <a href='register.php'>
+                        <div class='divLog'>Inscription</div>
+                    </a>
                 </div>
 
             </div>
 
         </div>
-
-
 
     </body>
 
@@ -61,6 +63,20 @@ if (!isset($_SESSION["email"])) {
 ?>
 
     <body>
+
+        <?php
+        $utilisateur = mysqli_fetch_array(selectMembreWhereEmail($_SESSION["email"]));
+        
+        echo "<p>Bien le bonjour ".$utilisateur['prenom']." ".$utilisateur['nom']." </p>";
+        ?>
+
+        <p>Quoi de neuf aujourd'hui ?</p>
+
+        <?php
+
+        require "postCreation.php";
+
+        ?>
         <!-- <h1>Afficher l'actualité de la personne connectée</h1>
 
         <p>Afficher ici ?</p>

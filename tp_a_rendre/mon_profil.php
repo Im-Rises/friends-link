@@ -27,7 +27,9 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
         <h2>Liste des amis de la personne sur clic</h2>
 
-        <?php if (isset($_GET) and $_GET != NULL && $_GET['voirPlusAmis'] == 'Voir') { ?>
+        <?php 
+        if (isset($_GET['voirPlusAmis']) and $_GET['voirPlusAmis'] != NULL && $_GET['voirPlusAmis'] == 'Voir') { 
+        ?>
 
             <div class="allTab">
                 <h1>tous les amis :</h1>
@@ -65,17 +67,34 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                 <a href='?voirPlusAmis=VoirMoins'>Voir moins</a>
 
 
-            <?php } else {
+        <?php 
+        } 
+        else 
+        {
+            echo "<a href='?voirPlusAmis=Voir&voirPlusPost'>Voir amis</a>";
+        } 
+        ?>
 
-            echo "<a href='?voirPlusAmis=Voir'>Voir liste</a>";
-        } ?>
 
 
 
+        <h2>Liste des posts de la personne sur clic</h2>
 
-            <h2>Liste des posts de la personne sur clic</h2>
+        <!-- Ici faire l'affichage de tous les posts de la personne -->
 
-            <!-- Ici faire l'affichage de tous les posts de la personne -->
+        <?php 
+        if (isset($_GET['voirPlusPosts']) and $_GET['voirPlusPosts'] != NULL && $_GET['voirPlusPosts'] == 'Voir') { 
+            include "show_all_posts.php";
+        ?>
+
+            <a href='?voirPlusPosts=VoirMoins'>Voir moins</a>
+        <?php 
+        } 
+        else 
+        {
+            echo "<a href='?voirPlusPosts=Voir'>Voir posts</a>";
+        } 
+        ?>
 
     </body>
 
