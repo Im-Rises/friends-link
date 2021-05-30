@@ -31,6 +31,7 @@ html {
     width                    : 90%;
     font-size                : 200%;
     border-top-left-radius   : 5px;
+    color                    : white;
     border-bottom-left-radius: 5px;
     border                   : none;
     text-align               : center;
@@ -38,6 +39,7 @@ html {
 
 .searchBtn,
 .sub {
+    color           : white;
     text-align      : center;
     background-color: #D26B60;
     width           : 10%;
