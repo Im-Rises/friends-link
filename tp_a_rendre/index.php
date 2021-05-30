@@ -76,11 +76,26 @@ if (!isset($_SESSION["email"])) {
 
         require "postCreation.php";
 
-        $listePosts=selectPostsFromAmis($_SESSION['email']);
+        $listePosts = selectPostsFromAmis($_SESSION['email']);
 
-        foreach($listePosts as $posts)
-        {
+        foreach ($listePosts as $post) {
             // Afficher la liste des posts des amis ici
+            if ($post['image_post'] == 1) {
+                echo "<div>";
+                echo "<p>$post[titre]</p>";
+                echo "<p>$post[post_text]</p>";
+                echo "<p>$post[datePost]</p>";
+                echo "<img src='images/posts/$post[id_post]' width='50' height='50'>";
+                echo "</div>";
+            } else {
+
+                echo "<div>";
+                echo "<p>$post[titre]</p>";
+                echo "<p>$post[post_text]</p>";
+                echo "<p>$post[datePost]</p>";
+                //echo "<img src='images/posts/$post[id_post]' width='50' height='50'>";
+                echo "</div>";
+            }
         }
 
 
