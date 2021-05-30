@@ -27,7 +27,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
 
         <?php
-        var_dump($_FILES);
+        //var_dump($_FILES);
         if (isset($_POST["titre"], $_POST["message"]) and $_POST["titre"] != NULL and $_POST["message"] != NULL) {
             //if (isset($_FILES['fileToUpload']) and $_FILES['fileToUpload'] != NULL) {
             if ($_FILES['fileToUpload']['error']==0) {
@@ -37,7 +37,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     $imageName = mysqli_fetch_array(selectLastPostIdMembre($_SESSION['email']));
                     move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/posts/$imageName[id_post]");
                 } else {
-                    echo "<p>Fichier trop lourd, veuillez sélectionner une image de moins de 500ko</p>";
+                    echo "<p>Fichier invalide ou trop lourd, veuillez sélectionner une image de moins de 500ko</p>";
                 }
             } else {
                 insertIntoPost($_SESSION['email'], $_POST['titre'], $_POST['message'], 0);

@@ -92,6 +92,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         switch ($_GET['methode']) {
             case 'Accepter': {
                     creerAmitie($idUtilisateurAutre, $idUtilisateur);
+                    insertIntoAmi($idUtilisateur, $idUtilisateurAutre, 1);
                 }
                 break;
             case 'Supprimer': {
