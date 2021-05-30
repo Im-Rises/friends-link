@@ -371,7 +371,7 @@ function selectProfilsReceptionDemandeAmi($email)
 
 
 //Crer l'amitié
-function creerAmitie($emailDemandeur, $emailAccepteur)
+function updateToRealAmitie($emailDemandeur, $emailAccepteur)
 {
     global $connexion;
 
@@ -382,11 +382,6 @@ function creerAmitie($emailDemandeur, $emailAccepteur)
     $req = "UPDATE ami SET amitie_validee=1 WHERE email='$emailDemandeur' AND email_ami='$emailAccepteur';";
 
     $res = mysqli_query($connexion, $req);
-    if (!$res) {
-        echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
-    } else {
-        insertIntoAmi($emailAccepteur, $emailDemandeur, 1);
-    }
 
     return $res;
 }

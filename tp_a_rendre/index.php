@@ -82,6 +82,7 @@ if (!isset($_SESSION["email"])) {
             // Afficher la liste des posts des amis ici
             if ($post['image_post'] == 1) {
                 echo "<div>";
+                echo "<p>$post[email_posteur]</p>";
                 echo "<p>$post[titre]</p>";
                 echo "<p>$post[post_text]</p>";
                 echo "<p>$post[datePost]</p>";
@@ -90,6 +91,7 @@ if (!isset($_SESSION["email"])) {
             } else {
 
                 echo "<div>";
+                echo "<p>$post[email_posteur]</p>";
                 echo "<p>$post[titre]</p>";
                 echo "<p>$post[post_text]</p>";
                 echo "<p>$post[datePost]</p>";

@@ -99,7 +99,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                         echo "<p>$post[titre]</p>";
                         echo "<p>$post[post_text]</p>";
                         echo "<p>$post[datePost]</p>";
-                        //echo "<img src='images/posts/$post[id_post]' width='50' height='50'>";
                         echo "</div>";
                     }
                 }
