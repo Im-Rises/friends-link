@@ -17,7 +17,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
 
         $imageName = $_SESSION['email'];
-        //var_dump($_FILES);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
