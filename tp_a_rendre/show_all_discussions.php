@@ -7,20 +7,13 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="show_all_discussions.css">
     </head>
 
     <body>
         <?php include "search_friends.php"; ?>
         <div class="allTab">
             <h1>tous les amis :</h1>
-            <div class='showTab'>
-                <div class='divHead'>
-                    <div class='headElement'>Image</div>
-                    <div class='headElement'>Nom</div>
-                    <div class='headElement'>Prenom</div>
-                    <div class='headElement'>Email</div>
-                </div>
                 <?php
                 $array = selectAllFriendsWhereEmail($_SESSION["email"]);
                 foreach ($array as $value) {
@@ -29,9 +22,8 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     $receiver = $value["adresse_mail"];
 
                     echo "
-                    <br>
                     <div class='divBody'>
-                        <a href='messages.php?receiver=$receiver'><div class='bodyElement'>".recupImageEmail($receiver)."</div></a>
+                        <a href='messages.php?receiver=$receiver'><div class='pdpBodyElement'>" . recupImageEmail($receiver) . "</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$nom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$prenom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$receiver</div></a>
@@ -40,12 +32,9 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
                 ?>
             </div>
+        </div>
+        <div class="allTab">
             <h1>tous les groupes :</h1>
-            <div class='showTab'>
-                <div class='divHead'>
-                    <div class='headElement'>Image</div>
-                    <div class='headElement'>Nom</div>
-                </div>
                 <?php
                 $array = selectAllGroupes($_SESSION["email"]);
                 foreach ($array as $value) {
@@ -54,12 +43,11 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     echo "
                     <br>
                     <div class='divBody'>
-                        <a href='message_groupe.php?id=$id'><div class='bodyElement'>".recupImageGroupe($id)."</div></a>
+                        <a href='message_groupe.php?id=$id'><div class='bodyElement'>" . recupImageGroupe($id) . "</div></a>
                         <a href='message_groupe.php?id=$id'><div class='bodyElement'>$nom</div></a>
                     </div>";
                 }
                 ?>
-            </div>
         </div>
         <a href="new_group.php">New Group</a>
     </body>

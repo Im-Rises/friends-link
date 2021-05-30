@@ -10,7 +10,8 @@ html {
 
 .allTab {
     background-color: #33032F;
-    width: 50%;
+    margin-left     : 10%;
+    margin-right    : 10%;
 }
 
 
@@ -152,16 +153,19 @@ body {
 }
 
 .divBody {
-    float: left;
-    width: 100%;
+    display         : inline-flex;
+    flex-wrap       : wrap;
+    align-items     : center;
+    background-color: #61315D;
+    width           : 100%;
 }
 
 .divBody:hover {
     background-color: tomato;
 }
 
-.divBody {
-    background-color: darkgrey;
+.divBody a {
+    color: #F4DBD8;
 }
 
 .headElement {
@@ -171,8 +175,12 @@ body {
     font-style: italic;
 }
 
+.pdpBodyElement {
+    width: 10%;
+}
+
 .bodyElement {
-    width     : 33%;
+    width     : 30%;
     text-align: center;
     float     : left;
 }
