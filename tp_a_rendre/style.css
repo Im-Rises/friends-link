@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Aladin";
-    src: url("Aladin-Regular.ttf");
+    src        : url("Aladin-Regular.ttf");
 }
 
 html {
@@ -8,67 +8,67 @@ html {
 }
 
 body {
-    margin: 0;
-    height: 100%;
-    background-repeat: no-repeat;
-    background: radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
+    margin               : 0;
+    height               : 100%;
+    background-repeat    : no-repeat;
+    background           : radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
     background-attachment: fixed;
 }
 
 .allTab {
     background-color: #33032F;
-    width: 50%;
+    width           : 50%;
 }
 
 .formSearch {
-    text-align: center;
-    display: inline-flex;
-    width: 78%;
-    position: absolute;
-    margin-left: 10%;
-    padding: 10px;
-    position: relative;
+    text-align      : center;
+    display         : inline-flex;
+    width           : 78%;
+    position        : absolute;
+    margin-left     : 10%;
+    padding         : 10px;
+    position        : relative;
     background-color: #33032F;
-    margin-right: 10%;
-    margin-top: 5px;
+    margin-right    : 10%;
+    margin-top      : 5px;
 }
 
 .searchBar {
-    background-color: transparent;
-    width: 90%;
-    font-size: 200%;
-    border-top-left-radius: 5px;
-    color: white;
+    background-color         : transparent;
+    width                    : 90%;
+    font-size                : 200%;
+    border-top-left-radius   : 5px;
+    color                    : white;
     border-bottom-left-radius: 5px;
-    border: none;
-    text-align: center;
+    border                   : none;
+    text-align               : center;
 }
 
 .searchBtn,
 .sub {
-    color: white;
-    text-align: center;
+    color           : white;
+    text-align      : center;
     background-color: #D26B60;
-    width: 10%;
-    border-radius: 10px;
-    font-size: 200%;
-    border: none;
+    width           : 10%;
+    border-radius   : 10px;
+    font-size       : 200%;
+    border          : none;
 }
 
 .searchBtn:hover {
-    cursor: pointer;
+    cursor          : pointer;
     background-color: black;
-    color: tomato;
+    color           : tomato;
 }
 
 .showTab {
-    margin-left: 10%;
+    margin-left : 10%;
     margin-right: 10%;
-    width: 80%;
-    color: white;
-    font-size: 150%;
-    display: block;
-    float: left;
+    width       : 80%;
+    color       : white;
+    font-size   : 150%;
+    display     : block;
+    float       : left;
 }
 
 .divHead {
@@ -77,36 +77,36 @@ body {
 
 .youSend {
     margin-right: 40%;
-    margin-left: 10%;
-    color: black;
+    margin-left : 10%;
+    color       : black;
 }
 
 .iSend {
-    margin-left: 40%;
+    margin-left : 40%;
     margin-right: 10%;
-    color: white;
+    color       : white;
 }
 
 .iSend,
 .youSend {
-    font-size: 120%;
-    margin-top: 10px;
+    font-size  : 120%;
+    margin-top : 10px;
     font-family: "Arial";
-    display: flex;
+    display    : flex;
     align-items: center;
 }
 
 .messageTo {
-    display: flex;
+    display        : flex;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
+    align-items    : center;
+    padding        : 20px;
 }
 
 .show_name_img_grp {
-    display: flex;
+    display        : flex;
     justify-content: center;
-    align-items: center;
+    align-items    : center;
 }
 
 .messageTo img {
@@ -118,9 +118,9 @@ body {
 }
 
 .containMsg {
-    padding: 20px;
+    padding      : 20px;
     border-radius: 10px;
-    width: 90%;
+    width        : 90%;
 }
 
 .iSend .containMsg {
@@ -145,7 +145,7 @@ body {
 
 .iSend img,
 .youSend img {
-    width: 50px;
+    width        : 50px;
     border-radius: 40px;
 }
 
@@ -163,22 +163,22 @@ body {
 }
 
 .headElement {
-    float: left;
-    width: 33%;
+    float     : left;
+    width     : 33%;
     text-align: center;
     font-style: italic;
 }
 
 .bodyElement {
-    width: 33%;
+    width     : 33%;
     text-align: center;
-    float: left;
+    float     : left;
 }
 
 .writeMsg {
-    position: fixed;
-    bottom: 5px;
-    width: 100%;
+    position  : fixed;
+    bottom    : 5px;
+    width     : 100%;
     text-align: center;
 }
 
@@ -188,8 +188,9 @@ body {
 
 .writeMsg form {
     box-shadow: 1px 1px 12px #555;
-    display: -webkit-inline-flex;
-    bottom: 0;
+    display   : -webkit-inline-flex;
+    bottom    : 0;
+    width: 100%;
 }
 
 .writeMsg .write {
@@ -204,51 +205,51 @@ body {
 
 .login {
     background-color: #33032F;
-    padding: 1%;
-    border-radius: 10px;
-    margin-top: 2%;
-    width: 35%;
-    height: 200px;
-    box-shadow: 8px 8px 12px #aaa;
-    text-align: center;
-    justify-content: center;
+    padding         : 1%;
+    border-radius   : 10px;
+    margin-top      : 2%;
+    width           : 35%;
+    height          : 200px;
+    box-shadow      : 8px 8px 12px #aaa;
+    text-align      : center;
+    justify-content : center;
 }
 
 .seConnecter {
-    width: 37%;
-    font-size: 150%;
+    width           : 37%;
+    font-size       : 150%;
     background-color: #D26B60;
-    color: #F4DBD8;
-    border: none;
-    padding: 10px;
-    margin-top: 2%;
+    color           : #F4DBD8;
+    border          : none;
+    padding         : 10px;
+    margin-top      : 2%;
 }
 
 .formLogin {
-    width: 100%;
-    display: block;
-    float: left;
-    margin: 0 auto;
-    text-align: center;
+    width          : 100%;
+    display        : block;
+    float          : left;
+    margin         : 0 auto;
+    text-align     : center;
     justify-content: center;
 }
 
 .login input {
-    display: list-item;
-    margin-top: 20px;
-    width: 90%;
-    padding: 10px;
-    border: none;
-    color: #F4DBD8;
+    display         : list-item;
+    margin-top      : 20px;
+    width           : 90%;
+    padding         : 10px;
+    border          : none;
+    color           : #F4DBD8;
     background-color: #592955;
-    opacity: 0.8;
-    font-size: 150%;
-    text-align: center;
+    opacity         : 0.8;
+    font-size       : 150%;
+    text-align      : center;
 }
 
 h1 {
-    font-family: "Aladin";
-    color: white;
-    text-align: center;
+    font-family   : "Aladin";
+    color         : white;
+    text-align    : center;
     letter-spacing: 5px;
 }
