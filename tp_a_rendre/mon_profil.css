@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    height: 100%;
+    background-repeat: no-repeat;
+    background: radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
+    background-attachment: fixed;
+}
+
+h2,
+h1 {
+    color: #d15244;
+    text-align: center;
+}
+
+.pdpMonProfile {
+    width: 250px;
+    border-radius: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centerText {
+    text-align: center;
+    font-size: 150%;
+}
+
+.showTab {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    color: white;
+    font-size: 150%;
+    display: block;
+    float: left;
+}
+
+.divHead {
+    width: 100%;
+}
+
+.divBody {
+    float: left;
+    width: 100%;
+}
+
+.divBody:hover {
+    background-color: tomato;
+}
+
+.divBody {
+    background-color: darkgrey;
+}

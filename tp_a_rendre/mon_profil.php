@@ -11,7 +11,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     <head>
         <title>Mon profil</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="mon_profil.css">
     </head>
 
     <body>
@@ -19,12 +19,12 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <?php
 
         echo "<h1>$profil[prenom] $profil[nom]</h1>";
-        echo "<a href=addImgServ.php><img src='" . recupImageEmail($profil['adresse_mail']) . "'></a>";
+        echo "<a href=addImgServ.php><img src='" . recupImageEmail($profil['adresse_mail']) . "'class='pdpMonProfile' ></a>";
         ?>
 
-        <p>Adresse mail : <?php echo $profil['adresse_mail'] ?></p>
+        <p class='centerText'>Adresse mail : <?php echo $profil['adresse_mail'] ?></p>
 
-        <h2>Liste des amis de la personne sur clic</h2>
+        <h2>Liste d'amis</h2>
 
         <?php
         if (isset($_GET['voirPlusAmis']) and $_GET['voirPlusAmis'] != NULL && $_GET['voirPlusAmis'] == 'Voir') {
@@ -63,19 +63,19 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     ?>
                 </div>
 
-                <a href='?voirPlusAmis=VoirMoins'>Voir moins</a>
+                <a href='?voirPlusAmis=VoirMoins' class='centerText'>Voir moins</a>
 
 
             <?php
         } else {
-            echo "<a href='?voirPlusAmis=Voir&voirPlusPost'>Voir amis</a>";
+            echo "<a href='?voirPlusAmis=Voir&voirPlusPost' class='centerText'>Voir amis</a>";
         }
             ?>
 
 
 
 
-            <h2>Liste des posts de la personne sur clic</h2>
+            <h2>Liste des posts</h2>
 
             <!-- Ici faire l'affichage de tous les posts de la personne -->
 
@@ -102,10 +102,10 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     }
                 }
             ?>
-                <a href='?voirPlusPosts=VoirMoins'>Voir moins</a>
+                <a href='?voirPlusPosts=VoirMoins' class='centerText'>Voir moins</a>
             <?php
             } else {
-                echo "<a href='?voirPlusPosts=Voir'>Voir posts</a>";
+                echo "<a href='?voirPlusPosts=Voir' class='centerText'>Voir posts</a>";
             }
             ?>
 

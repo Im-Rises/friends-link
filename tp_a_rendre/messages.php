@@ -27,9 +27,9 @@ if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL 
     $prenomReceiver = $membreReceiver["prenom"];
 
     echo "
-        <div class='messageTo'>" 
+        <div class='messageTo'><img src='" 
             .recupImageEmail($membreReceiver['adresse_mail']). 
-            "<h1>MESSAGE TO $nomReceiver $prenomReceiver</h1>
+            "' class='pdp'><h1>MESSAGE TO $nomReceiver $prenomReceiver</h1>
         </div>";
 
 ?>
@@ -64,15 +64,13 @@ if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL 
                         <div class='containMsg'>
                             $msg 
                         </div>
-                        <div class='containImg'>
-                            " . recupImageEmail($_SESSION['email']) . "
+                        <div class='containImg'><img src='" . recupImageEmail($_SESSION['email']) . "' class='pdp'>
                         </div>
                     </div>";
                 } else {
                     echo "
                     <div class='youSend'>
-                    <div class='containImg'>
-                        " . recupImageEmail($membreSender['adresse_mail']) . "
+                    <div class='containImg'><img src='" . recupImageEmail($membreSender['adresse_mail']) . "' class='pdp'>
                     </div>
                     <div class='containMsg'>
                         $msg 
