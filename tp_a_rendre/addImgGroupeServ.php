@@ -36,6 +36,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                 updateImageGroupe($idGroupe, $imageName);
                 move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/groupes/$imageName");
                 if ( $imageActuelle != NULL && file_exists($imageActuelle)) {
+
                     unlink($imageActuelle);
                 }
 

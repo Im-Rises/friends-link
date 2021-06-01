@@ -96,7 +96,7 @@ if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL 
         $msg = $_POST["msg"];
 
         insertIntoMessageDiscussion($sender, $receiver, $msg);
-        header("Refresh:0");
+        
     }
 } else {
     header("Location: login.php");
