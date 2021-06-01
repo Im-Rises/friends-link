@@ -19,6 +19,8 @@ textarea,
     width           : 100%;
     color           : #F4DBD8;
     background-color: #592955;
+    max-width       : 100%;
+    min-width       : 100%;
     padding         : 5px;
     border          : none;
     font-size       : 120%;
