@@ -1,9 +1,10 @@
 body {
-    margin               : 0;
-    height               : 100%;
-    background-repeat    : no-repeat;
-    background-attachment: fixed;
-    background-color     : #541254;
+    margin          : 0;
+    background-color: #541254;
+}
+
+html {
+    overflow: auto;
 }
 
 .post {
@@ -13,7 +14,10 @@ body {
     overflow        : auto;
     max-height      : 500px;
     color           : white;
-    margin-top      : 5px;
+    margin-top      : 20px;
+    border          : 0.1px solid grey;
+    position        : relative;
+    text-align      : center;
 }
 
 .post h1 {
@@ -22,11 +26,52 @@ body {
 }
 
 .post img {
-    width: 500px;
+    width: 50%;
+}
+
+.actionPost {
+    background-color: #D26B60;
+    color           : #F4DBD8;
+    padding         : 5px;
+    font-size       : 120%;
+    text-decoration : none;
 }
 
 .insidePost {
     padding-left  : 25px;
     padding-right : 25px;
     padding-bottom: 25px;
+}
+
+.insidePost p {
+    text-align: justify;
+}
+
+.actions {
+    text-align: right;
+}
+
+.actions .actionPost+.actionPost {
+    margin-left: 5%;
+}
+
+.gauche {
+    float     : left;
+    width     : 60%;
+    text-align: left;
+}
+
+.droite {
+    float     : left;
+    width     : 40%;
+    text-align: left;
+}
+
+.droite {
+    text-align: center;
+}
+
+.rangement {
+    width  : 100%;
+    display: inline-flex;
 }

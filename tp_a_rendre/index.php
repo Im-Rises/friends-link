@@ -57,53 +57,69 @@ if (!isset($_SESSION["email"])) {
             <?php include "postCreation.php"; ?>
         </div>
 
-        <?php
-        $listePosts = selectPostsFromAmis($_SESSION['email']);
+        <div class="listeDesPosts">
+            <?php
+            $listePosts = selectPostsFromAmis($_SESSION['email']);
 
-        foreach ($listePosts as $post) {
-            // Afficher la liste des posts des amis ici
-            if ($post['image_post']) {
-                // echo "<a href='show_post.php?idPost=$post[id_post]'>";
-                // echo "<p>$post[email_posteur]</p>";
-                // echo "<form method='post'>
-                // <input type='submit' name='liker' value='Liker' />
-                // </form>";
-                echo "
+            foreach ($listePosts as $post) {
+                // Afficher la liste des posts des amis ici
+                if ($post['image_post']) {
+                    // echo "<a href='show_post.php?idPost=$post[id_post]'>";
+                    // echo "<p>$post[email_posteur]</p>";
+                    // echo "<form method='post'>
+                    // <input type='submit' name='liker' value='Liker' />
+                    // </form>";
+                    echo "
                 <div class='post'>
                     <div class='insidePost'>
                         <h1>$post[titre]</h1>
-                        <p>$post[post_text]</p>
                         <p>$post[datePost]</p>
-                        <img src='images/posts/$post[id_post]'>
+                        <div class='rangement'>
+                            <div class='gauche'>
+                                <p>$post[post_text]</p>
+                            </div>
+                            <div class='droite'>
+                                <img src='images/posts/$post[id_post]'>
+                            </div>
+                        </div>
+                        <div class='actions'>
+                            <a href='' class='actionPost'>Aimer</a>
+                            <a href='' class='actionPost'>Commenter</a>
+                        </div>
                     </div>
-                </div>";
-                // echo "</a>";
-            } else {
 
-                echo "
+                </div>";
+                    // echo "</a>";
+                } else {
+
+                    echo "
                 <div class='post'>
                     <div class='insidePost'>
                         <h1>$post[titre]</h1>
-                        <p>$post[post_text]</p>
                         <p>$post[datePost]</p>
+                        <p>$post[post_text]</p>
+                        <div class='actions'>
+                            <a href='' class='actionPost'>Aimer</a>
+                            <a href='' class='actionPost'>Commenter</a>
+                        </div>
                     </div>
                 </div>";
-                // echo "<div>";
-                // echo "<a href='show_post.php?idPost=$post[id_post]'>";
-                // echo "<p>$post[email_posteur]</p>";
-                // echo "<p>$post[titre]</p>";
-                // echo "<p>$post[post_text]</p>";
-                // echo "<p>$post[datePost]</p>";
-                // // echo "<form method='post'>
-                // // <input type='submit' name='liker' value='Liker' />
-                // // </form>";
-                // echo "</a>";
-                // echo "</div>";
+                    // echo "<div>";
+                    // echo "<a href='show_post.php?idPost=$post[id_post]'>";
+                    // echo "<p>$post[email_posteur]</p>";
+                    // echo "<p>$post[titre]</p>";
+                    // echo "<p>$post[post_text]</p>";
+                    // echo "<p>$post[datePost]</p>";
+                    // // echo "<form method='post'>
+                    // // <input type='submit' name='liker' value='Liker' />
+                    // // </form>";
+                    // echo "</a>";
+                    // echo "</div>";
+                }
             }
-        }
 
-        ?>
-
+            ?>
+        </div>
     </body>
 
 </html>
