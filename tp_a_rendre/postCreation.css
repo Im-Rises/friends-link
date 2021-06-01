@@ -1,0 +1,9 @@
+.newPost {
+    margin-top: 5%;
+}
+
+.titrePost, textarea, .file, .poster {
+    width       : 59%;
+    margin-left : 20%;
+    margin-right: 20%;
+}

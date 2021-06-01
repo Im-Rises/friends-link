@@ -29,6 +29,11 @@ html {
     width: 50%;
 }
 
+.listeDesPosts {
+    margin-top: 5%;
+    padding-bottom: 30px;
+}
+
 .actionPost {
     background-color: #D26B60;
     color           : #F4DBD8;

@@ -1,26 +1,27 @@
 html {
-    height:100%;
+    height: 100%;
 }
+
 body {
-    margin                  : 0;
-    height                  : 100%;
+    margin               : 0;
+    height               : 100%;
     background-repeat    : no-repeat;
-    background-attachment   : fixed;
-    background              : linear-gradient(140deg, rgba(51, 3, 47, 1) 0%, rgba(84, 18, 84, 1) 70%, rgba(210, 107, 96, 1) 100%);
+    background-attachment: fixed;
+    background           : linear-gradient(140deg, rgba(51, 3, 47, 1) 0%, rgba(84, 18, 84, 1) 70%, rgba(210, 107, 96, 1) 100%);
 }
 
 .noLog {
-    width: 100%;
-    display: inline-flex;
+    width      : 100%;
+    display    : inline-flex;
     align-items: center;
 }
 
 
 .div2Log {
-    display: inline-flex;
-    position: absolute;
-    width  : 30%;
-    justify-content:center;
+    display        : inline-flex;
+    position       : absolute;
+    width          : 30%;
+    justify-content: center;
 }
 
 .divLog:hover {
@@ -35,17 +36,19 @@ body {
 }
 
 .logOrRegister {
-    font-family: Arial;
-    display    : list-item;
+    font-family    : Arial;
+    display        : list-item;
     list-style-type: none;
-    margin-left: 20%;
-    width      : 30%;
+    margin-left    : 20%;
+    width          : 30%;
 }
 
-.logOrRegister h1, .logOrRegister h2 {
+.logOrRegister h1,
+.logOrRegister h2 {
     text-align: center;
-    color: white;
+    color     : white;
 }
+
 .logOrRegister a {
     text-decoration: none;
     color          : white;
@@ -59,7 +62,7 @@ body {
     border-radius   : 100px;
     position        : relative;
     text-align      : center;
-    margin-left: -55%;
+    margin-left     : -55%;
 }
 
 .logOrRegister a+a {

@@ -13,9 +13,6 @@
 </head>
 <?php
 
-echo $css;
-
-
 if (!isset($_SESSION["email"])) {
 
 ?>
@@ -47,15 +44,14 @@ if (!isset($_SESSION["email"])) {
 ?>
 
     <body>
-
-        <?php
-        $utilisateur = mysqli_fetch_array(selectMembreWhereEmail($_SESSION["email"]));
-        echo "<p>Bonjour " . $utilisateur['prenom'] . " " . $utilisateur['nom'] . " !</p>";
-        ?>
-
         <div>
             <?php include "postCreation.php"; ?>
         </div>
+
+        <?php
+        $utilisateur = mysqli_fetch_array(selectMembreWhereEmail($_SESSION["email"]));
+        ?>
+
 
         <div class="listeDesPosts">
             <?php

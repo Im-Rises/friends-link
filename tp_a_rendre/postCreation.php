@@ -10,27 +10,26 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="postCreation.css">
     </head>
 
     <body>
 
-        <form action="" method="post" enctype="multipart/form-data">
-            <label for="titre">Indiquez le titre de votre post :</label></br>
-            <input type="text" name="titre"></br>
-            <label for="message">Décrivez votre post :</label></br>
-            <textarea name="message" placeholder="Entrez votre message ici !"></textarea></br>
-            <label for="fileToUpload">Sélectionnez une image depuis votre appareil :</label></br>
-            <input type="file" name="fileToUpload" accept="image/*"></br>
-            <input type="submit" name="Poster">
-        </form>
+        <div class="newPost">
+            <form action="" method="post" enctype="multipart/form-data">
+                <input type="text" name="titre" placeholder="titre du post" class="titrePost"></br>
+                <textarea name="message" placeholder="Entrez votre message ici !" class="message"></textarea></br>
+                <input type="file" name="fileToUpload" accept="image/*" class="file"></br>
+                <input type="submit" name="Poster" class="poster">
+            </form>
 
+        </div>
 
         <?php
         //var_dump($_FILES);
         if (isset($_POST["titre"], $_POST["message"]) and $_POST["titre"] != NULL and $_POST["message"] != NULL) {
             //if (isset($_FILES['fileToUpload']) and $_FILES['fileToUpload'] != NULL) {
-            if ($_FILES['fileToUpload']['error']==0) {
+            if ($_FILES['fileToUpload']['error'] == 0) {
 
                 if ($_FILES['fileToUpload']['size'] < 5000000) {
                     insertIntoPost($_SESSION['email'], $_POST['titre'], $_POST['message'], 1);
