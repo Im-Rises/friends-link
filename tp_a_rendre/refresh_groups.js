@@ -22,4 +22,4 @@ function file(fichier) {
     else return (false);
 }
 
-setInterval('afficher("show_msgs_groups.php", "show_msg")', 1000); // nombre de milisecondes entre deux rafraichissements : ici 1 secondes
+setInterval('afficher("show_msgs_groups.php", "show_msg")', 5000); // nombre de milisecondes entre deux rafraichissements : ici 1 secondes
