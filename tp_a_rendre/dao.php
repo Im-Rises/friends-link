@@ -121,7 +121,29 @@ function insertIntoAdmin($idGroupe, $email)
     return exeReq($req);
 }
 
+function insertIntoLikes($id_post, $email)
+{
+    $id_post = protection($id_post);
+
+    $email = protection($email);
+
+    $req = "INSERT INTO post_like(id_post, adresse_mail) VALUES ('$id_post', '$email');";
+
+    return exeReq($req);
+}
+
 // SELECT
+function selectLikesWhereEmailAndId($email, $id_post)
+{
+    $id_post = protection($id_post);
+
+    $email = protection($email);
+
+    $req = "SELECT * FROM post_like WHERE id_post='$id_post' AND adresse_mail='$email';";
+
+    return exeReq($req);
+}
+
 function selectIdFromGroupeWhereCreatorAndNameOfGroup($email, $name)
 {
     $email = protection($email);
@@ -408,6 +430,17 @@ function deleteFromGroupeMembreWhereEmail($email, $idGroupe)
     return exeReq($req);
 }
 
+function deleteLikeWhereEmailAndIdPost($id_post, $email)
+{
+    $id_post = protection($id_post);
+
+    $email = protection($email);
+
+    $req = "DELETE FROM post_like WHERE adresse_mail = '$email' AND id_post = '$id_post';";
+
+    return exeReq($req);
+}
+
 //Fonction de récuépration de l'image de l'adresse email envoyé en paramètre
 function recupImageEmail($email)
 {
@@ -456,7 +489,7 @@ function updateNomGroupe($nomGroupe, $idGroupe)
 
 function selectAllPostsFromMembreOrder($email)
 {
-    $email=protection($email);
+    $email = protection($email);
 
     $req = "SELECT * FROM post WHERE email_posteur='$email' ORDER BY datePost;";
 
@@ -465,7 +498,7 @@ function selectAllPostsFromMembreOrder($email)
 
 function selectAllMessagesFromPostOrder($idPost)
 {
-    $idPost=protection($idPost);
+    $idPost = protection($idPost);
 
     $req = "SELECT * FROM post_message WHERE id_post=$idPost ORDER BY datePost;";
 
@@ -474,10 +507,10 @@ function selectAllMessagesFromPostOrder($idPost)
 
 function insertIntoPost($email_auteur, $titre, $message, $imagePoste)
 {
-    $email_auteur=protection($email_auteur);
-    $titre=protection($titre);
-    $message=protection($message);
-    $imagePoste=protection($imagePoste);
+    $email_auteur = protection($email_auteur);
+    $titre = protection($titre);
+    $message = protection($message);
+    $imagePoste = protection($imagePoste);
 
     $req = "INSERT INTO post VALUES (NULL, '$email_auteur','$titre', NOW(), '$message', $imagePoste);";
 
@@ -486,27 +519,27 @@ function insertIntoPost($email_auteur, $titre, $message, $imagePoste)
 
 function selectPostsFromAmis($emailUtilisateur)
 {
-    $emailUtilisateur=protection($emailUtilisateur);
+    $emailUtilisateur = protection($emailUtilisateur);
 
-    $req="SELECT * FROM post WHERE email_posteur IN (SELECT email_ami FROM ami WHERE amitie_validee=1 AND email='$emailUtilisateur') ORDER BY datePost DESC;";
+    $req = "SELECT * FROM post WHERE email_posteur IN (SELECT email_ami FROM ami WHERE amitie_validee=1 AND email='$emailUtilisateur') ORDER BY datePost DESC;";
 
     return exeReq($req);
 }
 
 function selectPostsFromId($id_post)
 {
-    $id_post=protection($id_post);
+    $id_post = protection($id_post);
 
-    $req="SELECT * FROM post WHERE id_post=$id_post;";
+    $req = "SELECT * FROM post WHERE id_post=$id_post;";
 
     return exeReq($req);
 }
 
 function selectLastPostIdMembre($email)
 {
-    $email=protection($email);
+    $email = protection($email);
 
-    $req="SELECT id_post FROM post WHERE email_posteur='$email' AND datePost >= ALL (SELECT datePost FROM post WHERE email_posteur='$email');";
+    $req = "SELECT id_post FROM post WHERE email_posteur='$email' AND datePost >= ALL (SELECT datePost FROM post WHERE email_posteur='$email');";
 
     return exeReq($req);
 }

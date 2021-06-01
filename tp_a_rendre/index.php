@@ -69,6 +69,13 @@ if (!isset($_SESSION["email"])) {
                     // echo "<form method='post'>
                     // <input type='submit' name='liker' value='Liker' />
                     // </form>";
+
+                    $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
+                    $array = mysqli_fetch_array($array);
+
+                    $like = empty($array) 
+                        ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>" 
+                        : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
                     echo "
                 <div class='post'>
                     <div class='insidePost'>
@@ -83,7 +90,7 @@ if (!isset($_SESSION["email"])) {
                             </div>
                         </div>
                         <div class='actions'>
-                            <a href='' class='actionPost'>Aimer</a>
+                            $like
                             <a href='' class='actionPost'>Commenter</a>
                         </div>
                     </div>
@@ -91,6 +98,12 @@ if (!isset($_SESSION["email"])) {
                 </div>";
                     // echo "</a>";
                 } else {
+                    $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
+                    $array = mysqli_fetch_array($array);
+
+                    $like = empty($array) 
+                        ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>" 
+                        : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
 
                     echo "
                 <div class='post'>
@@ -99,7 +112,7 @@ if (!isset($_SESSION["email"])) {
                         <p>$post[datePost]</p>
                         <p>$post[post_text]</p>
                         <div class='actions'>
-                            <a href='' class='actionPost'>Aimer</a>
+                            $like
                             <a href='' class='actionPost'>Commenter</a>
                         </div>
                     </div>
