@@ -8,12 +8,13 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="show_all_discussions.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <?php include "search_friends.php"; ?>
         <div class="allTab">
-            <h1>tous les amis :</h1>
+            <h1>Tous les amis :</h1>
                 <?php
                 $array = selectAllFriendsWhereEmail($_SESSION["email"]);
                 foreach ($array as $value) {
@@ -34,7 +35,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
             </div>
         </div>
         <div class="allTab">
-            <h1>tous les groupes :</h1>
+            <h1>Tous les groupes :</h1>
                 <?php
                 $array = selectAllGroupes($_SESSION["email"]);
                 foreach ($array as $value) {
@@ -49,7 +50,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                 }
                 ?>
         </div>
-        <a href="new_group.php">New Group</a>
+        <a href="new_group.php" class="groupe">Cliquer-ici pour créer un nouveau groupe</a>
     </body>
 
     </html>

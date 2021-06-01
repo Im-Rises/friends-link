@@ -1,7 +1,4 @@
-@font-face {
-    font-family: "Aladin";
-    src        : url("Aladin-Regular.ttf");
-}
+
 
 html {
     height: 100%;
@@ -252,8 +249,49 @@ body {
 }
 
 h1 {
-    font-family   : "Aladin";
+    font-family   : "Poppins";
     color         : white;
     text-align    : center;
     letter-spacing: 5px;
+}
+
+.nommer {
+    font-family   : "Poppins";
+    color         : #F4DBD8;
+    text-align    : center;
+    letter-spacing: 5px;
+    font-size: large;
+}
+
+.groupe input{
+    width           : 300px;
+    font-size       : 150%;
+    background-color: #592955;
+    color           : #F4DBD8;
+    border          : none;
+    padding         : 5px;
+    margin-top      : 5px;
+    display: block; 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+}
+.groupe legend{
+    color:#F4DBD8;
+    font-size: xx-large;
+
+}
+.envoyer {
+    width           : 200px;
+    font-size       : 20px;
+    background-color: #D26B60;
+    color           : #F4DBD8;
+    border          : none;
+    padding         : 2px;
+    display: block;
+    margin-right: auto ;
+    margin-left: auto;
+    margin-top: 20px;
+
 }
