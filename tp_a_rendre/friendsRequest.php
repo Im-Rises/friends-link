@@ -31,7 +31,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                 echo "
                     <br>
                     <tr>
-                        <td>" . recupImageEmail($emails['adresse_mail']) . "</div>
+                        <td><img src='" . recupImageEmail($emails['adresse_mail']) . "' class='pdp'></div>
                         <td>$emails[prenom]</td>
                         <td>$emails[nom]</td>
                         <td>$emails[adresse_mail]</td>
@@ -63,7 +63,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                 echo "
                     <br>
                     <tr>
-                        <td>".recupImageEmail($emails['adresse_mail'])."</div>
+                        <td><img src='".recupImageEmail($emails['adresse_mail'])."' class='pdp'></div>
                         <td>$emails[prenom]</td>
                         <td>$emails[nom]</td>
                         <td>$emails[adresse_mail]</td>
