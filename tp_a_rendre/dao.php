@@ -447,9 +447,9 @@ function recupImageEmail($email)
     $balise = "";
 
     if (file_exists("images/profiles/$email")) {
-        $balise = "<img src='images/profiles/$email' width='100' class='pdp'>";
+        $balise = "images/profiles/$email";
     } else {
-        $balise = "<img src='images/profiles/unknown.png' width='50' height='50' class='pdp'>";
+        $balise = "images/profiles/unknown.png";
     }
 
     return $balise;
@@ -461,9 +461,9 @@ function recupImageGroupe($idGroupe)
     $balise = "";
 
     if (file_exists("images/groupes/$idGroupe")) {
-        $balise = "<img src='images/groupes/$idGroupe' width='100'>";
+        $balise = "images/groupes/$idGroupe";
     } else {
-        $balise = "<img src='images/profiles/unknown.png' width='50' height='50'>";
+        $balise = "images/profiles/unknown.png";
     }
 
     return $balise;
@@ -540,6 +540,38 @@ function selectLastPostIdMembre($email)
     $email = protection($email);
 
     $req = "SELECT id_post FROM post WHERE email_posteur='$email' AND datePost >= ALL (SELECT datePost FROM post WHERE email_posteur='$email');";
+
+    return exeReq($req);
+}
+
+function insertIntoPost_Message($id_post, $email_posteur,$message_post)
+{
+    $id_post=protection($id_post);
+    $email_posteur=protection($email_posteur);
+    $message_post=protection($message_post);
+
+    $req = "INSERT INTO post_message VALUES (NULL,$id_post, '$email_posteur', NOW(), '$message_post');";
+
+    return exeReq($req);
+}
+
+function selectMessagesFromPost($id_post)
+{
+    $id_post=protection($id_post);
+
+    //$req= "SELECT id_message FROM post_message WHERE id_post=$id_post;";
+
+    $req= "SELECT M.adresse_mail, M.nom, M.prenom, PM.message_post_text, PM.datePost FROM membre M JOIN post_message PM ON M.adresse_mail=PM.email_posteur WHERE PM.id_post=$id_post ORDER BY datePost DESC;";
+
+    return exeReq($req);
+}
+
+
+function verifPostExiste($id_post)
+{
+    $id_post= protection($id_post);
+
+    $req="SELECT 1 FROM post WHERE id_post=$id_post;";
 
     return exeReq($req);
 }
