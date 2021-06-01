@@ -44,9 +44,6 @@ if (!isset($_SESSION["email"])) {
 ?>
 
     <body>
-        <div>
-            <?php include "postCreation.php"; ?>
-        </div>
 
         <?php
         $utilisateur = mysqli_fetch_array(selectMembreWhereEmail($_SESSION["email"]));
@@ -54,6 +51,8 @@ if (!isset($_SESSION["email"])) {
 
 
         <div class="listeDesPosts">
+        <a href="postCreation.php">Nouveau Post</a>
+
             <?php
             $listePosts = selectPostsFromAmis($_SESSION['email']);
 
@@ -74,7 +73,7 @@ if (!isset($_SESSION["email"])) {
                         ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>"
                         : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
                     echo "
-                <div class='post'>
+                <article class='post'>
                     <div class='insidePost'>
                         <h1>$post[titre]</h1>
                         <p>$post[datePost]</p>
@@ -92,7 +91,7 @@ if (!isset($_SESSION["email"])) {
                         </div>
                     </div>
 
-                </div>";
+                </article>";
                     // echo "</a>";
                 } else {
                     $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
@@ -103,7 +102,7 @@ if (!isset($_SESSION["email"])) {
                         : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
 
                     echo "
-                <div class='post'>
+                <article class='post'>
                     <div class='insidePost'>
                         <h1>$post[titre]</h1>
                         <p>$post[datePost]</p>
@@ -113,18 +112,7 @@ if (!isset($_SESSION["email"])) {
                             <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter</a>
                         </div>
                     </div>
-                </div>";
-                    // echo "<div>";
-                    // echo "<a href='show_post.php?idPost=$post[id_post]'>";
-                    // echo "<p>$post[email_posteur]</p>";
-                    // echo "<p>$post[titre]</p>";
-                    // echo "<p>$post[post_text]</p>";
-                    // echo "<p>$post[datePost]</p>";
-                    // // echo "<form method='post'>
-                    // // <input type='submit' name='liker' value='Liker' />
-                    // // </form>";
-                    // echo "</a>";
-                    // echo "</div>";
+                </article>";
                 }
             }
 

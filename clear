@@ -1,0 +1,778 @@
+[33mcommit 4d3b04c3502ff7a79d3d0f5295e2c72d091576fd[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue Jun 1 19:20:22 2021 +0200
+
+    affichage du fond circulaire partout'
+
+[33mcommit d9311bc44e6e260310dd7fffd890d6bbf6e4ec20[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Tue Jun 1 19:08:21 2021 +0200
+
+    Correction 2 du bug d'images
+
+[33mcommit 0c23ff767f5a0cb0e25e6849ee72aabb56df60d5[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Tue Jun 1 19:06:49 2021 +0200
+
+    Correction du bug d'images
+
+[33mcommit eb702993280c8bc580f266b1fa4181f3cb02f1d2[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue Jun 1 19:01:39 2021 +0200
+
+    encore des corrections sur le css de la creation des postes
+
+[33mcommit 270a962ec6bac4b7aa42c9ae77fabe25cc640e62[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue Jun 1 19:00:17 2021 +0200
+
+    css different sur la creation des postes
+
+[33mcommit b03140971288b2576924b7fb6c7be2da12367c33[m
+Merge: 5fd49d3 bd3d19b
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue Jun 1 18:50:47 2021 +0200
+
+    Merge branch 'main' of https://github.com/clementreiffers/tp_php
+
+[33mcommit 5fd49d32dc3eff91e7c2edf5863cc5f52e63d557[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue Jun 1 18:50:44 2021 +0200
+
+    css sur la cration des publications
+
+[33mcommit bd3d19b73d47a116cc0b504848f00e1ac2b7aede[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Tue Jun 1 18:50:09 2021 +0200
+
+    Modif balise image de profil
+
+[33mcommit 3724f8abde27775485ccd37132162e964fd9b803[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue Jun 1 17:59:13 2021 +0200
+
+    systeme de like fonctionnel
+
+[33mcommit b675d14db2502eb06a671cd856aeaa0f1d16b21f[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue Jun 1 17:36:35 2021 +0200
+
+    css un peu plus ressemblant sur les publications
+
+[33mcommit 2ffbf24285373160d75eddd08302d9237d9b4d15[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue Jun 1 16:49:09 2021 +0200
+
+    commencement du css pour les postes
+
+[33mcommit ceaeb7c642f9d0393c4957dec4d23349ed29f9e4[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Tue Jun 1 16:14:35 2021 +0200
+
+    Commit des posts
+
+[33mcommit 7f537926983591fbe405d4784d55544f8ead934c[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sun May 30 21:52:06 2021 +0200
+
+    Formatage du code de la DAO
+
+[33mcommit 96a3ade17e7c3a8e901e86626cf049b23cd0182e[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sun May 30 21:33:10 2021 +0200
+
+    Correction bug d'amitié
+
+[33mcommit bdb8c46058d5668e7b9b0a4cf2c75abbce52541a[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 30 21:17:09 2021 +0200
+
+    design revu sur l'afficage de tous les messages
+
+[33mcommit 57c85853fe9297a8190843114f373e8b91b9702b[m
+Merge: c7e4b02 4fcd3d0
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sun May 30 20:54:04 2021 +0200
+
+    Merge branch 'main' of https://github.com/clementreiffers/tp_php
+
+[33mcommit c7e4b0275e7ea3f4848a4b260b9443dde6a92089[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sun May 30 20:53:57 2021 +0200
+
+    Ajout de l'affichage des posts
+
+[33mcommit 4fcd3d09033a8885fb4f3377bb2f9ce3eda9aed0[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 30 19:59:39 2021 +0200
+
+    correction css sur la barre de recherche dans les discussions
+
+[33mcommit 336dcd2d73c044d7fdeb712710bf84af4eb1e9de[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sun May 30 01:41:00 2021 +0200
+
+    Ajout de la possibilité de mettre un image sur post
+
+[33mcommit d828ee71c80dde0bd230e179dfa61c2d927b3d35[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sat May 29 22:54:30 2021 +0200
+
+    Ajout de la création de posts
+
+[33mcommit fd41275c52b4a8fd62dd5c4225f6100ae0955bf4[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sat May 29 20:41:41 2021 +0200
+
+    Mise à jour de la BDD pour l'ajout de posts.
+
+[33mcommit 8158b8dc404da775ba6f7abdf50fb6e6a92dfc18[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sat May 29 18:29:05 2021 +0200
+
+    css appliqué sur la barre de recherche dans les discussions
+
+[33mcommit 9d28a5c796cadfb352e371da694880e3abd00f1c[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sat May 29 18:07:31 2021 +0200
+
+    correction d'un bug pour activer oui ou non indexBan.css
+
+[33mcommit 5b68fff6faaa8dd83a2e2c7f04335ffa22f7390d[m
+Author: dorinebrun <dorine.brun@esme.fr>
+Date:   Sat May 29 16:42:28 2021 +0200
+
+    changement police register & login
+
+[33mcommit c9419f1d5e0e044de5905745689086b5f53ba646[m
+Author: dorinebrun <dorine.brun@esme.fr>
+Date:   Sat May 29 16:29:51 2021 +0200
+
+    css register + a_propos
+
+[33mcommit bec4a3b1d51ca492dfae7c56217bb7e479c0f536[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue May 25 12:51:44 2021 +0200
+
+    ajout de la modification du nom du groupe
+
+[33mcommit 302a55a49ea46a1b4738e96a230ae0194c7f8eb8[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue May 25 12:28:37 2021 +0200
+
+    bug d'affichage de certaines images réglé
+
+[33mcommit a64d64a506128bfd6d149377635a14d5d99ec6fc[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue May 25 12:24:02 2021 +0200
+
+    application de la police arial sur le login.php
+
+[33mcommit 88949efd0bea91d815d925d9fa9bc21d1547a59b[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue May 25 12:23:06 2021 +0200
+
+    css de la page d'index fait, et probleme de logo reglé
+
+[33mcommit fbf3ead339e43014733300585bc168fa57885c8f[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue May 25 10:36:14 2021 +0200
+
+    css de la bannière presque au point il ne manque plus qu'à trouver le moyen que l'image de la bannière devienne plus grosse si on est sur index.php
+
+[33mcommit 83ceb920e3aa7fbe9d7cd2214d1c54f7d51ad9ee[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue May 25 01:08:43 2021 +0200
+
+    ajout du css comme sur le power point de :
+    - login.php
+    - index.php
+
+[33mcommit 8bb125c0fa7cb9e9fe19d296ac3a737d037ba1ac[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Mon May 24 18:14:33 2021 +0200
+
+    cette mise à jour concerne :
+    - le css a été corrigé, les images des messages sont sortis de la bulle de discussion et sont centrés par rapport au texte
+    - les noms de groupe, et des interlocuteurs sont maintenant centrés avec le nom du groupe ou de l'interlocuteur
+    - le refresh sur les discussions de groupe a été implémenté
+
+[33mcommit 57ebed858b9af39bf99bca17b4014dfe419a89c6[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sun May 23 16:11:13 2021 +0200
+
+    Ajout des images de profils sur les discussions persos
+
+[33mcommit 3f291608d68ebdb1bbf708dfa503e00912cfe2c6[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sat May 22 23:35:02 2021 +0200
+
+    Ajout de la modification de l'image de groupe ainsi que de sa modification
+
+[33mcommit 8d365b2e8f87135e7c38851a7bb80d33cf2adb89[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sat May 22 21:08:27 2021 +0200
+
+    Ajout de la visualisation d'image des profils des membres
+
+[33mcommit fd3bfea6e7176396598486eccee904ff6773a55c[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sat May 22 20:41:15 2021 +0200
+
+    Ajout de la limitation de la taille d'image envoyé sur le serveur
+
+[33mcommit 12c0afb6d00a358118c05ce732bb66fd8adf389c[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sat May 22 18:31:34 2021 +0200
+
+    Ajout de quelques notes à faire sur la page d'index
+
+[33mcommit 32618ff994d04306e11f71f6654060cc37e96641[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sat May 22 17:32:31 2021 +0200
+
+    ajout d'utilisateurs en tant qu'admin dans les groupes
+
+[33mcommit 329b8a5bad59a801f6a259c2a5dce4640eee8d42[m
+Merge: 7b4ca51 50bc876
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sat May 22 17:22:11 2021 +0200
+
+    Merge branch 'main' of https://github.com/clementreiffers/tp_php
+
+[33mcommit 7b4ca51a1b3fd783de03356da0cdafb6b6e6b877[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sat May 22 17:22:05 2021 +0200
+
+    Ajout de la visualisation du profil de l'utilisateur
+
+[33mcommit 50bc8764f48709ad0a5877a33a28546a6f57bceb[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sat May 22 17:03:56 2021 +0200
+
+    suppression des membres d'un groupe ajoute
+
+[33mcommit f55fd55cbc457f973ffc7b9cbbc133fa05399fd9[m
+Merge: 292189a 9a36578
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sat May 22 15:53:23 2021 +0200
+
+    Merge branch 'main' of https://github.com/clementreiffers/tp_php
+
+[33mcommit 292189a3dcf022ef0295c29ede1075afe8b4433d[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sat May 22 15:53:15 2021 +0200
+
+    Ajout d'une page pour envoyer des image sur le serveur
+
+[33mcommit 9a3657851b7693a169c77a8f66ff4c0816c53e96[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sat May 22 15:48:22 2021 +0200
+
+    amelioration sur le systeme d'ajout des membres :
+    - maintenant, uniquement les membres qui n'étaient pas encore dans le groupe s'affichent dans la recherche
+
+[33mcommit 8b5a5520e982b3ae01298e250f516330de3a8a00[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sat May 22 12:42:31 2021 +0200
+
+    ajout de membres au groupe ok mais la requete qui cherche les membres qui ne sont pas encore dans le groupe bug
+
+[33mcommit 69453d5c94062c402a71445a469a6a49deed3461[m
+Merge: 1d8ab62 61d05c1
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sat May 22 12:04:31 2021 +0200
+
+    Merge branch 'main' of https://github.com/clementreiffers/tp_php
+
+[33mcommit 1d8ab62cb1f26f17e8056f6410cd40f8bb4cee98[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sat May 22 12:04:24 2021 +0200
+
+    ajout d'un menu de settings permettant de :
+    - modifier le nom du groupe
+    - ajouter des membres au groupe
+    - ajouter des administrateurs au groupe
+
+[33mcommit 61d05c11183d8627dc1c874cd845d5334ca613f3[m
+Merge: 16adf27 153ccd5
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sat May 22 11:26:59 2021 +0200
+
+    Ajout de la recherche de personne et de la demande d'ami (accepter, refuser, annuler)
+
+[33mcommit 16adf27cc88ce8810428bc594950571278b7a1da[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Sat May 22 11:26:02 2021 +0200
+
+    Ajout de la recherche de personne et de la demande d'ami (accepter, refuser, annuler)
+
+[33mcommit 153ccd572f0b5191b3fdbb5b4fd345bda634b1bf[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sat May 22 11:04:40 2021 +0200
+
+    modification bdd
+    creation des groupes, mais on ne peut pas encore ajouter des membres dans ce groupe
+
+[33mcommit e12fcd7510416e08a5304c9d161856e068fcb45a[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Thu May 20 19:54:58 2021 +0200
+
+    enlevement du preg match pour l'email
+
+[33mcommit 83b8a20376f1c6a4f5728cb05f2b76cb8cf376f9[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Thu May 20 10:00:29 2021 +0200
+
+    groupe de messages fonctionnel mais pas encore de refresh
+
+[33mcommit 1acb24547f35f0c2a10b7c6fbc389e5dfc39a663[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Thu May 20 09:24:28 2021 +0200
+
+    reduction du code dao.php, correction de la bannière
+
+[33mcommit 3889cd80047f8931e27a65555a0ef8e66edd6f99[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Thu May 20 08:21:32 2021 +0200
+
+    centralisation de la protection des variables par une fonction dans le dao
+
+[33mcommit ccb07af5a69a26eb40569fc83d5582da4c516c7d[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Wed May 19 22:14:21 2021 +0200
+
+    affichage des groupes dans la messagerie mais on ne peut pas encore envoyer des messages de groupes
+
+[33mcommit 7cfdf9ea2449e79b628f918e91aa46649e93e76e[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Wed May 19 22:00:54 2021 +0200
+
+    corrections graphiques sur l'affichage des messages
+
+[33mcommit 7345c11dc046a6e63ab113e9e3a8c8cdc4db5cf1[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Wed May 19 12:45:14 2021 +0200
+
+    Correction bug div
+
+[33mcommit 15ef78e6fff60101bdc45e9da80456daf0d1527c[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Wed May 19 12:32:37 2021 +0200
+
+    Correction d'un bug de manque d'une balise
+
+[33mcommit bc158bf9fc4a0ec2d91998b0f6fa83c9d33d578c[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Wed May 19 12:32:33 2021 +0200
+
+    Correction d'un bug de manque d'une balise
+
+[33mcommit 8881e29f8191321d1c63271711a29ada89ca3936[m
+Merge: c9964f2 3ffe0aa
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Wed May 19 12:25:40 2021 +0200
+
+    Merge branch 'main' of https://github.com/clementreiffers/tp_php
+
+[33mcommit c9964f20b8e0c26d4e0ee4861471747e171ddf3b[m
+Author: Im-Rises <quentin-pimbole@hotmail.fr>
+Date:   Wed May 19 12:25:30 2021 +0200
+
+    Ajout de la page de gestion des demandes d'ami
+
+[33mcommit 3ffe0aa78083738953a196b1d74f61f620c5a611[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Wed May 19 10:44:43 2021 +0200
+
+    amelioration du systeme de recherche
+
+[33mcommit ae8a852eea6675107679baa4f17197f4dc86c5ea[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Wed May 19 10:40:12 2021 +0200
+
+    amelioration du systeme de recherche
+
+[33mcommit c7320119f58574fc0bf110adbaac35c49d87d4bd[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Wed May 19 10:37:52 2021 +0200
+
+    systeme de recherche qui recherche parmis tous les membres les informations
+
+[33mcommit d563494a659bfcff7b9552af6afe3e105d982c90[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Wed May 19 10:18:53 2021 +0200
+
+    correction bug messagerie et ajout d'un ami ok via les requetes sql
+
+[33mcommit 4bbf15b886fe0c7606ec8c5388cd6391a1db7530[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Wed May 19 00:09:07 2021 +0200
+
+    affichage des messages de maniere stylée
+
+[33mcommit 19595f380f2c58225fa8e6f55d4de28f8ea20844[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue May 18 19:14:34 2021 +0200
+
+    corrections de css et affichage de la bannière partout
+
+[33mcommit acd07f971e3d00e9176a8138b1e4f33d6bda4391[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue May 18 10:08:09 2021 +0200
+
+    interface utilisable mais rustique pour le moment, probleme de la messagerie et de la recherche corrigé
+
+[33mcommit 969cb9db63ddf64ab358e8907b4e025d9c2a8827[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue May 18 09:23:48 2021 +0200
+
+    ajout d'une bannière
+
+[33mcommit 038896649c9ae770733cf222b6cc8b7f5f83c640[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Mon May 17 22:54:13 2021 +0200
+
+    Correction d'une fonction dupliquée. Note, il faut voir comment gérer si un bug survient lors de la création d'une amitié et de l'appel des deux tables
+
+[33mcommit 4201d7a0ea354f59d52e37b8a958557e255ef28f[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Mon May 17 22:52:31 2021 +0200
+
+    Ajout des requêtes de consulation des demandes d'ami ainsi que de la création d'une amitié
+
+[33mcommit db2b08ab3f4ec5e11cb250f138cb8d9a45527afc[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Mon May 17 22:08:38 2021 +0200
+
+    systeme de recherche fonctionnel
+
+[33mcommit be08bd4319a5fc76fe3315ee467770325cb45d5a[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Mon May 17 10:51:40 2021 +0200
+
+    bdd.php delete
+
+[33mcommit 67a8b4b939e87c0bb97678242e2fc36f4327d723[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Mon May 17 10:51:04 2021 +0200
+
+    login et register fonctionnels, bdd modifie, l'adresse mail d'un membre ne peut être nulle
+
+[33mcommit 7c26f0c130a83eb970df600f9eecc205aa9a5ab4[m
+Author: dorinebrun <dorine.brun@esme.fr>
+Date:   Mon May 17 09:59:57 2021 +0200
+
+    log et register
+
+[33mcommit 3680d5b6f29a5478031116dfa37ec19363bf78c3[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Mon May 17 09:58:23 2021 +0200
+
+    affichage de toutes les discussions entamees
+
+[33mcommit 1718f547071cc251b8b1335f00793fd41996fbb6[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Mon May 17 09:18:56 2021 +0200
+
+    ajout du mot de passe en champ dans la table membre
+
+[33mcommit 6443297865327a46573444e51eb34ebee46534b0[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Mon May 17 09:15:12 2021 +0200
+
+    affichage de tous les msgs toutes les secondes
+
+[33mcommit 7ce752fe053a2246500b41be5cde94618f7491b1[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Mon May 17 00:33:32 2021 +0200
+
+    messagerie fonctionnelle mais sans sessions ni rechargement de la page automatique lors de nouveaux messages reçus
+
+[33mcommit 58fdce2fd15fa8fb06b7a40d24bb8dd2e25bd1e3[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Mon May 17 00:16:50 2021 +0200
+
+    correction bdd
+
+[33mcommit 3e3266ce38783230de71ed2f6e318aaad28c145f[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 16 23:57:24 2021 +0200
+
+    correction de la connexion a la bdd
+
+[33mcommit 2cdaf8654c4553ce647500efd4a26c4899a093a2[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Sun May 16 23:49:44 2021 +0200
+
+    COrrection des requêtes non-bashienne
+
+[33mcommit 502eea89f740e82b7a6a52541111c50bc56c4537[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Sun May 16 23:46:18 2021 +0200
+
+    Ajout des requêtes INSERT INTO
+
+[33mcommit 5e43cf4c0edc8970f68758597bf94162bee70fe7[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Sun May 16 23:15:27 2021 +0200
+
+    Maj BDD
+
+[33mcommit 18122ca2328e5c8b7b6df39a5fb95fcdc5cde243[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 16 23:07:04 2021 +0200
+
+    ajout de l'affichage des problemes si une commande sql est mal utilisee
+
+[33mcommit 46f0cc2c3aa9cc51d455b982d39e13ded65a9baf[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 16 23:05:20 2021 +0200
+
+    insertIntoMessageDiscussion correction de la date
+
+[33mcommit a357c5179dcdf097b80205ecb8f63cf219196820[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 16 23:02:30 2021 +0200
+
+    insertIntoMessageDiscussion implemented
+
+[33mcommit 3b95945b7589b60661a6c754ea71c06d819c732b[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 16 22:52:56 2021 +0200
+
+    requetes de quention utilisables
+
+[33mcommit c567f0c13d9602d5ed06365093117d816cffdb62[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Sun May 16 22:50:51 2021 +0200
+
+    Maj BDD
+
+[33mcommit c17adcc3f5581c3979b2d93740b4d2110da82d40[m
+Merge: 8c47a4d 897f1e1
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Sun May 16 22:45:24 2021 +0200
+
+    Ajout des requêtes QUentin
+
+[33mcommit 8c47a4d063c6d7ceb3a993c7cc452ce58dafc78d[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Sun May 16 22:40:14 2021 +0200
+
+    Test
+
+[33mcommit 897f1e14691ddb46eeca1361165a6cd073dccef9[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 16 22:19:30 2021 +0200
+
+    insertIntoMembre implemented
+
+[33mcommit 73b452578f779debed7ff3606fa37d86e65bf589[m
+Merge: b44cda0 00e117e
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Sun May 16 22:02:56 2021 +0200
+
+    Merge branch 'main' of https://github.com/clementreiffers/tp_php
+
+[33mcommit b44cda07ba3d0e3ea106923b7c66a1718377fdc5[m
+Merge: 4e99fc5 019111c
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Sun May 16 22:02:52 2021 +0200
+
+    Maj2 xD
+
+[33mcommit 00e117e7a34756b3122bf07b4cc601e0854ae70d[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 16 22:01:30 2021 +0200
+
+    selectAllFriendsWhereEmail implemented
+
+[33mcommit 4e99fc591ac633fe6b56363b91409d15eb57b2a5[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Sun May 16 21:58:05 2021 +0200
+
+    Ajout reqûete v1
+
+[33mcommit 019111c6047de06a16b51e4d7931048e72f9e4bb[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 16 21:57:30 2021 +0200
+
+    selectDiscussionsWithTwoEmail implemented
+
+[33mcommit b925d6359ec034b9dd8f3591b04bd6752c394681[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 16 21:52:36 2021 +0200
+
+    selectDataMembersWhereEmail implemented
+
+[33mcommit a611f4b124dee4775a5ab68dbe5eef3913e3ece8[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 16 21:47:13 2021 +0200
+
+    separation des requetes sql entre q et c
+
+[33mcommit 41440956ed43640b5f5bbe3d8ea06431fe1dae81[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 16 21:45:46 2021 +0200
+
+    ajout des choses à faire dans dao.php
+
+[33mcommit 7bb57255f6f4762ae80de705514a9658e551c2cc[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 16 21:38:38 2021 +0200
+
+    ajout de dao.php
+
+[33mcommit cb7284489a8b4a92ac8c063960d6df623872eb7a[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Sun May 16 21:35:44 2021 +0200
+
+    Je fais mon commit
+
+[33mcommit 183217f6debdfb88f83292d34b331ad348e8a3eb[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sun May 16 21:25:47 2021 +0200
+
+    ajout de bdd.sql
+
+[33mcommit df03dde3eae584868910fc2da3309a2d19e2d622[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Sat May 15 17:18:49 2021 +0200
+
+    debut de creation du fichier sql
+
+[33mcommit f5959973aec149bfa816c594625e6e92fba05d05[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Fri May 14 16:31:27 2021 +0200
+
+    creation du dossier du tp à rendre
+
+[33mcommit f2326e629f8a8cdab44005128a76f57ef4f80ee5[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Fri May 14 13:14:45 2021 +0200
+
+    Ajout de l'affichage des livres par auteur
+
+[33mcommit b7a19b0c88fb714be31d84504b3489b5a3bc869a[m
+Merge: c99f1dd f085246
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Fri May 14 12:31:23 2021 +0200
+
+    Merge branch 'main' of https://github.com/clementreiffers/tp_php
+
+[33mcommit c99f1dd7a9cfdbc446efe70b97a4a82172bdedc9[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Fri May 14 12:31:16 2021 +0200
+
+    ajout index.php auteur
+
+[33mcommit f085246d459c87c831ebf7381aac3eb1bf874a0b[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Fri May 14 12:25:32 2021 +0200
+
+    dao.php un peu plus clean
+
+[33mcommit 9fe019be3f14f262b1edafd7b2c942032d0abda6[m
+Author: dorinebrun <dorine.brun@esme.fr>
+Date:   Fri May 14 12:20:18 2021 +0200
+
+    dao.php
+
+[33mcommit c80948488aa36448074b23e55edcbaa560f6ab10[m
+Merge: 6af9b29 d7947ea
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Fri May 14 11:59:00 2021 +0200
+
+    Merge branch 'main' of https://github.com/clementreiffers/tp_php
+
+[33mcommit 6af9b29cb9abe1cccbee71a68214434d250386c6[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Fri May 14 11:58:53 2021 +0200
+
+    Ajout page de suppression fonctionnelle
+
+[33mcommit d7947ea5dcb844ce4e71fb43412bbca992ebfed3[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Fri May 14 11:58:39 2021 +0200
+
+    ajouter.php fonctionnel
+
+[33mcommit 448dad970650fdbf9f31f95ab3472442643e9a5b[m
+Author: dorinebrun <dorine.brun@esme.fr>
+Date:   Fri May 14 11:34:49 2021 +0200
+
+    ajouter.php
+
+[33mcommit 99bcedcd6cf27fa8332fccfb26a98e26c41ccc8d[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Fri May 14 11:28:54 2021 +0200
+
+    Ajout du code de suppression
+
+[33mcommit be3d17273f4b1d3e7f573092b5f859a2a8d19b54[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Fri May 14 11:28:03 2021 +0200
+
+    Ajout du code de suppression
+
+[33mcommit 1ac8e15169041111225c85432a29e547d22e3c09[m
+Merge: 38ad0a1 1c6089f
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Fri May 14 11:24:53 2021 +0200
+
+    Merge branch 'main' of https://github.com/clementreiffers/tp_php
+
+[33mcommit 38ad0a1e763615d1cf396283a778fd6e3e98ead0[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Fri May 14 11:20:40 2021 +0200
+
+    ajout d'un fichier 'dao.php'
+
+[33mcommit 1c6089fef5265d1559a39895ba4f48155986e08b[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Fri May 14 11:06:11 2021 +0200
+
+    Ajout du code de suppression
+
+[33mcommit dbf69570c8ce4478cf88526512be40d6687c76e6[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Fri May 14 11:04:07 2021 +0200
+
+    fichier sql pour creer la bdd dans entrainement 2
+
+[33mcommit fb731d5e7bbca9ec4a381acf9b1b63625f13dad9[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Fri May 14 10:46:58 2021 +0200
+
+    ajout de index.php et de bdd.sql
+
+[33mcommit 34c60d5fb9cb577cdaeaea00e6b3d71e04c6327c[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Fri May 14 10:27:48 2021 +0200
+
+    creation du fichier pour notre 2eme entrainement
+
+[33mcommit 2621486a72b82e0d45583e9e3701f970bc463275[m
+Author: clementreiffers <reiffersclement@gmail.com>
+Date:   Tue May 11 19:27:41 2021 +0200
+
+    ajout de l'entrainement tp
+
+[33mcommit 59be7f039b5928185da0c0cbe469337c94924df5[m
+Author: dorinebrun <dorine.brun@esme.fr>
+Date:   Tue May 11 18:54:07 2021 +0200
+
+    Remind.txt
+
+[33mcommit 9b6e0018b956d3f35586b19976f2c5c15ac330b4[m
+Author: Im-Rises <Quentin-morel88@hotmail.com>
+Date:   Tue May 11 18:46:08 2021 +0200
+
+    Ajout du contexte
+
+[33mcommit 0c2ed74b81b30b5f5da254d6d0fe48346a57c783[m
+Author: clementreiffers <44473020+clementreiffers@users.noreply.github.com>
+Date:   Tue May 11 18:39:36 2021 +0200
+
+    Initial commit
