@@ -4,13 +4,20 @@
 }
 
 html {
-    background-color: #541254;
-    height          : 100%;
+    height: 100%;
+}
+
+body {
+    margin               : 0;
+    height               : 100%;
+    background-repeat    : no-repeat;
+    background           : radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
+    background-attachment: fixed;
 }
 
 .allTab {
     background-color: #33032F;
-    width: 50%;
+    width           : 50%;
 }
 
 
@@ -54,11 +61,6 @@ html {
     cursor          : pointer;
     background-color: black;
     color           : tomato;
-}
-
-body {
-    margin: 0;
-    height: 100%;
 }
 
 .showTab {
