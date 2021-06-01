@@ -82,24 +82,32 @@ if (!isset($_SESSION["email"])) {
             // Afficher la liste des posts des amis ici
             if ($post['image_post'] == 1) {
                 echo "<div>";
+                echo "<a href='show_post?idPost=$post[id_post]'>";
                 echo "<p>$post[email_posteur]</p>";
                 echo "<p>$post[titre]</p>";
                 echo "<p>$post[post_text]</p>";
                 echo "<p>$post[datePost]</p>";
                 echo "<img src='images/posts/$post[id_post]' width='50' height='50'>";
+                // echo "<form method='post'>
+                // <input type='submit' name='liker' value='Liker' />
+                // </form>";
+                echo "</a>";
                 echo "</div>";
             } else {
 
                 echo "<div>";
+                echo "<a href='show_post?idPost=$post[id_post]'>";
                 echo "<p>$post[email_posteur]</p>";
                 echo "<p>$post[titre]</p>";
                 echo "<p>$post[post_text]</p>";
                 echo "<p>$post[datePost]</p>";
-                //echo "<img src='images/posts/$post[id_post]' width='50' height='50'>";
+                // echo "<form method='post'>
+                // <input type='submit' name='liker' value='Liker' />
+                // </form>";
+                echo "</a>";
                 echo "</div>";
             }
         }
-
 
         ?>
 
