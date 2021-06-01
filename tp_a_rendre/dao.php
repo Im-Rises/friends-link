@@ -441,33 +441,7 @@ function deleteLikeWhereEmailAndIdPost($id_post, $email)
     return exeReq($req);
 }
 
-//Fonction de récuépration de l'image de l'adresse email envoyé en paramètre
-function recupImageEmail($email)
-{
-    $balise = "";
 
-    if (file_exists("images/profiles/$email")) {
-        $balise = "images/profiles/$email";
-    } else {
-        $balise = "images/profiles/unknown.png";
-    }
-
-    return $balise;
-}
-
-
-function recupImageGroupe($idGroupe)
-{
-    $balise = "";
-
-    if (file_exists("images/groupes/$idGroupe")) {
-        $balise = "images/groupes/$idGroupe";
-    } else {
-        $balise = "images/profiles/unknown.png";
-    }
-
-    return $balise;
-}
 
 // UPDATE 
 
@@ -574,4 +548,79 @@ function verifPostExiste($id_post)
     $req="SELECT 1 FROM post WHERE id_post=$id_post;";
 
     return exeReq($req);
+}
+
+
+function updateImageMembre($email, $nomImage)
+{
+    $email= protection($email);
+
+    $nomImage= protection($nomImage);
+
+    $req="UPDATE membre SET nomImage='$nomImage' WHERE adresse_mail='$email';";
+
+    return exeReq($req);
+}
+
+
+//Fonction de récuépration de l'image de l'adresse email envoyé en paramètre
+function recupImageEmail($email)
+{
+    $nomImage= selectNomImageFromEmail($email);
+
+    if ($nomImage['nomImage']!=NULL AND file_exists("images/profiles/$nomImage[nomImage]")) {
+        $image = "images/profiles/$nomImage[nomImage]";
+    } else {
+        $image = "images/profiles/unknown.png";
+    }
+
+    return $image;
+}
+
+
+function selectNomImageFromEmail($email)
+{
+    $email= protection($email);
+
+    $req="SELECT nomImage FROM membre WHERE adresse_mail='$email';";
+
+    return mysqli_fetch_array(exeReq($req));
+}
+
+
+
+
+function recupImageGroupe($idGroupe)
+{
+    $nomImage=selectNomImageFromGroupe($idGroupe)['nomImage'];
+
+    if (file_exists("images/groupes/$nomImage")) {
+        $chemin = "images/groupes/$nomImage";
+    } else {
+        $chemin = "images/profiles/unknown.png";
+    }
+
+    return $chemin;
+}
+
+
+
+function updateImageGroupe($idGroupe, $nomImage)
+{
+    $idGroupe=protection($idGroupe);
+
+    $nomImage= protection($nomImage);
+
+    $req="UPDATE groupe SET nomImage='$nomImage' WHERE id='$idGroupe';";
+
+    return exeReq($req);
+}
+
+function selectNomImageFromGroupe($idGroupe)
+{
+    $idGroupe= protection($idGroupe);
+
+    $req="SELECT nomImage FROM groupe WHERE id='$idGroupe';";
+
+    return mysqli_fetch_array(exeReq($req));
 }

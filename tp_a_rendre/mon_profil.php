@@ -17,6 +17,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     <body>
 
         <?php
+
         echo "<h1>$profil[prenom] $profil[nom]</h1>";
         echo "<a href=addImgServ.php><img src='" . recupImageEmail($profil['adresse_mail']) . "'></a>";
         ?>

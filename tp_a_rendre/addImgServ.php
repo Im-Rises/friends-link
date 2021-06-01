@@ -12,7 +12,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     </head>
 
     <body>
-
         <form action="" method="post" enctype="multipart/form-data">
             <label for="fileToUpload">Sélectionnez une image depuis votre appareil :</label></br>
             <input type="file" name="fileToUpload" accept="image/*"></br>
@@ -21,13 +20,20 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
         <?php
 
-
-        $imageName = $_SESSION['email'];
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+            $imageActuelle = "images/profiles/".selectNomImageFromEmail($_SESSION['email'])['nomImage'];
+
+            if ( $imageActuelle != NULL && file_exists($imageActuelle)) {
+                unlink($imageActuelle);
+            }
+
+            $imageName = $_SESSION['email'].date("Y-m-d").time();   
+
             if ($_FILES['fileToUpload']['size'] < 500000) {
+                updateImageMembre($_SESSION['email'], $imageName);
                 move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/profiles/$imageName");
+                header("Location: addImgServ.php");
             } else {
                 echo "<p>Fichier trop lourd, veuillez sélectionner une image de moins de 500ko</p>";
             }

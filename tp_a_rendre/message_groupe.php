@@ -30,9 +30,9 @@ require "ban.php";
 
     echo "
         <div class='show_name_img_grp'>
-            <h1>$nomGroupe</h1>"
+            <h1>$nomGroupe</h1><img src='"
         . recupImageGroupe($idGroupe) .
-        "</div>";
+        "' class='pdp'></div>";
 
 
     if (isAdmin($admins, $sender)) {
