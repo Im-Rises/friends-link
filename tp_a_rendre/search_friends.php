@@ -33,7 +33,7 @@
 
             echo "
                 <div class='divBody'>
-                    <a href='messages.php?receiver=$email'><div class='bodyElement'>".recupImageEmail($email)."</div></a>
+                    <a href='messages.php?receiver=$email'><div class='bodyElement'><img src='".recupImageEmail($email)."' class='pdp'></div></a>
                     <a href='messages.php?receiver=$email'><div class='bodyElement'>$nom</div></a>
                     <a href='messages.php?receiver=$email'><div class='bodyElement'>$prenom</div></a>
                     <a href='messages.php?receiver=$email'><div class='bodyElement'>$email</div></a>

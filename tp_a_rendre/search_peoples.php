@@ -34,7 +34,7 @@
             echo "
                 <br>
                 <div class='divBody'>
-                    <a href='?recherchePersonne=$email'><div class='bodyElement'>".recupImageEmail($value['adresse_mail'])."</div></a>
+                    <a href='?recherchePersonne=$email'><div class='bodyElement'><img src='".recupImageEmail($value['adresse_mail'])."' class='pdp'></div></a>
                     <a href='?recherchePersonne=$email'><div class='bodyElement'>$nom</div></a>
                     <a href='?recherchePersonne=$email'><div class='bodyElement'>$prenom</div></a>
                     <a href='?recherchePersonne=$email'><div class='bodyElement'>$email</div></a>

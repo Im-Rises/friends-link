@@ -6,6 +6,12 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     <!DOCTYPE html>
     <html>
 
+    <head>
+        <title>Modification image</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css">
+    </head>
+
     <body>
 
         <form action="" method="post" enctype="multipart/form-data">

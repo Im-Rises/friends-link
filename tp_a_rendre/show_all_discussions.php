@@ -23,7 +23,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
                     echo "
                     <div class='divBody'>
-                        <a href='messages.php?receiver=$receiver'><div class='pdpBodyElement'>" . recupImageEmail($receiver) . "</div></a>
+                        <a href='messages.php?receiver=$receiver'><div class='pdpBodyElement'><img src='" . recupImageEmail($receiver) . "' class='pdp'></div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$nom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$prenom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$receiver</div></a>
@@ -43,7 +43,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     echo "
                     <br>
                     <div class='divBody'>
-                        <a href='message_groupe.php?id=$id'><div class='bodyElement'>" . recupImageGroupe($id) . "</div></a>
+                        <a href='message_groupe.php?id=$id'><div class='bodyElement'><img src='" . recupImageGroupe($id) . "' class='pdp'></div></a>
                         <a href='message_groupe.php?id=$id'><div class='bodyElement'>$nom</div></a>
                     </div>";
                 }

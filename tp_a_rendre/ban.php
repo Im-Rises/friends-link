@@ -33,8 +33,7 @@ $_SERVER['REQUEST_URI'];
                 $prenom = $membre["prenom"];
 
                 echo "
-                        <a href='mon_profil.php' class='monProfil'>"
-                    . recupImageEmail($_SESSION["email"]) . "$nom $prenom
+                        <a href='mon_profil.php' class='monProfil'><img src='". recupImageEmail($_SESSION["email"]) . "' class='pdp'>$nom $prenom
                         </a>
                         <a href='show_all_discussions.php'>
                             Messaging

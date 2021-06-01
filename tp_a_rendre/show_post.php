@@ -1,6 +1,5 @@
 <?php
 include "ban.php";
-
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_array(verifPostExiste($_GET['idPost']))['1'] == 1) {
     $profil = selectMembreWhereEmail($_SESSION["email"]);
     $profil = mysqli_fetch_array($profil);
