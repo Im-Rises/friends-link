@@ -52,7 +52,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                         echo "
                     <br>
                     <div class='divBody'>
-                        <a href=''><div class='bodyElement'>" . recupImageEmail($receiver) . "</div></a>
+                        <a href=''><div class='bodyElement'><img src=''" . recupImageEmail($receiver) . "' class='pdp'></div></a>
                         <a href=''><div class='bodyElement'>$nom</div></a>
                         <a href=''><div class='bodyElement'>$prenom</div></a>
                         <a href=''><div class='bodyElement'>$receiver</div></a>
