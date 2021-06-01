@@ -1,0 +1,32 @@
+body {
+    margin               : 0;
+    height               : 100%;
+    background-repeat    : no-repeat;
+    background-attachment: fixed;
+    background-color     : #541254;
+}
+
+.post {
+    background-color: #33032F;
+    margin-left     : 25%;
+    margin-right    : 25%;
+    overflow        : auto;
+    max-height      : 500px;
+    color           : white;
+    margin-top      : 5px;
+}
+
+.post h1 {
+    text-align : left;
+    font-family: Arial;
+}
+
+.post img {
+    width: 500px;
+}
+
+.insidePost {
+    padding-left  : 25px;
+    padding-right : 25px;
+    padding-bottom: 25px;
+}

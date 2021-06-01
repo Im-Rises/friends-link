@@ -1,35 +1,19 @@
 <!DOCTYPE html>
 <html>
 
+<?php include "ban.php"; ?>
+
 <head>
     <title>Friends Link</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="index.css">
+    <?php
+    $css = isset($_SESSION["email"]) ? "indexLog.css" : "index.css";
+    echo "<link rel='stylesheet' href='$css'>";
+    ?>
 </head>
 <?php
 
-include "ban.php";
-
-// a executer si bdd supprimee et que flemme de refaire les etapes du site pour creer un compte
-
-// insertIntoMembre("clement.reiffers@esme.fr", "reiffers", "clement", "2000-11-15", "mdp");
-// insertIntoMembre("quentin.morel@esme.fr", "morel", "quentin", "1998-02-02", "mdp");
-// insertIntoMembre("dorine.brun@esme.fr", "brun", "dorine", "2000-05-05", "mdp");
-
-
-// insertIntoAmiDemandeAmi("clement.reiffers@esme.fr", "quentin.morel@esme.fr");
-// creerAmitie("clement.reiffers@esme.fr", "quentin.morel@esme.fr", 1);
-
-// insertIntoGroupe("groupe1");
-// insertIntoGroupeMembre(1, "clement.reiffers@esme.fr");
-// insertIntoGroupeMembre(1, "quentin.morel@esme.fr");
-// insertIntoGroupeMembre(1, "dorine.brun@esme.fr");
-
-// insertIntoAmiDemandeAmi("quentin.morel@esme.fr", "clement.reiffers@esme.fr");
-// insertIntoAmiDemandeAmi("dorine.brun@esme.fr", "quentin.morel@esme.fr");
-
-
-
+echo $css;
 
 
 if (!isset($_SESSION["email"])) {
@@ -66,46 +50,55 @@ if (!isset($_SESSION["email"])) {
 
         <?php
         $utilisateur = mysqli_fetch_array(selectMembreWhereEmail($_SESSION["email"]));
-
-        echo "<p>Bien le bonjour " . $utilisateur['prenom'] . " " . $utilisateur['nom'] . " </p>";
+        echo "<p>Bonjour " . $utilisateur['prenom'] . " " . $utilisateur['nom'] . " !</p>";
         ?>
 
-        <p>Quoi de neuf aujourd'hui ?</p>
+        <div>
+            <?php include "postCreation.php"; ?>
+        </div>
 
         <?php
-
-        require "postCreation.php";
-
         $listePosts = selectPostsFromAmis($_SESSION['email']);
 
         foreach ($listePosts as $post) {
             // Afficher la liste des posts des amis ici
-            if ($post['image_post'] == 1) {
-                echo "<div>";
-                echo "<a href='show_post?idPost=$post[id_post]'>";
-                echo "<p>$post[email_posteur]</p>";
-                echo "<p>$post[titre]</p>";
-                echo "<p>$post[post_text]</p>";
-                echo "<p>$post[datePost]</p>";
-                echo "<img src='images/posts/$post[id_post]' width='50' height='50'>";
+            if ($post['image_post']) {
+                // echo "<a href='show_post.php?idPost=$post[id_post]'>";
+                // echo "<p>$post[email_posteur]</p>";
                 // echo "<form method='post'>
                 // <input type='submit' name='liker' value='Liker' />
                 // </form>";
-                echo "</a>";
-                echo "</div>";
+                echo "
+                <div class='post'>
+                    <div class='insidePost'>
+                        <h1>$post[titre]</h1>
+                        <p>$post[post_text]</p>
+                        <p>$post[datePost]</p>
+                        <img src='images/posts/$post[id_post]'>
+                    </div>
+                </div>";
+                // echo "</a>";
             } else {
 
-                echo "<div>";
-                echo "<a href='show_post?idPost=$post[id_post]'>";
-                echo "<p>$post[email_posteur]</p>";
-                echo "<p>$post[titre]</p>";
-                echo "<p>$post[post_text]</p>";
-                echo "<p>$post[datePost]</p>";
-                // echo "<form method='post'>
-                // <input type='submit' name='liker' value='Liker' />
-                // </form>";
-                echo "</a>";
-                echo "</div>";
+                echo "
+                <div class='post'>
+                    <div class='insidePost'>
+                        <h1>$post[titre]</h1>
+                        <p>$post[post_text]</p>
+                        <p>$post[datePost]</p>
+                    </div>
+                </div>";
+                // echo "<div>";
+                // echo "<a href='show_post.php?idPost=$post[id_post]'>";
+                // echo "<p>$post[email_posteur]</p>";
+                // echo "<p>$post[titre]</p>";
+                // echo "<p>$post[post_text]</p>";
+                // echo "<p>$post[datePost]</p>";
+                // // echo "<form method='post'>
+                // // <input type='submit' name='liker' value='Liker' />
+                // // </form>";
+                // echo "</a>";
+                // echo "</div>";
             }
         }
 
