@@ -69,8 +69,9 @@ if (!isset($_SESSION["email"])) {
                     $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
                     $array = mysqli_fetch_array($array);
 
-                    $like = empty($array) 
-                        ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>" 
+
+                    $like = empty($array)
+                        ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>"
                         : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
                     echo "
                 <div class='post'>
@@ -87,7 +88,7 @@ if (!isset($_SESSION["email"])) {
                         </div>
                         <div class='actions'>
                             $like
-                            <a href='' class='actionPost'>Commenter</a>
+                            <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter</a>
                         </div>
                     </div>
 
@@ -97,8 +98,8 @@ if (!isset($_SESSION["email"])) {
                     $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
                     $array = mysqli_fetch_array($array);
 
-                    $like = empty($array) 
-                        ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>" 
+                    $like = empty($array)
+                        ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>"
                         : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
 
                     echo "
@@ -109,7 +110,7 @@ if (!isset($_SESSION["email"])) {
                         <p>$post[post_text]</p>
                         <div class='actions'>
                             $like
-                            <a href='' class='actionPost'>Commenter</a>
+                            <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter</a>
                         </div>
                     </div>
                 </div>";
