@@ -24,9 +24,7 @@ body {
     text-align     : center;
     justify-content: center;
     margin-top     : 25vh;
-    /* poussé de la moitié de hauteur de viewport */
     transform      : translateY(-25%);
-    /* tiré de la moitié de sa propre hauteur */
 }
 
 .login input {

@@ -1,9 +1,25 @@
 .newPost {
-    margin-top: 5%;
+    margin-top      : 5%;
+    background-color: #33032F;
+    margin-left     : 20%;
+    margin-right    : 20%;
+    padding         : 20px;
+
 }
 
-.titrePost, textarea, .file, .poster {
-    width       : 59%;
-    margin-left : 20%;
-    margin-right: 20%;
+.titrePost {
+    text-align: center;
+}
+
+.titrePost,
+textarea,
+.file,
+.poster {
+    margin-top      : 5px;
+    width           : 100%;
+    color           : #F4DBD8;
+    background-color: #592955;
+    padding         : 5px;
+    border          : none;
+    font-size       : 120%;
 }
