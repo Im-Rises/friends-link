@@ -569,11 +569,20 @@ function selectMessagesFromPost($id_post)
 }
 
 //Verifie qu'un post existe en envoyant son id en paramètre
-function verifPostExiste($id_post)
-{
-    $id_post= protection($id_post);
+// function verifPostExiste($id_post)
+// {
+//     $id_post= protection($id_post);
 
-    $req="SELECT 1 FROM post WHERE id_post=$id_post;";
+//     $req="SELECT 1 FROM post WHERE id_post=$id_post;";
+
+//     return exeReq($req);
+// }
+
+function verifEmailExiste($email){
+    $email= protection($email);
+
+    $req="SELECT 1 FROM membre WHERE adresse_mail='$email';";
+    //$req="SELECT 1 FROM membre WHERE adresse_mail='quentin.orel@esme.fr';";
 
     return exeReq($req);
 }
@@ -668,3 +677,4 @@ function deleteAmitie($emailUtilisateur, $emailAmi){
 
     exeReq($req);
 }
+
