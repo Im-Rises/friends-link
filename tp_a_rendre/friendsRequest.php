@@ -1,6 +1,5 @@
-<?php 
+<?php
 session_start();
-include "dao.php";
 //Si utilisateur connecté, affichage de la page
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 ?>
@@ -20,9 +19,10 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
     <body>
         <!-- Ajout de la page pour la recherche de personnes -->
-        <?php 
+        <?php
+        require "dao.php";
         include "ban.php";
-        include "search_peoples.php"; 
+        include "search_peoples.php";
         ?>
 
         <!-- Affiche la liste des demandes d'ami reçues en fonction de la personne connectée -->
