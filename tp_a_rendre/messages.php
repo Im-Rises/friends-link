@@ -1,7 +1,6 @@
     <?php
     session_start();
     include "dao.php";
-    include "ban.php";
     if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL and  $_GET["receiver"] != NULL) {
         $sender = $_SESSION["email"];
         $receiver = $_GET["receiver"];
@@ -31,11 +30,12 @@
             $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
             echo "<link rel='stylesheet' href='$css'>";
             ?>
-            <script type="text/javascript" src="refresh_discussions.js"></script>
+            <script src="refresh_discussions.js"></script>
         </head>
 
         <body>
             <?php
+            include "ban.php";
             $emailReceiver = $membreReceiver['adresse_mail'];
             echo "
             <div class='messageTo'><img src='"
@@ -61,7 +61,7 @@
                     $msg = $value["message_text"];
                     $date = $value["date_envoie"];
                     if ($dateTemp != $date) {
-                        echo "<center>--------- $date ---------</center>";
+                        echo "--------- $date ---------";
                         $dateTemp = $date;
                     }
                     if ($emailSender == $_SESSION["email"]) {
@@ -87,7 +87,7 @@
                 ?>
             </div>
             <div class="writeMsg">
-                <form action="" method="POST">
+                <form method="POST">
                     <input type="text" name="msg" class="write" placeholder="write your message here">
                     <input type="submit" class="sub" value="send">
                 </form>
