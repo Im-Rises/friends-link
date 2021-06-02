@@ -23,7 +23,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     </head>
 
     <?php
-    include "ban.php"; 
+    //include "ban.php"; 
     ?>
 
     <body>

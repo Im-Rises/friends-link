@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include "dao.php";
 ?>
@@ -21,14 +21,14 @@ include "dao.php";
     ?>
 </head>
 
-<?php 
-include "ban.php";
-
-if (!isset($_SESSION["email"])) {
-
-?>
-
 <body>
+
+    <?php
+    include "ban.php";
+
+    if (!isset($_SESSION["email"])) {
+
+    ?>
 
         <div class="noLog">
             <img src="friends_link.svg" class="logo" alt='logo de friends_link'>
@@ -60,24 +60,25 @@ if (!isset($_SESSION["email"])) {
 
         <div class="listeDesPosts">
             <a href="postCreation.php">Nouveau Post</a>
+        </div>
 
-            <?php
-            $listePosts = selectPostsFromAmis($_SESSION['email']);
+        <?php
+        $listePosts = selectPostsFromAmis($_SESSION['email']);
 
-            foreach ($listePosts as $post) {
-                // Afficher la liste des posts des amis ici
-                if ($post['image_post']) {
+        foreach ($listePosts as $post) {
+            // Afficher la liste des posts des amis ici
+            if ($post['image_post']) {
 
-                    $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
-                    $array = mysqli_fetch_array($array);
+                $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
+                $array = mysqli_fetch_array($array);
 
-                    $membre = selectMembreWhereEmail($post["email_posteur"]);
-                    $membre = mysqli_fetch_array($membre);
+                $membre = selectMembreWhereEmail($post["email_posteur"]);
+                $membre = mysqli_fetch_array($membre);
 
-                    $like = empty($array)
-                        ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>"
-                        : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
-                    echo "
+                $like = empty($array)
+                    ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>"
+                    : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
+                echo "
                 <article class='post'>
                     <div class='insidePost'>
                         <h1>$membre[nom] $membre[prenom] : $post[titre]</h1>
@@ -95,18 +96,16 @@ if (!isset($_SESSION["email"])) {
                             <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter</a>
                         </div>
                     </div>
-
                 </article>";
-                    // echo "</a>";
-                } else {
-                    $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
-                    $array = mysqli_fetch_array($array);
+            } else {
+                $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
+                $array = mysqli_fetch_array($array);
 
-                    $like = empty($array)
-                        ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>"
-                        : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
+                $like = empty($array)
+                    ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>"
+                    : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
 
-                    echo "
+                echo "
                 <article class='post'>
                     <div class='insidePost'>
                         <h1>$membre[nom] $membre[prenom] : $post[titre]</h1>
@@ -118,15 +117,11 @@ if (!isset($_SESSION["email"])) {
                         </div>
                     </div>
                 </article>";
-                }
             }
+        }
+    }
+    ?>
 
-            ?>
-        </div>
 </body>
 
 </html>
-
-<?php
-    }
-?>
