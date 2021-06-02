@@ -20,27 +20,31 @@ if (!isAdmin($admins, $email)) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Group Settings</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="groupe_settings.css">
     </head>
 
     <body>
-        <ul>
-            <li>
-                <a href="addMembersToGroup.php">ajouter des membres</a>
-            </li>
-            <li>
-                <a href="modifyGroupName.php">modifier le nom du groupe</a>
-            </li>
-            <li>
-                <a href="addAdministratorsToGroup.php">ajouter des administrateurs au groupe</a>
-            </li>
-            <li>
-                <a href="remove_members_from_group.php">supprimer des membres du groupe</a>
-            </li>
-            <li>
-                <a href="addImgGroupeServ.php">changer image du groupe</a>
-            </li>
-        </ul>
+        <div class="wow">
+            <ul>
+                <center>
+                <li>
+                    <a href="addMembersToGroup.php">Ajouter des membres</a>
+                </li>
+                <li>
+                    <a href="modifyGroupName.php">Modifier le nom du groupe</a>
+                </li>
+                <li>
+                    <a href="addAdministratorsToGroup.php">Ajouter des administrateurs au groupe</a>
+                </li>
+                <li>
+                    <a href="remove_members_from_group.php">Supprimer des membres du groupe</a>
+                </li>
+                <li>
+                    <a href="addImgGroupeServ.php">Changer image du groupe</a>
+                </li>
+                </center>   
+            </ul>
+        </div>
     </body>
 
     </html>

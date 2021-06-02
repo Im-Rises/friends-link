@@ -39,7 +39,7 @@ if (isset($_POST["GroupeName"]) and $_POST["GroupeName"]) {
 
     insertIntoAdmin($idGroupe, $_SESSION["email"]);
 
-    // header("Location: show_all_discussions.php");
+    header("Location: show_all_discussions.php");
 }
 
 ?>

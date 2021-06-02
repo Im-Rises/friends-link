@@ -32,15 +32,13 @@ while ($value = mysqli_fetch_array($discussions)) {
             <div class='containMsg'>
                 $msg 
             </div>
-            <div class='containImg'>
-                ".recupImageEmail($_SESSION['email'])."
+            <div class='containImg'><img src='".recupImageEmail($_SESSION['email'])."' class='pdp'>
             </div>
         </div>";
     } else {
         echo "
         <div class='youSend'>
-            <div class='containImg'>
-                ".recupImageEmail($membreSender['adresse_mail'])."
+            <div class='containImg'><img src='".recupImageEmail($membreSender['adresse_mail'])."' class='pdp'>
             </div>
             <div class='containMsg'>
                 $msg 

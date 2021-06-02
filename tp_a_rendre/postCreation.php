@@ -1,4 +1,5 @@
 <?php
+include "ban.php";
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     $profil = selectMembreWhereEmail($_SESSION["email"]);
     $profil = mysqli_fetch_array($profil);
@@ -28,7 +29,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <?php
         //var_dump($_FILES);
         if (isset($_POST["titre"], $_POST["message"]) and $_POST["titre"] != NULL and $_POST["message"] != NULL) {
-            //if (isset($_FILES['fileToUpload']) and $_FILES['fileToUpload'] != NULL) {
+
             if ($_FILES['fileToUpload']['error'] == 0) {
 
                 if ($_FILES['fileToUpload']['size'] < 5000000) {
@@ -40,7 +41,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                 }
             } else {
                 insertIntoPost($_SESSION['email'], $_POST['titre'], $_POST['message'], 0);
-                echo "Passe pas où je veux";
             }
         }
         ?>
