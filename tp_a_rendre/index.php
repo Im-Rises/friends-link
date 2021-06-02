@@ -60,11 +60,6 @@ if (!isset($_SESSION["email"])) {
             foreach ($listePosts as $post) {
                 // Afficher la liste des posts des amis ici
                 if ($post['image_post']) {
-                    // echo "<a href='show_post.php?idPost=$post[id_post]'>";
-                    // echo "<p>$post[email_posteur]</p>";
-                    // echo "<form method='post'>
-                    // <input type='submit' name='liker' value='Liker' />
-                    // </form>";
 
                     $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
                     $array = mysqli_fetch_array($array);
