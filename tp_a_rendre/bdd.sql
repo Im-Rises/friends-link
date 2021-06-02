@@ -1,5 +1,6 @@
 DROP DATABASE IF EXISTS reseau_social;
-CREATE DATABASE IF NOT EXISTS reseau_social; USE reseau_social;
+CREATE DATABASE IF NOT EXISTS reseau_social CHARACTER SET utf8 COLLATE utf8_general_ci; 
+USE reseau_social;
 
 CREATE TABLE membre (adresse_mail VARCHAR(320) PRIMARY KEY NOT NULL, nom VARCHAR(50) NOT NULL , prenom VARCHAR(50) NOT NULL, date_naissance DATE NOT NULL, mdp TEXT NOT NULL, nomImage VARCHAR(400));
 
