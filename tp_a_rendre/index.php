@@ -6,6 +6,7 @@
 <head>
     <title>Friends Link</title>
     <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="60">
     <?php
     $css = isset($_SESSION["email"]) ? "indexLog.css" : "index.css";
     echo "<link rel='stylesheet' href='$css'>";
