@@ -56,7 +56,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                 echo "
                     <br>
                     <div class='divBody'>
-                        <a href='message_groupe.php?id=$id'><div class='bodyElement'><img src='" . recupImageGroupe($id) . "' class='pdp'></div></a>
+                        <a href='message_groupe.php?id=$id'><div class='bodyElement'><img src='" . recupImageGroupe($id) . "' class='pdp' alt=\"image de $nom\"></div></a>
                         <a href='message_groupe.php?id=$id'><div class='bodyElement'>$nom</div></a>
                     </div>";
             }
