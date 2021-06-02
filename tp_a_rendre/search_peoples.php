@@ -1,5 +1,5 @@
 <div class="search_friends">
-    <form action="" method="GET" class="formSearch">
+    <form action="search_peoples.php" method="GET" class="formSearch">
         <input type="search" name="search" placeholder="Personne à rechercher" class="searchBar">
         <input type="submit" value="Search" class="searchBtn">
     </form>
@@ -47,7 +47,6 @@
     }
 
         ?>
-                </div>
 </div>
 
 <?php

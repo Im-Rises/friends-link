@@ -6,7 +6,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 ?>
 
     <!DOCTYPE HTML>
-    <html>
+    <html lang="fr">
 
     <head>
         <title>FriendsLink</title>
@@ -18,11 +18,12 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         ?>
     </head>
 
-    <?php  include "ban.php";?>
-
     <body>
         <!-- Ajout de la page pour la recherche de personnes -->
-        <?php include "search_peoples.php"; ?>
+        <?php 
+        include "ban.php";
+        include "search_peoples.php"; 
+        ?>
 
         <!-- Affiche la liste des demandes d'ami reçues en fonction de la personne connectée -->
         <h1>Liste des demandes d'amis reçues :</h1>
