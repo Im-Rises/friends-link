@@ -1,5 +1,6 @@
-<?php include "ban.php";//Ajout de la bannière sur la page
-
+<?php //Ajout de la bannière sur la page
+session_start();
+require "dao.php";
 //Si utilisateur est connecté, affichage de la page
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     $idGroupe = $_SESSION["idGroupe"];
@@ -12,7 +13,13 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <title>Modification image</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="style.css">
+        <?php
+        $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
+        echo "<link rel='stylesheet' href='$css'>";
+        ?>
     </head>
+
+    <?php include "ban.php"; ?>
 
     <body>
 
@@ -29,27 +36,27 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $imageActuelle = "images/groupes/".selectNomImageFromGroupe($idGroupe)['nomImage'];
+            $imageActuelle = "images/groupes/" . selectNomImageFromGroupe($idGroupe)['nomImage'];
 
-            $imageName = $idGroupe.date("Y-m-d").time();
+            $imageName = $idGroupe . date("Y-m-d") . time();
 
             if (mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/png' || mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/jpeg' || mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/gif') {
 
-            if ($_FILES['fileToUpload']['size'] < 500000) {
-                updateImageGroupe($idGroupe, $imageName);
-                move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/groupes/$imageName");
-                if ( $imageActuelle != NULL && file_exists($imageActuelle)) {
-                    unlink($imageActuelle);
-                }
+                if ($_FILES['fileToUpload']['size'] < 500000) {
+                    updateImageGroupe($idGroupe, $imageName);
+                    move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/groupes/$imageName");
+                    if ($imageActuelle != NULL && file_exists($imageActuelle)) {
+                        unlink($imageActuelle);
+                    }
 
-                header("Location: addImgGroupeServ.php");
+                    header("Location: addImgGroupeServ.php");
+                } else {
+                    echo "<p>Fichier trop lourd, veuillez sélectionner une image de moins de 500ko</p>";
+                }
             } else {
-                echo "<p>Fichier trop lourd, veuillez sélectionner une image de moins de 500ko</p>";
+                echo "<p>Fichier invalide</p>";
             }
-        }else{
-            echo "<p>Fichier invalide</p>";
         }
-    }
         ?>
 
         <a href="group_settings.php">Retour sur les paramètres du groupe</a>
@@ -59,6 +66,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
 <?php
 } else {
-    header("Location: login.php");//Retour à la page de connexion, si l'utilisateur n'est pas connecté
+    header("Location: login.php"); //Retour à la page de connexion, si l'utilisateur n'est pas connecté
 }
 ?>

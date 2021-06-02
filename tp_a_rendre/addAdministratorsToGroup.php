@@ -1,5 +1,6 @@
 <?php
-include "ban.php";
+session_start();
+require "dao.php";
 
 $idGroupe = $_SESSION["idGroupe"];
 
@@ -21,7 +22,13 @@ if (!isAdmin($admins, $email)) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Group Settings</title>
         <link rel="stylesheet" href="style.css">
+        <?php
+        $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
+        echo "<link rel='stylesheet' href='$css'>";
+        ?>
     </head>
+
+<?php include "ban.php"; ?>
 
     <body>
         <?php

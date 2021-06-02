@@ -8,15 +8,23 @@
     <title>NewGroup</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <?php
+    $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
+    echo "<link rel='stylesheet' href='$css'>";
+    ?>
 </head>
 
-<?php require "ban.php";?>
+<?php 
+session_start();
+require "dao.php";
+include "ban.php"; 
+?>
 
 <body>
     <form action="" method="POST">
         <div class="groupe">
-        <legend class="nommer">Nommez votre groupe:</legend>
-        <input type="text" name="GroupeName" placeholder="Nom du groupe" >
+            <legend class="nommer">Nommez votre groupe:</legend>
+            <input type="text" name="GroupeName" placeholder="Nom du groupe">
         </div>
         <input type="submit" class="envoyer">
     </form>
@@ -28,7 +36,7 @@
 
 if (isset($_POST["GroupeName"]) and $_POST["GroupeName"]) {
     insertIntoGroupe($_POST["GroupeName"], $_SESSION["email"]);
-    echo $_POST["GroupeName"]; 
+    echo $_POST["GroupeName"];
     echo $_SESSION["email"];
 
     $idGroupe = selectIdFromGroupeWhereCreatorAndNameOfGroup($_SESSION["email"], $_POST["GroupeName"]);

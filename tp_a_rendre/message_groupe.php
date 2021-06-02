@@ -4,12 +4,18 @@
 <head>
     <title>Groupe</title>
     <link rel="stylesheet" href="style.css">
+    <?php
+    $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
+    echo "<link rel='stylesheet' href='$css'>";
+    ?>
 </head>
 
 <script src="refresh_groups.js"></script>
 
 <?php
-require "ban.php";
+session_start();
+require "dao.php";
+include "ban.php";
 
 ?>
 

@@ -1,4 +1,4 @@
-<?php include "ban.php";//Ajout de la bannière sur la page
+<?php include "ban.php"; //Ajout de la bannière sur la page
 
 //Si utilisateur connecté, affichage de la page
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
@@ -11,6 +11,10 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <title>Modification image</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="style.css">
+        <?php
+        $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
+        echo "<link rel='stylesheet' href='$css'>";
+        ?>
     </head>
 
     <body>
@@ -55,6 +59,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
 <?php
 } else {
-    header("Location: login.php");//Retour à la page de connexion, si l'utilisateur n'est pas connecté
+    header("Location: login.php"); //Retour à la page de connexion, si l'utilisateur n'est pas connecté
 }
 ?>

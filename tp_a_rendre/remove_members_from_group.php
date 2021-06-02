@@ -1,4 +1,6 @@
 <?php
+session_start();
+require "dao.php";
 include "ban.php";
 
 $idGroupe = $_SESSION["idGroupe"];
@@ -21,6 +23,10 @@ if (!isAdmin($admins, $email)) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Group Settings</title>
         <link rel="stylesheet" href="remove_member.css">
+        <?php
+        $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
+        echo "<link rel='stylesheet' href='$css'>";
+        ?>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     </head>
 

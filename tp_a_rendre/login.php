@@ -6,8 +6,16 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="login.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <?php
+    $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
+    echo "<link rel='stylesheet' href='$css'>";
+    ?>
 </head>
-<?php include "ban.php";?>
+<?php 
+session_start();
+include "ban.php"; 
+include "dao.php";
+?>
 
 <body>
     <form method="post" method="" class="formLogin">
@@ -32,21 +40,18 @@ if (isset($_POST["mail"], $_POST["password"]) and $_POST["password"] != NULL and
     $membre = selectDataMembersWhereEmail($mail);
     $membre = mysqli_fetch_array($membre);
 
-    if($membre != NULL) {
+    if ($membre != NULL) {
 
         if (password_verify($_POST['password'], $membre["mdp"])) {
             session_destroy();
             session_start();
             $_SESSION["email"] = $membre["adresse_mail"];
             header("Location: index.php");
-        } 
-        else {
+        } else {
             echo "<script type='text/javascript'>window.alert('mot de passe invalide');</script>";
         }
-    }
-    else {
+    } else {
         echo "<script type='text/javascript'>window.alert('compte inexistant');</script>";
     }
 }
 ?>
-    

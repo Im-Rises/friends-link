@@ -4,10 +4,16 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+    <?php
+    $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
+    echo "<link rel='stylesheet' href='$css'>";
+    ?>
     <script type="text/javascript" src="refresh_discussions.js"></script>
 </head>
 
 <?php
+session_start();
+include "dao.php";
 include "ban.php";
 if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL and  $_GET["receiver"] != NULL) {
     $sender = $_SESSION["email"];
@@ -27,9 +33,9 @@ if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL 
     $prenomReceiver = $membreReceiver["prenom"];
 
     echo "
-        <div class='messageTo'><img src='" 
-            .recupImageEmail($membreReceiver['adresse_mail']). 
-            "' class='pdp'><h1>MESSAGE TO $nomReceiver $prenomReceiver</h1>
+        <div class='messageTo'><img src='"
+        . recupImageEmail($membreReceiver['adresse_mail']) .
+        "' class='pdp'><h1>MESSAGE TO $nomReceiver $prenomReceiver</h1>
         </div>";
 
 ?>
@@ -96,7 +102,6 @@ if (isset($_SESSION["email"], $_GET["receiver"]) and $_SESSION["email"] != NULL 
         $msg = $_POST["msg"];
 
         insertIntoMessageDiscussion($sender, $receiver, $msg);
-        
     }
 } else {
     header("Location: login.php");

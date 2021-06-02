@@ -1,4 +1,6 @@
-<?php include "ban.php"; ?>
+<?php session_start(); 
+include "dao.php";
+?>
 
 <!DOCTYPE HTML>
 <html>
@@ -7,8 +9,15 @@
     <title>FriendsLink</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="a_propos.css">
+    <?php
+    $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME)== "index.php" ? "indexBan.css" : "ban.css";
+    echo "<link rel='stylesheet' href='$css'>";
+    ?>
 
 </head>
+
+<?php include "ban.php"; ?>
+
 
 <body class="container">
     <section>

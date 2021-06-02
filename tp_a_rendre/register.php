@@ -7,9 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="register.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <?php
+    $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
+    echo "<link rel='stylesheet' href='$css'>";
+    ?>
 </head>
 
-<?php include "ban.php"; ?>
+<?php 
+session_start();
+require "dao.php";
+include "ban.php"; ?>
 
 <body>
     <main>
@@ -60,8 +67,7 @@ if (
 
             header('Location: ./index.php');
         }
-    }
-    else {
+    } else {
         echo "<script type='text/javascript'>window.alert('veuillez mettre une adresse mail valide');</script>";
     }
 }

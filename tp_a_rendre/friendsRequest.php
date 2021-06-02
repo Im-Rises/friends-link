@@ -1,5 +1,6 @@
-<?php include "ban.php";//Ajout de la bannière sur la page
-
+<?php 
+session_start();
+include "dao.php";
 //Si utilisateur connecté, affichage de la page
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 ?>
@@ -11,7 +12,13 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <title>FriendsLink</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="style.css">
+        <?php
+        $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
+        echo "<link rel='stylesheet' href='$css'>";
+        ?>
     </head>
+
+    <?php  include "ban.php";?>
 
     <body>
         <!-- Ajout de la page pour la recherche de personnes -->
@@ -67,7 +74,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                 echo "
                     <br>
                     <tr>
-                        <td><img src='".recupImageEmail($emails['adresse_mail'])."' class='pdp'></div>
+                        <td><img src='" . recupImageEmail($emails['adresse_mail']) . "' class='pdp'></div>
                         <td>$emails[prenom]</td>
                         <td>$emails[nom]</td>
                         <td>$emails[adresse_mail]</td>
@@ -115,6 +122,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
 <?php
 } else {
-    header("Location: login.php");//Retour à la page de connexion si l'utilisateur n'est pas connecté
+    header("Location: login.php"); //Retour à la page de connexion si l'utilisateur n'est pas connecté
 }
 ?>
