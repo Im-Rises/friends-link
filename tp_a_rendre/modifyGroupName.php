@@ -14,39 +14,40 @@
     <title>Modifier le nom du groupe</title>
 </head>
 
-<?php
-session_start();
-require "dao.php";
-include "ban.php";
+<body>
 
-$idGroupe = $_SESSION["idGroupe"];
+    <?php
+    session_start();
+    require "dao.php";
+    include "ban.php";
 
-$email = $_SESSION["email"];
+    $idGroupe = $_SESSION["idGroupe"];
 
-$admins = selectAdminEmailFromAdminGroupeWhereIdGroupe($idGroupe);
+    $email = $_SESSION["email"];
 
-if (!isAdmin($admins, $email)) {
-    header("Location: index.php");
-} else { ?>
+    $admins = selectAdminEmailFromAdminGroupeWhereIdGroupe($idGroupe);
 
-    <body>
+    if (!isAdmin($admins, $email)) {
+        header("Location: index.php");
+    } else { ?>
 
-        <form action="" method="POST">
+
+        <form method="POST">
             <div class="modif">
-                <legend>Nouveau nom du groupe:</legend>
+                <p>Nouveau nom du groupe:</p>
                 <input type="text" name="nom">
                 <input type="submit">
             </div>
         </form>
-    </body>
+</body>
 
 </html>
 
 <?php
-    if (isset($_POST['nom'], $_SESSION["idGroupe"]) && $_POST['nom'] != NULL && $_SESSION["idGroupe"] != NULL) {
-        updateNomGroupe($_POST["nom"], $_SESSION["idGroupe"]);
+        if (isset($_POST['nom'], $_SESSION["idGroupe"]) && $_POST['nom'] != NULL && $_SESSION["idGroupe"] != NULL) {
+            updateNomGroupe($_POST["nom"], $_SESSION["idGroupe"]);
 
-        header("Location: show_all_discussions.php");
+            header("Location: show_all_discussions.php");
+        }
     }
-}
 ?>
