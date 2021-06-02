@@ -1,5 +1,5 @@
 <div class="search_friends">
-    <form action="" method="GET" class="formSearch">
+    <form method="GET" class="formSearch">
         <input type="search" name="search" placeholder="Personne à rechercher" class="searchBar">
         <input type="submit" value="Search" class="searchBtn">
     </form>
@@ -46,11 +46,7 @@
             $row++;
         }
     }
-    echo "</div>";
-
-
         ?>
-                </div>
 </div>
 
 <?php

@@ -14,7 +14,7 @@ if (!isAdmin($admins, $email)) {
 
 ?>
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="fr">
 
     <head>
         <meta charset="UTF-8">
@@ -28,10 +28,9 @@ if (!isAdmin($admins, $email)) {
         ?>
     </head>
 
-<?php include "ban.php"; ?>
-
     <body>
         <?php
+        include "ban.php";
         include "search_members_add_to_admin.php";
         ?>
         <h1>Current admins :</h1>
