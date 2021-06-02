@@ -33,7 +33,10 @@ function isAdmin($admins, $email) // permet de verifier qu'un email est bien con
     return false;
 }
 
-// INSERT
+
+
+
+// REQUETES DE LA BASE DE DONNEES
 
 function insertIntoMembre($email, $nom, $prenom, $bday, $mdp) // works
 {
@@ -46,6 +49,7 @@ function insertIntoMembre($email, $nom, $prenom, $bday, $mdp) // works
     $bday = protection($bday); // protege des injections sql
 
     $mdp = protection($mdp); // protege des injections sql
+
     $mdp = password_hash($mdp, PASSWORD_DEFAULT);
 
     $req = "INSERT INTO membre(adresse_mail, nom, prenom, date_naissance, mdp) VALUES (\"$email\", \"$nom\", \"$prenom\", \"$bday\", \"$mdp\");";
@@ -78,6 +82,7 @@ function insertIntoAmi($email, $email_ami, $amitie_validee) // works
     return exeReq($req);
 }
 
+//Création d'un groupe dans al table groupe
 function insertIntoGroupe($nom, $email_createur) // works
 {
     $nom = protection($nom);
@@ -89,6 +94,7 @@ function insertIntoGroupe($nom, $email_createur) // works
     return exeReq($req);
 }
 
+//Ajout d'un membre a un groupe
 function insertIntoGroupeMembre($id_groupe, $email_membre)
 {
     $id_groupe = protection($id_groupe); // protege des injections sql
@@ -100,6 +106,7 @@ function insertIntoGroupeMembre($id_groupe, $email_membre)
     return exeReq($req);
 }
 
+//Ajout d'un message dans un groupe
 function insertIntoMessageGroupe($email_envoyeur, $id_groupe, $message)
 {
     $email_envoyeur = protection($email_envoyeur); // protege des injections sql
@@ -113,6 +120,8 @@ function insertIntoMessageGroupe($email_envoyeur, $id_groupe, $message)
     return exeReq($req);
 }
 
+
+//Ajout d'un admin au groupe
 function insertIntoAdmin($idGroupe, $email)
 {
     $idGroupe = protection($idGroupe);
@@ -124,6 +133,8 @@ function insertIntoAdmin($idGroupe, $email)
     return exeReq($req);
 }
 
+
+//Ajout d'un like à un post
 function insertIntoLikes($id_post, $email)
 {
     $id_post = protection($id_post);
@@ -135,7 +146,8 @@ function insertIntoLikes($id_post, $email)
     return exeReq($req);
 }
 
-// SELECT
+
+//Récupère si un post a été liké par l'adresse_mail
 function selectLikesWhereEmailAndId($email, $id_post)
 {
     $id_post = protection($id_post);
@@ -147,6 +159,7 @@ function selectLikesWhereEmailAndId($email, $id_post)
     return exeReq($req);
 }
 
+//Récupère l'id des groupes où le nom du créateur a l'adresse mail et le nom du groupe envoyé en paramètre
 function selectIdFromGroupeWhereCreatorAndNameOfGroup($email, $name)
 {
     $email = protection($email);
@@ -158,6 +171,7 @@ function selectIdFromGroupeWhereCreatorAndNameOfGroup($email, $name)
     return exeReq($req);
 }
 
+//Récupère l'utilisateur qui a l'adresse mail envoyé en paramètre 
 function selectMembreWhereEmail($email)
 {
     $email = protection($email); // protege des injections sql
@@ -167,7 +181,7 @@ function selectMembreWhereEmail($email)
     return exeReq($req);
 }
 
-// recuperer donnees membres depuis email
+// recuperer les donnees membres depuis email
 function selectDataMembersWhereEmail($email)
 {
     $email = protection($email); // protege des injections sql
@@ -208,6 +222,7 @@ function selectAllFriendsWhereEmail($email)
     return exeReq($req);
 }
 
+//Cherche les personnes dans la base de données en se basant sur la recherche envoyé en paramètre
 function selectAllMembersWhereNomPrenomEmailWhereSearch($search, $email)
 {
     $search = protection($search); // protege des injections sql
@@ -223,7 +238,7 @@ function selectAllMembersWhereNomPrenomEmailWhereSearch($search, $email)
     return exeReq($req);
 }
 
-// Selection des discussions
+// Selection des discussions en fonction de l'adresse_mail envoyé en paramètre
 function selectEmailsDiscussion($email)
 {
     $email = protection($email);
@@ -233,6 +248,7 @@ function selectEmailsDiscussion($email)
     return exeReq($req);
 }
 
+//Récupère les messages d'une discussion en fonction des deux utilisateurs envoyé en paramètre
 function selectMessagesDiscussion($email1, $email2)
 {
     $email1 = protection($email1);
@@ -244,6 +260,7 @@ function selectMessagesDiscussion($email1, $email2)
     return exeReq($req);
 }
 
+//Récupère les données du groupe en fonction de l'id du groupe envoyé en paramètre
 function selectGroupeWhereId($id)
 {
     $id = protection($id);
@@ -253,7 +270,7 @@ function selectGroupeWhereId($id)
     return exeReq($req);
 }
 
-// Selection des groupes
+// Selection des groupes dun membre en fonction de son email
 function selectAllGroupes($email)
 {
     $email = protection($email);
@@ -263,6 +280,7 @@ function selectAllGroupes($email)
     return exeReq($req);
 }
 
+//Récupère tous les messages d'un groupe en fonction de l'id du groupe
 function selectAllMessagesFromGroupeWhereId($id)
 {
     $id = protection($id);
@@ -272,7 +290,7 @@ function selectAllMessagesFromGroupeWhereId($id)
     return exeReq($req);
 }
 
-
+//Récupère les membres du groupes en fonction de l'id du groupe
 function selectMembresGroupe($id_groupe)
 {
     $req = "SELECT * FROM membre m JOIN groupe_membre gm ON gm.mail_membre = m.adresse_mail WHERE gm.id_groupe = \"$id_groupe\";";
@@ -280,6 +298,7 @@ function selectMembresGroupe($id_groupe)
     return exeReq($req);
 }
 
+//Récupère tous les noms du groupe
 function selectAllAdmin($idGroupe)
 {
     $req = "SELECT DISTINCT *
@@ -289,6 +308,7 @@ function selectAllAdmin($idGroupe)
     return exeReq($req);
 }
 
+//Récupère les membres du groupe qui ne sont pas administrateur du groupe
 function selectMembresNotInAdminWhereIdGroupe($search, $idGroupe)
 {
     $req = "SELECT DISTINCT *
@@ -304,6 +324,7 @@ function selectMembresNotInAdminWhereIdGroupe($search, $idGroupe)
     return exeReq($req);
 }
 
+//Récupère les personnes non présentes dans le groupe envoyé en paramètre en foncton de la recherche envoyée en paramètre
 function selectMembresNotInGroupeWhereIdGroupe($search, $idGroupe)
 {
     $req = "SELECT DISTINCT *
@@ -320,6 +341,7 @@ function selectMembresNotInGroupeWhereIdGroupe($search, $idGroupe)
     return exeReq($req);
 }
 
+//Récupère les messages d'un groupe
 function selectMessagesGroupe($idGroup)
 {
     $req = "SELECT * FROM message_groupe WHERE id_groupe=\"$idGroup\";";
@@ -327,7 +349,7 @@ function selectMessagesGroupe($idGroup)
     return exeReq($req);
 }
 
-// Recuperer les demandes d\"ami reçues
+// Recuperer les demandes d'ami reçues
 function selectDemandesAmi($email)
 {
     $email = protection($email);
@@ -337,6 +359,7 @@ function selectDemandesAmi($email)
     return exeReq($req);
 }
 
+//récupre les adresse mail des membres d'un groupe qui sont administrateurs
 function selectAdminEmailFromAdminGroupeWhereIdGroupe($idGroupe)
 {
     $idGroupe = protection($idGroupe);
@@ -351,7 +374,7 @@ function selectAdminEmailFromAdminGroupeWhereIdGroupe($idGroupe)
 
 /*---------------------------------Créer demande d\"ami---------------------------*/
 
-//Créer une demande d\"ami
+//Créer une demande d'ami
 function insertIntoAmiDemandeAmi($emailDemandeur, $emailReceveur)
 {
     $emailDemandeur = protection($emailDemandeur);
@@ -395,7 +418,7 @@ function selectProfilsReceptionDemandeAmi($email)
 }
 
 
-//Crer l\"amitié
+//Crer une amitié en fonction de deux adresses mail envoyé en paramètre
 function updateToRealAmitie($emailDemandeur, $emailAccepteur)
 {
     global $connexion;
@@ -411,7 +434,7 @@ function updateToRealAmitie($emailDemandeur, $emailAccepteur)
     return $res;
 }
 
-//Refuser une demande d\"ami
+//Refuser une demande d'ami
 function annulerDemandeAmi($emailDemandeur, $emailReceveur)
 {
     $emailDemandeur = protection($emailDemandeur);
@@ -423,7 +446,7 @@ function annulerDemandeAmi($emailDemandeur, $emailReceveur)
     return exeReq($req);
 }
 
-
+//Supprimer un membre d'un groupe
 function deleteFromGroupeMembreWhereEmail($email, $idGroupe)
 {
     $email = protection($email);
@@ -433,6 +456,7 @@ function deleteFromGroupeMembreWhereEmail($email, $idGroupe)
     return exeReq($req);
 }
 
+//Supprimer un like d'un post en fonction de l'id du groupe et de l'email
 function deleteLikeWhereEmailAndIdPost($id_post, $email)
 {
     $id_post = protection($id_post);
@@ -446,8 +470,7 @@ function deleteLikeWhereEmailAndIdPost($id_post, $email)
 
 
 
-// UPDATE 
-
+//Changer le nom du groupe sélectionné par son id envoyé en paramètre
 function updateNomGroupe($nomGroupe, $idGroupe)
 {
     $nomGroupe = protection($nomGroupe);
@@ -460,10 +483,7 @@ function updateNomGroupe($nomGroupe, $idGroupe)
 }
 
 
-
-
-//Posts
-
+//Récupère tous les posts d'une adresse mail par date (plus récent au plus vieux)
 function selectAllPostsFromMembreOrder($email)
 {
     $email = protection($email);
@@ -473,6 +493,7 @@ function selectAllPostsFromMembreOrder($email)
     return exeReq($req);
 }
 
+//Récupère tous les messages d'un post par date en fonction de l'id du post
 function selectAllMessagesFromPostOrder($idPost)
 {
     $idPost = protection($idPost);
@@ -482,6 +503,7 @@ function selectAllMessagesFromPostOrder($idPost)
     return exeReq($req);
 }
 
+//Création d'un post
 function insertIntoPost($email_auteur, $titre, $message, $imagePoste)
 {
     $email_auteur = protection($email_auteur);
@@ -494,6 +516,7 @@ function insertIntoPost($email_auteur, $titre, $message, $imagePoste)
     return exeReq($req);
 }
 
+//récupère tous les posts de tous les amis de l'utilisateur envoyé en paramètre
 function selectPostsFromAmis($emailUtilisateur)
 {
     $emailUtilisateur = protection($emailUtilisateur);
@@ -503,6 +526,7 @@ function selectPostsFromAmis($emailUtilisateur)
     return exeReq($req);
 }
 
+//récupère un post en se basant sur l'id du post envoyé en paramètre
 function selectPostsFromId($id_post)
 {
     $id_post = protection($id_post);
@@ -512,6 +536,7 @@ function selectPostsFromId($id_post)
     return exeReq($req);
 }
 
+//Récupère le dernier id du post créé par l'utilisateur
 function selectLastPostIdMembre($email)
 {
     $email = protection($email);
@@ -521,6 +546,7 @@ function selectLastPostIdMembre($email)
     return exeReq($req);
 }
 
+//Création d'un message de commentaire à un post
 function insertIntoPost_Message($id_post, $email_posteur,$message_post)
 {
     $id_post=protection($id_post);
@@ -532,18 +558,17 @@ function insertIntoPost_Message($id_post, $email_posteur,$message_post)
     return exeReq($req);
 }
 
+//Récupère tous les messages d'un post en fonction de l'id du post envoyé en paramètre
 function selectMessagesFromPost($id_post)
 {
     $id_post=protection($id_post);
-
-    //$req= "SELECT id_message FROM post_message WHERE id_post=$id_post;";
 
     $req= "SELECT M.adresse_mail, M.nom, M.prenom, PM.message_post_text, PM.datePost FROM membre M JOIN post_message PM ON M.adresse_mail=PM.email_posteur WHERE PM.id_post=$id_post ORDER BY datePost DESC;";
 
     return exeReq($req);
 }
 
-
+//Verifie qu'un post existe en envoyant son id en paramètre
 function verifPostExiste($id_post)
 {
     $id_post= protection($id_post);
@@ -553,7 +578,7 @@ function verifPostExiste($id_post)
     return exeReq($req);
 }
 
-
+//Mise à jour du nom pour le changement de l'image d'un membre
 function updateImageMembre($email, $nomImage)
 {
     $email= protection($email);
@@ -566,7 +591,7 @@ function updateImageMembre($email, $nomImage)
 }
 
 
-//Fonction de récuépration de l\"image de l\"adresse email envoyé en paramètre
+//Fonction de récuépration de l'image de l'adresse email envoyé en paramètre
 function recupImageEmail($email)
 {
     $nomImage= selectNomImageFromEmail($email);
@@ -580,7 +605,7 @@ function recupImageEmail($email)
     return $image;
 }
 
-
+//Récupère le nom de 'image de l'utilisateur envoyé en paramètre 
 function selectNomImageFromEmail($email)
 {
     $email= protection($email);
@@ -592,7 +617,7 @@ function selectNomImageFromEmail($email)
 
 
 
-
+//Récupère le nom de l'image d'un groupe en fonction de l'id du groupe
 function recupImageGroupe($idGroupe)
 {
     $nomImage=selectNomImageFromGroupe($idGroupe);
@@ -607,7 +632,7 @@ function recupImageGroupe($idGroupe)
 }
 
 
-
+//Mise à jour du nom de l'image d'un groupe pour le changement d'image
 function updateImageGroupe($idGroupe, $nomImage)
 {
     $idGroupe=protection($idGroupe);
@@ -619,6 +644,7 @@ function updateImageGroupe($idGroupe, $nomImage)
     return exeReq($req);
 }
 
+//Récupère le nom de l'image du groupe 
 function selectNomImageFromGroupe($idGroupe)
 {
     $idGroupe= protection($idGroupe);
@@ -628,6 +654,7 @@ function selectNomImageFromGroupe($idGroupe)
     return mysqli_fetch_array(exeReq($req));
 }
 
+//Supprime une aimitié entre deux membres
 function deleteAmitie($emailUtilisateur, $emailAmi){
     
     $emailUtilisateur=protection($emailUtilisateur);
