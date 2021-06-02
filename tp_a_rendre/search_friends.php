@@ -5,6 +5,7 @@
     </form>
 
     <?php
+    
     //Vérification de la recherche de données de recherche d'un ami via la méthode get
     if (isset($_GET["search"]) and $_GET["search"] != NULL) {
 

@@ -1,6 +1,7 @@
 <?php
-include "ban.php";//Ajout de la bannière sur la page
+session_start();
 
+require "dao.php";
 //Si utilisateur est connecté, affichage de la page et que le post existe 
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_array(verifPostExiste($_GET['idPost']))['1'] == 1) {
     $profil = selectMembreWhereEmail($_SESSION["email"]);
@@ -14,7 +15,13 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
         <title>Mon profil</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="style.css">
+        <?php
+        $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
+        echo "<link rel='stylesheet' href='$css'>";
+        ?>
     </head>
+
+    <?php include "ban.php"; ?>
 
     <body>
 
@@ -81,6 +88,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
 
 <?php
 } else {
-    header('Location: index.php');//Redirection vers l'accueil si le post n'existe pas
+    header('Location: index.php'); //Redirection vers l'accueil si le post n'existe pas
 }
 ?>
