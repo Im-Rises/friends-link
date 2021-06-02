@@ -624,3 +624,17 @@ function selectNomImageFromGroupe($idGroupe)
 
     return mysqli_fetch_array(exeReq($req));
 }
+
+function deleteAmitie($emailUtilisateur, $emailAmi){
+    
+    $emailUtilisateur=protection($emailUtilisateur);
+    $emailAmi=protection($emailAmi);
+
+    $req="DELETE FROM ami WHERE email=\"$emailUtilisateur\" AND email_ami=\"$emailAmi\";";
+    
+    exeReq($req);
+
+    $req="DELETE FROM ami WHERE email=\"$emailAmi\" AND email_ami=\"$emailUtilisateur\";";
+
+    exeReq($req);
+}

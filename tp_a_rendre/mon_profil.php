@@ -38,6 +38,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                         <div class='headElement'>Nom</div>
                         <div class='headElement'>Prenom</div>
                         <div class='headElement'>Email</div>
+                        <div class='headElement'>Supprimer</div>
                     </div>
 
 
@@ -57,6 +58,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                         <a href=''><div class='bodyElement'>$nom</div></a>
                         <a href=''><div class='bodyElement'>$prenom</div></a>
                         <a href=''><div class='bodyElement'>$receiver</div></a>
+                        <a href='?suppression=$receiver'><div class='bodyElement'>Suppression</div></a>
                     </div>";
                     }
 
@@ -106,6 +108,11 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
             <?php
             } else {
                 echo "<a href='?voirPlusPosts=Voir' class='centerText'>Voir posts</a>";
+            }
+
+            if (isset($_GET['suppression']) and $_GET['suppression'] != NULL)
+            {
+                deleteAmitie($_SESSION["email"],$_GET['suppression']);
             }
             ?>
 

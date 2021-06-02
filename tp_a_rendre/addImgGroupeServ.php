@@ -32,19 +32,23 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
             $imageName = $idGroupe.date("Y-m-d").time();
 
+            if (mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/png' || mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/jpeg' || mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/gif') {
+
             if ($_FILES['fileToUpload']['size'] < 500000) {
                 updateImageGroupe($idGroupe, $imageName);
                 move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/groupes/$imageName");
                 if ( $imageActuelle != NULL && file_exists($imageActuelle)) {
-
                     unlink($imageActuelle);
                 }
 
-                //header("Location: addImgGroupeServ.php");
+                header("Location: addImgGroupeServ.php");
             } else {
                 echo "<p>Fichier trop lourd, veuillez sélectionner une image de moins de 500ko</p>";
             }
+        }else{
+            echo "<p>Fichier invalide</p>";
         }
+    }
         ?>
 
         <a href="group_settings.php">Retour sur les paramètres du groupe</a>
