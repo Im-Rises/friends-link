@@ -1,10 +1,10 @@
-<?php session_start();
+<?php 
+session_start();
 include "dao.php";
-
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <title>Friends Link</title>
@@ -21,15 +21,17 @@ include "dao.php";
     ?>
 </head>
 
-<?php include "ban.php";
+<?php 
+include "ban.php";
 
 if (!isset($_SESSION["email"])) {
 
 ?>
 
-    <body>
+<body>
+
         <div class="noLog">
-            <img src="friends_link.svg" class="logo">
+            <img src="friends_link.svg" class="logo" alt='logo de friends_link'>
 
             <div class="logOrRegister">
                 <h1>Bienvenue sur Friends Link! </h1>
@@ -47,13 +49,9 @@ if (!isset($_SESSION["email"])) {
 
         </div>
 
-    </body>
-
-<?php
-} else {
-?>
-
-    <body>
+    <?php
+    } else {
+    ?>
 
         <?php
         $utilisateur = mysqli_fetch_array(selectMembreWhereEmail($_SESSION["email"]));
@@ -89,7 +87,7 @@ if (!isset($_SESSION["email"])) {
                                 <p>$post[post_text]</p>
                             </div>
                             <div class='droite'>
-                                <img src='images/posts/$post[id_post]'>
+                                <img src='images/posts/$post[id_post]' alt='image du post'>
                             </div>
                         </div>
                         <div class='actions'>
@@ -125,10 +123,10 @@ if (!isset($_SESSION["email"])) {
 
             ?>
         </div>
-    </body>
+</body>
 
 </html>
 
 <?php
-}
+    }
 ?>

@@ -30,7 +30,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
             echo "<p>$post[titre]</p>";
             echo "<p>$post[post_text]</p>";
             echo "<p>$post[datePost]</p>";
-            echo "<img src='images/posts/$post[id_post]' width='200' height='200'>";
+            echo "<img src='images/posts/$post[id_post]' width='200' height='200' alt='image post'>";
             echo "</div>";
         } else {
             echo "<div>";

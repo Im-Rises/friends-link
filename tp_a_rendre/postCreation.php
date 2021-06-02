@@ -10,11 +10,12 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 ?>
 
     <!DOCTYPE html>
-    <html>
+    <html lang="fr">
 
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="postCreation.css">
+        <title>Création d'un post</title>
         <?php
         $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
         echo "<link rel='stylesheet' href='$css'>";
@@ -22,15 +23,16 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     </head>
 
     <?php
-    include "ban.php"; ?>
+    include "ban.php"; 
+    ?>
 
     <body>
         <!-- Formulaire pour la création d'un post avec la possibilité d'y mettre une image -->
         <div class="newPost">
-            <form action="" method="post" enctype="multipart/form-data">
-                <input type="text" name="titre" placeholder="titre du post" class="titrePost"></br>
-                <textarea name="message" placeholder="Entrez votre message ici !" class="message"></textarea></br>
-                <input type="file" name="fileToUpload" accept="image/*" class="file"></br>
+            <form action="postCreation.php" method="post" enctype="multipart/form-data">
+                <input type="text" name="titre" placeholder="titre du post" class="titrePost"><br>
+                <textarea name="message" placeholder="Entrez votre message ici !" class="message"></textarea><br>
+                <input type="file" name="fileToUpload" accept="image/*" class="file"><br>
                 <input type="submit" name="Poster" class="poster">
             </form>
 
@@ -57,9 +59,8 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
     </body>
 
-    <html>
+    </html>
 
 <?php
-} else {
-    //header("HTTP/1.0 404 Not Found");
-}
+} 
+?>

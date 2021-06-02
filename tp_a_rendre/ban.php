@@ -1,6 +1,6 @@
 <header>
-    <a href="index.php" class="titleBan"><img src="friends_link.svg" class="logo"></a>
-    <nav role="navigation">
+    <a href="index.php" class="titleBan"><img src="friends_link.svg" class="logo" alt='logo de friends_link'></a>
+    <nav>
 
         <div class="menuInLine">
             <a href="index.php">Accueil</a>
@@ -13,7 +13,7 @@
                 $prenom = $membre["prenom"];
 
                 echo "
-                        <a href='mon_profil.php' class='monProfil'><img src='". recupImageEmail($_SESSION["email"]) . "' class='pdp'>$nom $prenom
+                        <a href='mon_profil.php' class='monProfil'><img src='" . recupImageEmail($_SESSION["email"]) . "' class='pdp' alt='image de profil'>$nom $prenom
                         </a>
                         <a href='show_all_discussions.php'>
                             Messaging
@@ -85,5 +85,3 @@
         </div> -->
     </nav>
 </header>
-
-</html>
