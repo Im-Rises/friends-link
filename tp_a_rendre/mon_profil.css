@@ -4,6 +4,7 @@ body {
     background-repeat: no-repeat;
     background: radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
     background-attachment: fixed;
+    font-family: "Poppins";
 }
 
 
@@ -24,11 +25,10 @@ body {
 .showTab {
     margin-left: 10%;
     margin-right: 10%;
-    width: 80%;
-    color: white;
-    font-size: 150%;
+    width: 50%;
+    color: #F4DBD8;
+    font-size: 100%;
     display: block;
-    float: left;
 }
 
 .divHead {
@@ -47,3 +47,4 @@ body {
 .divBody {
     background-color: darkgrey;
 }
+

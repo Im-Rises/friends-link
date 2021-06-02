@@ -16,13 +16,13 @@
                         <a href='mon_profil.php?email=$membre[adresse_mail]' class='monProfil'><img src='" . recupImageEmail($_SESSION["email"]) . "' class='pdp' alt='image de profil'>$nom $prenom
                         </a>
                         <a href='show_all_discussions.php'>
-                            Messaging
+                            Messagerie
                         </a>
                         <a href='friendsRequest.php'>
-                            Friends Request
+                            Demande d'amis
                         </a>
                         <a href='destroy_session.php'>
-                            Disconnect
+                            Déconnexion
                         </a>";
             } else {
                 echo "

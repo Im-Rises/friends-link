@@ -1,5 +1,5 @@
 <div class="search_friends">
-    <form action="" method="GET" class="formSearch">
+    <form method="GET" class="formSearch">
         <input type="search" name="search" placeholder="Personne à rechercher" class="searchBar">
         <input type="submit" value="Search" class="searchBtn">
     </form>
@@ -38,7 +38,7 @@
             echo "
                 <br>
                 <div class='divBody'>
-                    <a href='?recherchePersonne=$email'><div class='bodyElement'<img src='>".recupImageEmail($email)."' class='pdp'></div></a>
+                    <a href='?recherchePersonne=$email'><div class='bodyElement'<img src='>" . recupImageEmail($email) . "' class='pdp'></div></a>
                     <a href='?recherchePersonne=$email'><div class='bodyElement'>$nom</div></a>
                     <a href='?recherchePersonne=$email'><div class='bodyElement'>$prenom</div></a>
                     <a href='?recherchePersonne=$email'><div class='bodyElement'>$email</div></a>
@@ -46,19 +46,15 @@
             $row++;
         }
     }
-    echo "</div>";
-
-
         ?>
                 </div>
-</div>
 
-<?php
-if (isset($_GET['recherchePersonne'],) && $_GET['recherchePersonne'] != NULL) {
+                <?php
+                if (isset($_GET['recherchePersonne'],) && $_GET['recherchePersonne'] != NULL) {
 
-    $recherchePersonne = $_GET['recherchePersonne'];
-    $utilisateur = $_SESSION["email"];
+                    $recherchePersonne = $_GET['recherchePersonne'];
+                    $utilisateur = $_SESSION["email"];
 
-    insertIntoGroupeMembre($_SESSION["idGroupe"], $recherchePersonne);
-}
-?>
+                    insertIntoGroupeMembre($_SESSION["idGroupe"], $recherchePersonne);
+                }
+                ?>

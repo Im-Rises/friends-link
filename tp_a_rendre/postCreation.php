@@ -22,11 +22,12 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         ?>
     </head>
 
-    <?php
-    //include "ban.php"; 
-    ?>
+
 
     <body>
+        <?php
+        include "ban.php";
+        ?>
         <!-- Formulaire pour la création d'un post avec la possibilité d'y mettre une image -->
         <div class="newPost">
             <form action="postCreation.php" method="post" enctype="multipart/form-data">
@@ -48,13 +49,16 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     insertIntoPost($_SESSION['email'], $_POST['titre'], $_POST['message'], 1);
                     $imageName = mysqli_fetch_array(selectLastPostIdMembre($_SESSION['email']));
                     move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/posts/$imageName[id_post]");
+                    header("Location: ./index.php");
                 } else {
                     echo "<p>Fichier invalide ou trop lourd, veuillez sélectionner une image de moins de 500ko</p>";
                 }
             } else {
                 insertIntoPost($_SESSION['email'], $_POST['titre'], $_POST['message'], 0);
+                header("Location: ./index.php");
             }
         }
+
         ?>
 
     </body>
@@ -62,5 +66,5 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     </html>
 
 <?php
-} 
+}
 ?>

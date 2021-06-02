@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <title>Groupe</title>
@@ -8,19 +8,14 @@
     $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
     echo "<link rel='stylesheet' href='$css'>";
     ?>
+    <script src="refresh_groups.js"></script>
 </head>
-
-<script src="refresh_groups.js"></script>
-
-<?php
-session_start();
-require "dao.php";
-include "ban.php";
-
-?>
 
 <body>
     <?php
+    session_start();
+    require "dao.php";
+    include "ban.php";
 
     $sender = $_SESSION["email"];
     $idGroupe = $_GET["id"];
@@ -36,13 +31,12 @@ include "ban.php";
 
     echo "
         <div class='show_name_img_grp'>
-            <h1>$nomGroupe</h1><img src='"
-        . recupImageGroupe($idGroupe) .
-        "' class='pdp'></div>";
+            <h1>$nomGroupe</h1><img src='". recupImageGroupe($idGroupe) ."' class='pdp' alt='image de $nomGroupe'>
+        </div>";
 
 
     if (isAdmin($admins, $sender)) {
-        echo "<center><a href='group_settings.php'>Group Settings</a></center>";
+        echo "<a href='group_settings.php'>Group Settings</a>";
     }
 
     $dateTemp = "";
@@ -62,7 +56,7 @@ include "ban.php";
             $msg = $value["text_message"];
             $date = $value["date_envoie"];
             if ($dateTemp != $date) {
-                echo "<center>--------- $date ---------</center>";
+                echo "--------- $date ---------";
                 $dateTemp = $date;
             }
             if ($emailSender == $_SESSION["email"]) {
@@ -71,13 +65,13 @@ include "ban.php";
                 <div class='containMsg'>
                     $msg 
                 </div>
-                <div class='containImg'><img src='" . recupImageEmail($_SESSION['email']) . "' class='pdp'>
+                <div class='containImg'><img src='" . recupImageEmail($_SESSION['email']) . "' class='pdp' alt='$nomSender'>
                 </div>
             </div>";
             } else {
                 echo "
             <div class='youSend'>
-                <div class='containImg'><img src='" . recupImageEmail($membreSender['adresse_mail']) . "' class='pdp'>
+                <div class='containImg'><img src='" . recupImageEmail($membreSender['adresse_mail']) . "' class='pdp' alt='$nomSender'>
                 </div>
                 <div class='containMsg'>
                     $prenomSender $nomSender : $msg 
@@ -87,12 +81,12 @@ include "ban.php";
         }
         ?>
     </div>
-        <div class="writeMsg">
-            <form action="" method="POST">
-                <input type="text" name="msg" class="write" placeholder="write your message here">
-                <input type="submit" class="sub" value="send">
-            </form>
-        </div>
+    <div class="writeMsg">
+        <form method="POST">
+            <input type="text" name="msg" class="write" placeholder="write your message here">
+            <input type="submit" class="sub" value="send">
+        </form>
+    </div>
 </body>
 
 </html>
@@ -106,6 +100,3 @@ if (isset($_POST["msg"]) and $_POST["msg"] != NULL) {
     header("Refresh:0");
 }
 ?>
-</body>
-
-</html>

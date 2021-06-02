@@ -1,7 +1,6 @@
 <?php
 session_start();
 require "dao.php";
-include "ban.php";
 
 $idGroupe = $_SESSION["idGroupe"];
 
@@ -15,7 +14,7 @@ if (!isAdmin($admins, $email)) {
 
 ?>
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="fr">
 
     <head>
         <meta charset="UTF-8">
@@ -31,8 +30,9 @@ if (!isAdmin($admins, $email)) {
     </head>
 
     <body>
+        <?php include "ban.php"; ?>
         <h1>Membre actuel du groupe:</h1>
-        <form action="" method="POST" class="groupe">
+        <form method="POST" class="groupe">
             <?php
             $membres = selectMembresGroupe($idGroupe);
             foreach ($membres as $m) {

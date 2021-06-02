@@ -3,8 +3,6 @@ session_start();
 include "dao.php";
 //Si utilisateur est connecté, affichage de la page
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
-    //$profil = selectMembreWhereEmail($_SESSION["email"]);
-    //$profil = mysqli_fetch_array($profil);
 ?>
 
     <!DOCTYPE html>
@@ -14,13 +12,13 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <title>Profil</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="mon_profil.css">
-        <link rel="stylesheet" href="indexLog.css">
-        <link rel="stylesheet" href="show_all_discussions.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
         <?php
         $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
         echo "<link rel='stylesheet' href='$css'>";
         ?>
     </head>
+
 
     <body>
 
@@ -36,7 +34,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
             //affichage des infos de l'utilisateur connecté 
             echo "<h1>$profil[prenom] $profil[nom]</h1>";
-            echo "<p class='centerText'>Adresse mail : <?php echo $profil[adresse_mail] ?></p>";
+            echo "<p class='centerText'>Adresse mail :"; echo $profil['adresse_mail']; echo "</p>";
 
             if ($_SESSION["email"] == $profil['adresse_mail']) {
                 echo "<a href=addImgServ.php><img src='" . recupImageEmail($profil['adresse_mail']) . "' class='pdpMonProfile' alt='image de profil'></a>";
@@ -58,8 +56,9 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     $receiver = $value["adresse_mail"];
 
                     echo "
+                    <br>
                     <div class='divBody'>
-                        <a href='messages.php?receiver=$receiver'><div class='pdpBodyElement'><img src='" . recupImageEmail($receiver) . "' class='pdp' alt='image de profil'></div></a>
+                        <a href='messages.php?receiver=$receiver'><div class='pdpBodyElement'><img src='" . recupImageEmail($receiver) . "' class='pdp'></div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$nom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$prenom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$receiver</div></a>
@@ -125,10 +124,9 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     </article>";
                     }
                 }
+
                 echo "<a href='?email=$_GET[email]' class='centerText'>Voir moins</a>";
-            } 
-            else 
-            {
+            } else {
                 echo "<a href='?email=$_GET[email]&voirPlusPosts=Voir' class='centerText'>Voir posts</a>";
             }
         }
@@ -145,11 +143,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
     </html>
 
-
-
 <?php
 } else {
-    //Si utilisateur non-connecté, redirection à la connexion
-    header("Location: login.php");
 }
 ?>
