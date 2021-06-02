@@ -23,7 +23,7 @@
                             <input type="text" name="prenom" placeholder="Prenom" require autofocus>
                         </div>
                         <div class="row">
-                            <input type="email" name="email" placeholder="Email" require autofocus>
+                            <input type="text" name="email" placeholder="Email" require autofocus>
                             <input type="password" name="password" placeholder="Mot de passe" require autofocus>
                         </div>
                         <input type="date" name="bday" require autofocus>
@@ -48,15 +48,22 @@ if (
     and $_POST["nom"] != NULL and $_POST["prenom"] != NULL and $_POST["email"] != NULL
     and $_POST["password"] != NULL and $_POST["bday"] != NULL
 ) {
+    $pattern = '/^(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){255,})(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){65,}@)(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22))(?:\\.(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-+[a-z0-9]+)*\\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-+[a-z0-9]+)*)|(?:\\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\\]))$/iD';
 
-    $res = insertIntoMembre($_POST["email"], $_POST["nom"], $_POST["prenom"], $_POST["bday"], $_POST["password"]);
-    if ($res) {
-        session_start();
+    if (preg_match($pattern, $_POST["email"]) == 1) {
 
-        $_SESSION["email"] = $_POST["email"];
+        $res = insertIntoMembre($_POST["email"], $_POST["nom"], $_POST["prenom"], $_POST["bday"], $_POST["password"]);
+        if ($res) {
+            session_start();
 
-        header('Location: ./index.php');
-    } else echo "remplissez les champs convenablement";
+            $_SESSION["email"] = $_POST["email"];
+
+            header('Location: ./index.php');
+        }
+    }
+    else {
+        echo "<script type='text/javascript'>window.alert('veuillez mettre une adresse mail valide');</script>";
+    }
 }
 
 ?>
