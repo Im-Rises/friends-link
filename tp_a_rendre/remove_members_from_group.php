@@ -20,12 +20,13 @@ if (!isAdmin($admins, $email)) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Group Settings</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="remove_member.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     </head>
 
     <body>
-        <h1>Current Members of the group :</h1>
-        <form action="" method="POST">
+        <h1>Membre actuel du groupe:</h1>
+        <form action="" method="POST" class="groupe">
             <?php
             $membres = selectMembresGroupe($idGroupe);
             foreach ($membres as $m) {
@@ -36,7 +37,7 @@ if (!isAdmin($admins, $email)) {
             }
 
             ?>
-            <input type="submit" name="submit">
+            <input type="submit" name="submit" value="Supprimer">
         </form>
     </body>
 
