@@ -1,5 +1,6 @@
-<?php include "ban.php"; //Ajout de la bannière sur la page
-
+<?php 
+session_start();
+require "dao.php";
 //Si utilisateur connecté, affichage de la page
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 ?>
@@ -16,6 +17,10 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         echo "<link rel='stylesheet' href='$css'>";
         ?>
     </head>
+
+    <?php 
+    include "ban.php";
+    ?>
 
     <body>
         <form action="" method="post" enctype="multipart/form-data">

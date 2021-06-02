@@ -1,5 +1,6 @@
 <?php
-include "ban.php";//Ajout de la bannière sur la page
+session_start();
+require "dao.php";
 
 //Si utilisateur est connecté, affichage de la page
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
@@ -14,7 +15,14 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="postCreation.css">
+        <?php
+        $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
+        echo "<link rel='stylesheet' href='$css'>";
+        ?>
     </head>
+
+    <?php
+    include "ban.php"; ?>
 
     <body>
         <!-- Formulaire pour la création d'un post avec la possibilité d'y mettre une image -->
