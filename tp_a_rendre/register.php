@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="fr">
 
 <head>
     <title>FriendsLink</title>
@@ -13,7 +13,7 @@
     ?>
 </head>
 
-<?php 
+<?php
 session_start();
 require "dao.php";
 include "ban.php"; ?>
@@ -24,17 +24,15 @@ include "ban.php"; ?>
             <form method="post" class="formRegister">
                 <div class="compte">
                     <h3>Créer un compte:</h3>
-                    <center>
-                        <div class="row">
-                            <input type="text" name="nom" placeholder="Nom" require autofocus>
-                            <input type="text" name="prenom" placeholder="Prenom" require autofocus>
-                        </div>
-                        <div class="row">
-                            <input type="text" name="email" placeholder="Email" require autofocus>
-                            <input type="password" name="password" placeholder="Mot de passe" require autofocus>
-                        </div>
-                        <input type="date" name="bday" require autofocus>
-                    </center>
+                    <div class="row">
+                        <input type="text" name="nom" placeholder="Nom" required autofocus>
+                        <input type="text" name="prenom" placeholder="Prenom" required>
+                    </div>
+                    <div class="row">
+                        <input type="text" name="email" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Mot de passe" required>
+                    </div>
+                    <input type="date" name="bday" required>
                 </div>
                 <input type="submit" value="Envoyer" class="inscrire">
             </form>
