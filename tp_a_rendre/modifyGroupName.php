@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="modifyGroup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <title>Modifier le nom du groupe</title>
 </head>
 
@@ -23,9 +24,13 @@ if (!isAdmin($admins, $email)) {
 } else { ?>
 
     <body>
+        
         <form action="" method="POST">
+            <div class="modif">
+            <legend>Nouveau nom du groupe:</legend>
             <input type="text" name="nom">
             <input type="submit">
+            </div>
         </form>
     </body>
 
