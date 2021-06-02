@@ -6,24 +6,27 @@ $db          = "reseau_social";
 $connexion = mysqli_connect($serveur, $utilisateur, $mdp, $db);
 
 // OTHERS
-function protection($val)
+function protection($val) // permet de centraliser toute la protection de nos variables lors de requêtes sql
 {
-    $val = htmlspecialchars($val);
-    $val = htmlentities($val);
+    $val = htmlspecialchars($val); // protection contre les codes html / css / js
+    $val = htmlentities($val); // protection contre les injections sql
     return $val;
 }
 
-function exeReq($req)
+function exeReq($req) // permet de centraliser l'execution d'une requete
 {
     global $connexion;
 
-    $res = mysqli_query($connexion, $req);
+    $res = mysqli_query($connexion, $req); // on execute la requete
+
+    // une fois la requete executee, on regarde s'il n'y a pas eu d'erreur, sinon on affiche cette erreur
     if (!$res) echo mysqli_errno($connexion) . ": " . mysqli_error($connexion) . "\n";
 
+    // on retourne le résultat
     return $res;
 }
 
-function isAdmin($admins, $email)
+function isAdmin($admins, $email) // permet de verifier qu'un email est bien contenu dans une une liste d'administrateurs
 {
     while ($membre = mysqli_fetch_array($admins))
         if ($membre["email"] == $email) return true;
