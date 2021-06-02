@@ -15,6 +15,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <meta charset="utf-8" />
         <link rel="stylesheet" href="mon_profil.css">
         <link rel="stylesheet" href="indexLog.css">
+        <link rel="stylesheet" href="show_all_discussions.css">
     </head>
 
     <body>
@@ -33,73 +34,56 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <?php
         if (isset($_GET['voirPlusAmis']) and $_GET['voirPlusAmis'] != NULL && $_GET['voirPlusAmis'] == 'Voir') {
         ?>
-
             <div class="allTab">
-                <h1>tous les amis :</h1>
-                <div class='showTab'>
-                    <div class='divHead'>
-                        <div class='headElement'>Image</div>
-                        <div class='headElement'>Nom</div>
-                        <div class='headElement'>Prenom</div>
-                        <div class='headElement'>Email</div>
-                        <div class='headElement'>Supprimer</div>
-                    </div>
+                <h1>Tous les amis :</h1>
+                <?php
+                $array = selectAllFriendsWhereEmail($_SESSION["email"]);
+                foreach ($array as $value) {
+                    $nom = $value["nom"];
+                    $prenom = $value["prenom"];
+                    $receiver = $value["adresse_mail"];
 
-
-                    <?php
-                    $listeAmi = selectAllFriendsWhereEmail($profil['adresse_mail']);
-                    //$array = selectAllFriendsWhereEmail($_SESSION["email"]);
-
-                    foreach ($listeAmi as $value) {
-                        $nom = $value["nom"];
-                        $prenom = $value["prenom"];
-                        $receiver = $value["adresse_mail"];
-
-                        echo "
-                    <br>
+                    echo "
                     <div class='divBody'>
-                        <a href=''><div class='bodyElement'><img src=''" . recupImageEmail($receiver) . "' class='pdp'></div></a>
-                        <a href=''><div class='bodyElement'>$nom</div></a>
-                        <a href=''><div class='bodyElement'>$prenom</div></a>
-                        <a href=''><div class='bodyElement'>$receiver</div></a>
+                        <a href='messages.php?receiver=$receiver'><div class='pdpBodyElement'><img src='" . recupImageEmail($receiver) . "' class='pdp'></div></a>
+                        <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$nom</div></a>
+                        <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$prenom</div></a>
+                        <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$receiver</div></a>
                         <a href='?suppression=$receiver'><div class='bodyElement'>Suppression</div></a>
                     </div>";
-                    }
+                }
 
-                    ?>
-                </div>
-
-                <a href='?voirPlusAmis=VoirMoins' class='centerText'>Voir moins</a>
-
-
-            <?php
+                ?>
+            <!-- </div> -->
+            <!-- </div> -->
+        <?php
         } else {
             echo "<a href='?voirPlusAmis=Voir&voirPlusPost' class='centerText'>Voir amis</a>";
         }
-            ?>
+        ?>
 
 
 
 
-            <h2>Liste des posts</h2>
+        <h2>Liste des posts</h2>
 
-            <!-- Ici faire l'affichage de tous les posts de la personne -->
+        <!-- Ici faire l'affichage de tous les posts de la personne -->
 
-            <?php
-            if (isset($_GET['voirPlusPosts']) and $_GET['voirPlusPosts'] != NULL && $_GET['voirPlusPosts'] == 'Voir') {
+        <?php
+        if (isset($_GET['voirPlusPosts']) and $_GET['voirPlusPosts'] != NULL && $_GET['voirPlusPosts'] == 'Voir') {
 
-                $listePosts = selectAllPostsFromMembreOrder($profil['adresse_mail']);
+            $listePosts = selectAllPostsFromMembreOrder($profil['adresse_mail']);
 
-                foreach ($listePosts as $post) {
-                    $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
-                    $array = mysqli_fetch_array($array);
+            foreach ($listePosts as $post) {
+                $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
+                $array = mysqli_fetch_array($array);
 
-                    $like = empty($array)
-                        ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>"
-                        : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
-                    // Afficher la liste des posts des amis ici
-                    if ($post['image_post']) {
-                        echo "
+                $like = empty($array)
+                    ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>"
+                    : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
+                // Afficher la liste des posts des amis ici
+                if ($post['image_post']) {
+                    echo "
                     <article class='post'>
                         <div class='insidePost'>
                             <h1>$post[titre]</h1>
@@ -119,9 +103,9 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                         </div>
     
                     </article>";
-                        // echo "</a>";
-                    } else {
-                        echo "
+                    // echo "</a>";
+                } else {
+                    echo "
                     <article class='post'>
                         <div class='insidePost'>
                             <h1>$post[titre]</h1>
@@ -133,20 +117,20 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                             </div>
                         </div>
                     </article>";
-                    }
                 }
-
-            ?>
-                <a href='?voirPlusPosts=VoirMoins' class='centerText'>Voir moins</a>
-            <?php
-            } else {
-                echo "<a href='?voirPlusPosts=Voir' class='centerText'>Voir posts</a>";
             }
 
-            if (isset($_GET['suppression']) and $_GET['suppression'] != NULL) {
-                deleteAmitie($_SESSION["email"], $_GET['suppression']);
-            }
-            ?>
+        ?>
+            <a href='?voirPlusPosts=VoirMoins' class='centerText'>Voir moins</a>
+        <?php
+        } else {
+            echo "<a href='?voirPlusPosts=Voir' class='centerText'>Voir posts</a>";
+        }
+
+        if (isset($_GET['suppression']) and $_GET['suppression'] != NULL) {
+            deleteAmitie($_SESSION["email"], $_GET['suppression']);
+        }
+        ?>
 
     </body>
 
