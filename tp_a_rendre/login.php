@@ -13,11 +13,14 @@
 </head>
 <?php
 session_start();
-include "ban.php";
 include "dao.php";
+//include "ban.php";
 ?>
 
 <body>
+    <?php
+    include "ban.php";
+    ?>
     <form method="post" class="formLogin">
         <div class="login">
             <h1>Se Connecter</h1>
@@ -34,7 +37,6 @@ include "dao.php";
 if (isset($_POST["mail"], $_POST["password"]) and $_POST["password"] != NULL and $_POST["mail"] != NULL) {
 
     $mail = htmlspecialchars($_POST['mail']);
-
     $membre = selectDataMembersWhereEmail($mail);
     $membre = mysqli_fetch_array($membre);
 

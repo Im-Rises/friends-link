@@ -4,10 +4,11 @@ include "dao.php";
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 ?>
     <!DOCTYPE html>
-    <html>
+    <html lang="fr">
 
     <head>
         <meta charset="utf-8">
+        <title>Mes discussions</title>
         <link rel="stylesheet" href="show_all_discussions.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
         <?php
@@ -16,12 +17,16 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         ?>
     </head>
 
-    <?php include "ban.php"; ?>
 
     <body>
-        <?php include "search_friends.php"; ?>
+        <?php
+        include "ban.php";
+        include "search_friends.php";
+        ?>
+
         <div class="allTab">
             <h1>Tous les amis :</h1>
+
             <?php
             $array = selectAllFriendsWhereEmail($_SESSION["email"]);
             foreach ($array as $value) {
@@ -31,16 +36,16 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
                 echo "
                     <div class='divBody'>
-                        <a href='messages.php?receiver=$receiver'><div class='pdpBodyElement'><img src='" . recupImageEmail($receiver) . "' class='pdp'></div></a>
+                        <a href='messages.php?receiver=$receiver'><div class='pdpBodyElement'><img src='" . recupImageEmail($receiver) . "' class='pdp' alt='image de profil'></div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$nom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$prenom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$receiver</div></a>
                     </div>";
             }
-
             ?>
+            
         </div>
-        </div>
+
         <div class="allTab">
             <h1>Tous les groupes :</h1>
             <?php
