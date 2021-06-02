@@ -1,7 +1,6 @@
 <?php
 session_start();
 require "dao.php";
-include "ban.php";
 
 $idGroupe = $_SESSION["idGroupe"];
 
@@ -15,7 +14,7 @@ if (!isAdmin($admins, $email)) {
 
 ?>
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="fr">
 
     <head>
         <meta charset="UTF-8">
@@ -30,25 +29,24 @@ if (!isAdmin($admins, $email)) {
     </head>
 
     <body>
+    <?php include "ban.php";?>
         <div class="wow">
             <ul>
-                <center>
-                    <li>
-                        <a href="addMembersToGroup.php">Ajouter des membres</a>
-                    </li>
-                    <li>
-                        <a href="modifyGroupName.php">Modifier le nom du groupe</a>
-                    </li>
-                    <li>
-                        <a href="addAdministratorsToGroup.php">Ajouter des administrateurs au groupe</a>
-                    </li>
-                    <li>
-                        <a href="remove_members_from_group.php">Supprimer des membres du groupe</a>
-                    </li>
-                    <li>
-                        <a href="addImgGroupeServ.php">Changer image du groupe</a>
-                    </li>
-                </center>
+                <li>
+                    <a href="addMembersToGroup.php">Ajouter des membres</a>
+                </li>
+                <li>
+                    <a href="modifyGroupName.php">Modifier le nom du groupe</a>
+                </li>
+                <li>
+                    <a href="addAdministratorsToGroup.php">Ajouter des administrateurs au groupe</a>
+                </li>
+                <li>
+                    <a href="remove_members_from_group.php">Supprimer des membres du groupe</a>
+                </li>
+                <li>
+                    <a href="addImgGroupeServ.php">Changer image du groupe</a>
+                </li>
             </ul>
         </div>
     </body>
