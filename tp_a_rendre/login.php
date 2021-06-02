@@ -30,16 +30,22 @@ if (isset($_POST["mail"], $_POST["password"]) and $_POST["password"] != NULL and
     $mail = htmlspecialchars($_POST['mail']);
 
     $membre = selectDataMembersWhereEmail($mail);
-
     $membre = mysqli_fetch_array($membre);
 
-    if (password_verify($_POST['password'], $membre["mdp"])) {
-        session_destroy();
-        session_start();
-        $_SESSION["email"] = $membre["adresse_mail"];
-        header("Location: index.php");
-    } else {
-        echo 'Le mot de passe est invalide! Veuillez réesayer';
+    if($membre != NULL) {
+
+        if (password_verify($_POST['password'], $membre["mdp"])) {
+            session_destroy();
+            session_start();
+            $_SESSION["email"] = $membre["adresse_mail"];
+            header("Location: index.php");
+        } 
+        else {
+            echo "<script type='text/javascript'>window.alert('mot de passe invalide');</script>";
+        }
+    }
+    else {
+        echo "<script type='text/javascript'>window.alert('compte inexistant');</script>";
     }
 }
 ?>
