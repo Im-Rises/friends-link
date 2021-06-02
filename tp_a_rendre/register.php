@@ -13,12 +13,11 @@
     ?>
 </head>
 
-<?php
-session_start();
-require "dao.php";
-include "ban.php"; ?>
-
 <body>
+    <?php
+    session_start();
+    require "dao.php";
+    include "ban.php"; ?>
     <main>
         <article>
             <form method="post" class="formRegister">
