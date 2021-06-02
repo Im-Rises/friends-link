@@ -1,5 +1,7 @@
 <?php
-include "ban.php";
+include "ban.php";//Ajout de la bannière sur la page
+
+//Si utilisateur est connecté, affichage de la page et que le post existe 
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_array(verifPostExiste($_GET['idPost']))['1'] == 1) {
     $profil = selectMembreWhereEmail($_SESSION["email"]);
     $profil = mysqli_fetch_array($profil);
@@ -17,8 +19,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
     <body>
 
         <?php
-        //var_dump($_GET);
-
+        //affichage du post 
         echo "<h2>Post</h2>";
 
         $post = selectPostsFromId($_GET['idPost']);
@@ -44,7 +45,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
         $listeMessages = selectMessagesFromPost($_GET['idPost']);
 
         echo "<h2>Commentaires</h2>";
-
+        //Affichage de tous les messages du post
         foreach ($listeMessages as $message) {
             //var_dump($message);
             echo "<div>";
@@ -58,7 +59,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
 
         ?>
 
-
+        <!-- Form pour l'ajout de commentaire au post -->
         <form action="" method="post">
             <label for="message">Votre réaction :</label></br>
             <textarea name="message" placeholder="Entrez votre message ici !"></textarea></br>
@@ -67,7 +68,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
 
 
         <?php
-        //var_dump($_FILES);
+        //Si un message a été envoyé via le form alors il est ajouté à la base de données et la page est rafraichis pour son affichage
         if (isset($_POST["message"], $_GET['idPost']) and $_POST["message"] != NULL and $_GET['idPost'] != NULL) {
             insertIntoPost_Message($_GET['idPost'], $_SESSION['email'], $_POST["message"]);
             header("Refresh:0");
@@ -80,6 +81,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
 
 <?php
 } else {
-    header('Location: index.php');
+    header('Location: index.php');//Redirection vers l'accueil si le post n'existe pas
 }
 ?>

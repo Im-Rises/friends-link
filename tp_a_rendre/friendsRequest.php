@@ -1,4 +1,6 @@
-<?php include "ban.php";
+<?php include "ban.php";//Ajout de la bannière sur la page
+
+//Si utilisateur connecté, affichage de la page
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 ?>
 
@@ -12,8 +14,10 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     </head>
 
     <body>
+        <!-- Ajout de la page pour la recherche de personnes -->
         <?php include "search_peoples.php"; ?>
 
+        <!-- Affiche la liste des demandes d'ami reçues en fonction de la personne connectée -->
         <h1>Liste des demandes d'amis reçues :</h1>
         <table style="width:100%">
             <tr>
@@ -46,7 +50,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         </table>
 
 
-
+        <!-- Affiche la liste des demandes d'ami envoyées en fonction de la personne connectée -->
         <h1>Liste des demandes d'amis envoyées :</h1>
         <table style="width:100%">
             <tr>
@@ -83,6 +87,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
 
     <?php
+    //gestion des demandes d'amis reçues (accepter, refuser une demander d'ami, et annuler une demande d'ami envoyé)
     if (isset($_GET['methode'], $_GET['idUtilisateurAutre']) && $_GET['methode'] != NULL && $_GET['idUtilisateurAutre'] != NULL) {
 
         $methode = $_GET['methode'];
@@ -110,6 +115,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
 <?php
 } else {
-    header("Location: login.php");
+    header("Location: login.php");//Retour à la page de connexion si l'utilisateur n'est pas connecté
 }
 ?>

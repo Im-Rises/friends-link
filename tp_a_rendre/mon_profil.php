@@ -1,5 +1,7 @@
 <?php
-include "ban.php";
+include "ban.php";//Ajout de la bannière sur la page
+
+//Si utilisateur est connecté, affichage de la page
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     $profil = selectMembreWhereEmail($_SESSION["email"]);
     $profil = mysqli_fetch_array($profil);
@@ -17,8 +19,9 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
     <body>
 
+    
         <?php
-
+        //affichage des infos de l'utilisateur connecté 
         echo "<h1>$profil[prenom] $profil[nom]</h1>";
         echo "<a href=addImgServ.php><img src='" . recupImageEmail($profil['adresse_mail']) . "'class='pdpMonProfile' ></a>";
         ?>
@@ -153,6 +156,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
 <?php
 } else {
+    //Si utilisateur non-connecté, redirection à la connexion
     header("Location: login.php");
 }
 ?>

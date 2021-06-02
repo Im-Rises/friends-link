@@ -5,10 +5,12 @@
     </form>
 
     <?php
-
+    //Vérification de la recherche de données de recherche d'un ami via la méthode get
     if (isset($_GET["search"]) and $_GET["search"] != NULL) {
-        $array = selectAllMembersWhereNomPrenomEmailWhereSearch($_GET["search"], $_SESSION["email"]);
 
+        //récupération dans la base de données des personnes correspondant à la recherche
+        $array = selectAllMembersWhereNomPrenomEmailWhereSearch($_GET["search"], $_SESSION["email"]);
+        
         foreach ($array as $value) {
             $row = 0;
             $rowTemp = $row % 2;
@@ -27,6 +29,7 @@
                 ?>
 
         <?php
+        //Affichage des données des personnes trouvées correspondant à la recherche depuis la base de données
             $nom = $value['nom'];
             $prenom = $value['prenom'];
             $email = $value['adresse_mail'];

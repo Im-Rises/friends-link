@@ -1,4 +1,6 @@
-<?php include "ban.php";
+<?php include "ban.php";//Ajout de la bannière sur la page
+
+//Si utilisateur connecté, affichage de la page
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 ?>
 
@@ -19,7 +21,9 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         </form>
 
         <?php
-
+        /*Si le form ci-dessus est envoyé alors l'image envoyé en post va être ajouté à la BDD et au stockage du serveur 
+         *Après vérification du fichier envoyé, s'il s'agit bien d'une image et si elle n'est pas trop lourde.
+        */
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $imageActuelle = "images/profiles/" . selectNomImageFromEmail($_SESSION['email'])['nomImage'];
@@ -51,6 +55,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
 <?php
 } else {
-    header("Location: login.php");
+    header("Location: login.php");//Retour à la page de connexion, si l'utilisateur n'est pas connecté
 }
 ?>

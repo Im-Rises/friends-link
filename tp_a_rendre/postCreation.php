@@ -1,5 +1,7 @@
 <?php
-include "ban.php";
+include "ban.php";//Ajout de la bannière sur la page
+
+//Si utilisateur est connecté, affichage de la page
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     $profil = selectMembreWhereEmail($_SESSION["email"]);
     $profil = mysqli_fetch_array($profil);
@@ -15,7 +17,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     </head>
 
     <body>
-
+        <!-- Formulaire pour la création d'un post avec la possibilité d'y mettre une image -->
         <div class="newPost">
             <form action="" method="post" enctype="multipart/form-data">
                 <input type="text" name="titre" placeholder="titre du post" class="titrePost"></br>
@@ -27,7 +29,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         </div>
 
         <?php
-        //var_dump($_FILES);
+        //Une fois le forms validé, le code ci-dessous va ajouter le post à la BDD et l'image sur le serveur pour son affichage
         if (isset($_POST["titre"], $_POST["message"]) and $_POST["titre"] != NULL and $_POST["message"] != NULL) {
 
             if ($_FILES['fileToUpload']['error'] == 0) {
