@@ -8,7 +8,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 ?>
 
     <!DOCTYPE html>
-    <html>
+    <html lang="fr">
 
     <head>
         <title>Mon profil</title>
@@ -22,15 +22,14 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         ?>
     </head>
 
-    <?php include "ban.php"; ?>
-
     <body>
 
 
         <?php
+        include "ban.php";
         //affichage des infos de l'utilisateur connecté 
         echo "<h1>$profil[prenom] $profil[nom]</h1>";
-        echo "<a href=addImgServ.php><img src='" . recupImageEmail($profil['adresse_mail']) . "'class='pdpMonProfile' ></a>";
+        echo "<a href=addImgServ.php><img src='" . recupImageEmail($profil['adresse_mail']) . "' class='pdpMonProfile' alt='image de profil'></a>";
         ?>
 
         <p class='centerText'>Adresse mail : <?php echo $profil['adresse_mail'] ?></p>
@@ -51,7 +50,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
                     echo "
                     <div class='divBody'>
-                        <a href='messages.php?receiver=$receiver'><div class='pdpBodyElement'><img src='" . recupImageEmail($receiver) . "' class='pdp'></div></a>
+                        <a href='messages.php?receiver=$receiver'><div class='pdpBodyElement'><img src='" . recupImageEmail($receiver) . "' class='pdp' alt='image de profil'></div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$nom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$prenom</div></a>
                         <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$receiver</div></a>

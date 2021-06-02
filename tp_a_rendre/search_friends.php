@@ -1,5 +1,5 @@
 <div class="search_friends">
-    <form action="" method="GET" class="formSearch">
+    <form method="GET" class="formSearch">
         <input type="search" name="search" placeholder="Amis à rechercher" class="searchBar">
         <input type="submit" value="Search" class="searchBtn">
     </form>
@@ -25,6 +25,7 @@
                         <div class='headElement'>Prenom</div>
                         <div class='headElement'>Email</div>
                     </div>
+                </div>
                 <?php
             }
                 ?>
@@ -37,7 +38,7 @@
 
             echo "
                 <div class='divBody'>
-                    <a href='messages.php?receiver=$email'><div class='bodyElement'><img src='".recupImageEmail($email)."' class='pdp'></div></a>
+                    <a href='messages.php?receiver=$email'><div class='bodyElement'><img src='".recupImageEmail($email)."' class='pdp' alt='image de profil'></div></a>
                     <a href='messages.php?receiver=$email'><div class='bodyElement'>$nom</div></a>
                     <a href='messages.php?receiver=$email'><div class='bodyElement'>$prenom</div></a>
                     <a href='messages.php?receiver=$email'><div class='bodyElement'>$email</div></a>
@@ -47,5 +48,5 @@
     }
 
         ?>
-    </div>
+
 </div>

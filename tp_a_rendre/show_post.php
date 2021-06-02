@@ -9,7 +9,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
 ?>
 
     <!DOCTYPE html>
-    <html>
+    <html lang="fr">
 
     <head>
         <title>Mon profil</title>
@@ -21,9 +21,10 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
         ?>
     </head>
 
-    <?php include "ban.php"; ?>
+
 
     <body>
+    <?php include "ban.php"; ?>
 
         <?php
         //affichage du post 
@@ -67,9 +68,9 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
         ?>
 
         <!-- Form pour l'ajout de commentaire au post -->
-        <form action="" method="post">
-            <label for="message">Votre réaction :</label></br>
-            <textarea name="message" placeholder="Entrez votre message ici !"></textarea></br>
+        <form action="show_post.php" method="post">
+            <label for="textAreaMsg">Votre réaction :</label><br>
+            <textarea name="message" id="textAreaMsg" placeholder="Entrez votre message ici !"></textarea><br>
             <input type="submit" name="poster">
         </form>
 
