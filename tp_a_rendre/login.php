@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="fr">
 
 <head>
     <title>FriendsLink</title>
@@ -11,20 +11,18 @@
     echo "<link rel='stylesheet' href='$css'>";
     ?>
 </head>
-<?php 
+<?php
 session_start();
-include "ban.php"; 
+include "ban.php";
 include "dao.php";
 ?>
 
 <body>
-    <form method="post" method="" class="formLogin">
+    <form method="post" class="formLogin">
         <div class="login">
             <h1>Se Connecter</h1>
-            <center>
-                <input type="email" name="mail" placeholder="Email" required autofocus>
-                <input type="password" name="password" placeholder="Mot de passe" required autofocus>
-            </center>
+            <input type="email" name="mail" placeholder="Email" required autofocus>
+            <input type="password" name="password" placeholder="Mot de passe" required>
         </div>
         <input type="submit" value="Se connecter" class="seConnecter">
     </form>
