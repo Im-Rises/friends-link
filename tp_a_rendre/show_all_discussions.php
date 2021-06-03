@@ -11,6 +11,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <title>Mes discussions</title>
         <link rel="stylesheet" href="show_all_discussions.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+        <link rel="icon" href="friends_link.svg" />
         <?php
         $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
         echo "<link rel='stylesheet' href='$css'>";

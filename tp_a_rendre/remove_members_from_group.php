@@ -21,6 +21,7 @@ if (!isAdmin($admins, $email)) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Group Settings</title>
+        <link rel="icon" href="friends_link.svg" />
         <link rel="stylesheet" href="remove_member.css">
         <?php
         $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";

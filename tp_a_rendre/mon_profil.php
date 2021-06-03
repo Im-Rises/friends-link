@@ -11,6 +11,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     <head>
         <title>Profil</title>
         <meta charset="utf-8" />
+        <link rel="icon" href="friends_link.svg" />
         <link rel="stylesheet" href="mon_profil.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
         <?php

@@ -10,6 +10,7 @@ include "dao.php";
     <title>Friends Link</title>
     <meta charset="utf-8" />
     <meta http-equiv="refresh" content="60">
+    <link rel="icon" href="friends_link.svg" />
     <?php
     // css de l'index
     $css = isset($_SESSION["email"]) ? "indexLog.css" : "index.css";

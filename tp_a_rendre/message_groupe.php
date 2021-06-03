@@ -4,6 +4,7 @@
 <head>
     <title>Groupe</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="friends_link.svg" />
     <?php
     $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
     echo "<link rel='stylesheet' href='$css'>";

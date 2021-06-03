@@ -15,6 +15,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="postCreation.css">
+        <link rel="icon" href="friends_link.svg" />
         <title>Création d'un post</title>
         <?php
         $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";

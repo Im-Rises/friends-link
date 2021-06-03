@@ -22,6 +22,7 @@ if (!isAdmin($admins, $email)) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Group Settings</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="friends_link.svg" />
         <?php
         $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
         echo "<link rel='stylesheet' href='$css'>";

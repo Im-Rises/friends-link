@@ -15,6 +15,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
         <title>Mon profil</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="friends_link.svg" />
         <?php
         $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
         echo "<link rel='stylesheet' href='$css'>";
