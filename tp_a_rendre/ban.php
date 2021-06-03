@@ -9,6 +9,10 @@
                 $membre = selectMembreWhereEmail($_SESSION["email"]);
                 $membre = mysqli_fetch_array($membre);
 
+                $nbrDemandeAmis = countDemandeAmis($_SESSION["email"]);
+                $nbrDemandeAmis = mysqli_fetch_array($nbrDemandeAmis);
+                $nbrDemandeAmis = $nbrDemandeAmis["COUNT(*)"];
+
                 $nom = $membre["nom"];
                 $prenom = $membre["prenom"];
 
@@ -19,7 +23,7 @@
                             Messagerie
                         </a>
                         <a href='friendsRequest.php'>
-                            Demande d'amis
+                            Demande d'amis <div class='notifDmdAmis'>$nbrDemandeAmis</div>
                         </a>
                         <a href='destroy_session.php'>
                             Déconnexion
@@ -34,7 +38,6 @@
                         </a>";
             }
             ?>
-
             <a href="a_propos.php">A propos</a>
         </div>
     </nav>

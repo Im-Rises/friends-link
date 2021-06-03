@@ -493,6 +493,14 @@ function selectAllPostsFromMembreOrder($email)
     return exeReq($req);
 }
 
+function countDemandeAmis($email){
+    $email = protection($email);
+    
+    $req = "SELECT COUNT(*) FROM ami WHERE amitie_validee=0;";
+
+    return exeReq($req);
+}
+
 //Récupère tous les messages d'un post par date en fonction de l'id du post
 function selectAllMessagesFromPostOrder($idPost)
 {

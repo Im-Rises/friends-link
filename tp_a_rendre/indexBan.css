@@ -43,6 +43,16 @@ header .logo {
     justify-content: center;
 }
 
+.notifDmdAmis {
+    width          : auto;
+    height         : 20px;
+    border-radius  : 20px;
+    background     : #33032F;
+    display        : flex;
+    align-items    : center;
+    text-align     : center;
+    justify-content: center;
+}
 .menuInLine a {
     font-size      : 150%;
     color          : #D26B60;
