@@ -62,22 +62,28 @@ include "dao.php";
             <a href="postCreation.php">Nouveau Post</a>
         </div>
 
-        <?php
+    <?php
         $listePosts = selectPostsFromAmis($_SESSION['email']);
 
         foreach ($listePosts as $post) {
+
+            $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
+            $array = mysqli_fetch_array($array);
+
+            $membre = selectMembreWhereEmail($post["email_posteur"]);
+            $membre = mysqli_fetch_array($membre);
+
+            $nbrLike = countLikesFromIdPost($post["id_post"]);
+            $nbrLike = mysqli_fetch_array($nbrLike);
+            $nbrLike = $nbrLike["COUNT(*)"];
+            $nbrLike = "$nbrLike ❤";
+
+            $like = empty($array)
+                ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer ❤</a>"
+                : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne plus Aimer 💔</a>";
+
             // Afficher la liste des posts des amis ici
             if ($post['image_post']) {
-
-                $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
-                $array = mysqli_fetch_array($array);
-
-                $membre = selectMembreWhereEmail($post["email_posteur"]);
-                $membre = mysqli_fetch_array($membre);
-
-                $like = empty($array)
-                    ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>"
-                    : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
                 echo "
                 <article class='post'>
                     <div class='insidePost'>
@@ -93,18 +99,12 @@ include "dao.php";
                         </div>
                         <div class='actions'>
                             $like
-                            <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter</a>
+                            <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter 💬</a>
+                            $nbrLike
                         </div>
                     </div>
                 </article>";
             } else {
-                $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
-                $array = mysqli_fetch_array($array);
-
-                $like = empty($array)
-                    ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>"
-                    : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
-
                 echo "
                 <article class='post'>
                     <div class='insidePost'>
@@ -113,7 +113,8 @@ include "dao.php";
                         <p>$post[post_text]</p>
                         <div class='actions'>
                             $like
-                            <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter</a>
+                            <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter 💬</a>
+                            $nbrLike
                         </div>
                     </div>
                 </article>";

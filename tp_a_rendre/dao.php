@@ -568,6 +568,14 @@ function selectMessagesFromPost($id_post)
     return exeReq($req);
 }
 
+function countLikesFromIdPost($id_post){
+    $id_post = protection($id_post);
+
+    $req = "SELECT COUNT(*) FROM post_like WHERE id_post=\"$id_post\"";
+
+    return exeReq($req);
+}
+
 //Verifie qu'un post existe en envoyant son id en paramètre
 function verifPostExiste($id_post)
 {
