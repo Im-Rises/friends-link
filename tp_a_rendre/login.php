@@ -14,7 +14,6 @@
 <?php
 session_start();
 include "dao.php";
-//include "ban.php";
 ?>
 
 <body>
