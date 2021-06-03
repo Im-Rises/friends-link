@@ -10,7 +10,8 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     <head>
         <title>FriendsLink</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="style.css">
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <link rel="stylesheet" href="show_all_discussions.css">
         <?php
         $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
         echo "<link rel='stylesheet' href='$css'>";
@@ -25,22 +26,23 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         include "search_peoples.php";
         ?>
 
-        <!-- Affiche la liste des demandes d'ami reçues en fonction de la personne connectée -->
-        <h1>Liste des demandes d'amis reçues :</h1>
-        <table style="width:100%">
-            <tr>
-                <th>Image</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Email</th>
-                <th>Action</th>
-            </tr>
+        <div class="allTab">
+            <!-- Affiche la liste des demandes d'ami reçues en fonction de la personne connectée -->
+            <h1>Liste des demandes d'amis reçues :</h1>
+            <table style="width:100%; text-align:center;">
+                <tr>
+                    <th>Image</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
 
-            <?php
-            $res = selectProfilsReceptionDemandeAmi($_SESSION["email"]);
+                <?php
+                $res = selectProfilsReceptionDemandeAmi($_SESSION["email"]);
 
-            foreach ($res as $emails) {
-                echo "
+                foreach ($res as $emails) {
+                    echo "
                     <br>
                     <tr>
                         <td><img src='" . recupImageEmail($emails['adresse_mail']) . "' class='pdp'></div>
@@ -53,26 +55,27 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                         </td>
                     </tr>
             ";
-            }
-            ?>
-        </table>
-
+                }
+                ?>
+            </table>
+        </div>
 
         <!-- Affiche la liste des demandes d'ami envoyées en fonction de la personne connectée -->
-        <h1>Liste des demandes d'amis envoyées :</h1>
-        <table style="width:100%">
-            <tr>
-                <th>Image</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Email</th>
-                <th>Action</th>
-            </tr>
+        <div class='allTab'>
+            <h1>Liste des demandes d'amis envoyées :</h1>
+            <table style="width:100%; text-align:center;">
+                <tr>
+                    <th>Image</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
 
-            <?php
-            $res = selectProfilsEnvoieDemandesEnAmi($_SESSION["email"]);
-            foreach ($res as $emails) {
-                echo "
+                <?php
+                $res = selectProfilsEnvoieDemandesEnAmi($_SESSION["email"]);
+                foreach ($res as $emails) {
+                    echo "
                     <br>
                     <tr>
                         <td><img src='" . recupImageEmail($emails['adresse_mail']) . "' class='pdp'></div>
@@ -84,9 +87,10 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                         </td>
                     </tr>
             ";
-            }
-            ?>
-        </table>
+                }
+                ?>
+            </table>
+        </div>
     </body>
 
     </html>

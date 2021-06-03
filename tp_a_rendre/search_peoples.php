@@ -5,21 +5,23 @@
     </form>
 </div>
 
-<h1>résultat de la recherche (cliquez sur le profil pour l'ajouter)</h1>
-<table style="width:100%;text-align:center;">
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Email</th>
-                    </tr>
-                </thead>
+
 
 <?php
 //Vérification de la recherche de données de recherche d'un membre via la méthode get
 if (isset($_GET["search"]) and $_GET["search"] != NULL) {
 
+    echo "<div class='allTab'>
+    <h1>résultat de la recherche (cliquez sur le profil pour l'ajouter)</h1>
+    <table style='width:100%;text-align:center;'>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>";
     //récupération dans la base de données des personnes correspondant à la recherche
     $array = selectAllMembersWhereNomPrenomEmailWhereSearch($_GET["search"], $_SESSION["email"]);
 
@@ -48,6 +50,7 @@ if (isset($_GET["search"]) and $_GET["search"] != NULL) {
 
         ?>
             </table>
+</div>
 
         <?php
     }

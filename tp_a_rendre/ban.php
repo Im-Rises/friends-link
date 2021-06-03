@@ -23,7 +23,7 @@
                             Messagerie
                         </a>
                         <a href='friendsRequest.php'>
-                            Demande d'amis <div class='notifDmdAmis'>$nbrDemandeAmis</div>
+                            Demandes d'amis <div class='notifDmdAmis'>$nbrDemandeAmis</div>
                         </a>
                         <a href='destroy_session.php'>
                             Déconnexion
