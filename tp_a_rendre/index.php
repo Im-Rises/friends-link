@@ -133,9 +133,9 @@ include "dao.php";
             }
         }
         ?>
+        </div>
 
 </body>
-</div>
 
 
 </html>
