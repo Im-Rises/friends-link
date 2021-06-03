@@ -13,7 +13,7 @@
                 $prenom = $membre["prenom"];
 
                 echo "
-                        <a href='mon_profil.php' class='monProfil'><img src='" . recupImageEmail($_SESSION["email"]) . "' class='pdp' alt='image de profil'>$nom $prenom
+                        <a href='mon_profil.php?email=$membre[adresse_mail]' class='monProfil'><img src='" . recupImageEmail($_SESSION["email"]) . "' class='pdp' alt='image de profil'>$nom $prenom
                         </a>
                         <a href='show_all_discussions.php'>
                             Messagerie

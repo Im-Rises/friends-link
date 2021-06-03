@@ -57,7 +57,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         }
         ?>
 
-        <a href="mon_profil.php">Retour sur mon profil</a>
+        <!-- <a href="mon_profil.php">Retour sur mon profil</a> -->
     </body>
 
     </html>
