@@ -37,6 +37,27 @@ body {
     padding-bottom: 30px;
 }
 
+.divNewPost {
+    text-align: center;
+}
+
+.newPost {
+    text-align      : center;
+    justify-content : center;
+    padding         : 10px;
+    font-size       : 150%;
+    border-radius   : 20px;
+    text-decoration : none;
+    color           : white;
+    background-color: #d26b60;
+}
+
+.newPost:hover {
+    background-color: #33032F;
+    color           : #d26b60;
+
+}
+
 .actionPost {
     background-color: #D26B60;
     color           : #F4DBD8;
