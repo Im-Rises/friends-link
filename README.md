@@ -1,3 +1,8 @@
 # tp_php
-Pour le contrôle !!!
-C'est mon commit
+
+## pages validée par w3c validator
+
+-   login.php
+-   register.php 
+-   index.php (deconnecte)
+-   index.php (connecte)
