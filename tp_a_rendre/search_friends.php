@@ -3,7 +3,7 @@
         <input type="search" name="search" placeholder="Amis à rechercher" class="searchBar">
         <input type="submit" value="Search" class="searchBtn">
     </form>
-
+</div>
     <?php
     //Vérification de la recherche de données de recherche d'un ami via la méthode get
     if (isset($_GET["search"]) and $_GET["search"] != NULL) {
@@ -48,9 +48,9 @@
             //Affichage des données des personnes trouvées correspondant à la recherche depuis la base de données
 
         }
+        echo "    </table>
+
+        </div>";
     }
 
     ?>
-    </table>
-
-</div>
