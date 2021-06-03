@@ -5,6 +5,16 @@
     </form>
 </div>
 
+<h1>résultat de la recherche (cliquez sur le profil pour l'ajouter)</h1>
+<table style="width:100%;text-align:center;">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
 
 <?php
 //Vérification de la recherche de données de recherche d'un membre via la méthode get
@@ -18,16 +28,7 @@ if (isset($_GET["search"]) and $_GET["search"] != NULL) {
         $rowTemp = $row % 2;
         if (!$row) {
 ?>
-            <h1>résultat de la recherche </h1>
-            <table style="width:100%;text-align:center;">
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Email</th>
-                    </tr>
-                </thead>
+
         <?php
             //Affichage des données des personnes trouvées correspondant à la recherche depuis la base de données
             $nom = $value['nom'];
