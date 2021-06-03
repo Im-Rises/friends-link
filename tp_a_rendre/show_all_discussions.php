@@ -22,45 +22,59 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <?php
         include "ban.php";
         include "search_friends.php";
+        echo "<div class='allTab'>
+        <h1>tous les amis (cliquez sur le profil pour lui envoyer un message !)</h1>
+    <table style='width:100%;text-align:center;'>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>";
         ?>
 
-        <div class="allTab">
-            <h1>Tous les amis :</h1>
+        <?php
+        $array = selectAllFriendsWhereEmail($_SESSION["email"]);
+        foreach ($array as $value) {
+            $nom = $value["nom"];
+            $prenom = $value["prenom"];
+            $receiver = $value["adresse_mail"];
+            echo "
+                    <tr>
+                        <td><a href='messages.php?receiver=$receiver'><img src='" . recupImageEmail($receiver) . "' class='pdp' alt='image de profil'></a></td>
+                        <td><a href='messages.php?receiver=$receiver'>$nom</a></td>
+                        <td><a href='messages.php?receiver=$receiver'>$prenom</a></td>
+                        <td><a href='messages.php?receiver=$receiver'>$receiver</a></td>
+                    </tr>";
+        }
+        ?>
 
-            <?php
-            $array = selectAllFriendsWhereEmail($_SESSION["email"]);
-            foreach ($array as $value) {
-                $nom = $value["nom"];
-                $prenom = $value["prenom"];
-                $receiver = $value["adresse_mail"];
-
-                echo "
-                    <div class='divBody'>
-                        <a href='messages.php?receiver=$receiver'><div class='pdpBodyElement'><img src='" . recupImageEmail($receiver) . "' class='pdp' alt='image de profil'></div></a>
-                        <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$nom</div></a>
-                        <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$prenom</div></a>
-                        <a href='messages.php?receiver=$receiver'><div class='bodyElement'>$receiver</div></a>
-                    </div>";
-            }
-            ?>
-            
+        </table>
         </div>
-
-        <div class="allTab">
-            <h1>Tous les groupes :</h1>
-            <?php
-            $array = selectAllGroupes($_SESSION["email"]);
-            foreach ($array as $value) {
-                $nom = $value["nom"];
-                $id = $value["id"];
-                echo "
-                    <br>
-                    <div class='divBody'>
-                        <a href='message_groupe.php?id=$id'><div class='bodyElement'><img src='" . recupImageGroupe($id) . "' class='pdp' alt=\"image de $nom\"></div></a>
-                        <a href='message_groupe.php?id=$id'><div class='bodyElement'>$nom</div></a>
-                    </div>";
-            }
-            ?>
+        <?php
+        echo "<div class='allTab'>
+                    <h1>tous les groupes(cliquez sur le groupe pour envoyer un message !)</h1>
+                <table style='width:100%;text-align:center;'>
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Nom du groupe</th>
+                                    </tr>
+                                </thead>";
+        $array = selectAllGroupes($_SESSION["email"]);
+        foreach ($array as $value) {
+            $nom = $value["nom"];
+            $id = $value["id"];
+            echo "
+                    <tr>
+                        <td><a href='message_groupe.php?id=$id'><img src='" . recupImageGroupe($id) . "' class='pdp' alt=\"image de $nom\"></a></td>
+                        <td><a href='message_groupe.php?id=$id'>$nom</a></td>
+                    </tr>";
+        }
+        ?>
+        </table>
         </div>
         <a href="new_group.php" class="groupe">Cliquer-ici pour créer un nouveau groupe</a>
     </body>

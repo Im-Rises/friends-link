@@ -1,5 +1,3 @@
-
-
 html {
     height: 100%;
 }
@@ -18,9 +16,18 @@ body {
     margin-right    : 10%;
 }
 
+.allTab tr {
+    background-color: #592955;
+}
+.allTab tr a {
+    color: white;
+}
+tr:hover {
+    background-color: tomato;
+}
 
 .formSearch {
-    font-family: "Poppins";
+    font-family     : "Poppins";
     text-align      : center;
     display         : inline-flex;
     width           : 78%;
@@ -47,7 +54,7 @@ body {
 
 .searchBtn,
 .sub {
-    font-family: "Poppins";
+    font-family     : "Poppins";
     color           : white;
     text-align      : center;
     background-color: #D26B60;
@@ -267,17 +274,17 @@ h1 {
 }
 
 .groupe {
-        width           : 500px;
-        font-size       : 150%;
-        background-color: #33032F;
-        color           : #F4DBD8;
-        border          : none;
-        padding         : 10px;
-        margin-top      : 5px;
-        display: block; 
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-        border-radius: 10px;
+    width           : 500px;
+    font-size       : 150%;
+    background-color: #33032F;
+    color           : #F4DBD8;
+    border          : none;
+    padding         : 10px;
+    margin-top      : 5px;
+    display         : block;
+    margin-left     : auto;
+    margin-right    : auto;
+    text-align      : center;
+    border-radius   : 10px;
 
-        }
+}
