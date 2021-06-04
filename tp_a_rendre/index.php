@@ -104,8 +104,8 @@ include "dao.php";
                 }
 
                     $like = empty($array)
-                        ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'><acronym title='$peopleLikes'>Aimer ❤</acronym></a>"
-                        : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'><acronym title='$peopleLikes'>Ne plus Aimer 💔</acronym></a>";
+                        ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'><abbr title='$peopleLikes'>Aimer ❤</abbr></a>"
+                        : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'><abbr title='$peopleLikes'>Ne plus Aimer 💔</abbr></a>";
 
                 // Afficher la liste des posts des amis ici
                 if ($post['image_post']) {
