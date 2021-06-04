@@ -5,8 +5,15 @@ body {
     background: radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
     background-attachment: fixed;
     font-family: "Poppins";
+    color:#F4DBD8;
+    text-align: center;
+    
 }
 
+body a {
+    color: #592955;
+    font-size: large;
+}
 
 .pdpMonProfile {
     width: 250px;
@@ -14,6 +21,7 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 70px;
 }
 
 .centerText {
