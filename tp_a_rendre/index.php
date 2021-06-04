@@ -90,9 +90,22 @@ include "dao.php";
                 $nbrLike = $nbrLike["COUNT(*)"];
                 $nbrLike = "$nbrLike ❤";
 
-                $like = empty($array)
-                    ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer ❤</a>"
-                    : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne plus Aimer 💔</a>";
+                $peopleLikes = selectAllMembersWhoLikeIdPost($post["id_post"]);
+                if ($peopleLikes != NULL) {
+                    $a = "";
+                    while($value = mysqli_fetch_array($peopleLikes)) {
+                        $prenom = $value["prenom"];
+                        $nom = $value["nom"];
+                        $a .= "$nom $prenom, ";
+                    }
+                    $peopleLikes = $a;
+                } else {
+                    $peopleLikes = "";
+                }
+
+                    $like = empty($array)
+                        ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'><acronym title='$peopleLikes'>Aimer ❤</acronym></a>"
+                        : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'><acronym title='$peopleLikes'>Ne plus Aimer 💔</acronym></a>";
 
                 // Afficher la liste des posts des amis ici
                 if ($post['image_post']) {

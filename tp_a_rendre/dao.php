@@ -238,6 +238,15 @@ function selectAllMembersWhereNomPrenomEmailWhereSearch($search, $email)
     return exeReq($req);
 }
 
+function selectAllMembersWhoLikeIdPost($id_post)
+{
+    $id_post = protection($id_post);
+
+    $req = "SELECT DISTINCT nom, prenom FROM membre m JOIN post_like pl ON pl.adresse_mail = m.adresse_mail WHERE pl.id_post = '$id_post';";
+
+    return exeReq($req);
+}
+
 // Selection des discussions en fonction de l'adresse_mail envoyé en paramètre
 function selectEmailsDiscussion($email)
 {
@@ -493,9 +502,10 @@ function selectAllPostsFromMembreOrder($email)
     return exeReq($req);
 }
 
-function countDemandeAmis($email){
+function countDemandeAmis($email)
+{
     $email = protection($email);
-    
+
     $req = "SELECT COUNT(*) FROM ami WHERE amitie_validee=0;";
 
     return exeReq($req);
@@ -555,11 +565,11 @@ function selectLastPostIdMembre($email)
 }
 
 //Création d'un message de commentaire à un post
-function insertIntoPost_Message($id_post, $email_posteur,$message_post)
+function insertIntoPost_Message($id_post, $email_posteur, $message_post)
 {
-    $id_post=protection($id_post);
-    $email_posteur=protection($email_posteur);
-    $message_post=protection($message_post);
+    $id_post = protection($id_post);
+    $email_posteur = protection($email_posteur);
+    $message_post = protection($message_post);
 
     $req = "INSERT INTO post_message VALUES (NULL,$id_post, \"$email_posteur\", NOW(), \"$message_post\");";
 
@@ -569,14 +579,15 @@ function insertIntoPost_Message($id_post, $email_posteur,$message_post)
 //Récupère tous les messages d'un post en fonction de l'id du post envoyé en paramètre
 function selectMessagesFromPost($id_post)
 {
-    $id_post=protection($id_post);
+    $id_post = protection($id_post);
 
-    $req= "SELECT M.adresse_mail, M.nom, M.prenom, PM.message_post_text, PM.datePost FROM membre M JOIN post_message PM ON M.adresse_mail=PM.email_posteur WHERE PM.id_post=$id_post ORDER BY datePost DESC;";
+    $req = "SELECT M.adresse_mail, M.nom, M.prenom, PM.message_post_text, PM.datePost FROM membre M JOIN post_message PM ON M.adresse_mail=PM.email_posteur WHERE PM.id_post=$id_post ORDER BY datePost DESC;";
 
     return exeReq($req);
 }
 
-function countLikesFromIdPost($id_post){
+function countLikesFromIdPost($id_post)
+{
     $id_post = protection($id_post);
 
     $req = "SELECT COUNT(*) FROM post_like WHERE id_post=\"$id_post\"";
@@ -587,17 +598,18 @@ function countLikesFromIdPost($id_post){
 //Verifie qu'un post existe en envoyant son id en paramètre
 function verifPostExiste($id_post)
 {
-    $id_post= protection($id_post);
+    $id_post = protection($id_post);
 
-    $req="SELECT 1 FROM post WHERE id_post=$id_post;";
+    $req = "SELECT 1 FROM post WHERE id_post=$id_post;";
 
     return exeReq($req);
 }
 
-function verifEmailExiste($email){
-    $email= protection($email);
+function verifEmailExiste($email)
+{
+    $email = protection($email);
 
-    $req="SELECT 1 FROM membre WHERE adresse_mail='$email';";
+    $req = "SELECT 1 FROM membre WHERE adresse_mail='$email';";
     //$req="SELECT 1 FROM membre WHERE adresse_mail='quentin.orel@esme.fr';";
 
     return exeReq($req);
@@ -606,11 +618,11 @@ function verifEmailExiste($email){
 //Mise à jour du nom pour le changement de l'image d'un membre
 function updateImageMembre($email, $nomImage)
 {
-    $email= protection($email);
+    $email = protection($email);
 
-    $nomImage= protection($nomImage);
+    $nomImage = protection($nomImage);
 
-    $req="UPDATE membre SET nomImage=\"$nomImage\" WHERE adresse_mail=\"$email\";";
+    $req = "UPDATE membre SET nomImage=\"$nomImage\" WHERE adresse_mail=\"$email\";";
 
     return exeReq($req);
 }
@@ -619,9 +631,9 @@ function updateImageMembre($email, $nomImage)
 //Fonction de récuépration de l'image de l'adresse email envoyé en paramètre
 function recupImageEmail($email)
 {
-    $nomImage= selectNomImageFromEmail($email);
+    $nomImage = selectNomImageFromEmail($email);
 
-    if ($nomImage["nomImage"]!=NULL AND file_exists("images/profiles/$nomImage[nomImage]")) {
+    if ($nomImage["nomImage"] != NULL and file_exists("images/profiles/$nomImage[nomImage]")) {
         $image = "images/profiles/$nomImage[nomImage]";
     } else {
         $image = "images/profiles/unknown.png";
@@ -633,9 +645,9 @@ function recupImageEmail($email)
 //Récupère le nom de 'image de l'utilisateur envoyé en paramètre 
 function selectNomImageFromEmail($email)
 {
-    $email= protection($email);
+    $email = protection($email);
 
-    $req="SELECT nomImage FROM membre WHERE adresse_mail=\"$email\";";
+    $req = "SELECT nomImage FROM membre WHERE adresse_mail=\"$email\";";
 
     return mysqli_fetch_array(exeReq($req));
 }
@@ -645,9 +657,9 @@ function selectNomImageFromEmail($email)
 //Récupère le nom de l'image d'un groupe en fonction de l'id du groupe
 function recupImageGroupe($idGroupe)
 {
-    $nomImage=selectNomImageFromGroupe($idGroupe);
+    $nomImage = selectNomImageFromGroupe($idGroupe);
 
-    if ($nomImage["nomImage"] != NULL AND file_exists("images/groupes/$nomImage[nomImage]")) {
+    if ($nomImage["nomImage"] != NULL and file_exists("images/groupes/$nomImage[nomImage]")) {
         $chemin = "images/groupes/$nomImage[nomImage]";
     } else {
         $chemin = "images/groupes/unknown.png";
@@ -660,11 +672,11 @@ function recupImageGroupe($idGroupe)
 //Mise à jour du nom de l'image d'un groupe pour le changement d'image
 function updateImageGroupe($idGroupe, $nomImage)
 {
-    $idGroupe=protection($idGroupe);
+    $idGroupe = protection($idGroupe);
 
-    $nomImage= protection($nomImage);
+    $nomImage = protection($nomImage);
 
-    $req="UPDATE groupe SET nomImage=\"$nomImage\" WHERE id=\"$idGroupe\";";
+    $req = "UPDATE groupe SET nomImage=\"$nomImage\" WHERE id=\"$idGroupe\";";
 
     return exeReq($req);
 }
@@ -672,25 +684,25 @@ function updateImageGroupe($idGroupe, $nomImage)
 //Récupère le nom de l'image du groupe 
 function selectNomImageFromGroupe($idGroupe)
 {
-    $idGroupe= protection($idGroupe);
+    $idGroupe = protection($idGroupe);
 
-    $req="SELECT nomImage FROM groupe WHERE id=\"$idGroupe\";";
+    $req = "SELECT nomImage FROM groupe WHERE id=\"$idGroupe\";";
 
     return mysqli_fetch_array(exeReq($req));
 }
 
 //Supprime une aimitié entre deux membres
-function deleteAmitie($emailUtilisateur, $emailAmi){
-    
-    $emailUtilisateur=protection($emailUtilisateur);
-    $emailAmi=protection($emailAmi);
+function deleteAmitie($emailUtilisateur, $emailAmi)
+{
 
-    $req="DELETE FROM ami WHERE email=\"$emailUtilisateur\" AND email_ami=\"$emailAmi\";";
-    
+    $emailUtilisateur = protection($emailUtilisateur);
+    $emailAmi = protection($emailAmi);
+
+    $req = "DELETE FROM ami WHERE email=\"$emailUtilisateur\" AND email_ami=\"$emailAmi\";";
+
     exeReq($req);
 
-    $req="DELETE FROM ami WHERE email=\"$emailAmi\" AND email_ami=\"$emailUtilisateur\";";
+    $req = "DELETE FROM ami WHERE email=\"$emailAmi\" AND email_ami=\"$emailUtilisateur\";";
 
     exeReq($req);
 }
-
