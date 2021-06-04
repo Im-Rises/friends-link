@@ -227,13 +227,12 @@ function selectAllMembersWhereNomPrenomEmailWhereSearch($search, $email)
 {
     $search = protection($search); // protege des injections sql
 
-    $req = "SELECT DISTINCT *
-            FROM membre m
-            WHERE LOCATE(\"$search\", adresse_mail) 
-                OR LOCATE(\"$search\", nom) 
-                OR LOCATE(\"$search\", prenom) 
-                OR LOCATE(\"$search\", CONCAT(prenom, \" \", nom)) 
-                OR LOCATE(\"$search\", CONCAT(nom, \" \", prenom));";
+    $search = "$search%";
+
+    $req = "SELECT DISTINCT * FROM membre m WHERE 
+    UPPER(adresse_mail) LIKE UPPER('$search')
+    OR UPPER(nom) LIKE UPPER('$search')
+    OR UPPER(prenom) LIKE UPPER('$search');";
 
     return exeReq($req);
 }
@@ -242,12 +241,17 @@ function selectAllMembersNotFriends($search, $email_session)
 {
     $search = protection($search);
 
+    $search = "$search%";
+
     $email_session = protection($email_session);
 
     $req = "SELECT * FROM membre WHERE 
             adresse_mail NOT IN ( 
-                SELECT email_ami FROM ami WHERE amitie_validee=1 AND email='clement.reiffers@esme.fr' 
-            ) AND adresse_mail!='clement.reiffers@esme.fr';";
+                SELECT email_ami FROM ami WHERE amitie_validee=1 AND email='$email_session' 
+            ) AND adresse_mail!='$email_session'
+            AND (UPPER(adresse_mail) LIKE UPPER('$search')
+            OR UPPER(nom) LIKE UPPER('$search')
+            OR UPPER(prenom) LIKE UPPER('$search'));";
 
     return exeReq($req);
 }
@@ -334,15 +338,17 @@ function selectAllAdmin($idGroupe)
 //Récupère les membres du groupe qui ne sont pas administrateur du groupe
 function selectMembresNotInAdminWhereIdGroupe($search, $idGroupe)
 {
+    $search = protection($search);
+
+    $search = "%$search%";
+
     $req = "SELECT DISTINCT *
             FROM membre
             WHERE adresse_mail IN (SELECT mail_membre FROM groupe_membre WHERE id_groupe = \"$idGroupe\")
             AND adresse_mail NOT IN (SELECT email FROM admin_groupe WHERE id_groupe=\"$idGroupe\")
-            AND LOCATE(\"$search\", adresse_mail) 
-            OR LOCATE(\"$search\", nom) 
-            OR LOCATE(\"$search\", prenom) 
-            OR LOCATE(\"$search\", CONCAT(prenom, \" \", nom))
-            OR LOCATE(\"$search\", CONCAT(nom, \" \", prenom));";
+            AND (UPPER(adresse_mail) LIKE UPPER('$search')
+            OR UPPER(nom) LIKE UPPER('$search')
+            OR UPPER(prenom) LIKE UPPER('$search'));";
 
     return exeReq($req);
 }
@@ -350,16 +356,19 @@ function selectMembresNotInAdminWhereIdGroupe($search, $idGroupe)
 //Récupère les personnes non présentes dans le groupe envoyé en paramètre en foncton de la recherche envoyée en paramètre
 function selectMembresNotInGroupeWhereIdGroupe($search, $idGroupe)
 {
+
+    $search = protection($search);
+
+    $search = "%$search%";
+
     $req = "SELECT DISTINCT *
             FROM membre
             WHERE 
             adresse_mail NOT IN (SELECT mail_membre FROM groupe_membre WHERE id_groupe=\"$idGroupe\")
             AND 
-            (LOCATE(\"$search\", adresse_mail) 
-            OR LOCATE(\"$search\", nom) 
-            OR LOCATE(\"$search\", prenom) 
-            OR LOCATE(\"$search\", CONCAT(prenom, \" \", nom))
-            OR LOCATE(\"$search\", CONCAT(nom, \" \", prenom)));";
+            (UPPER(adresse_mail) LIKE UPPER('$search')
+            OR UPPER(nom) LIKE UPPER('$search')
+            OR UPPER(prenom) LIKE UPPER('$search'));";
 
     return exeReq($req);
 }
