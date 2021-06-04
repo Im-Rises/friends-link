@@ -44,9 +44,8 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
                 foreach ($res as $emails) {
                     echo "
-                    <br>
                     <tr>
-                        <td><img src='" . recupImageEmail($emails['adresse_mail']) . "' class='pdp'></div>
+                        <td><img src='" . recupImageEmail($emails['adresse_mail']) . "' class='pdp' alt='photo de profil'>
                         <td>$emails[prenom]</td>
                         <td>$emails[nom]</td>
                         <td>$emails[adresse_mail]</td>
@@ -77,9 +76,8 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                 $res = selectProfilsEnvoieDemandesEnAmi($_SESSION["email"]);
                 foreach ($res as $emails) {
                     echo "
-                    <br>
                     <tr>
-                        <td><img src='" . recupImageEmail($emails['adresse_mail']) . "' class='pdp'></div>
+                        <td><img src='" . recupImageEmail($emails['adresse_mail']) . "' class='pdp' alt='photo de profil'>
                         <td>$emails[prenom]</td>
                         <td>$emails[nom]</td>
                         <td>$emails[adresse_mail]</td>
