@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    height: 100%;
+    background-repeat: no-repeat;
+    background: radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
+    background-attachment: fixed;
+    font-family: "Poppins";
+    color:#F4DBD8;
+    text-align: center;
+    
+}
+
+body textarea {
+    background-color: #592955;
+    color: #F4DBD8;
+    border-color: #F4DBD8;
+
+}
+
+body input{
+
+    width           : 10%;
+    font-size       : 100%;
+    background-color: #D26B60;
+    color           : #F4DBD8;
+    border          : none;
+    padding         : 2px;
+    margin-top      : 5px;
+}

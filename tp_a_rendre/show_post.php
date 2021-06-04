@@ -14,7 +14,8 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
     <head>
         <title>Mon profil</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="show_post.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
         <link rel="icon" href="friends_link.svg" />
         <?php
         $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
@@ -71,8 +72,8 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
         <!-- Form pour l'ajout de commentaire au post -->
         <form action="show_post.php" method="post">
             <label for="textAreaMsg">Votre réaction :</label><br>
-            <textarea name="message" id="textAreaMsg" placeholder="Entrez votre message ici !"></textarea><br>
-            <input type="submit" name="poster">
+            <textarea name="message" id="textAreaMsg" placeholder="Entrez votre commentaire ici !"></textarea><br>
+            <input value="Commenter" type="submit" name="poster">
         </form>
 
 
