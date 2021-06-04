@@ -46,7 +46,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
             if ($_FILES['fileToUpload']['error'] == 0) {
 
-                if ($_FILES['fileToUpload']['size'] < 5000000) {
+                if ($_FILES['fileToUpload']['size'] < 1000000) {
                     insertIntoPost($_SESSION['email'], $_POST['titre'], $_POST['message'], 1);
                     $imageName = mysqli_fetch_array(selectLastPostIdMembre($_SESSION['email']));
                     move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/posts/$imageName[id_post]");

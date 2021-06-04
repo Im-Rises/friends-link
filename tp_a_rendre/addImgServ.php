@@ -42,7 +42,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
             if (mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/png' || mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/jpeg' || mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/gif') {
 
-                if ($_FILES['fileToUpload']['size'] < 500000) {
+                if ($_FILES['fileToUpload']['size'] < 1000000) {
                     updateImageMembre($_SESSION['email'], $imageName);
                     move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/profiles/$imageName");
                     if ($imageActuelle != NULL && file_exists($imageActuelle)) {
