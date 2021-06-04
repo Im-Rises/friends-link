@@ -13,13 +13,15 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         <meta charset="utf-8" />
         <link rel="icon" href="friends_link.svg" />
         <link rel="stylesheet" href="mon_profil.css">
+        <link rel="stylesheet" href="show_all_discussions.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
         <?php
         $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
         echo "<link rel='stylesheet' href='$css'>";
         ?>
+        <link rel='stylesheet' href='indexLog.css'>
+        <link rel='stylesheet' href='indexBan.css'>
     </head>
-
 
     <body>
 
@@ -57,21 +59,38 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
                 if (isset($_GET['voirPlusAmis']) and $_GET['voirPlusAmis'] != NULL) {
                     $array = selectAllFriendsWhereEmail($_GET['email']);
+                    echo "<div class='allTab'>
+                            <h1>tous les amis (cliquez sur le membre pour accéder à son profil !)</h1>
+                            <table style='width:100%;text-align:center;'>
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>";
+        ?>
+
+                    <?php
+                    $array = selectAllFriendsWhereEmail($_GET["email"]);
                     foreach ($array as $value) {
                         $nom = $value["nom"];
                         $prenom = $value["prenom"];
                         $receiver = $value["adresse_mail"];
-
                         echo "
-                    <br>
-                    <div class='divBody'>
-                        <a href='?email=$receiver'><div class='pdpBodyElement'><img src='" . recupImageEmail($receiver) . "' class='pdp' alt='image de profil'></div></a>
-                        <a href='?email=$receiver'><div class='bodyElement'>$nom</div></a>
-                        <a href='?email=$receiver'><div class='bodyElement'>$prenom</div></a>
-                        <a href='?email=$receiver'><div class='bodyElement'>$receiver</div></a>
-                        <a href='?suppression=$receiver'><div class='bodyElement'>Suppression</div></a>
-                    </div>";
+                                <tr>
+                                    <td><a href='mon_profil.php?email=$receiver'><img src='" . recupImageEmail($receiver) . "' class='pdp' alt='image de profil'></a></td>
+                                    <td><a href='mon_profil.php?email=$receiver'>$nom</a></td>
+                                    <td><a href='mon_profil.php?email=$receiver'>$prenom</a></td>
+                                    <td><a href='mon_profil.php?email=$receiver'>$receiver</a></td>
+                                </tr>";
                     }
+                    ?>
+
+                    </table>
+                    </div>
+        <?php
                     echo "<a href='?email=$_GET[email]' class='centerText'>Réduire amis</a>";
                 } else {
                     echo "<a href='?email=$_GET[email]&voirPlusAmis=voirplus' class='centerText'>Voir amis</a>";
@@ -87,48 +106,74 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                     $listePosts = selectAllPostsFromMembreOrder($_GET['email']);
 
                     foreach ($listePosts as $post) {
-                        $array = selectLikesWhereEmailAndId($_GET['email'], $post["id_post"]);
+
+                        $array = selectLikesWhereEmailAndId($_SESSION["email"], $post["id_post"]);
                         $array = mysqli_fetch_array($array);
 
+                        $membre = selectMembreWhereEmail($post["email_posteur"]);
+                        $membre = mysqli_fetch_array($membre);
+
+                        $nbrLike = countLikesFromIdPost($post["id_post"]);
+                        $nbrLike = mysqli_fetch_array($nbrLike);
+                        $nbrLike = $nbrLike["COUNT(*)"];
+                        $nbrLike = "$nbrLike ❤";
+
+                        $peopleLikes = selectAllMembersWhoLikeIdPost($post["id_post"]);
+                        if ($peopleLikes != NULL) {
+                            $a = "";
+                            while ($value = mysqli_fetch_array($peopleLikes)) {
+                                $prenom = $value["prenom"];
+                                $nom = $value["nom"];
+                                $a .= "$nom $prenom, ";
+                            }
+                            $peopleLikes = $a;
+                        } else {
+                            $peopleLikes = "";
+                        }
+
+                        $page = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME);
+                        $profil = $_GET["email"];
+
                         $like = empty($array)
-                            ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'>Aimer</a>"
-                            : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'>Ne Plus Aimer</a>";
+                            ? "<a href='liker.php?id_post=$post[id_post]&page=$page&profil=$profil' class='actionPost'>Aimer ❤</a>"
+                            : "<a href='disliker.php?id_post=$post[id_post]&page=$page&profil=$profil' class='actionPost'>Ne plus Aimer 💔</a>";
+
                         // Afficher la liste des posts des amis ici
                         if ($post['image_post']) {
                             echo "
-                    <article class='post'>
-                        <div class='insidePost'>
-                            <h1>$post[titre]</h1>
-                            <p>$post[datePost]</p>
-                            <div class='rangement'>
-                                <div class='gauche'>
-                                    <p>$post[post_text]</p>
+                        <article class='post'>
+                            <div class='insidePost'>
+                                <h2>$membre[nom] $membre[prenom] : $post[titre]</h2>
+                                <p>$post[datePost]</p>
+                                <div class='rangement'>
+                                    <div class='gauche'>
+                                        <p>$post[post_text]</p>
+                                    </div>
+                                    <div class='droite'>
+                                        <img src='images/posts/$post[id_post]' alt='image du post'>
+                                    </div>
                                 </div>
-                                <div class='droite'>
-                                    <img src='images/posts/$post[id_post] alt='image de post'>
+                                <div class='actions'>
+                                    $like
+                                    <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter 💬</a>
+                                    <abbr title='$peopleLikes'>$nbrLike</abbr>
                                 </div>
                             </div>
-                            <div class='actions'>
-                                $like
-                                <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter</a>
-                            </div>
-                        </div>
-    
-                    </article>";
-                            // echo "</a>";
+                        </article>";
                         } else {
                             echo "
-                    <article class='post'>
-                        <div class='insidePost'>
-                            <h1>$post[titre]</h1>
-                            <p>$post[datePost]</p>
-                            <p>$post[post_text]</p>
-                            <div class='actions'>
-                                $like
-                                <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter</a>
+                        <article class='post'>
+                            <div class='insidePost'>
+                                <h2>$membre[nom] $membre[prenom] : $post[titre]</h2>
+                                <p>$post[datePost]</p>
+                                <p>$post[post_text]</p>
+                                <div class='actions'>
+                                    $like
+                                    <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter 💬</a>
+                                    $nbrLike
+                                </div>
                             </div>
-                        </div>
-                    </article>";
+                        </article>";
                         }
                     }
 

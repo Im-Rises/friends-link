@@ -93,7 +93,7 @@ include "dao.php";
                 $peopleLikes = selectAllMembersWhoLikeIdPost($post["id_post"]);
                 if ($peopleLikes != NULL) {
                     $a = "";
-                    while($value = mysqli_fetch_array($peopleLikes)) {
+                    while ($value = mysqli_fetch_array($peopleLikes)) {
                         $prenom = $value["prenom"];
                         $nom = $value["nom"];
                         $a .= "$nom $prenom, ";
@@ -103,9 +103,11 @@ include "dao.php";
                     $peopleLikes = "";
                 }
 
-                    $like = empty($array)
-                        ? "<a href='liker.php?id_post=$post[id_post]' class='actionPost'><abbr title='$peopleLikes'>Aimer ❤</abbr></a>"
-                        : "<a href='disliker.php?id_post=$post[id_post]' class='actionPost'><abbr title='$peopleLikes'>Ne plus Aimer 💔</abbr></a>";
+                $page = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME);
+
+                $like = empty($array)
+                    ? "<a href='liker.php?id_post=$post[id_post]&page=$page' class='actionPost'>Aimer ❤</a>"
+                    : "<a href='disliker.php?id_post=$post[id_post]&page=$page' class='actionPost'>Ne plus Aimer 💔</a>";
 
                 // Afficher la liste des posts des amis ici
                 if ($post['image_post']) {
@@ -125,7 +127,7 @@ include "dao.php";
                         <div class='actions'>
                             $like
                             <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter 💬</a>
-                            $nbrLike
+                            <abbr title='$peopleLikes'>$nbrLike</abbr>
                         </div>
                     </div>
                 </article>";
