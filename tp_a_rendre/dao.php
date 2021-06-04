@@ -238,7 +238,21 @@ function selectAllMembersWhereNomPrenomEmailWhereSearch($search, $email)
     return exeReq($req);
 }
 
-function selectAllMembersWhoLikeIdPost($id_post)
+function selectAllMembersNotFriends($search, $email_session)
+{
+    $search = protection($search);
+
+    $email_session = protection($email_session);
+
+    $req = "SELECT * FROM membre WHERE 
+            adresse_mail NOT IN ( 
+                SELECT email_ami FROM ami WHERE amitie_validee=1 AND email='clement.reiffers@esme.fr' 
+            ) AND adresse_mail!='clement.reiffers@esme.fr';";
+
+    return exeReq($req);
+}
+
+function selectAllMembersWhoLikeIdPost($id_post) // on recupere toutes les personnes qui ont likés un post spécifique
 {
     $id_post = protection($id_post);
 

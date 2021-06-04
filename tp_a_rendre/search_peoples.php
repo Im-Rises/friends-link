@@ -23,7 +23,7 @@ if (isset($_GET["search"]) and $_GET["search"] != NULL) {
                         </tr>
                     </thead>";
     //récupération dans la base de données des personnes correspondant à la recherche
-    $array = selectAllMembersWhereNomPrenomEmailWhereSearch($_GET["search"], $_SESSION["email"]);
+    $array = selectAllMembersNotFriends($_GET["search"], $_SESSION["email"]);
 
     foreach ($array as $value) {
         $row = 0;
