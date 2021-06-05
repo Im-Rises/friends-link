@@ -147,9 +147,10 @@ include "dao.php";
                 </article>";
                 }
             }
+            echo "</div>";
         }
         ?>
-        </div>
+
 
 </body>
 
