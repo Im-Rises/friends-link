@@ -520,7 +520,7 @@ function selectAllPostsFromMembreOrder($email)
 {
     $email = protection($email);
 
-    $req = "SELECT * FROM post WHERE email_posteur=\"$email\" ORDER BY datePost;";
+    $req = "SELECT * FROM post WHERE email_posteur=\"$email\" ORDER BY datePost DESC;";
 
     return exeReq($req);
 }
