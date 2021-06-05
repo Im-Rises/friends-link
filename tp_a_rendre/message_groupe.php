@@ -57,7 +57,7 @@
             $msg = $value["text_message"];
             $date = $value["date_envoie"];
             if ($dateTemp != $date) {
-                echo "--------- $date ---------";
+                echo "<center>--------- $date ---------</center>";
                 $dateTemp = $date;
             }
             if ($emailSender == $_SESSION["email"]) {
