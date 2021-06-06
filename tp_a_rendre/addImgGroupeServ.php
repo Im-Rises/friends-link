@@ -7,7 +7,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 ?>
 
     <!DOCTYPE html>
-    <html>
+    <html lang="fr">
 
     <head>
         <title>Modification image</title>
@@ -20,14 +20,13 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
         ?>
     </head>
 
-    <?php include "ban.php"; ?>
-
     <body>
+        <?php include "ban.php"; ?>
 
-        <form action="" method="post" enctype="multipart/form-data">
-            <label for="fileToUpload">Sélectionnez une image depuis votre appareil :</label></br>
-            <input type="file" name="fileToUpload" accept="image/*"></br>
-            <input type="submit" value="Envoyer"></br>
+        <form method="post" enctype="multipart/form-data">
+            <label for="imageServ">Sélectionnez une image depuis votre appareil :</label><br>
+            <input type="file" name="fileToUpload" id="imageServ" accept="image/*"><br>
+            <input type="submit" value="Envoyer"><br>
         </form>
 
         <?php
