@@ -141,7 +141,7 @@ include "dao.php";
                         <div class='actions'>
                             $like
                             <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter 💬</a>
-                            $nbrLike
+                            <abbr title='$peopleLikes'>$nbrLike</abbr>
                         </div>
                     </div>
                 </article>";
