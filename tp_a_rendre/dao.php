@@ -529,7 +529,7 @@ function countDemandeAmis($email)
 {
     $email = protection($email);
 
-    $req = "SELECT COUNT(*) FROM ami WHERE amitie_validee=0;";
+    $req = "SELECT COUNT(*) FROM ami WHERE amitie_validee=0 AND (email_ami='$email' OR email='$email');";
 
     return exeReq($req);
 }
