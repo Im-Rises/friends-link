@@ -8,45 +8,49 @@
     <?php
 
     if (isset($_GET["search"]) and $_GET["search"] != NULL) {
+        echo "<div class='allTab'>
+        <h1>résultat de la recherche (cliquez sur le profil pour l'ajouter)</h1>
+        <table style='width:100%;text-align:center;'>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>";
         $array = selectMembresNotInAdminWhereIdGroupe($_GET["search"], $_SESSION["idGroupe"]);
     ?>
 
         <?php
         $row = 0;
+
         foreach ($array as $value) {
+            $row = 0;
             $rowTemp = $row % 2;
             if (!$row) {
         ?>
-                <h1>résultat de la recherche </h1>
-                <div class='showTab'>
-                    <div class='divHead'>
-                        <div class='headElement'>Image</div>
-                        <div class='headElement'>Nom</div>
-                        <div class='headElement'>Prenom</div>
-                        <div class='headElement'>Email</div>
-                    </div>
 
-                <?php
+    <?php
+                //Affichage des données des personnes trouvées correspondant à la recherche depuis la base de données
+                $nom = $value['nom'];
+                $prenom = $value['prenom'];
+                $email = $value['adresse_mail'];
+
+                echo "
+                    <tr>
+                        <td><a href='?recherchePersonne=$email'><img src='" . recupImageEmail($value['adresse_mail']) . "' class='pdp' alt='$email'></a></td>
+                        <td><a href='?recherchePersonne=$email'>$nom</a></td>
+                        <td><a href='?recherchePersonne=$email'>$prenom</a></td>
+                        <td><a href='?recherchePersonne=$email'>$email</a></td>
+                    </tr>";
+                $row++;
             }
-                ?>
-
-        <?php
-            $nom = $value['nom'];
-            $prenom = $value['prenom'];
-            $email = $value['adresse_mail'];
-
-            echo "
-                <br>
-                <div class='divBody'>
-                    <a href='?recherchePersonne=$email'><div class='bodyElement'><img src='".recupImageEmail($email)."' class='pdp'></div></a>
-                    <a href='?recherchePersonne=$email'><div class='bodyElement'>$nom</div></a>
-                    <a href='?recherchePersonne=$email'><div class='bodyElement'>$prenom</div></a>
-                    <a href='?recherchePersonne=$email'><div class='bodyElement'>$email</div></a>
-                </div>";
-            $row++;
         }
+        echo "</table>";
+        echo "</div>";
     }
-        ?>
+    ?>
 </div>
 
 <?php

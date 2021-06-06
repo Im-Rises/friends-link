@@ -40,7 +40,7 @@ if (!isAdmin($admins, $email)) {
                 $nom = $m["nom"];
                 $email = $m["adresse_mail"];
                 $prenom = $m["prenom"];
-                echo "<input type='checkbox' name='membreToDelete[]' value='$email'>$email <br>";
+                echo "<input type='checkbox' name='membreToDelete[]' value='$email'>$email";
             }
 
             ?>

@@ -27,6 +27,7 @@ if (!isAdmin($admins, $email)) {
         $css = pathinfo($_SERVER['PHP_SELF'], PATHINFO_BASENAME) == "index.php" ? "indexBan.css" : "ban.css";
         echo "<link rel='stylesheet' href='$css'>";
         ?>
+        <link rel="stylesheet" href="show_all_discussions.css">
     </head>
     <body>
         <?php
