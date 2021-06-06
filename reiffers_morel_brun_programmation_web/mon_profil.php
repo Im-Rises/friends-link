@@ -68,6 +68,7 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                                         <th>Nom</th>
                                         <th>Prenom</th>
                                         <th>Email</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>";
         ?>
@@ -78,12 +79,15 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                         $nom = $value["nom"];
                         $prenom = $value["prenom"];
                         $receiver = $value["adresse_mail"];
+                        $sup = $_GET["email"] == $_SESSION["email"] ? "<td><a href='mon_profil.php?suppression=$receiver'>Supprimer</a></td>" : "";
+
                         echo "
                                 <tr>
                                     <td><a href='mon_profil.php?email=$receiver'><img src='" . recupImageEmail($receiver) . "' class='pdp' alt='image de profil'></a></td>
                                     <td><a href='mon_profil.php?email=$receiver'>$nom</a></td>
                                     <td><a href='mon_profil.php?email=$receiver'>$prenom</a></td>
                                     <td><a href='mon_profil.php?email=$receiver'>$receiver</a></td>
+                                    $sup
                                 </tr>";
                     }
                     ?>
