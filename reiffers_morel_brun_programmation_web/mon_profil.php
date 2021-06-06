@@ -159,7 +159,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                                 </div>
                                 <div class='actions'>
                                     $like
-                                    <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter 💬</a>
                                     <abbr title='$peopleLikes'>$nbrLike</abbr>
                                 </div>
                             </div>
@@ -173,7 +172,6 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
                                 <p>$post[post_text]</p>
                                 <div class='actions'>
                                     $like
-                                    <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter 💬</a>
                                     <abbr title='$peopleLikes'>$nbrLike</abbr>
                                 </div>
                             </div>

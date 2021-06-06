@@ -5,6 +5,7 @@ require "dao.php";
 //Si utilisateur est connecté, affichage de la page et que le post existe 
 if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_array(verifPostExiste($_GET['idPost']))['1'] == 1) {
     $profil = selectMembreWhereEmail($_SESSION["email"]);
+    if($_SESSION["idPost"] == NULL) $_SESSION["idPost"] = $_GET["idPost"];
     $profil = mysqli_fetch_array($profil);
 ?>
 
@@ -70,18 +71,20 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL and mysqli_fetch_ar
         ?>
 
         <!-- Form pour l'ajout de commentaire au post -->
-        <form action="show_post.php" method="post">
-            <label for="textAreaMsg">Votre réaction :</label><br>
-            <textarea name="message" id="textAreaMsg" placeholder="Entrez votre commentaire ici !"></textarea><br>
-            <input value="Commenter" type="submit" name="poster">
-        </form>
-
+        <?php 
+        echo "
+        <form action='show_post.php?idPost=$_GET[idPost] method='post'>
+            <label for='textAreaMsg'>Votre réaction :</label><br>
+            <textarea name='message' id='textAreaMsg' placeholder='Entrez votre commentaire ici !'></textarea><br>
+            <input value='Commenter' type='submit' name='poster'>
+        </form>";
+        ?>
 
         <?php
         //Si un message a été envoyé via le form alors il est ajouté à la base de données et la page est rafraichis pour son affichage
         if (isset($_POST["message"], $_GET['idPost']) and $_POST["message"] != NULL and $_GET['idPost'] != NULL) {
             insertIntoPost_Message($_GET['idPost'], $_SESSION['email'], $_POST["message"]);
-            header("Refresh:0");
+            header("show_post.php?idPost=$_GET[idPost]");
         }
         ?>
 

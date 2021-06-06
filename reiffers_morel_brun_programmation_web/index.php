@@ -110,6 +110,11 @@ include "dao.php";
                     : "<a href='disliker.php?id_post=$post[id_post]&page=$page' class='actionPost'>Ne plus Aimer 💔</a>";
 
                 // Afficher la liste des posts des amis ici
+                $idPost = $post["id_post"];
+
+                // <a href='show_post.php?idPost=$idPost' class='actionPost'>Commenter 💬</a>
+
+
                 if ($post['image_post']) {
                     echo "
                 <article class='post'>
@@ -126,7 +131,6 @@ include "dao.php";
                         </div>
                         <div class='actions'>
                             $like
-                            <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter 💬</a>
                             <abbr title='$peopleLikes'>$nbrLike</abbr>
                         </div>
                     </div>
@@ -140,7 +144,6 @@ include "dao.php";
                         <p>$post[post_text]</p>
                         <div class='actions'>
                             $like
-                            <a href='show_post.php?idPost=$post[id_post]' class='actionPost'>Commenter 💬</a>
                             <abbr title='$peopleLikes'>$nbrLike</abbr>
                         </div>
                     </div>
