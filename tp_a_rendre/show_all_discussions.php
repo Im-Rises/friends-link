@@ -83,7 +83,5 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
     </html>
 <?php
 } else {
-    echo "<center>vous devez vous connecter !</center>";
-    echo "vous allez être redirigés";
     header("Location: login.php");
 } ?>

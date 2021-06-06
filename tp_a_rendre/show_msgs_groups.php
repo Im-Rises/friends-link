@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 
@@ -21,7 +21,7 @@ while ($value = mysqli_fetch_array($messages)) {
     $msg = $value["text_message"];
     $date = $value["date_envoie"];
     if ($dateTemp != $date) {
-        echo "<center>--------- $date ---------</center>";
+        echo "<p class='center'>--------- $date ---------</p>";
         $dateTemp = $date;
     }
     if ($emailSender == $_SESSION["email"]) {
@@ -44,5 +44,3 @@ while ($value = mysqli_fetch_array($messages)) {
     </div>";
     }
 }
-
-?>

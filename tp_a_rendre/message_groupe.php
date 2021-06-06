@@ -37,7 +37,7 @@
 
 
     if (isAdmin($admins, $sender)) {
-        echo "<a href='group_settings.php'>Group Settings</a>";
+        echo "<p class='center'><a href='group_settings.php' class='group_settings'>Paramètres du Groupe</a></p>";
     }
 
     $dateTemp = "";
@@ -57,7 +57,7 @@
             $msg = $value["text_message"];
             $date = $value["date_envoie"];
             if ($dateTemp != $date) {
-                echo "<center>--------- $date ---------</center>";
+                echo "<p class='center'>--------- $date ---------</p>";
                 $dateTemp = $date;
             }
             if ($emailSender == $_SESSION["email"]) {

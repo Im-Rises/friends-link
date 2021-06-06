@@ -1,41 +1,51 @@
-
 html {
     height: 100%;
 }
 
 body {
-    margin: 0;
-    height: 100%;
-    background-repeat: no-repeat;
-    background: radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
+    margin               : 0;
+    height               : 100%;
+    background-repeat    : no-repeat;
+    background           : radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
     background-attachment: fixed;
 }
 
 
+.wow {
+    width       : 80%;
+    margin-left : 10%;
+    margin-right: 10%;
+}
+
+.wow ul {
+    width: 100%;
+}
+
 .wow li {
-    display         : list-item;
-    width           : 90%;
-    margin-top      : 20px;
-    margin-bottom: 20px;
-    padding         : 15px;
-    border          : none;
-    color           : #592955;
-    background-color: #F4DBD8;
-    opacity         : 0.8;
-    font-size       : 250%;
-    text-align      : center;
-    border-radius: 10px;
+    list-style         : none;
+    list-style-position: outside;
+    margin-top         : 20px;
+    margin-bottom      : 20px;
+    padding            : 15px;
+    border             : none;
+    color              : #592955;
+    background-color   : #F4DBD8;
+    opacity            : 0.8;
+    font-size          : 250%;
+    text-align         : center;
+    border-radius      : 10px;
     box-shadow         : 8px 8px 12px #33032F;
-    
-    }
+
+}
 
 .wow a {
     text-align: center;
-    color:#592955;
-    
+    color     : #592955;
+
 }
 
-.wow li:hover, a:hover {
-background-color: #592955;
-color: #F4DBD8;
+.wow li:hover,
+a:hover {
+    background-color: #592955;
+    color           : #F4DBD8;
 }

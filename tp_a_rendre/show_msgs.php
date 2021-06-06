@@ -23,7 +23,7 @@ while ($value = mysqli_fetch_array($discussions)) {
     $msg = $value["message_text"];
     $date = $value["date_envoie"];
     if($dateTemp != $date) {
-        echo "<center>--------- $date ---------</center>";
+        echo "<p class='center'>--------- $date ---------</p>";
         $dateTemp = $date;
     }
     if ($emailSender == $_SESSION["email"]) {
