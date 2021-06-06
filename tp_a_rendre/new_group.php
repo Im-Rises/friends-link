@@ -15,16 +15,15 @@
     ?>
 </head>
 
-<?php 
-session_start();
-require "dao.php";
-include "ban.php"; 
-?>
-
 <body>
-    <form action="" method="POST">
+    <?php
+    session_start();
+    require "dao.php";
+    include "ban.php";
+    ?>
+    <form method="POST">
         <div class="groupe">
-            <legend class="nommer">Nommez votre groupe:</legend>
+            <p class="nommer">Nommez votre groupe:</p>
             <input type="text" name="GroupeName" placeholder="Nom du groupe">
         </div>
         <input type="submit" class="envoyer">
