@@ -41,20 +41,26 @@ if (isset($_SESSION["email"]) and $_SESSION["email"] != NULL) {
 
             $imageName = $_SESSION['email'] . date("Y-m-d") . time();
 
-            if (mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/png' || mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/jpeg' || mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/gif') {
+            if ($_FILES['fileToUpload']['error']==0 ) {
 
-                if ($_FILES['fileToUpload']['size'] < 1000000) {
-                    updateImageMembre($_SESSION['email'], $imageName);
-                    move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/profiles/$imageName");
-                    if ($imageActuelle != NULL && file_exists($imageActuelle)) {
-                        unlink($imageActuelle);
+                var_dump($_FILES);
+                if (mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/png' || mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/jpeg' || mime_content_type($_FILES['fileToUpload']['tmp_name']) == 'image/gif') {
+
+                    if ($_FILES['fileToUpload']['size'] < 1000000) {
+                        updateImageMembre($_SESSION['email'], $imageName);
+                        move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "images/profiles/$imageName");
+                        if ($imageActuelle != NULL && file_exists($imageActuelle)) {
+                            unlink($imageActuelle);
+                        }
+                        header("Location: addImgServ.php");
+                    } else {
+                        echo "<p>Fichier trop lourd, veuillez sélectionner une image de moins de 500ko</p>";
                     }
-                    header("Location: addImgServ.php");
                 } else {
-                    echo "<p>Fichier trop lourd, veuillez sélectionner une image de moins de 500ko</p>";
+                    echo "<p>Fichier invalide</p>";
                 }
-            } else {
-                echo "<p>Fichier invalide</p>";
+            }else{
+                echo "<p>Aucunes images envoyées</p>";
             }
         }
         ?>
