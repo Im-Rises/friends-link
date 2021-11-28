@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    height: 100%;
+    background-repeat: no-repeat;
+    background: radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
+    background-attachment: fixed;
+    font-family: "Poppins";
+    color:#F4DBD8;
+    text-align: center;
+    
+}
+
+body a {
+    color: #592955;
+    font-size: large;
+}
+
+.pdpMonProfile {
+    width: 250px;
+    border-radius: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 70px;
+}
+
+.centerText {
+    text-align: center;
+    font-size: 150%;
+    width: 100%;
+}
+
+.showTab {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 50%;
+    color: #F4DBD8;
+    font-size: 100%;
+    display: block;
+}
+
+.divHead {
+    width: 100%;
+}
+
+.divBody {
+    float: left;
+    width: 100%;
+}
+
+.divBody:hover {
+    background-color: tomato;
+}
+
+.divBody {
+    background-color: darkgrey;
+}
+

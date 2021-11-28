@@ -1,0 +1,320 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin               : 0;
+    height               : 100%;
+    background-repeat    : no-repeat;
+    background           : radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
+    background-attachment: fixed;
+}
+
+.allTab {
+    background-color: #33032F;
+    width           : 50%;
+}
+
+.group_settings {
+    width           : 200px;
+    font-size       : 120%;
+    background-color: #33032F;
+    color           : #F4DBD8;
+    border          : none;
+    padding         : 5px;
+    margin-top      : 5px;
+    display         : block;
+    margin-left     : auto;
+    margin-right    : auto;
+    text-align      : center;
+    border-radius   : 10px;
+}
+
+.group_settings:hover {
+    color           : #33032F;
+    background-color: tomato;
+}
+
+
+.formSearch {
+    text-align      : center;
+    display         : inline-flex;
+    width           : 78%;
+    position        : absolute;
+    margin-left     : 10%;
+    padding         : 10px;
+    position        : relative;
+    background-color: #33032F;
+    margin-right    : 10%;
+    margin-top      : 5px;
+}
+
+.searchBar {
+    background-color         : transparent;
+    width                    : 90%;
+    font-size                : 200%;
+    border-top-left-radius   : 5px;
+    color                    : white;
+    border-bottom-left-radius: 5px;
+    border                   : none;
+    text-align               : center;
+}
+
+.searchBtn,
+.sub {
+    color           : white;
+    text-align      : center;
+    background-color: #D26B60;
+    width           : 10%;
+    border-radius   : 10px;
+    font-size       : 200%;
+    border          : none;
+}
+
+.searchBtn:hover {
+    cursor          : pointer;
+    background-color: black;
+    color           : tomato;
+}
+
+.center {
+    text-align: center;
+}
+
+
+.showTab {
+    margin-left : 10%;
+    margin-right: 10%;
+    width       : 80%;
+    color       : white;
+    font-size   : 150%;
+    display     : block;
+    float       : left;
+}
+
+.divHead {
+    width: 100%;
+}
+
+.youSend {
+    margin-right: 40%;
+    margin-left : 10%;
+    color       : black;
+}
+
+.iSend {
+    margin-left : 40%;
+    margin-right: 10%;
+    color       : white;
+}
+
+.iSend,
+.youSend {
+    font-size  : 120%;
+    margin-top : 10px;
+    font-family: "Arial";
+    display    : flex;
+    align-items: center;
+}
+
+.messageTo {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    padding        : 20px;
+}
+
+.show_name_img_grp {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+.messageTo img {
+    border-radius: 50%;
+}
+
+.messageTo h1 {
+    margin-left: 2%;
+}
+
+.containMsg {
+    padding      : 20px;
+    border-radius: 10px;
+    width        : 90%;
+}
+
+.iSend .containMsg {
+    margin-right: 5%;
+}
+
+.youSend .containMsg {
+    margin-left: 5%;
+}
+
+.youSend .containMsg {
+    background-color: white;
+}
+
+.iSend .containMsg {
+    background-color: tomato;
+}
+
+.containImg {
+    width: auto;
+}
+
+.iSend img,
+.youSend img {
+    width        : 50px;
+    border-radius: 40px;
+}
+
+.divBody {
+    float: left;
+    width: 100%;
+}
+
+.divBody:hover {
+    background-color: tomato;
+}
+
+.divBody {
+    background-color: darkgrey;
+}
+
+.headElement {
+    float     : left;
+    width     : 33%;
+    text-align: center;
+    font-style: italic;
+}
+
+.bodyElement {
+    width     : 33%;
+    text-align: center;
+    float     : left;
+}
+
+.writeMsg {
+    position  : fixed;
+    bottom    : 5px;
+    width     : 100%;
+    text-align: center;
+}
+
+.show_msg {
+    margin-bottom : 5%;
+    padding-bottom: 10%;
+}
+
+.writeMsg form {
+    box-shadow: 1px 1px 12px #555;
+    display   : -webkit-inline-flex;
+    bottom    : 0;
+    width     : 100%;
+}
+
+.writeMsg .write {
+    width: 90%;
+    float: left;
+}
+
+.writeMsg .sub {
+    width: 10%;
+    float: left;
+}
+
+.login {
+    background-color: #33032F;
+    padding         : 1%;
+    border-radius   : 10px;
+    margin-top      : 2%;
+    width           : 35%;
+    height          : 200px;
+    box-shadow      : 8px 8px 12px #aaa;
+    text-align      : center;
+    justify-content : center;
+}
+
+.seConnecter {
+    width           : 37%;
+    font-size       : 150%;
+    background-color: #D26B60;
+    color           : #F4DBD8;
+    border          : none;
+    padding         : 10px;
+    margin-top      : 2%;
+}
+
+.formLogin {
+    width          : 100%;
+    display        : block;
+    float          : left;
+    margin         : 0 auto;
+    text-align     : center;
+    justify-content: center;
+}
+
+.login input {
+    display         : list-item;
+    margin-top      : 20px;
+    width           : 90%;
+    padding         : 10px;
+    border          : none;
+    color           : #F4DBD8;
+    background-color: #592955;
+    opacity         : 0.8;
+    font-size       : 150%;
+    text-align      : center;
+}
+
+h1 {
+    font-family   : "Poppins";
+    color         : white;
+    text-align    : center;
+    letter-spacing: 5px;
+}
+
+.nommer {
+    font-family   : "Poppins";
+    color         : #F4DBD8;
+    text-align    : center;
+    letter-spacing: 5px;
+    font-size     : large;
+}
+
+.groupe input {
+    width           : 300px;
+    font-size       : 150%;
+    background-color: #592955;
+    color           : #F4DBD8;
+    border          : none;
+    padding         : 5px;
+    margin-top      : 5px;
+    display         : block;
+    margin-left     : auto;
+    margin-right    : auto;
+    text-align      : center;
+
+}
+
+.groupe legend {
+    color    : #F4DBD8;
+    font-size: xx-large;
+
+}
+
+.envoyer {
+    width           : 200px;
+    font-size       : 20px;
+    background-color: #D26B60;
+    color           : #F4DBD8;
+    border          : none;
+    padding         : 2px;
+    display         : block;
+    margin-right    : auto;
+    margin-left     : auto;
+    margin-top      : 20px;
+
+}

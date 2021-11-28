@@ -1,0 +1,106 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin               : 0;
+    height               : 100%;
+    background-repeat    : no-repeat;
+    background           : radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
+    background-attachment: fixed;
+}
+
+.post {
+    background-color: #33032F;
+    margin-left     : 25%;
+    margin-right    : 25%;
+    overflow        : auto;
+    max-height      : 500px;
+    color           : white;
+    margin-top      : 20px;
+    border          : 0.1px solid grey;
+    position        : relative;
+    text-align      : center;
+}
+
+.post h1 {
+    text-align : left;
+    font-family: Arial;
+}
+
+.post img {
+    width: 50%;
+}
+
+.listeDesPosts {
+    margin-top    : 5%;
+    padding-bottom: 30px;
+}
+
+.divNewPost {
+    text-align: center;
+}
+
+.newPost {
+    text-align      : center;
+    justify-content : center;
+    padding         : 10px;
+    font-size       : 150%;
+    border-radius   : 20px;
+    text-decoration : none;
+    color           : white;
+    background-color: #d26b60;
+}
+
+.newPost:hover {
+    background-color: #33032F;
+    color           : #d26b60;
+
+}
+
+.actionPost {
+    background-color: #D26B60;
+    color           : #F4DBD8;
+    padding         : 5px;
+    font-size       : 120%;
+    text-decoration : none;
+}
+
+.insidePost {
+    padding-left  : 25px;
+    padding-right : 25px;
+    padding-bottom: 25px;
+}
+
+.insidePost p {
+    text-align: justify;
+}
+
+.actions {
+    text-align: right;
+}
+
+.actions .actionPost+.actionPost {
+    margin-left: 5%;
+}
+
+.gauche {
+    float     : left;
+    width     : 60%;
+    text-align: left;
+}
+
+.droite {
+    float     : left;
+    width     : 40%;
+    text-align: left;
+}
+
+.droite {
+    text-align: center;
+}
+
+.rangement {
+    width  : 100%;
+    display: inline-flex;
+}

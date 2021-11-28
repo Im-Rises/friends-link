@@ -1,0 +1,39 @@
+.newPost {
+    margin-top      : 5%;
+    background-color: #33032F;
+    margin-left     : 20%;
+    margin-right    : 20%;
+    padding         : 20px;
+
+}
+
+.titrePost {
+    text-align: center;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    background-repeat: no-repeat;
+    background: radial-gradient(circle, rgba(210, 107, 96, 1) 0%, rgba(51, 3, 47, 1) 100%);
+    background-attachment: fixed;
+}
+
+.titrePost,
+textarea,
+.file,
+.poster {
+    margin-top      : 5px;
+    width           : 100%;
+    color           : #F4DBD8;
+    background-color: #592955;
+    max-width       : 100%;
+    min-width       : 100%;
+    padding         : 5px;
+    border          : none;
+    font-size       : 120%;
+}
