@@ -18,9 +18,9 @@ That can be Direct messages, posts, post comments, searching peoples, create gro
 https://github.com/clementreiffers/friends_link
   
 ## Contributors
-@clementreiffers
+@clementreiffers  
 https://github.com/clementreiffers
 
-@dorinebrun
+@dorinebrun  
 https://github.com/dorinebrun
 
