@@ -5,16 +5,17 @@
 </p>
   
 ## Description
-
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-<img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white">
-<img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white">
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+  <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white">
+  <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white">
+</p>
 
 Social media developed in PHP, HTML, CSS, JavaScript and SQL.  
 The website allows you to register and communicate with other persons.  
 That can be Direct messages, posts, post comments, searching peoples, create group conversation, modify your homepage.  
-The social media is only in french. It is a pure learning exercice.  
+The social media is only in French. It is a pure learning exercise.  
 
 ## Features
 
@@ -56,23 +57,6 @@ All pages of the website are validated byt the W3C validator.
 You can test the good behaviour of all pages with the website link below :  
 <https://validator.w3.org>
 
-## Contributors
-
-Quentin Morel :
-
-- @Im-Rises
-- <https://github.com/Im-Rises>
-
-Clément Reiffers :
-
-- @clementreiffers  
-- <https://github.com/clementreiffers>
-
-Dorine Brun :
-
-- @dorinebrun  
-- <https://github.com/dorinebrun>
-
 ## Resources
 
 Xampp :  
@@ -80,3 +64,22 @@ Xampp :
 
 W3C validator :  
 <https://validator.w3.org>
+
+## Contributors
+
+Clément Reiffers :
+
+- @clementreiffers
+- <https://github.com/clementreiffers>
+
+Quentin Morel :
+
+- @Im-Rises
+- <https://github.com/Im-Rises>
+
+Dorine Brun :
+
+- @dorinebrun
+- <https://github.com/dorinebrun>
+
+[![GitHub contributors](https://contrib.rocks/image?repo=Im-Rises/friends-link)](https://github.com/friends-link/video-ascii/graphs/contributors)
